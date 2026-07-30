@@ -9,10 +9,11 @@
 
 @theme {
   /* ── Foundation: warm light surfaces ──────────────────────────── */
-  --color-ivory: #fbf9f4;        /* page background */
+  --color-ivory: #fbf9f4;        /* lightest — page base */
+  --color-linen: #f8f4ea;        /* soft wash */
   --color-cream: #f4efe4;        /* raised surfaces, cards */
-  --color-cream-dark: #eae3d4;   /* banded sections */
-  --color-linen: #f8f4ea;        /* soft alternate wash */
+  --color-cream-dark: #ede5d6;   /* warm stone band */
+  --color-sand: #e9e0cf;         /* deepest light band */
 
   /* ── Stone: hairlines through body copy ───────────────────────── */
   --color-stone-200: #ded6c7;    /* hairline borders */
@@ -179,9 +180,19 @@
 
   /* Cards -------------------------------------------------------- */
   .card {
-    @apply relative border border-stone-200 bg-cream p-8 transition-all duration-500;
+    @apply relative border border-stone-200 p-8 transition-all duration-500;
+    background-image: linear-gradient(165deg, #fdfbf6 0%, var(--color-cream) 58%, var(--color-cream-dark) 100%);
     box-shadow: var(--shadow-lift);
     transition-timing-function: var(--ease-refined);
+  }
+  /* Gold hairline along the top edge of every card. */
+  .card::before {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    top: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, transparent, rgb(200 162 74 / 0.55), transparent);
   }
   .card-lift:hover {
     @apply border-gold-600/50 bg-linen;
@@ -191,7 +202,11 @@
   .card-numeral { @apply font-display text-2xl text-gold-700; }
 
   /* Callout / quote --------------------------------------------- */
-  .callout    { @apply border-l-2 border-gold-600 bg-cream px-6 py-6 sm:px-8; }
+  .callout {
+    @apply border-l-2 border-gold-600 px-6 py-6 sm:px-8;
+    background-image: linear-gradient(120deg, var(--color-linen), var(--color-cream));
+    box-shadow: var(--shadow-lift);
+  }
   .pullquote  { @apply font-display text-2xl not-italic leading-snug text-ink sm:text-3xl; }
   .review-note {
     @apply flex gap-3 border border-gold-600/40 bg-gold-500/10 px-5 py-4
@@ -207,6 +222,12 @@
   .legal-doc p  { @apply mb-4; }
   .legal-doc ul { @apply mb-4 list-disc space-y-2 pl-6; }
   .legal-doc a  { @apply text-bronze underline underline-offset-2; }
+
+  /* On the rare ink band, invert the type colours. */
+  .on-ink { @apply text-cream; }
+  .on-ink :where(h1, h2, h3, h4) { color: var(--color-ivory); }
+  .on-ink .eyebrow { color: var(--color-gold-300); }
+  .on-ink .lede { color: var(--color-cream-dark); }
 
   .link-gold {
     @apply text-gold-700 underline decoration-gold-500 decoration-1 underline-offset-4
@@ -235,11 +256,35 @@
   [data-reveal]:has(> .card).is-visible,
   [data-reveal][data-variant="rise"].is-visible { transform: none; }
 
-  /* Warm paper wash — the default page surface treatment. */
+  /* Warm paper wash — page mastheads. */
   .surface-warm {
     background-image:
-      radial-gradient(90% 60% at 50% 0%, rgb(200 162 74 / 0.10), transparent 62%),
-      linear-gradient(180deg, var(--color-linen) 0%, var(--color-ivory) 55%);
+      radial-gradient(90% 60% at 50% 0%, rgb(200 162 74 / 0.12), transparent 62%),
+      linear-gradient(180deg, var(--color-linen) 0%, var(--color-ivory) 58%);
+  }
+
+  /* Banded surfaces. Each carries its own vertical gradient so consecutive
+     sections flow into one another rather than stacking as flat blocks. */
+  .band-ivory { background-image: linear-gradient(180deg, var(--color-ivory) 0%, var(--color-linen) 100%); }
+  .band-linen { background-image: linear-gradient(180deg, var(--color-linen) 0%, var(--color-cream) 100%); }
+  .band-cream { background-image: linear-gradient(180deg, var(--color-cream) 0%, var(--color-cream-dark) 100%); }
+  .band-stone { background-image: linear-gradient(180deg, var(--color-cream-dark) 0%, var(--color-sand) 100%); }
+  .band-ink {
+    background-color: var(--color-ink);
+    background-image: radial-gradient(120% 90% at 50% 0%, rgb(200 162 74 / 0.14), transparent 60%);
+  }
+
+  /* Hairline of gold where two bands meet. */
+  .seam-gold {
+    position: relative;
+  }
+  .seam-gold::before {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    top: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, transparent, rgb(143 110 36 / 0.35), transparent);
   }
 
   .glow-gold-soft {

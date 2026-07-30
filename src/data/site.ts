@@ -61,23 +61,61 @@ export const giving = {
   ],
 };
 
+// Header navigation. Top-level items with `children` render as dropdowns.
+export type NavItem = { label: string; href?: string; children?: { label: string; href: string }[] };
+
+export const navTree: NavItem[] = [
+  { label: 'Home', href: '/' },
+  {
+    label: 'About',
+    children: [
+      { label: 'The Vision', href: '/vision' },
+      { label: 'The Story', href: '/story' },
+      { label: 'The Land Marked by Prayer', href: '/the-place' },
+    ],
+  },
+  {
+    label: 'Ministry',
+    children: [
+      { label: 'The First Ministry', href: '/house-of-prayer' },
+      { label: 'The Ministry Model', href: '/ministry-model' },
+      { label: 'Remodel and Grounds', href: '/remodel-and-grounds' },
+    ],
+  },
+  {
+    label: 'Leadership',
+    children: [
+      { label: 'Leadership Team', href: '/leadership' },
+      { label: 'Financial Stewardship', href: '/financial-stewardship' },
+    ],
+  },
+  {
+    label: 'Partner With Us',
+    children: [
+      { label: 'The Invitation', href: '/partner' },
+      { label: 'Give / Support', href: '/partner#ways-to-give' },
+    ],
+  },
+  { label: 'Contact', href: '/contact' },
+];
+
+// Flat list used by the footer.
 export const nav = [
   { label: 'Home', href: '/' },
-  { label: 'Vision', href: '/vision' },
-  { label: 'Story', href: '/story' },
-  { label: 'Moravian Falls', href: '/the-place' },
-  { label: 'Ministry', href: '/ministry-model' },
-  { label: 'Remodel & Grounds', href: '/remodel-and-grounds' },
+  { label: 'The Vision', href: '/vision' },
+  { label: 'The Story', href: '/story' },
+  { label: 'The Land Marked by Prayer', href: '/the-place' },
+  { label: 'The First Ministry', href: '/house-of-prayer' },
+  { label: 'The Ministry Model', href: '/ministry-model' },
+  { label: 'Remodel and Grounds', href: '/remodel-and-grounds' },
   { label: 'Leadership', href: '/leadership' },
-  { label: 'Partner', href: '/partner' },
+  { label: 'Financial Stewardship', href: '/financial-stewardship' },
+  { label: 'Partner With Us', href: '/partner' },
   { label: 'Contact', href: '/contact' },
 ];
 
 // Secondary pages surfaced in the footer and in-page links.
-export const secondaryNav = [
-  { label: 'The House of Prayer', href: '/house-of-prayer' },
-  { label: 'Financial Stewardship', href: '/financial-stewardship' },
-];
+export const secondaryNav: { label: string; href: string }[] = [];
 
 export const legalNav = [
   { label: 'Privacy Policy', href: '/legal/privacy-policy' },

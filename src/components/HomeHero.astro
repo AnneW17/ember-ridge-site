@@ -1,49 +1,86 @@
 ---
 // src/components/HomeHero.astro
-// Warm, light masthead. The Ember Ridge mark leads, then a plain statement of
-// what this is, so a first-time visitor is oriented before they scroll.
+// Full-width lodge banner with a slow parallax drift, then the Ember Ridge
+// medallion centred beneath it, overlapping the lower edge of the image.
 import { site } from '../data/site';
 ---
-<section class="surface-warm relative overflow-hidden pt-36 pb-20 sm:pt-44 sm:pb-28">
-  <div aria-hidden="true" class="pointer-events-none absolute inset-0 overflow-hidden">
-    <div class="glow-gold-soft animate-breathe absolute left-1/2 top-[-26rem] h-[52rem] w-[52rem]
-                max-w-[150vw] -translate-x-1/2 rounded-full blur-[90px] [will-change:opacity,transform]"></div>
-  </div>
-  <div aria-hidden="true" class="grain pointer-events-none absolute inset-0"></div>
-
-  <div class="shell relative">
-    <div class="max-w-3xl">
+<section class="relative">
+  <!-- Banner -->
+  <div class="relative overflow-hidden bg-ink pt-20 sm:pt-24">
+    <div class="relative h-[46vh] min-h-[280px] w-full sm:h-[58vh] sm:min-h-[420px] lg:h-[66vh] lg:max-h-[680px]">
       <img
-        data-reveal
-        src="/images/ember-ridge-logo.png"
-        alt=""
-        width="640"
-        height="640"
+        data-banner
+        src="/images/campus/lodge-banner.jpg"
+        alt="Restoration concept for the Ember Ridge lodge — a timber and stone mountain lodge at dusk with a covered wraparound porch"
+        width="1600"
+        height="742"
         fetchpriority="high"
-        class="h-28 w-auto sm:h-36"
+        decoding="async"
+        class="absolute inset-0 h-[118%] w-full object-cover object-center will-change-transform"
       />
+      <!-- Soft warm edges so the photograph sits into the page rather than on it -->
+      <div aria-hidden="true" class="absolute inset-0 bg-[linear-gradient(180deg,rgba(25,21,18,0.35)_0%,transparent_28%,transparent_62%,rgba(25,21,18,0.45)_100%)]"></div>
+      <div aria-hidden="true" class="absolute inset-x-0 bottom-0 h-32 bg-[linear-gradient(to_top,var(--color-ivory),transparent)]"></div>
+    </div>
+  </div>
 
-      <p data-reveal data-reveal-delay="80" class="eyebrow mt-10">
-        A Ministry of Firebrand Revivalists · {site.location}
-      </p>
+  <!-- Medallion + statement -->
+  <div class="relative band-ivory">
+    <div class="shell">
+      <div class="-mt-16 flex flex-col items-center text-center sm:-mt-20">
+        <img
+          data-reveal
+          src="/images/ember-ridge-medallion.jpg"
+          alt="Ember Ridge"
+          width="640"
+          height="640"
+          class="h-32 w-32 rounded-full border border-gold-600/40 object-cover shadow-[var(--shadow-lift-lg)] sm:h-40 sm:w-40"
+        />
 
-      <h1 data-reveal data-reveal-delay="150" class="display-1 mt-6">
-        Tending the fire God has
-        <span class="text-gold-700">entrusted to His people.</span>
-      </h1>
+        <p data-reveal data-reveal-delay="100" class="eyebrow mt-8">
+          A Ministry of Firebrand Revivalists · {site.location}
+        </p>
 
-      <div data-reveal data-reveal-delay="220" class="brushed-gold mt-9 h-px w-24"></div>
+        <h1 data-reveal data-reveal-delay="160" class="display-1 mt-5 max-w-3xl">
+          A house prepared for the Lord
+          <span class="text-gold-700">on a ridge marked by prayer.</span>
+        </h1>
 
-      <p data-reveal data-reveal-delay="280" class="lede mt-9 max-w-2xl">
-        Ember Ridge is a house that ministers first to the Lord, restores those who
-        carry great responsibility, and sends them back strengthened for the work of
-        the Kingdom.
-      </p>
+        <div data-reveal data-reveal-delay="220" class="brushed-gold mx-auto mt-8 h-px w-24"></div>
 
-      <div data-reveal data-reveal-delay="420" class="mt-11 flex flex-col gap-4 sm:flex-row">
-        <a href="/vision" class="btn-gold w-full sm:w-auto">Read the Vision</a>
-        <a href="/partner" class="btn-outline w-full sm:w-auto">Partner With Us</a>
+        <p data-reveal data-reveal-delay="280" class="lede mt-8 max-w-2xl">
+          Ember Ridge ministers first to the Lord — and from that devotion receives
+          leaders, prophets, pastors, intercessors, and those carrying the weight of
+          ministry, and sends them back strengthened.
+        </p>
+
+        <div data-reveal data-reveal-delay="380" class="mt-10 flex flex-col gap-4 pb-4 sm:flex-row">
+          <a href="/vision" class="btn-gold w-full sm:w-auto">Read the Vision</a>
+          <a href="/house-of-prayer" class="btn-outline w-full sm:w-auto">The First Ministry</a>
+        </div>
       </div>
     </div>
   </div>
 </section>
+
+<script is:inline>
+  // Slow parallax drift on the banner. Transform only, rAF-throttled, and
+  // skipped entirely when the visitor asks for reduced motion.
+  (() => {
+    const img = document.querySelector('[data-banner]');
+    if (!img) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    let ticking = false;
+    const apply = () => {
+      const y = window.scrollY;
+      if (y < window.innerHeight * 1.3) {
+        img.style.transform = 'translate3d(0,' + (y * 0.12).toFixed(2) + 'px,0)';
+      }
+      ticking = false;
+    };
+    window.addEventListener('scroll', () => {
+      if (!ticking) { ticking = true; requestAnimationFrame(apply); }
+    }, { passive: true });
+    apply();
+  })();
+</script>

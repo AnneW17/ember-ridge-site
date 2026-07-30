@@ -70,7 +70,7 @@ const outside = [
     lede="Every renovation and building is measured against one question: does it help people minister to the Lord, live in healthy community, and be restored for faithful service?"
   />
 
-  <Section size="sm">
+  <Section tone="ivory" size="sm">
     <div class="shell">
       <Reveal>
         <div class="callout">
@@ -86,7 +86,7 @@ const outside = [
   </Section>
 
   <!-- The lodge -->
-  <Section labelledby="lodge-heading">
+  <Section tone="linen" labelledby="lodge-heading">
     <div class="shell">
       <Reveal>
         <SectionHeading id="lodge-heading" eyebrow="The Lodge" title="What we are starting with" />
@@ -115,8 +115,8 @@ const outside = [
         <figure>
           <div class="overflow-hidden border border-stone-200 bg-cream shadow-[var(--shadow-lift-lg)]">
             <img
-              src="/images/campus/lodge-and-residences.jpg"
-              alt="Restoration and expansion concept: the lodge with an additional leadership residence alongside it at dusk"
+              src="/images/campus/lodge-banner.jpg"
+              alt="Restoration concept for the Ember Ridge lodge — timber and stone with a covered wraparound porch"
               width="1384"
               height="630"
               loading="lazy"
@@ -126,8 +126,8 @@ const outside = [
           </div>
           <figcaption class="mt-4 flex items-start gap-3 text-xs leading-relaxed text-stone-600">
             <span aria-hidden="true" class="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-gold-600"></span>
-            Restoration and expansion concept — the lodge with additional housing for
-            leadership. Concept only; not the property in its current condition.
+            Restoration concept — design direction for the renovated lodge. Concept
+            only; not the property in its current condition.
           </figcaption>
         </figure>
       </Reveal>
@@ -135,7 +135,7 @@ const outside = [
   </Section>
 
   <!-- Inside -->
-  <Section tone="charcoal" labelledby="inside-heading">
+  <Section tone="cream" labelledby="inside-heading">
     <div class="shell">
       <Reveal>
         <SectionHeading id="inside-heading" eyebrow="Inside the Lodge" title="Rooms shaped around shared life" />
@@ -151,7 +151,7 @@ const outside = [
   </Section>
 
   <!-- Leadership residences -->
-  <Section labelledby="residences-heading">
+  <Section tone="stone" labelledby="residences-heading">
     <div class="shell grid gap-12 lg:grid-cols-12 lg:gap-16">
       <div class="lg:col-span-5">
         <Reveal>
@@ -165,26 +165,83 @@ const outside = [
       <div class="lg:col-span-7">
         <Reveal delay={100} class="prose-body">
           <p>
-            The building plan includes additional housing on the property so the leaders
-            of this ministry live here rather than arriving for events. Someone has to be
-            present to pray, welcome, cook, counsel, maintain, and protect the life of the
-            house. That only works if they live on the land.
+            After careful consideration and seeking the Lord, we believe ministry
+            leadership has been led by God to live on the property. Living on the land
+            allows us to be fully available — to cultivate the presence of God day and
+            night, to steward the land through worship and prayer, and to be present and
+            accessible to every guest the Lord sends.
           </p>
           <p>
-            Separate residences also keep healthy boundaries. The main lodge stays
-            available to guests instead of being absorbed by the people running it.
+            This is not a decision of convenience. It is a calling. We are here to serve.
           </p>
           <p>
-            Placement, size, and design are subject to survey, geotechnical review,
-            engineering, zoning, and final architectural drawings.
+            Separate residences also keep healthy boundaries, so the main lodge remains
+            available to guests rather than absorbed by those who serve them. Placement,
+            size, and design are subject to survey, geotechnical review, engineering,
+            zoning, and final architectural drawings.
           </p>
         </Reveal>
       </div>
     </div>
   </Section>
 
+  <!-- Three cabins -->
+  <Section tone="ivory" labelledby="cabins-heading">
+    <div class="shell">
+      <Reveal>
+        <SectionHeading
+          id="cabins-heading"
+          eyebrow="Guest Housing"
+          title="Three Cabins for Restoration and Refueling"
+          lede="Alongside the main lodge, the property will hold three cabins — quiet, welcoming spaces set apart for personal retreat."
+        />
+      </Reveal>
+
+      <div class="mt-12 grid gap-12 lg:grid-cols-12 lg:gap-16">
+        <div class="lg:col-span-7">
+          <Reveal class="prose-body">
+            <p>
+              Each cabin is intended for rest, prayer, and refueling — somewhere a person
+              can step away from the demands of life and ministry without stepping into
+              another schedule.
+            </p>
+            <p>
+              They are designed as places of encounter. Leaders, prophets, pastors,
+              intercessors, and families can come apart for a season, be quiet before the
+              Lord, and be refreshed in His presence before returning to the work He has
+              given them.
+            </p>
+          </Reveal>
+        </div>
+        <div class="lg:col-span-5">
+          <Reveal delay={120}>
+            <div class="card">
+              <p class="card-numeral">Three</p>
+              <h3 class="mt-3 font-display text-xl text-ink">Set apart for encounter</h3>
+              <div class="brushed-gold mt-4 h-px w-12"></div>
+              <ul class="mt-6 space-y-3 text-[0.9375rem] text-stone-700">
+                <li class="flex items-start gap-3">
+                  <span aria-hidden="true" class="mt-2.5 h-1 w-1 shrink-0 rounded-full bg-gold-600"></span>
+                  Personal retreat and rest
+                </li>
+                <li class="flex items-start gap-3">
+                  <span aria-hidden="true" class="mt-2.5 h-1 w-1 shrink-0 rounded-full bg-gold-600"></span>
+                  Unhurried prayer and quiet
+                </li>
+                <li class="flex items-start gap-3">
+                  <span aria-hidden="true" class="mt-2.5 h-1 w-1 shrink-0 rounded-full bg-gold-600"></span>
+                  Room for families to come together
+                </li>
+              </ul>
+            </div>
+          </Reveal>
+        </div>
+      </div>
+    </div>
+  </Section>
+
   <!-- Grounds -->
-  <Section tone="charcoal" labelledby="outside-heading">
+  <Section tone="linen" labelledby="outside-heading">
     <div class="shell">
       <Reveal>
         <SectionHeading id="outside-heading" eyebrow="The Grounds" title="The devotional life of the house, outdoors" />
@@ -205,7 +262,7 @@ const outside = [
     </div>
   </Section>
 
-  <Section size="sm">
+  <Section tone="cream" size="sm">
     <div class="shell">
       <Callout title="One coherent plan">
         <p>

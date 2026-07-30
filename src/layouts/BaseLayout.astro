@@ -21,7 +21,7 @@ interface Props {
   theme?: 'dark' | 'cream';
 }
 
-const { title, description, ogImage = '/images/ember-ridge-mark.png', theme = 'dark' } = Astro.props;
+const { title, description, ogImage = '/images/ember-ridge-mark.jpg', theme = 'dark' } = Astro.props;
 
 const fullTitle = title === 'Home' ? `${site.name} — ${site.tagline}` : `${title} · ${site.name}`;
 const canonical = new URL(Astro.url.pathname, Astro.site ?? site.url).href;
