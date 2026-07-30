@@ -6,14 +6,14 @@ import { site } from '../data/site';
 ---
 <section>
   <!-- 1. Banner -->
-  <div class="relative w-full overflow-hidden bg-ink pt-[4.5rem] sm:pt-[5rem]">
-    <div class="relative h-[42vh] min-h-[240px] w-full sm:h-[56vh] lg:h-[64vh] lg:max-h-[620px]">
+  <div class="band-ivory relative w-full overflow-hidden pt-[4.5rem] sm:pt-[5rem]">
+    <div class="relative h-[40vh] min-h-[230px] w-full sm:h-[50vh] lg:h-[56vh] lg:max-h-[540px]">
       <img
         data-banner
         src="/images/campus/lodge-banner.jpg"
         alt="Restoration concept for the Ember Ridge lodge — timber and stone with a covered wraparound porch at dusk"
-        width="1203"
-        height="856"
+        width="1800"
+        height="1281"
         fetchpriority="high"
         decoding="async"
         class="absolute inset-0 h-[108%] w-full object-cover object-center will-change-transform"
@@ -21,18 +21,18 @@ import { site } from '../data/site';
     </div>
   </div>
 
-  <!-- 2. The mark, offset on black so it reads clearly -->
-  <div class="relative border-y border-gold-600/30 bg-ink">
+  <!-- 2. The mark -->
+  <div class="band-ivory relative">
     <div aria-hidden="true" class="pointer-events-none absolute inset-0
-         bg-[radial-gradient(70%_120%_at_50%_50%,rgba(200,162,74,0.16),transparent_70%)]"></div>
-    <div class="shell relative flex justify-center py-10 sm:py-12">
+         bg-[radial-gradient(60%_100%_at_50%_45%,rgba(200,162,74,0.14),transparent_72%)]"></div>
+    <div class="shell relative flex justify-center pt-10 pb-2 sm:pt-12">
       <img
         data-reveal
-        src="/images/ember-ridge-logo-light.png"
+        src="/images/ember-ridge-logo.png"
         alt="Ember Ridge"
-        width="900"
-        height="900"
-        class="h-32 w-auto sm:h-40 lg:h-48"
+        width="1024"
+        height="1024"
+        class="h-48 w-auto [filter:drop-shadow(0_14px_30px_rgba(122,90,52,0.20))] sm:h-64 lg:h-80"
       />
     </div>
   </div>
@@ -40,7 +40,7 @@ import { site } from '../data/site';
   <!-- 3. Tagline -->
   <div class="band-ivory relative">
     <div class="shell">
-      <div class="flex flex-col items-center pt-14 pb-4 text-center sm:pt-16">
+      <div class="flex flex-col items-center pt-4 pb-4 text-center sm:pt-6">
         <p data-reveal class="eyebrow">
           A Ministry of Firebrand Revivalists · {site.location}
         </p>
