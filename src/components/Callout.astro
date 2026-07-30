@@ -4,6 +4,6 @@ interface Props { title?: string; }
 const { title } = Astro.props;
 ---
 <aside data-reveal class="callout my-12">
-  {title && <h3 class="font-sans text-xs font-semibold uppercase tracking-[0.16em] text-gold-500">{title}</h3>}
-  <div class:list={['text-[1.0625rem] leading-relaxed text-stone-100', title && 'mt-3']}><slot /></div>
+  {title && <h3 class="font-sans text-xs font-semibold uppercase tracking-[0.16em] text-gold-700">{title}</h3>}
+  <div class:list={['text-[1.0625rem] leading-relaxed text-ink', title && 'mt-3']}><slot /></div>
 </aside>

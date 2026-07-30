@@ -30,28 +30,33 @@ import { leadership } from '../data/leadership';
           <!-- Gold hairline frame, offset slightly for a mounted-print feel -->
           <div
             aria-hidden="true"
-            class="pointer-events-none absolute inset-0 rounded-[0.25rem] ring-1 ring-inset ring-gold-700/50
-                   transition-all duration-700 group-hover:ring-gold-500/70"
+            class="pointer-events-none absolute inset-0 rounded-[0.25rem] ring-1 ring-inset ring-gold-600/50
+                   transition-all duration-700 group-hover:ring-gold-600/70"
           ></div>
           <div
             aria-hidden="true"
-            class="pointer-events-none absolute -inset-1.5 rounded-[0.3rem] border border-charcoal-300
+            class="pointer-events-none absolute -inset-1.5 rounded-[0.3rem] border border-stone-200
                    opacity-0 transition-opacity duration-700 group-hover:opacity-100"
           ></div>
         </div>
 
         <div class="min-w-0 pt-1">
-          <h3 class="font-display text-2xl leading-tight text-cream">
-            {leader.name}{leader.credential && <span class="text-stone-300">, {leader.credential}</span>}
+          <h3 class="font-display text-2xl leading-tight text-ink">
+            {leader.name}{leader.credential && <span class="text-stone-700">, {leader.credential}</span>}
           </h3>
-          <p class="mt-2 font-sans text-[0.6875rem] uppercase tracking-[0.18em] text-gold-500">
+          <p class="mt-2 font-sans text-[0.6875rem] uppercase tracking-[0.18em] text-gold-700">
             {leader.title}
           </p>
+          {leader.boardRole && (
+            <p class="mt-1.5 font-sans text-[0.6875rem] leading-relaxed text-stone-600">
+              {leader.boardRole}
+            </p>
+          )}
           <div class="brushed-gold mt-4 h-px w-12"></div>
         </div>
       </div>
 
-      <p class="mt-6 text-[0.9375rem] leading-relaxed text-stone-100">{leader.summary}</p>
+      <p class="mt-6 text-[0.9375rem] leading-relaxed text-ink">{leader.summary}</p>
 
       <!-- Disclosure -->
       <div class="mt-6" data-bio>
@@ -61,7 +66,7 @@ import { leadership } from '../data/leadership';
           aria-expanded="false"
           aria-controls={`bio-${i}`}
           class="inline-flex items-center gap-2 font-sans text-[0.75rem] uppercase tracking-[0.16em]
-                 text-gold-400 transition-colors duration-300 hover:text-gold-300"
+                 text-gold-700 transition-colors duration-300 hover:text-gold-700"
         >
           <span data-bio-label>Read full bio</span>
           <svg
@@ -79,11 +84,11 @@ import { leadership } from '../data/leadership';
           class="grid grid-rows-[0fr] transition-all duration-[600ms] [transition-timing-function:var(--ease-refined)]"
         >
           <div class="overflow-hidden">
-            <div class="space-y-4 pt-6 text-[0.9375rem] leading-[1.75] text-stone-300">
-              <div aria-hidden="true" class="h-px w-full bg-charcoal-300"></div>
+            <div class="space-y-4 pt-6 text-[0.9375rem] leading-[1.75] text-stone-700">
+              <div aria-hidden="true" class="h-px w-full bg-stone-200"></div>
               {leader.bio.map((para) => <p>{para}</p>)}
               {leader.placeholder && (
-                <p class="border-l border-gold-700/60 pl-4 text-xs uppercase tracking-[0.12em] text-gold-600">
+                <p class="border-l border-gold-600/60 pl-4 text-xs uppercase tracking-[0.12em] text-gold-700">
                   Draft bio — pending Mark’s own approved text and portrait.
                 </p>
               )}

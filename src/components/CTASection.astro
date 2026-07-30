@@ -15,20 +15,19 @@ const {
   secondary = { label: 'Pray With Us', href: '/house-of-prayer#intercession' },
 } = Astro.props;
 ---
-<section class="surface-matte relative overflow-hidden border-t border-charcoal-300">
+<section class="relative overflow-hidden border-t border-stone-200 bg-[linear-gradient(180deg,var(--color-linen)_0%,var(--color-cream)_100%)]">
   <div aria-hidden="true" class="pointer-events-none absolute inset-0">
-    <div class="glow-gold-soft animate-breathe absolute bottom-[-16rem] left-1/2 h-[38rem] w-[38rem]
+    <div class="glow-gold-soft animate-breathe absolute bottom-[-16rem] left-1/2 h-[34rem] w-[34rem]
                 -translate-x-1/2 rounded-full blur-3xl [will-change:opacity,transform]"></div>
-    <div class="absolute inset-x-0 top-0 h-px bg-[linear-gradient(to_right,transparent,rgb(200_162_74/0.3),transparent)]"></div>
   </div>
   <div class="shell relative py-20 sm:py-28">
     <div data-reveal class="mx-auto max-w-2xl text-center">
       <p class="eyebrow">{eyebrow}</p>
       <h2 class="display-2 mt-4">{title}</h2>
       <div class="rule-gold mx-auto mt-6"></div>
-      <p class="mt-7 text-[1.0625rem] leading-relaxed text-stone-300">{body}</p>
+      <p class="mt-7 text-[1.0625rem] leading-relaxed text-stone-700">{body}</p>
       <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-        <a href={primary.href} class="btn-primary w-full sm:w-auto">{primary.label}</a>
+        <a href={primary.href} class="btn-gold w-full sm:w-auto">{primary.label}</a>
         <a href={secondary.href} class="btn-outline w-full sm:w-auto">{secondary.label}</a>
       </div>
     </div>

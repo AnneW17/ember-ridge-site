@@ -1,193 +1,230 @@
 ---
-// src/pages/remodel-and-grounds.astro — Remodel & Grounds
-// Concept references for the planned renovation and outdoor spaces.
+// src/pages/remodel-and-grounds.astro — Remodel and Grounds
+// Merged from the former Campus Vision page. Covers the lodge, the renovation,
+// the leadership residences, and the outdoor spaces.
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 import Section from '../components/Section.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import Prose from '../components/Prose.astro';
-import ConceptFigure from '../components/ConceptFigure.astro';
+import Card from '../components/Card.astro';
+import Callout from '../components/Callout.astro';
+import ReviewNote from '../components/ReviewNote.astro';
 import Reveal from '../components/Reveal.astro';
 import CTASection from '../components/CTASection.astro';
 
-const pavilion = [
+const inside = [
   {
-    src: '/images/concepts/pavilion-exterior.svg',
-    alt: 'Concept reference: worship pavilion, exterior view',
-    caption: 'Worship pavilion concept — exterior view (placeholder)',
+    numeral: '01',
+    title: 'The Great Room',
+    body: 'The stone fireplace and vaulted ceiling stay. Flexible seating lets the room move between worship, teaching, prayer, and ordinary conversation.',
   },
   {
-    src: '/images/concepts/pavilion-interior.svg',
-    alt: 'Concept reference: worship pavilion, interior seating view',
-    caption: 'Worship pavilion concept — interior seating view (placeholder)',
+    numeral: '02',
+    title: 'Long-Table Dining & Kitchen',
+    body: 'Long tables, because shared meals are not secondary here. The kitchen is renovated to serve both daily household use and larger hospitality.',
   },
   {
-    src: '/images/concepts/pavilion-detail.svg',
-    alt: 'Concept reference: worship pavilion, detail of timber and stone',
-    caption: 'Worship pavilion concept — detail of timber and stone (placeholder)',
+    numeral: '03',
+    title: 'Guest Rooms & Prayer Rooms',
+    body: 'Bedrooms refreshed for comfort, privacy, and durability. Dedicated quiet rooms so personal prayer can continue alongside the life of the house.',
+  },
+  {
+    numeral: '04',
+    title: 'The Lower Level',
+    body: 'Built out after inspection and code review to hold prayer, teaching, operations, and storage without crowding the household spaces above.',
+  },
+];
+
+const outside = [
+  {
+    numeral: '05',
+    title: 'The Covered Porch',
+    body: 'Generous and weather-protected, extending the usable life of the property through the mountain seasons. Room for reading, meals, and counsel.',
+  },
+  {
+    numeral: '06',
+    title: 'The Prayer Garden',
+    body: 'Walking paths, contemplative seating, Scripture markers, and intentional plantings — an outdoor extension of the house of prayer.',
+  },
+  {
+    numeral: '07',
+    title: 'Prayer Trails & Fire Circle',
+    body: 'Trails for walking the land in prayer, and a gathering fire circle for testimony and conversation after dark. Working spaces, not attractions.',
+  },
+  {
+    numeral: '08',
+    title: 'The Worship Pavilion',
+    body: 'A covered, open-air structure of roughly forty by sixty feet in timber and stone, for worship, teaching, and regional gatherings.',
   },
 ];
 ---
 
 <BaseLayout
-  title="Remodel & Grounds"
-  description="Concept references for the planned renovation of the Ember Ridge lodge and its outdoor spaces — the great room, kitchen, prayer garden, and worship pavilion. Design direction only; none show the property in its current condition."
+  title="Remodel and Grounds"
+  description="The plan for the Ember Ridge lodge: what the renovation includes, the additional housing for leadership living on site, and the outdoor spaces that carry the devotional life of the house."
 >
   <PageHero
-    eyebrow="Concept References"
-    title="Remodel &amp; Grounds"
-    lede="Design direction for the renovated lodge and the spaces that carry the devotional life of the house outdoors."
+    eyebrow="Remodel and Grounds"
+    title="A Place Designed to Serve the Mission"
+    lede="Every renovation and building is measured against one question: does it help people minister to the Lord, live in healthy community, and be restored for faithful service?"
   />
 
-  <!-- Disclaimer — first thing on the page, deliberately unmissable -->
   <Section size="sm">
     <div class="shell">
       <Reveal>
-        <div class="glass relative overflow-hidden p-8 sm:p-10">
-          <div aria-hidden="true" class="brushed-gold absolute inset-x-0 top-0 h-px"></div>
-          <p class="eyebrow">Exterior concept — design direction for the renovated lodge</p>
-          <p class="mt-5 max-w-2xl font-display text-xl italic leading-relaxed text-stone-100 sm:text-2xl">
-            All images on this page are concept references for planned renovation and
-            construction. None show the property in its current condition.
+        <div class="callout">
+          <p class="text-[1.0625rem] leading-relaxed text-stone-700">
+            <strong class="font-semibold text-ink">Concept only.</strong> The image and
+            descriptions on this page show design direction for a planned renovation and
+            expansion. They do not show the property in its current condition, and the
+            property has not yet been purchased.
           </p>
         </div>
       </Reveal>
     </div>
   </Section>
 
-  <!-- Great Room -->
-  <Section labelledby="great-room-heading">
-    <div class="shell grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-16">
-      <div class="lg:col-span-5">
-        <Reveal>
-          <SectionHeading
-            id="great-room-heading"
-            eyebrow="Interior"
-            title="Great Room Concept"
-            lede="The stone fireplace and vaulted volume retained within a warm, refined cabin interior."
-          />
-        </Reveal>
-      </div>
-      <div class="lg:col-span-7">
-        <Reveal delay={120}>
-          <ConceptFigure
-            eager
-            src="/images/concepts/great-room.svg"
-            alt="Concept reference: great room with stone fireplace and vaulted ceiling"
-            caption="Great room concept — stone fireplace and vaulted volume (placeholder)"
-          />
-        </Reveal>
-      </div>
-    </div>
-  </Section>
-
-  <!-- Kitchen -->
-  <Section tone="charcoal" labelledby="kitchen-heading">
-    <div class="shell grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-16">
-      <div class="lg:col-span-7 lg:order-last">
-        <Reveal>
-          <SectionHeading
-            id="kitchen-heading"
-            eyebrow="Interior"
-            title="Kitchen Concept"
-            lede="Stained cabinetry in warm natural wood, natural stone backsplash, and under-cabinet lighting, coordinated with the floors."
-          />
-        </Reveal>
-      </div>
-      <div class="lg:col-span-5 lg:order-first">
-        <Reveal delay={120}>
-          <ConceptFigure
-            src="/images/concepts/kitchen.svg"
-            alt="Concept reference: kitchen with stained cabinetry and natural stone backsplash"
-            caption="Kitchen concept — stained cabinetry, natural stone backsplash (placeholder)"
-          />
-        </Reveal>
-      </div>
-    </div>
-  </Section>
-
-  <!-- Grounds & Prayer Garden -->
-  <Section labelledby="grounds-heading">
+  <!-- The lodge -->
+  <Section labelledby="lodge-heading">
     <div class="shell">
       <Reveal>
-        <SectionHeading
-          id="grounds-heading"
-          eyebrow="Outdoors"
-          title="Grounds &amp; Prayer Garden"
-        />
+        <SectionHeading id="lodge-heading" eyebrow="The Lodge" title="What we are starting with" />
       </Reveal>
+      <div class="mt-12">
+        <Prose>
+          <p>
+            The lodge was built in 1993 and holds roughly ten bedrooms and eleven
+            bathrooms on about eleven acres. Vaulted gathering rooms, a stone fireplace,
+            and real guest capacity give the vision a strong foundation.
+          </p>
+          <p>
+            Before any work begins, the property goes through full professional
+            inspection — structure, roof, HVAC, plumbing, electrical, water and septic,
+            fire and life safety, accessibility, drainage, and code.
+          </p>
+          <p>
+            The renovation keeps what makes the lodge welcoming and gives it a durable,
+            high-end mountain character: natural wood, a dark bronze roof, stone, leather,
+            natural textiles, restrained lighting. Refined rather than rustic.
+          </p>
+        </Prose>
+      </div>
 
-      <div class="mt-12 grid gap-12 lg:grid-cols-12 lg:gap-16">
-        <div class="lg:col-span-5">
-          <Reveal>
-            <Prose>
-              <p>
-                The grounds carry the devotional life of the house outdoors: a prayer
-                garden with walking paths, contemplative seating, Scripture markers,
-                and intentional plantings; prayer trails through the property; and a
-                gathering fire circle for testimony and conversation after dark. These
-                are working spaces rather than attractions.
-              </p>
-            </Prose>
-          </Reveal>
-        </div>
-        <div class="lg:col-span-7">
-          <Reveal delay={120}>
-            <ConceptFigure
-              src="/images/concepts/prayer-garden.svg"
-              alt="Concept reference: prayer garden with walking paths, seating and Scripture markers"
-              caption="Prayer garden concept — walking paths, contemplative seating, Scripture markers (placeholder)"
+      <Reveal delay={120} class="mt-14">
+        <figure>
+          <div class="overflow-hidden border border-stone-200 bg-cream shadow-[var(--shadow-lift-lg)]">
+            <img
+              src="/images/campus/lodge-and-residences.jpg"
+              alt="Restoration and expansion concept: the lodge with an additional leadership residence alongside it at dusk"
+              width="1384"
+              height="630"
+              loading="lazy"
+              decoding="async"
+              class="w-full object-cover"
             />
-          </Reveal>
-        </div>
-      </div>
+          </div>
+          <figcaption class="mt-4 flex items-start gap-3 text-xs leading-relaxed text-stone-600">
+            <span aria-hidden="true" class="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-gold-600"></span>
+            Restoration and expansion concept — the lodge with additional housing for
+            leadership. Concept only; not the property in its current condition.
+          </figcaption>
+        </figure>
+      </Reveal>
     </div>
   </Section>
 
-  <!-- Worship Pavilion -->
-  <Section tone="charcoal" labelledby="pavilion-heading">
+  <!-- Inside -->
+  <Section tone="charcoal" labelledby="inside-heading">
     <div class="shell">
       <Reveal>
-        <SectionHeading
-          id="pavilion-heading"
-          eyebrow="Outdoors"
-          title="Worship Pavilion"
-        />
+        <SectionHeading id="inside-heading" eyebrow="Inside the Lodge" title="Rooms shaped around shared life" />
       </Reveal>
-
-      <div class="mt-12 max-w-[46rem]">
-        <Reveal>
-          <Prose>
-            <p>
-              A worship pavilion provides covered open-air space for worship, prayer,
-              teaching, and regional gatherings. The preliminary concept is
-              approximately forty by sixty feet in timber and stone harmonized with the
-              lodge, with curved or flexible seating and optional seasonal enclosure
-              panels.
-            </p>
-            <p>
-              Final size, placement, acoustics, utilities, accessibility, and weather
-              protection are determined by survey, design, and engineering rather than
-              by the concept drawing.
-            </p>
-          </Prose>
-        </Reveal>
-      </div>
-
-      <div class="mt-14 grid gap-8 md:grid-cols-3">
-        {pavilion.map((fig, i) => (
-          <Reveal delay={i * 110}>
-            <ConceptFigure src={fig.src} alt={fig.alt} caption={fig.caption} />
+      <div class="mt-14 grid gap-6 sm:grid-cols-2">
+        {inside.map((el, i) => (
+          <Reveal delay={(i % 2) * 90}>
+            <Card numeral={el.numeral} title={el.title}><p>{el.body}</p></Card>
           </Reveal>
         ))}
       </div>
     </div>
   </Section>
 
+  <!-- Leadership residences -->
+  <Section labelledby="residences-heading">
+    <div class="shell grid gap-12 lg:grid-cols-12 lg:gap-16">
+      <div class="lg:col-span-5">
+        <Reveal>
+          <SectionHeading
+            id="residences-heading"
+            eyebrow="Leadership Housing"
+            title="Additional houses for leadership to live on site"
+          />
+        </Reveal>
+      </div>
+      <div class="lg:col-span-7">
+        <Reveal delay={100} class="prose-body">
+          <p>
+            The building plan includes additional housing on the property so the leaders
+            of this ministry live here rather than arriving for events. Someone has to be
+            present to pray, welcome, cook, counsel, maintain, and protect the life of the
+            house. That only works if they live on the land.
+          </p>
+          <p>
+            Separate residences also keep healthy boundaries. The main lodge stays
+            available to guests instead of being absorbed by the people running it.
+          </p>
+          <p>
+            Placement, size, and design are subject to survey, geotechnical review,
+            engineering, zoning, and final architectural drawings.
+          </p>
+        </Reveal>
+      </div>
+    </div>
+  </Section>
+
+  <!-- Grounds -->
+  <Section tone="charcoal" labelledby="outside-heading">
+    <div class="shell">
+      <Reveal>
+        <SectionHeading id="outside-heading" eyebrow="The Grounds" title="The devotional life of the house, outdoors" />
+      </Reveal>
+      <div class="mt-14 grid gap-6 sm:grid-cols-2">
+        {outside.map((el, i) => (
+          <Reveal delay={(i % 2) * 90}>
+            <Card numeral={el.numeral} title={el.title}><p>{el.body}</p></Card>
+          </Reveal>
+        ))}
+      </div>
+
+      <ReviewNote label="Planning concept">
+        Final size, placement, acoustics, utilities, accessibility, and weather protection
+        for all new structures are determined through survey, engineering, zoning, and
+        final architectural design. Dimensions given here are preliminary.
+      </ReviewNote>
+    </div>
+  </Section>
+
+  <Section size="sm">
+    <div class="shell">
+      <Callout title="One coherent plan">
+        <p>
+          The master plan coordinates the lodge, the residences, parking, the pavilion, the
+          prayer garden, trails, utilities, drainage, fire access, and security as a single
+          campus. It will be drawn by qualified professionals and shaped by actual site
+          conditions rather than forced around a rendering.
+        </p>
+      </Callout>
+      <Reveal class="mt-8">
+        <a href="/financial-stewardship" class="btn-quiet">See the financial framework →</a>
+      </Reveal>
+    </div>
+  </Section>
+
   <CTASection
     title="Help us build it well"
-    body="Some will bring professional wisdom in architecture, engineering, construction, hospitality, security, technology, or landscaping. Others will help furnish rooms, equip the kitchen, build trails, or provide materials."
-    primary={{ label: 'Offer your expertise', href: '/partner#build' }}
-    secondary={{ label: 'The campus vision', href: '/campus-vision' }}
+    body="A house like this is built in prayer long before it is built in timber and stone. If this stirs something in you, take it to the Lord and ask what part He would have you carry."
+    primary={{ label: 'Partner With Us', href: '/partner' }}
+    secondary={{ label: 'Pray With Us', href: '/house-of-prayer#intercession' }}
   />
 </BaseLayout>

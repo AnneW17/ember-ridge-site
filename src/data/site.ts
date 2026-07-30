@@ -65,8 +65,9 @@ export const nav = [
   { label: 'Home', href: '/' },
   { label: 'Vision', href: '/vision' },
   { label: 'Story', href: '/story' },
+  { label: 'Moravian Falls', href: '/the-place' },
   { label: 'Ministry', href: '/ministry-model' },
-  { label: 'Campus', href: '/campus-vision' },
+  { label: 'Remodel & Grounds', href: '/remodel-and-grounds' },
   { label: 'Leadership', href: '/leadership' },
   { label: 'Partner', href: '/partner' },
   { label: 'Contact', href: '/contact' },
@@ -75,8 +76,6 @@ export const nav = [
 // Secondary pages surfaced in the footer and in-page links.
 export const secondaryNav = [
   { label: 'The House of Prayer', href: '/house-of-prayer' },
-  { label: 'The Place', href: '/the-place' },
-  { label: 'Remodel & Grounds', href: '/remodel-and-grounds' },
   { label: 'Financial Stewardship', href: '/financial-stewardship' },
 ];
 

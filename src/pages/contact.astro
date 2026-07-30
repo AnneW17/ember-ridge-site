@@ -25,7 +25,7 @@ import { site } from '../data/site';
         <Reveal>
           <h2 class="display-3">Send a message</h2>
           <div class="brushed-gold mt-6 h-px w-16"></div>
-          <p class="mt-7 max-w-xl text-[0.9375rem] leading-relaxed text-stone-300">
+          <p class="mt-7 max-w-xl text-[0.9375rem] leading-relaxed text-stone-700">
             Ember Ridge operates primarily through trusted relationships, referrals, and
             word of mouth.
           </p>
@@ -38,33 +38,33 @@ import { site } from '../data/site';
       <!-- Sidebar -->
       <aside class="lg:col-span-5">
         <Reveal delay={120} class="glass p-8 sm:p-9">
-          <h2 class="font-display text-xl text-cream">Direct contact</h2>
+          <h2 class="font-display text-xl text-ink">Direct contact</h2>
           <div class="brushed-gold mt-5 h-px w-14"></div>
           <dl class="mt-7 space-y-6 text-sm">
             <div>
-              <dt class="font-sans text-[0.625rem] uppercase tracking-[0.18em] text-stone-500">Email</dt>
+              <dt class="font-sans text-[0.625rem] uppercase tracking-[0.18em] text-stone-600">Email</dt>
               <dd class="mt-1.5">
                 <a href={`mailto:${site.contact.email}`} class="link-gold break-words">{site.contact.email}</a>
               </dd>
             </div>
             <div>
-              <dt class="font-sans text-[0.625rem] uppercase tracking-[0.18em] text-stone-500">Location</dt>
-              <dd class="mt-1.5 text-stone-100">{site.location}</dd>
+              <dt class="font-sans text-[0.625rem] uppercase tracking-[0.18em] text-stone-600">Location</dt>
+              <dd class="mt-1.5 text-ink">{site.location}</dd>
             </div>
             <div>
-              <dt class="font-sans text-[0.625rem] uppercase tracking-[0.18em] text-stone-500">Ministry</dt>
-              <dd class="mt-1.5 text-stone-100">An auxiliary ministry of Firebrand Revivalists</dd>
+              <dt class="font-sans text-[0.625rem] uppercase tracking-[0.18em] text-stone-600">Ministry</dt>
+              <dd class="mt-1.5 text-ink">An auxiliary ministry of Firebrand Revivalists</dd>
             </div>
           </dl>
         </Reveal>
 
         <!-- Quiet safeguard. Deliberately understated, but present. -->
         <Reveal delay={200}>
-          <p class="mt-8 border-l border-charcoal-300 pl-5 text-xs leading-relaxed text-stone-500">
+          <p class="mt-8 border-l border-stone-200 pl-5 text-xs leading-relaxed text-stone-600">
             This form is not monitored continuously and is not an emergency service. If
             you are in immediate danger, please contact local emergency services. In the
             United States, the 988 Suicide &amp; Crisis Lifeline can be reached by
-            calling or texting <span class="text-stone-300">988</span>.
+            calling or texting <span class="text-stone-700">988</span>.
           </p>
         </Reveal>
       </aside>

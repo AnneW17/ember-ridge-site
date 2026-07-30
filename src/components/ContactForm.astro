@@ -14,10 +14,10 @@
 //
 // Honeypot field ("bot-field") is enabled for spam filtering.
 const inputBase =
-  'w-full border border-charcoal-300 bg-charcoal px-4 py-3.5 font-sans text-[0.9375rem] text-cream ' +
-  'placeholder:text-stone-500 transition-colors duration-300 focus:border-gold-600 focus:outline-none ' +
+  'w-full border border-stone-200 bg-cream px-4 py-3.5 font-sans text-[0.9375rem] text-ink ' +
+  'placeholder:text-stone-600 transition-colors duration-300 focus:border-gold-600 focus:outline-none ' +
   'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold-400';
-const labelBase = 'block font-sans text-[0.6875rem] uppercase tracking-[0.16em] text-stone-300';
+const labelBase = 'block font-sans text-[0.6875rem] uppercase tracking-[0.16em] text-stone-700';
 ---
 
 <form
@@ -35,11 +35,11 @@ const labelBase = 'block font-sans text-[0.6875rem] uppercase tracking-[0.16em] 
 
   <div class="grid gap-7 sm:grid-cols-2">
     <div>
-      <label class={labelBase} for="name">Name <span class="text-gold-500">*</span></label>
+      <label class={labelBase} for="name">Name <span class="text-gold-700">*</span></label>
       <input class:list={[inputBase, 'mt-2.5']} type="text" id="name" name="name" required autocomplete="name" />
     </div>
     <div>
-      <label class={labelBase} for="email">Email <span class="text-gold-500">*</span></label>
+      <label class={labelBase} for="email">Email <span class="text-gold-700">*</span></label>
       <input class:list={[inputBase, 'mt-2.5']} type="email" id="email" name="email" required autocomplete="email" />
     </div>
   </div>
@@ -50,7 +50,7 @@ const labelBase = 'block font-sans text-[0.6875rem] uppercase tracking-[0.16em] 
       <input class:list={[inputBase, 'mt-2.5']} type="text" id="organization" name="organization" autocomplete="organization" />
     </div>
     <div>
-      <label class={labelBase} for="reason">Reason for reaching out <span class="text-gold-500">*</span></label>
+      <label class={labelBase} for="reason">Reason for reaching out <span class="text-gold-700">*</span></label>
       <select class:list={[inputBase, 'mt-2.5']} id="reason" name="reason" required>
         <option value="">Please choose…</option>
         <option>Prayer request</option>
@@ -65,25 +65,25 @@ const labelBase = 'block font-sans text-[0.6875rem] uppercase tracking-[0.16em] 
 
   <div>
     <label class={labelBase} for="message">
-      How can we pray, or how would you like to help? <span class="text-gold-500">*</span>
+      How can we pray, or how would you like to help? <span class="text-gold-700">*</span>
     </label>
     <textarea class:list={[inputBase, 'mt-2.5 min-h-40 resize-y']} id="message" name="message" rows="6" required></textarea>
   </div>
 
   <fieldset class="border-0 p-0">
     <legend class="sr-only">Confidentiality</legend>
-    <label class="flex items-start gap-3 text-sm leading-relaxed text-stone-300">
+    <label class="flex items-start gap-3 text-sm leading-relaxed text-stone-700">
       <input
         type="checkbox"
         name="confidential"
         value="Requested confidential handling"
-        class="mt-1.5 h-4 w-4 shrink-0 accent-[var(--color-gold-500)]"
+        class="mt-1.5 h-4 w-4 shrink-0 accent-[var(--color-gold-600)]"
       />
       <span>Please treat this message as confidential and limit it to leadership.</span>
     </label>
   </fieldset>
 
-  <p class="text-xs leading-relaxed text-stone-500">
+  <p class="text-xs leading-relaxed text-stone-600">
     Submitting this form does not create a legal, pastoral, counseling, or
     professional relationship, and messages are not monitored continuously. If
     you are in immediate danger or crisis, please contact local emergency
@@ -91,5 +91,5 @@ const labelBase = 'block font-sans text-[0.6875rem] uppercase tracking-[0.16em] 
     and <a href="/legal/privacy-policy" class="link-gold">Privacy Policy</a>.
   </p>
 
-  <button type="submit" class="btn-primary w-full sm:w-auto">Send message</button>
+  <button type="submit" class="btn-gold w-full sm:w-auto">Send message</button>
 </form>

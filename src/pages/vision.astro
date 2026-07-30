@@ -2,7 +2,6 @@
 // src/pages/vision.astro — The Vision
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
-import PhotoBand from '../components/PhotoBand.astro';
 import EmberMark from '../components/EmberMark.astro';
 import Section from '../components/Section.astro';
 import SectionHeading from '../components/SectionHeading.astro';
@@ -62,9 +61,9 @@ const multiplying = [
 
       <Reveal delay="80" class="mt-14 grid gap-4 sm:grid-cols-2">
         {carried.map((item) => (
-          <div class="flex items-start gap-4 border-l border-charcoal-300 pl-5 py-1">
+          <div class="flex items-start gap-4 border-l border-stone-200 pl-5 py-1">
             <span aria-hidden="true" class="mt-2.5 h-1 w-1 shrink-0 rounded-full bg-gold-500"></span>
-            <p class="text-[0.9375rem] leading-relaxed text-stone-100">{item}</p>
+            <p class="text-[0.9375rem] leading-relaxed text-ink">{item}</p>
           </div>
         ))}
       </Reveal>
@@ -97,12 +96,6 @@ const multiplying = [
     </div>
   </Section>
 
-  <PhotoBand
-    src="/images/campus/great-room.jpg"
-    alt="Concept reference: great room with a stone fireplace and vaulted ceiling"
-    caption="Great room concept — the hearth of a house devoted first to the Lord. Concept reference only."
-  />
-
   <Section tone="charcoal" labelledby="multiplying-heading">
     <div class="shell">
       <Reveal>
@@ -125,7 +118,7 @@ const multiplying = [
       </div>
 
       <Reveal delay="120" class="mt-14 max-w-2xl">
-        <p class="text-[1.0625rem] leading-relaxed text-stone-300">
+        <p class="text-[1.0625rem] leading-relaxed text-stone-700">
           People will return to their homes and assignments carrying renewed love for
           Christ, greater spiritual maturity, healthier relationships, clearer
           discernment, and a deeper capacity to serve.

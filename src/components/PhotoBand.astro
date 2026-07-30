@@ -1,66 +1,44 @@
 ---
 // src/components/PhotoBand.astro
-// Full-bleed photographic band used to break up long stretches of text.
-// Every image on this site is a concept reference, so each band carries a
-// caption saying so — consistent with the Disclaimer page.
+// The single photographic band on the site. Framed rather than full-bleed, so it
+// reads as a mounted plate on a light page.
 interface Props {
   src: string;
   alt: string;
-  /** Short caption shown beneath the band. */
   caption: string;
-  /** Optional line set over the image, in display italic. */
   quote?: string;
   cite?: string;
-  /** Band height. `tall` for a statement, `short` for a divider. */
   size?: 'short' | 'tall';
 }
-const { src, alt, caption, quote, cite, size = 'short' } = Astro.props;
-const heights = {
-  short: 'h-[42vh] min-h-[300px] max-h-[440px]',
-  tall: 'h-[62vh] min-h-[420px] max-h-[640px]',
-};
+const { src, alt, caption, quote, cite } = Astro.props;
 ---
-<section class="relative bg-ink">
-  <div class:list={['relative overflow-hidden', heights[size]]}>
-    <img
-      src={src}
-      alt={alt}
-      width="1600"
-      height="900"
-      loading="lazy"
-      decoding="async"
-      class="absolute inset-0 h-full w-full object-cover"
-    />
-
-    <!-- Blend the photograph into the page above and below it. -->
-    <div aria-hidden="true" class="absolute inset-0
-         bg-[linear-gradient(to_bottom,var(--color-ink)_0%,rgba(19,17,16,0.35)_18%,rgba(19,17,16,0.35)_78%,var(--color-ink)_100%)]"></div>
-    <div aria-hidden="true" class="absolute inset-0
-         bg-[radial-gradient(120%_90%_at_50%_50%,transparent_35%,rgba(19,17,16,0.6)_100%)]"></div>
-    <div aria-hidden="true" class="grain absolute inset-0"></div>
-
+<section class="bg-ivory">
+  <div class="shell py-16 sm:py-24">
     {quote && (
-      <div class="absolute inset-0 flex items-center">
-        <div class="shell">
-          <blockquote data-reveal class="max-w-2xl">
-            <p class="font-display text-2xl italic leading-snug text-cream text-shadow-deep sm:text-3xl lg:text-4xl">
-              {quote}
-            </p>
-            {cite && (
-              <footer class="mt-5 font-sans text-xs uppercase tracking-[0.2em] text-gold-300">
-                {cite}
-              </footer>
-            )}
-          </blockquote>
-        </div>
-      </div>
+      <blockquote data-reveal class="mx-auto mb-12 max-w-3xl text-center">
+        <p class="pullquote">{quote}</p>
+        {cite && (
+          <footer class="mt-5 font-sans text-xs uppercase tracking-[0.2em] text-gold-700">{cite}</footer>
+        )}
+      </blockquote>
     )}
-  </div>
 
-  <div class="shell">
-    <p class="flex items-start gap-3 py-4 text-xs leading-relaxed text-stone-500">
-      <span aria-hidden="true" class="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-gold-600"></span>
-      {caption}
-    </p>
+    <figure data-reveal>
+      <div class="overflow-hidden border border-stone-200 bg-cream shadow-[var(--shadow-lift-lg)]">
+        <img
+          src={src}
+          alt={alt}
+          width="1384"
+          height="630"
+          loading="lazy"
+          decoding="async"
+          class="w-full object-cover"
+        />
+      </div>
+      <figcaption class="mt-4 flex items-start gap-3 text-xs leading-relaxed text-stone-600">
+        <span aria-hidden="true" class="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-gold-600"></span>
+        {caption}
+      </figcaption>
+    </figure>
   </div>
 </section>

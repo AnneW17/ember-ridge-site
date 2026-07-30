@@ -2,7 +2,6 @@
 // src/pages/partner.astro — Invitation / Partner With Us
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
-import PhotoBand from '../components/PhotoBand.astro';
 import Section from '../components/Section.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import Prose from '../components/Prose.astro';
@@ -88,9 +87,9 @@ const ways = [
           <Reveal delay={(i % 3) * 90}>
             <article id={way.id} class="card card-lift flex h-full scroll-mt-32 flex-col">
               <p class="card-numeral">{way.numeral}</p>
-              <h3 class="mt-3 font-display text-2xl text-cream">{way.title}</h3>
+              <h3 class="mt-3 font-display text-2xl text-ink">{way.title}</h3>
               <div class="rule-gold mt-5"></div>
-              <p class="mt-5 flex-1 text-[0.9375rem] leading-relaxed text-stone-300">{way.body}</p>
+              <p class="mt-5 flex-1 text-[0.9375rem] leading-relaxed text-stone-700">{way.body}</p>
               <p class="mt-7">
                 <a href={way.href} class="btn-quiet !text-[0.6875rem] !tracking-[0.16em]">{way.cta} →</a>
               </p>
@@ -100,12 +99,6 @@ const ways = [
       </div>
     </div>
   </Section>
-
-  <PhotoBand
-    src="/images/campus/pavilion-elevation.jpg"
-    alt="Concept reference: worship pavilion seen from the front, with timber trusses and seating"
-    caption="Worship pavilion concept — covered open-air space for worship and regional gatherings. Concept reference only."
-  />
 
   <Section tone="charcoal">
     <div class="shell">
@@ -172,7 +165,7 @@ const ways = [
         <p class="eyebrow">Next Step</p>
         <h2 id="next-heading" class="display-2 mt-4">Begin a conversation</h2>
         <div class="rule-gold mx-auto mt-6"></div>
-        <p class="mt-7 text-[1.0625rem] leading-relaxed text-stone-300">
+        <p class="mt-7 text-[1.0625rem] leading-relaxed text-stone-700">
           Tell us how you believe God is inviting you to participate. A member of
           leadership will respond personally.
         </p>

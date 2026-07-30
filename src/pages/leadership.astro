@@ -9,7 +9,7 @@ import LeadershipTeam from '../components/LeadershipTeam.astro';
 import ReviewNote from '../components/ReviewNote.astro';
 import Reveal from '../components/Reveal.astro';
 import CTASection from '../components/CTASection.astro';
-import { ministryStaff, board } from '../data/leadership';
+import { ministryStaff } from '../data/leadership';
 
 const governance = [
   'Board-approved budgets',
@@ -88,49 +88,25 @@ const governance = [
                          group-hover:grayscale-0 sm:h-28 sm:w-28"
                 />
                 <div aria-hidden="true"
-                     class="pointer-events-none absolute inset-0 rounded-[0.25rem] ring-1 ring-inset ring-gold-700/50
-                            transition-all duration-700 group-hover:ring-gold-500/70"></div>
+                     class="pointer-events-none absolute inset-0 rounded-[0.25rem] ring-1 ring-inset ring-gold-600/50
+                            transition-all duration-700 group-hover:ring-gold-600/70"></div>
               </div>
               <div class="min-w-0 pt-1">
-                <h3 class="font-display text-2xl leading-tight text-cream">{person.name}</h3>
-                <p class="mt-2 font-sans text-[0.6875rem] uppercase tracking-[0.18em] text-gold-500">
+                <h3 class="font-display text-2xl leading-tight text-ink">{person.name}</h3>
+                <p class="mt-2 font-sans text-[0.6875rem] uppercase tracking-[0.18em] text-gold-700">
                   {person.title}
                 </p>
+                {person.boardRole && (
+                  <p class="mt-1.5 font-sans text-[0.6875rem] leading-relaxed text-stone-600">
+                    {person.boardRole}
+                  </p>
+                )}
                 <div class="brushed-gold mt-4 h-px w-12"></div>
               </div>
             </article>
           </Reveal>
         ))}
       </div>
-    </div>
-  </Section>
-
-  <!-- Board of Directors -->
-  <Section labelledby="board-heading">
-    <div class="shell">
-      <Reveal>
-        <SectionHeading
-          id="board-heading"
-          eyebrow="Governance"
-          title="Board of Directors"
-          lede="Formal board oversight extends accountability beyond the immediate family and brings additional discernment, professional expertise, and fiduciary responsibility to the work."
-        />
-      </Reveal>
-
-      <ul class="mt-14 grid gap-px overflow-hidden border border-charcoal-300 bg-charcoal-300 sm:grid-cols-2">
-        {board.map((member, i) => (
-          <li>
-            <div data-reveal data-reveal-delay={i * 80}
-                 class="flex h-full flex-col justify-center bg-charcoal px-8 py-7
-                        transition-colors duration-500 hover:bg-charcoal-400">
-              <p class="font-display text-xl text-cream">{member.name}</p>
-              <p class="mt-2 font-sans text-[0.6875rem] uppercase tracking-[0.18em] text-gold-500">
-                {member.role}
-              </p>
-            </div>
-          </li>
-        ))}
-      </ul>
     </div>
   </Section>
 
@@ -154,7 +130,7 @@ const governance = [
           <p>
             Sophion’s work may support the larger vision through properly structured
             contributions and services. You can visit
-            <a href="https://www.sophiohq.com" target="_blank" rel="noopener noreferrer" class="link-gold">www.sophiohq.com</a>
+            <a href="https://www.sophionhq.com" target="_blank" rel="noopener noreferrer" class="link-gold">www.sophionhq.com</a>
             to learn more<span class="sr-only"> (opens in a new tab)</span>.
           </p>
         </Prose>
@@ -182,9 +158,9 @@ const governance = [
 
       <Reveal delay="100" class="mt-14 grid gap-x-10 gap-y-4 sm:grid-cols-2">
         {governance.map((item) => (
-          <div class="flex items-start gap-4 border-l border-charcoal-300 py-1 pl-5">
+          <div class="flex items-start gap-4 border-l border-stone-200 py-1 pl-5">
             <span aria-hidden="true" class="mt-2.5 h-1 w-1 shrink-0 rounded-full bg-gold-500"></span>
-            <p class="text-[0.9375rem] leading-relaxed text-stone-100">{item}</p>
+            <p class="text-[0.9375rem] leading-relaxed text-ink">{item}</p>
           </div>
         ))}
       </Reveal>

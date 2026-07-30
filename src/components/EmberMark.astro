@@ -1,73 +1,48 @@
 ---
 // src/components/EmberMark.astro
-// An engraved flame set between two long hairlines — an ornamental divider
-// rather than an illustration. Line art only, no fill, low opacity, so it reads
-// as a mark pressed into the page. Motion is a slow breath on the glow behind it
-// and is removed entirely under prefers-reduced-motion (see global.css).
-interface Props {
-  /** Vertical breathing room around the mark. */
-  size?: 'default' | 'compact';
-}
+// An engraved flame between two hairlines — an ornamental divider, not an image.
+interface Props { size?: 'default' | 'compact'; }
 const { size = 'default' } = Astro.props;
 ---
 <div class:list={['relative overflow-hidden', size === 'compact' ? 'py-14' : 'py-20 sm:py-24']}>
-  <!-- Warm pool of light behind the mark -->
   <div aria-hidden="true" class="pointer-events-none absolute inset-0 flex items-center justify-center">
-    <div class="glow-gold-soft animate-breathe h-72 w-[36rem] max-w-[110vw] rounded-full blur-[70px]
+    <div class="glow-gold-soft animate-breathe h-64 w-[32rem] max-w-[110vw] rounded-full blur-[70px]
                 [will-change:opacity,transform]"></div>
   </div>
 
   <div class="shell relative">
     <div class="flex items-center justify-center gap-6 sm:gap-10">
-      <!-- Left rule -->
       <span aria-hidden="true"
-            class="h-px min-w-8 flex-1 bg-[linear-gradient(to_right,transparent,rgb(200_162_74/0.45))]"></span>
+            class="h-px min-w-8 flex-1 bg-[linear-gradient(to_right,transparent,rgb(143_110_36/0.5))]"></span>
 
-      <svg
-        class="h-20 w-auto shrink-0 sm:h-24"
-        viewBox="0 0 120 160"
-        fill="none"
-        role="img"
-        aria-label="An ember flame"
-      >
+      <svg class="h-20 w-auto shrink-0 sm:h-24" viewBox="0 0 120 160" fill="none" role="img" aria-label="An ember flame">
         <defs>
           <linearGradient id="emberStroke" x1="60" y1="16" x2="60" y2="148" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stop-color="#f4e7c4" stop-opacity="0.95" />
-            <stop offset="45%" stop-color="#cfae63" stop-opacity="0.8" />
-            <stop offset="100%" stop-color="#7f6529" stop-opacity="0.35" />
+            <stop offset="0%" stop-color="#8f6e24" />
+            <stop offset="50%" stop-color="#c8a24a" />
+            <stop offset="100%" stop-color="#7a5a34" stop-opacity="0.5" />
           </linearGradient>
           <linearGradient id="emberCore" x1="60" y1="62" x2="60" y2="140" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stop-color="#f4e7c4" stop-opacity="0.55" />
-            <stop offset="100%" stop-color="#c8a24a" stop-opacity="0.12" />
+            <stop offset="0%" stop-color="#d9bc72" stop-opacity="0.5" />
+            <stop offset="100%" stop-color="#c8a24a" stop-opacity="0.1" />
           </linearGradient>
         </defs>
-
-        <!-- Outer flame -->
-        <path
-          d="M60 14c14 26 30 40 30 62 0 24-13 40-30 40S30 100 30 76c0-22 16-36 30-62Z"
-          stroke="url(#emberStroke)" stroke-width="1.4" stroke-linejoin="round"
-        />
-        <!-- Inner flame -->
-        <path
-          d="M60 52c8 16 16 24 16 37 0 14-7 23-16 23s-16-9-16-23c0-13 8-21 16-37Z"
-          fill="url(#emberCore)" stroke="url(#emberStroke)" stroke-width="1"
-          stroke-linejoin="round" opacity="0.9"
-        />
-        <!-- Rising sparks -->
-        <circle cx="42" cy="34" r="1.4" fill="#cfae63" opacity="0.5" />
-        <circle cx="79" cy="44" r="1.1" fill="#cfae63" opacity="0.4" />
-        <circle cx="60" cy="6" r="1.6" fill="#f4e7c4" opacity="0.55" />
-        <!-- Hearth line -->
-        <path d="M34 130h52" stroke="url(#emberStroke)" stroke-width="1" stroke-linecap="round" opacity="0.55" />
-        <path d="M44 138h32" stroke="url(#emberStroke)" stroke-width="1" stroke-linecap="round" opacity="0.3" />
+        <path d="M60 14c14 26 30 40 30 62 0 24-13 40-30 40S30 100 30 76c0-22 16-36 30-62Z"
+              stroke="url(#emberStroke)" stroke-width="1.5" stroke-linejoin="round" />
+        <path d="M60 52c8 16 16 24 16 37 0 14-7 23-16 23s-16-9-16-23c0-13 8-21 16-37Z"
+              fill="url(#emberCore)" stroke="url(#emberStroke)" stroke-width="1.1" stroke-linejoin="round" />
+        <circle cx="42" cy="34" r="1.4" fill="#8f6e24" opacity="0.6" />
+        <circle cx="79" cy="44" r="1.1" fill="#8f6e24" opacity="0.5" />
+        <circle cx="60" cy="6" r="1.6" fill="#c8a24a" opacity="0.7" />
+        <path d="M34 130h52" stroke="url(#emberStroke)" stroke-width="1.1" stroke-linecap="round" opacity="0.6" />
+        <path d="M44 138h32" stroke="url(#emberStroke)" stroke-width="1.1" stroke-linecap="round" opacity="0.35" />
       </svg>
 
-      <!-- Right rule -->
       <span aria-hidden="true"
-            class="h-px min-w-8 flex-1 bg-[linear-gradient(to_left,transparent,rgb(200_162_74/0.45))]"></span>
+            class="h-px min-w-8 flex-1 bg-[linear-gradient(to_left,transparent,rgb(143_110_36/0.5))]"></span>
     </div>
 
-    <p class="mt-8 text-center font-display text-lg italic text-stone-300 sm:text-xl">
+    <p class="mt-8 text-center font-display text-lg text-stone-700 sm:text-xl">
       <slot />
     </p>
   </div>

@@ -1,7 +1,7 @@
 ---
 // src/components/Section.astro — consistent vertical rhythm + surface tone.
-// `charcoal` bands now carry a layered wash and a hairline of gold light along
-// the top edge, so alternating sections read as lit planes rather than flat fills.
+// Tone names are historical; all three are warm light surfaces. `charcoal`
+// renders a soft cream band with a hairline of gold along the top edge.
 interface Props {
   id?: string;
   tone?: 'ink' | 'charcoal' | 'cream';
@@ -12,9 +12,8 @@ interface Props {
 const { id, tone = 'ink', size = 'default', class: className = '', labelledby } = Astro.props;
 
 const tones = {
-  ink: 'bg-ink',
-  charcoal:
-    'lit-edge border-y border-charcoal-300 bg-[linear-gradient(180deg,#1e1a17_0%,#181513_55%,#141110_100%)]',
+  ink: 'bg-ivory',
+  charcoal: 'lit-edge border-y border-stone-200 bg-[linear-gradient(180deg,var(--color-linen)_0%,var(--color-cream)_100%)]',
   cream: 'surface-cream',
 };
 ---

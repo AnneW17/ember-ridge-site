@@ -4,7 +4,6 @@
 // and the single scroll-reveal observer used site-wide.
 import '@fontsource/cormorant-garamond/300.css';
 import '@fontsource/cormorant-garamond/400.css';
-import '@fontsource/cormorant-garamond/400-italic.css';
 import '@fontsource/cormorant-garamond/500.css';
 import '@fontsource-variable/inter';
 import '../styles/global.css';
@@ -55,7 +54,7 @@ const orgSchema = {
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="theme-color" content="#0A0A0B" />
+    <meta name="theme-color" content="#FBF9F4" />
 
     <!-- Open Graph / social -->
     <meta property="og:type" content="website" />
@@ -72,10 +71,10 @@ const orgSchema = {
     <script type="application/ld+json" set:html={JSON.stringify(orgSchema)} />
   </head>
 
-  <body class:list={[theme === 'cream' ? 'bg-cream text-stone-700' : 'bg-ink text-stone-300']}>
+  <body class="bg-ivory text-stone-700">
     <a
       href="#main"
-      class="sr-only-focusable absolute left-4 top-4 z-[100] bg-gold-500 px-4 py-2 font-sans text-sm font-medium text-ink"
+      class="sr-only-focusable absolute left-4 top-4 z-[100] bg-ink px-4 py-2 font-sans text-sm font-medium text-ivory"
     >
       Skip to main content
     </a>
@@ -116,35 +115,6 @@ const orgSchema = {
         items.forEach((el) => io.observe(el));
       })();
 
-      // Parallax — one rAF-throttled listener for every [data-parallax] layer.
-      // Writes only transform, so it stays on the compositor. Layers live in the
-      // hero, so the loop stops once the hero has scrolled past.
-      (() => {
-        const layers = document.querySelectorAll('[data-parallax]');
-        if (!layers.length) return;
-        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-        // Gentler on small screens, where travel distance is shorter.
-        const scale = window.matchMedia('(min-width: 640px)').matches ? 1 : 0.5;
-        let ticking = false;
-
-        const apply = () => {
-          const y = window.scrollY;
-          const limit = window.innerHeight * 1.2;
-          if (y < limit) {
-            layers.forEach((el) => {
-              const speed = parseFloat(el.dataset.parallaxSpeed || '0.1') * scale;
-              el.style.transform = 'translate3d(0,' + (y * speed).toFixed(2) + 'px,0)';
-            });
-          }
-          ticking = false;
-        };
-
-        window.addEventListener('scroll', () => {
-          if (!ticking) { ticking = true; requestAnimationFrame(apply); }
-        }, { passive: true });
-        apply();
-      })();
     </script>
   </body>
 </html>

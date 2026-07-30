@@ -7,6 +7,8 @@ export type Leader = {
   name: string;
   credential?: string;
   title: string;
+  /** Firebrand Revivalists board seat, shown beneath the title. */
+  boardRole?: string;
   summary: string;   // short highlighted line beneath the name
   bio: string[];     // paragraphs revealed by the "Read full bio" toggle
   image: string;
@@ -18,6 +20,7 @@ export const leadership: Leader[] = [
   {
     name: 'Shannon Suttles',
     title: 'President',
+    boardRole: 'Board Chair – Firebrand Revivalists Board of Directors',
     summary:
       'Ordained pastor, founder, and the carrier of the Ember Ridge vision — with more than seventeen years of ministry and a career in regional property leadership.',
     bio: [
@@ -35,6 +38,7 @@ export const leadership: Leader[] = [
   {
     name: 'Jason Suttles',
     title: 'Vice President',
+    boardRole: 'Treasurer – Firebrand Revivalists Board of Directors',
     summary:
       'Ordained pastor and spiritual father, bringing two decades of operations, engineering, and personnel leadership to the stewardship of the house.',
     bio: [
@@ -89,21 +93,16 @@ export const ministryStaff = [
   {
     name: 'Marco Sanzari',
     title: 'Ordained Chaplain, Lead Intercessor & IT Engineer',
+    boardRole: 'Administrator – Firebrand Revivalists Board of Directors',
     image: '/images/leadership/marco-sanzari.jpg',
     alt: 'Portrait of Marco Sanzari, Ordained Chaplain, Lead Intercessor and IT Engineer',
   },
   {
     name: 'Danielle Sanzari',
     title: 'Ordained Chaplain & Lead Intercessor',
+    boardRole: 'Board Member – Firebrand Revivalists Board of Directors',
     image: '/images/leadership/danielle-sanzari.jpg',
     alt: 'Portrait of Danielle Sanzari, Ordained Chaplain and Lead Intercessor',
   },
 ];
 
-// ── Board of Directors ──────────────────────────────────────────────────
-export const board = [
-  { name: 'Shannon Suttles', role: 'Board Chair' },
-  { name: 'Jason Suttles', role: 'Treasurer' },
-  { name: 'Marco Sanzari', role: 'Administrator' },
-  { name: 'Danielle Sanzari', role: 'Board Member' },
-];

@@ -2,7 +2,6 @@
 // src/pages/house-of-prayer.astro — The House of Prayer
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
-import PhotoBand from '../components/PhotoBand.astro';
 import Section from '../components/Section.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import Prose from '../components/Prose.astro';
@@ -92,12 +91,6 @@ const prayerFocus = [
     </div>
   </Section>
 
-  <PhotoBand
-    src="/images/campus/prayer-garden.jpg"
-    alt="Concept reference: prayer garden with walking paths, seating and Scripture markers"
-    caption="Prayer garden concept — an outdoor extension of the house of prayer. Concept reference only."
-  />
-
   <Section id="intercession" tone="charcoal" labelledby="intercession-heading">
     <div class="shell">
       <Reveal>
@@ -139,7 +132,7 @@ const prayerFocus = [
 
         <aside class="lg:col-span-5">
           <Reveal delay={120} class="glass p-8 sm:p-9">
-            <h3 class="font-sans text-xs font-semibold uppercase tracking-[0.16em] text-gold-500">
+            <h3 class="font-sans text-xs font-semibold uppercase tracking-[0.16em] text-gold-700">
               Carried in prayer
             </h3>
             <div class="brushed-gold mt-5 h-px w-14"></div>
@@ -147,7 +140,7 @@ const prayerFocus = [
               {prayerFocus.map((item) => (
                 <li class="flex items-start gap-4">
                   <span aria-hidden="true" class="mt-2.5 h-1 w-1 shrink-0 rounded-full bg-gold-500"></span>
-                  <span class="text-[0.9375rem] leading-relaxed text-stone-100">{item}</span>
+                  <span class="text-[0.9375rem] leading-relaxed text-ink">{item}</span>
                 </li>
               ))}
             </ul>
@@ -178,7 +171,7 @@ const prayerFocus = [
       </div>
       <Reveal delay="120" class="mt-14 max-w-2xl">
         <h2 id="relational-heading" class="display-3">Relational rather than mechanical</h2>
-        <p class="mt-6 text-[1.0625rem] leading-relaxed text-stone-300">
+        <p class="mt-6 text-[1.0625rem] leading-relaxed text-stone-700">
           Prayer at Ember Ridge will remain relational rather than mechanical. If you
           believe God is inviting you to pray for this work, we would welcome hearing
           from you.

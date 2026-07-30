@@ -14,17 +14,17 @@ interface Props {
 const { title, description, updated, intro } = Astro.props;
 ---
 <BaseLayout title={title} description={description} theme="cream">
-  <header class="border-b border-stone-300/60 bg-cream-dark pt-36 pb-16 sm:pt-44 sm:pb-20">
+  <header class="surface-warm border-b border-stone-200 pt-36 pb-16 sm:pt-44 sm:pb-20">
     <div class="shell-tight">
       <p class="font-sans text-[0.6875rem] font-medium uppercase tracking-[0.22em] text-bronze">
         Ember Ridge · Legal
       </p>
       <h1 class="mt-5 font-display text-4xl leading-tight sm:text-5xl">{title}</h1>
-      <div class="mt-7 h-px w-16 bg-gradient-to-r from-bronze to-transparent"></div>
+      <div class="brushed-gold mt-7 h-px w-16"></div>
       <p class="mt-6 font-sans text-sm text-stone-700">
         Last updated: <time>{updated}</time>
       </p>
-      {intro && <p class="mt-6 font-display text-xl italic leading-relaxed text-stone-700">{intro}</p>}
+      {intro && <p class="mt-6 font-display text-xl leading-relaxed text-stone-700">{intro}</p>}
     </div>
   </header>
 
@@ -34,7 +34,7 @@ const { title, description, updated, intro } = Astro.props;
         <slot />
       </article>
 
-      <hr class="my-14 h-px border-0 bg-stone-300/70" />
+      <hr class="my-14 h-px border-0 bg-stone-200" />
 
       <p class="font-sans text-xs leading-relaxed text-stone-700">
         Questions about this document may be directed to Ember Ridge, a ministry of

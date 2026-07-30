@@ -16,7 +16,7 @@ const isCurrent = (href: string) => (href === '/' ? path === '/' : path.startsWi
   data-theme={theme}
   class:list={[
     'fixed inset-x-0 top-0 z-50 transition-all duration-500 [transition-timing-function:var(--ease-refined)]',
-    theme === 'cream' && 'bg-ink/95 backdrop-blur-md',
+    theme === 'cream' && 'bg-ivory/92 backdrop-blur-md',
   ]}
 >
   <div class="shell">
@@ -27,43 +27,43 @@ const isCurrent = (href: string) => (href === '/' ? path === '/' : path.startsWi
       <!-- Ember Ridge is primary; Firebrand is the auxiliary attribution. -->
       <a href="/" class="group flex items-center gap-3.5" aria-label={`${site.name} — home`}>
         <img
-          src="/images/ember-ridge-logo-dark.png"
+          src="/images/ember-ridge-logo.png"
           alt=""
           width="640"
           height="640"
-          class="h-10 w-auto opacity-95 transition-opacity duration-300 group-hover:opacity-100 sm:h-11"
+          class="h-11 w-auto transition-opacity duration-300 sm:h-12"
         />
         <span class="flex flex-col leading-none">
-          <span class="font-display text-lg tracking-[0.16em] text-cream sm:text-xl">EMBER RIDGE</span>
-          <span class="mt-1 font-sans text-[0.5625rem] uppercase tracking-[0.2em] text-stone-500">
+          <span class="font-display text-lg tracking-[0.2em] text-ink sm:text-xl">EMBER RIDGE</span>
+          <span class="mt-1.5 font-sans text-[0.5625rem] uppercase tracking-[0.18em] text-stone-600">
             A Ministry of Firebrand Revivalists
           </span>
         </span>
       </a>
 
       <!-- Desktop navigation -->
-      <nav aria-label="Main" class="hidden items-center gap-8 lg:flex">
-        {nav.filter((i) => i.label !== 'Partner').map((item) => (
+      <nav aria-label="Main" class="hidden items-center gap-6 lg:flex xl:gap-8">
+        {nav.filter((i) => i.label !== 'Partner' && i.label !== 'Home').map((item) => (
           <a
             href={item.href}
             aria-current={isCurrent(item.href) ? 'page' : undefined}
             class:list={[
-              'relative py-1 font-sans text-[0.8125rem] uppercase tracking-[0.14em] transition-colors duration-300',
+              'relative whitespace-nowrap py-1 font-sans text-[0.75rem] uppercase tracking-[0.12em] transition-colors duration-300 xl:text-[0.8125rem]',
               'after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-left after:scale-x-0 after:bg-gold-500 after:transition-transform after:duration-300 hover:after:scale-x-100',
-              isCurrent(item.href) ? 'text-gold-400 after:scale-x-100' : 'text-stone-300 hover:text-cream',
+              isCurrent(item.href) ? 'text-gold-700 after:scale-x-100' : 'text-stone-700 hover:text-ink',
             ]}
           >
             {item.label}
           </a>
         ))}
-        <a href="/partner" class="btn-primary !px-6 !py-3 !text-[0.75rem]">Partner With Us</a>
+        <a href="/partner" class="btn-gold !px-6 !py-3 !text-[0.75rem]">Partner With Us</a>
       </nav>
 
       <!-- Mobile trigger -->
       <button
         id="menu-toggle"
         type="button"
-        class="-mr-2 flex h-11 w-11 items-center justify-center text-cream lg:hidden"
+        class="-mr-2 flex h-11 w-11 items-center justify-center text-ink lg:hidden"
         aria-expanded="false"
         aria-controls="mobile-menu"
       >
@@ -82,7 +82,7 @@ const isCurrent = (href: string) => (href === '/' ? path === '/' : path.startsWi
   <div
     id="mobile-menu"
     hidden
-    class="border-t border-charcoal-300 bg-ink/98 backdrop-blur-md lg:hidden"
+    class="border-t border-stone-200 bg-ivory backdrop-blur-md lg:hidden"
   >
     <nav aria-label="Mobile" class="shell flex flex-col py-6">
       {nav.map((item) => (
@@ -90,8 +90,8 @@ const isCurrent = (href: string) => (href === '/' ? path === '/' : path.startsWi
           href={item.href}
           aria-current={isCurrent(item.href) ? 'page' : undefined}
           class:list={[
-            'border-b border-charcoal-300/70 py-4 font-display text-xl transition-colors',
-            isCurrent(item.href) ? 'text-gold-400' : 'text-cream hover:text-gold-300',
+            'border-b border-stone-200 py-4 font-display text-xl transition-colors',
+            isCurrent(item.href) ? 'text-gold-700' : 'text-ink hover:text-gold-700',
           ]}
         >
           {item.label}
@@ -114,12 +114,12 @@ const isCurrent = (href: string) => (href === '/' ? path === '/' : path.startsWi
 
     // Legal pages sit on a cream surface, so the header stays solid there.
     const solidAlways = header.dataset.theme === 'cream';
-    const solid = ['bg-ink/95', 'backdrop-blur-md'];
+    const solid = ['bg-ivory/92', 'backdrop-blur-md'];
     const onScroll = () => {
       const past = solidAlways || window.scrollY > 24;
       header.classList.toggle(solid[0], past);
       header.classList.toggle(solid[1], past);
-      inner.classList.toggle('border-charcoal-300', past);
+      inner.classList.toggle('border-stone-200', past);
       inner.classList.toggle('py-3', past);
       inner.classList.toggle('py-5', !past);
     };
