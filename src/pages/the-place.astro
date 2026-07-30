@@ -2,6 +2,7 @@
 // src/pages/the-place.astro — The Place
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
+import PhotoBand from '../components/PhotoBand.astro';
 import Section from '../components/Section.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import Prose from '../components/Prose.astro';
@@ -60,6 +61,14 @@ import CTASection from '../components/CTASection.astro';
       </div>
     </div>
   </Section>
+
+  <PhotoBand
+    size="tall"
+    src="/images/campus/pavilion-in-landscape.jpg"
+    alt="Concept reference: a covered worship pavilion set in open pasture with the lodge beyond"
+    quote="A land marked by prayer."
+    caption="Site concept — worship pavilion and lodge within the wider property. Concept reference only."
+  />
 
   <Section tone="charcoal" labelledby="witness-heading">
     <div class="shell">

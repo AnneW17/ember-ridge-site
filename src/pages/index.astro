@@ -2,6 +2,7 @@
 // src/pages/index.astro — Home
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HomeHero from '../components/HomeHero.astro';
+import PhotoBand from '../components/PhotoBand.astro';
 import Section from '../components/Section.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import Card from '../components/Card.astro';
@@ -17,7 +18,7 @@ const pillars = [
   },
   {
     numeral: 'II',
-    title: 'Restoration',
+    title: 'Restoration and Reformation',
     body: 'Leaders and those appointed by the Lord are received without performance, told the truth in love, and given room for the Holy Spirit to work at a depth scheduled gatherings rarely allow.',
     href: '/story',
   },
@@ -134,6 +135,14 @@ const campus = [
       </div>
     </div>
   </Section>
+
+  <PhotoBand
+    size="tall"
+    src="/images/campus/lodge-exterior.jpg"
+    alt="Concept reference: the lodge at dusk, with a wraparound covered porch and stone chimney"
+    quote="The lodge is not a venue. It is the next room in our family home, made larger so that more sons and daughters can come in."
+    caption="Exterior concept — design direction for the renovated lodge. Not the property in its current condition."
+  />
 
   <!-- The Place -->
   <Section labelledby="place-heading">

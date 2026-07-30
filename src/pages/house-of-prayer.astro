@@ -2,6 +2,7 @@
 // src/pages/house-of-prayer.astro — The House of Prayer
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
+import PhotoBand from '../components/PhotoBand.astro';
 import Section from '../components/Section.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import Prose from '../components/Prose.astro';
@@ -90,6 +91,12 @@ const prayerFocus = [
       </div>
     </div>
   </Section>
+
+  <PhotoBand
+    src="/images/campus/prayer-garden.jpg"
+    alt="Concept reference: prayer garden with walking paths, seating and Scripture markers"
+    caption="Prayer garden concept — an outdoor extension of the house of prayer. Concept reference only."
+  />
 
   <Section id="intercession" tone="charcoal" labelledby="intercession-heading">
     <div class="shell">

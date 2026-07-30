@@ -8,11 +8,11 @@
 
 @theme {
   /* ── Foundation: black & charcoal ─────────────────────────────── */
-  --color-ink: #0a0a0b;          /* page background — near black */
-  --color-ink-800: #101113;
-  --color-charcoal: #16171a;     /* raised surfaces, cards */
-  --color-charcoal-400: #1e2024; /* hover surfaces */
-  --color-charcoal-300: #2a2c31; /* hairline borders on dark */
+  --color-ink: #131110;          /* page background — warm near-black, lifted off pure black */
+  --color-ink-800: #191614;      /* subtly raised bands */
+  --color-charcoal: #201c1a;     /* raised surfaces, cards */
+  --color-charcoal-400: #292421; /* hover surfaces */
+  --color-charcoal-300: #38322d; /* hairline borders — warm, visible against the base */
 
   /* ── Accent: gold (use sparingly) ─────────────────────────────── */
   --color-gold-100: #f4e7c4;
@@ -27,7 +27,7 @@
   --color-bronze-light: #8a6440;
   --color-stone-100: #e6e1d7;
   --color-stone-300: #c3bcaf;
-  --color-stone-500: #8c8577;    /* body copy on dark */
+  --color-stone-500: #968f80;    /* muted labels — AA on both ink and hover surfaces */
   --color-stone-700: #55504a;
   --color-cream: #f6f2e9;        /* light sections, legal pages */
   --color-cream-dark: #ece5d6;
@@ -222,7 +222,7 @@
   .card {
     @apply relative border border-charcoal-300 p-8 transition-all duration-500;
     /* Layered charcoal rather than a flat fill — reads as a lit surface. */
-    background-image: linear-gradient(160deg, #1a1b1f 0%, var(--color-charcoal) 48%, #131417 100%);
+    background-image: linear-gradient(160deg, #262119 0%, var(--color-charcoal) 46%, #191614 100%);
     box-shadow: var(--shadow-lift);
     transition-timing-function: var(--ease-refined);
   }
@@ -319,8 +319,9 @@
   /* Matte black with a layered charcoal wash — the default premium surface. */
   .surface-matte {
     background-image:
-      radial-gradient(120% 80% at 50% -10%, rgb(40 34 24 / 0.45), transparent 55%),
-      linear-gradient(180deg, #0d0e10 0%, var(--color-ink) 45%, #09090a 100%);
+      radial-gradient(120% 80% at 50% -10%, rgb(94 70 40 / 0.30), transparent 58%),
+      radial-gradient(90% 60% at 15% 100%, rgb(60 44 30 / 0.22), transparent 60%),
+      linear-gradient(180deg, #1a1614 0%, var(--color-ink) 42%, #0f0d0c 100%);
   }
 
   /* Ambient gold pool. Decorative — always pair with aria-hidden. */

@@ -2,6 +2,7 @@
 // src/pages/partner.astro — Invitation / Partner With Us
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
+import PhotoBand from '../components/PhotoBand.astro';
 import Section from '../components/Section.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import Prose from '../components/Prose.astro';
@@ -64,12 +65,12 @@ const ways = [
 
 <BaseLayout
   title="Partner With Us"
-  description="Ember Ridge is not an invitation to admire a property. It is an invitation to pray, counsel, build, give, serve, or connect — helping establish a house where the presence of God strengthens generations."
+  description="Ember Ridge is an invitation to pray, build, give, serve, or connect — helping establish a house where the presence of God strengthens generations."
 >
   <PageHero
     eyebrow="The Invitation"
     title="Tend the Fire With Us"
-    lede="Ember Ridge is not an invitation to admire a property. It is an invitation to help establish a place where the presence of God, healthy family, sustained intercession, and faithful stewardship can strengthen generations."
+    lede="Ember Ridge is an invitation to help establish a place where the presence of God, healthy family, sustained intercession, and faithful stewardship can strengthen generations."
   />
 
   <Section labelledby="ways-heading">
@@ -99,6 +100,12 @@ const ways = [
       </div>
     </div>
   </Section>
+
+  <PhotoBand
+    src="/images/campus/pavilion-elevation.jpg"
+    alt="Concept reference: worship pavilion seen from the front, with timber trusses and seating"
+    caption="Worship pavilion concept — covered open-air space for worship and regional gatherings. Concept reference only."
+  />
 
   <Section tone="charcoal">
     <div class="shell">
