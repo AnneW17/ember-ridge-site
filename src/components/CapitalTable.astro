@@ -1,0 +1,76 @@
+---
+// src/components/CapitalTable.astro
+// Preliminary planning ranges from the Founding Vision document.
+// These are NOT contractor bids. Update after appraisal, survey, engineering
+// review, contractor pricing and board approval.
+const rows = [
+  {
+    use: 'Property acquisition',
+    range: '$1,500,000',
+    purpose: 'Purchase of the existing lodge and acreage, subject to negotiated terms and due diligence.',
+  },
+  {
+    use: 'Closing, inspections, and due diligence',
+    range: '$30,000 – $45,000',
+    purpose: 'Legal, title, appraisal, survey, inspections, environmental or engineering review as needed, and closing costs.',
+  },
+  {
+    use: 'Comprehensive lodge renovation and lower-level build-out',
+    range: '$1,265,000 – $1,575,000',
+    purpose: 'Interior and exterior renovation, contractor scopes, kitchen, guest spaces, lower level, porch, finishes, and related work.',
+  },
+  {
+    use: 'Major systems and contingency',
+    range: '$75,000 – $150,000',
+    purpose: 'HVAC, plumbing, electrical, roof, mechanical systems, code conditions, and unforeseen work identified through inspection.',
+  },
+  {
+    use: 'Furnishings, finishes, and operational setup',
+    range: '$130,000 – $230,000',
+    purpose: 'Guest furnishings, kitchen setup, ministry equipment, technology, security, linens, and opening inventory.',
+  },
+];
+---
+
+<div
+  role="region"
+  aria-labelledby="capital-caption"
+  tabindex="0"
+  class="mt-10 overflow-x-auto border border-charcoal-300"
+>
+  <table class="w-full min-w-[46rem] border-collapse text-left">
+    <caption id="capital-caption" class="sr-only">
+      Preliminary capital planning ranges for the acquisition and renovation of Ember Ridge
+    </caption>
+    <thead>
+      <tr class="bg-charcoal">
+        <th scope="col" class="px-6 py-5 font-sans text-[0.6875rem] uppercase tracking-[0.18em] text-gold-500">Capital use</th>
+        <th scope="col" class="px-6 py-5 font-sans text-[0.6875rem] uppercase tracking-[0.18em] text-gold-500">Working range</th>
+        <th scope="col" class="px-6 py-5 font-sans text-[0.6875rem] uppercase tracking-[0.18em] text-gold-500">Purpose</th>
+      </tr>
+    </thead>
+    <tbody>
+      {rows.map((row) => (
+        <tr class="border-t border-charcoal-300 align-top transition-colors duration-300 hover:bg-charcoal/60">
+          <th scope="row" class="px-6 py-6 font-display text-lg font-normal text-cream">{row.use}</th>
+          <td class="whitespace-nowrap px-6 py-6 font-sans text-sm text-gold-300">{row.range}</td>
+          <td class="px-6 py-6 text-sm leading-relaxed text-stone-300">{row.purpose}</td>
+        </tr>
+      ))}
+      <tr class="border-t border-gold-700/60 bg-gold-700/10 align-top">
+        <th scope="row" class="px-6 py-6 font-display text-lg font-normal text-cream">
+          Working acquisition and renovation target
+        </th>
+        <td class="whitespace-nowrap px-6 py-6 font-sans text-sm font-semibold text-gold-200">
+          $3,000,000 – $3,500,000
+        </td>
+        <td class="px-6 py-6 text-sm leading-relaxed text-gold-100">
+          Preliminary total based on current information; not a final guaranteed project cost.
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<p class="mt-4 text-xs text-stone-500">
+  Scroll horizontally to view all columns.
+</p>

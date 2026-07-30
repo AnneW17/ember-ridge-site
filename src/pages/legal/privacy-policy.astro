@@ -1,0 +1,128 @@
+---
+// src/pages/legal/privacy-policy.astro
+import LegalLayout from '../../layouts/LegalLayout.astro';
+import { site } from '../../data/site';
+---
+<LegalLayout
+  title="Privacy Policy"
+  description="How Ember Ridge, a ministry of Firebrand Revivalists, collects, uses, and protects information submitted through this website."
+  updated="[DATE TO BE SET AT LAUNCH]"
+  intro="We treat information shared with this ministry — especially prayer requests and personal circumstances — with care and restraint."
+>
+  <h2>Who we are</h2>
+  <p>
+    Ember Ridge is a ministry of Firebrand Revivalists, located in Moravian Falls,
+    North Carolina (“we,” “us,” “the ministry”). This policy explains how we handle
+    information collected through this website.
+  </p>
+  <p>
+    <strong>[Needs legal review:</strong> confirm the exact legal entity name, state of
+    incorporation, mailing address, and the appropriate contact for privacy
+    requests.<strong>]</strong>
+  </p>
+
+  <h2>Information we collect</h2>
+  <h3>Information you give us</h3>
+  <ul>
+    <li>Your name and email address</li>
+    <li>Your church, ministry, or organization, if you provide it</li>
+    <li>The reason you are contacting us</li>
+    <li>The content of your message, which may include prayer requests or personal circumstances</li>
+    <li>Whether you asked for confidential handling</li>
+  </ul>
+
+  <h3>Information collected automatically</h3>
+  <p>
+    Our hosting provider records standard technical information such as IP address,
+    browser type, referring page, and the pages requested. This is used for security,
+    troubleshooting, and understanding general site usage.
+  </p>
+  <p>
+    <strong>[Needs review:</strong> confirm whether any analytics tool is enabled. If
+    analytics are added, name the provider here and update the Cookie Notice.<strong>]</strong>
+  </p>
+
+  <h2>How we use information</h2>
+  <ul>
+    <li>To respond to your message</li>
+    <li>To pray for the needs you share with us</li>
+    <li>To evaluate partnership, referral, or placement inquiries</li>
+    <li>To maintain records appropriate to a nonprofit ministry</li>
+    <li>To protect the security and integrity of this website</li>
+  </ul>
+  <p>
+    We do not sell information. We do not rent or trade contact information. We do not
+    use submitted prayer requests in public communications, teaching, or fundraising
+    material without permission.
+  </p>
+
+  <h2>Prayer requests and sensitive information</h2>
+  <p>
+    Prayer requests are read by leadership and may be shared with the intercession team
+    unless you ask us to limit them to leadership. Intercessors serving in a sustained
+    capacity are subject to written confidentiality expectations.
+  </p>
+  <p>
+    Please do not send information through this website that you would not want
+    transmitted by ordinary email. This site is not a secure channel for medical, legal,
+    financial, or other highly sensitive records.
+  </p>
+
+  <h2>Who has access</h2>
+  <p>
+    Access is limited to leadership and to team members with a specific reason to see the
+    information. We use third-party service providers to operate this site and receive
+    form submissions, including our hosting provider. Those providers process
+    information on our behalf.
+  </p>
+  <p>
+    <strong>[Needs legal review:</strong> list the specific processors in use — for
+    example, website hosting and form handling, email service, and any customer or donor
+    management system — and confirm their data-protection terms.<strong>]</strong>
+  </p>
+
+  <h2>How long we keep information</h2>
+  <p>
+    We keep correspondence for as long as needed to respond, to maintain appropriate
+    ministry and financial records, and to meet legal obligations, and then dispose of it
+    responsibly.
+  </p>
+  <p>
+    <strong>[Needs review:</strong> set a specific retention period for form submissions
+    and confidential correspondence.<strong>]</strong>
+  </p>
+
+  <h2>Your choices</h2>
+  <ul>
+    <li>You may ask us what information we hold about you.</li>
+    <li>You may ask us to correct or delete your information.</li>
+    <li>You may ask us to stop contacting you.</li>
+  </ul>
+  <p>
+    Write to <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a> and we will
+    respond as promptly as we are able.
+  </p>
+  <p>
+    <strong>[Needs legal review:</strong> determine whether state privacy laws (for
+    example California, Colorado, Connecticut, Virginia, or others) apply to this
+    ministry, and add the required disclosures and response timelines if so.<strong>]</strong>
+  </p>
+
+  <h2>Children</h2>
+  <p>
+    This website is intended for adults. We do not knowingly collect information from
+    children under 13. If you believe a child has submitted information, please contact
+    us so we can remove it.
+  </p>
+
+  <h2>Changes to this policy</h2>
+  <p>
+    We may update this policy. When we do, we will revise the “last updated” date above.
+  </p>
+
+  <h2>Contact</h2>
+  <p>
+    Ember Ridge, a ministry of Firebrand Revivalists · Moravian Falls, North Carolina ·
+    <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a>
+  </p>
+</LegalLayout>

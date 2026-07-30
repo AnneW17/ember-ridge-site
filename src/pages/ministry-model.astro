@@ -1,0 +1,214 @@
+---
+// src/pages/ministry-model.astro — The Ministry Model
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import Section from '../components/Section.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import Prose from '../components/Prose.astro';
+import Card from '../components/Card.astro';
+import PullQuote from '../components/PullQuote.astro';
+import Callout from '../components/Callout.astro';
+import Reveal from '../components/Reveal.astro';
+import CTASection from '../components/CTASection.astro';
+
+const rhythm = [
+  'Worship and Scripture',
+  'Rest without agenda',
+  'Shared meals at long tables',
+  'Honest conversation',
+  'Personal ministry and prayer',
+  'Wise counsel',
+  'Time outdoors',
+  'Space to hear God',
+];
+
+const whoIsReceived = [
+  'Pastors and ministry leaders',
+  'Missionaries',
+  'Intercessors and watchmen',
+  'Chaplains',
+  'Ministry families',
+  'Educators',
+  'Public servants',
+  'Marketplace leaders',
+];
+
+const formation = [
+  'Abiding in Christ',
+  'Renewing the mind through Scripture',
+  'Learning to hear and obey God',
+  'Receiving correction without shame',
+  'Confronting hidden compromise',
+  'Practicing forgiveness',
+  'Stewarding resources faithfully',
+  'Becoming dependable in God-given responsibility',
+];
+---
+
+<BaseLayout
+  title="The Ministry Model"
+  description="Shared life, deep formation, faithful sending. The Ember Ridge ministry model draws from the Acts 2 pattern: Scripture, fellowship, shared meals, prayer, generosity, and daily faithfulness."
+>
+  <PageHero
+    eyebrow="The Ministry Model"
+    title="Shared Life, Deep Formation, Faithful Sending"
+    lede="The life of Ember Ridge will draw from the Acts 2 pattern: devotion to Scripture, fellowship, shared meals, prayer, generosity, and daily faithfulness."
+  />
+
+  <Section labelledby="proximity-heading">
+    <div class="shell">
+      <Reveal>
+        <SectionHeading
+          id="proximity-heading"
+          eyebrow="Shared Life"
+          title="Transformation often requires time, proximity, and healthy relationship"
+        />
+      </Reveal>
+      <div class="mt-12">
+        <Prose>
+          <p>
+            Guests will not come merely to attend sessions and leave with notes. They
+            will enter a prayerful household rhythm — one that makes room for the Holy
+            Spirit to work at a depth that scheduled gatherings rarely allow.
+          </p>
+        </Prose>
+      </div>
+
+      <Reveal delay="100" class="mt-12 grid gap-x-8 gap-y-4 sm:grid-cols-2 lg:grid-cols-4">
+        {rhythm.map((item) => (
+          <div class="border-t border-charcoal-300 pt-4">
+            <p class="font-display text-lg text-cream">{item}</p>
+          </div>
+        ))}
+      </Reveal>
+    </div>
+  </Section>
+
+  <Section tone="charcoal" labelledby="leaders-heading">
+    <div class="shell">
+      <Reveal>
+        <SectionHeading
+          id="leaders-heading"
+          eyebrow="A Deliberate Focus"
+          title="Investing deeply in a few so that many can be strengthened"
+        />
+      </Reveal>
+      <div class="mt-12">
+        <Prose>
+          <p>
+            A pastor restored in spirit returns to a congregation with greater health. A
+            business owner who regains clarity can change the culture of a company. A
+            school leader strengthened in truth can influence educators, families, and
+            children. A marriage that heals can interrupt generational patterns.
+          </p>
+          <p>
+            By serving those who carry responsibility for others, Ember Ridge invests
+            deeply in a few so that many can be strengthened through them.
+          </p>
+        </Prose>
+      </div>
+
+      <Reveal delay="100" class="mt-12">
+        <h3 class="font-sans text-xs font-semibold uppercase tracking-[0.16em] text-gold-500">
+          The house will receive, as the Lord directs
+        </h3>
+        <ul class="mt-6 grid gap-x-8 gap-y-3 sm:grid-cols-2 lg:grid-cols-4">
+          {whoIsReceived.map((item) => (
+            <li class="flex items-start gap-3 text-[0.9375rem] text-stone-100">
+              <span aria-hidden="true" class="mt-2.5 h-1 w-1 shrink-0 rounded-full bg-gold-500"></span>
+              {item}
+            </li>
+          ))}
+        </ul>
+      </Reveal>
+
+      <Callout title="How placements work">
+        <p>
+          Placements will be limited and prayerfully discerned rather than publicly
+          marketed for volume. Ember Ridge will operate primarily through trusted
+          relationships, referrals, and word of mouth. The length and structure of each
+          stay will be established with the guest and leadership according to need,
+          capacity, safety, and the leading of the Holy Spirit. Stays are intended to be
+          purposeful seasons of restoration and formation, not permanent residency.
+        </p>
+      </Callout>
+    </div>
+  </Section>
+
+  <Section labelledby="formation-heading">
+    <div class="shell">
+      <Reveal>
+        <SectionHeading
+          id="formation-heading"
+          eyebrow="Deep Formation"
+          title="Love will be the governing culture — but love will not be confused with avoidance"
+        />
+      </Reveal>
+      <div class="mt-12">
+        <Prose>
+          <p>
+            Jesus welcomed people fully and also called them into truth, repentance,
+            maturity, and obedience. The formation offered at Ember Ridge follows that
+            pattern.
+          </p>
+        </Prose>
+      </div>
+
+      <div class="mt-12 grid gap-4 sm:grid-cols-2">
+        {formation.map((item, i) => (
+          <Reveal delay={i * 50}>
+            <div class="flex items-start gap-4 border-l border-charcoal-300 py-1 pl-5">
+              <span aria-hidden="true" class="mt-2.5 h-1 w-1 shrink-0 rounded-full bg-gold-500"></span>
+              <p class="text-[0.9375rem] leading-relaxed text-stone-100">{item}</p>
+            </div>
+          </Reveal>
+        ))}
+      </div>
+
+      <div class="mt-14">
+        <Prose>
+          <p>
+            Guests may receive teaching in strategic prayer, biblical discernment,
+            prophecy, healing ministry, intercession, leadership, marriage, family
+            stewardship, organizational health, and the practical responsibilities of
+            serving people well. Yet the goal will never be knowledge alone. The goal is
+            a life more deeply rooted in Christ.
+          </p>
+        </Prose>
+      </div>
+    </div>
+  </Section>
+
+  <Section id="sending" tone="charcoal" labelledby="sending-heading">
+    <div class="shell">
+      <Reveal>
+        <SectionHeading
+          id="sending-heading"
+          eyebrow="Faithful Sending"
+          title="The sending is as important as the receiving"
+        />
+      </Reveal>
+      <div class="mt-12">
+        <Prose>
+          <p>
+            Ember Ridge does not exist to gather people around itself. It exists to
+            strengthen them for their own homes, churches, workplaces, schools,
+            ministries, and regions.
+          </p>
+          <p>
+            Some may return periodically for renewal. Some may become long-term prayer
+            partners or friends of the work. A smaller number may be called to serve
+            within the ongoing community. In every case, the desired fruit is
+            faithfulness to the assignment God has already given.
+          </p>
+        </Prose>
+
+        <PullQuote>
+          What God restores at Ember Ridge is not meant to remain on the mountain.
+        </PullQuote>
+      </div>
+    </div>
+  </Section>
+
+  <CTASection />
+</BaseLayout>

@@ -1,0 +1,112 @@
+---
+// src/pages/legal/disclaimer.astro
+import LegalLayout from '../../layouts/LegalLayout.astro';
+import { site } from '../../data/site';
+---
+<LegalLayout
+  title="Disclaimer"
+  description="Important clarifications about the forward-looking, spiritual, and non-professional nature of the content on the Ember Ridge website."
+  updated="[DATE TO BE SET AT LAUNCH]"
+  intro="We would rather say less and mean it than say more and overstate. This page sets out what this site is — and what it is not."
+>
+  <h2>A ministry in formation</h2>
+  <p>
+    Ember Ridge is a vision under active discernment and development. The property
+    described on this site has not been acquired, and buildings described — including the
+    worship pavilion, prayer garden, and leadership residence — have not been designed,
+    permitted, or built. References to acquisition, renovation, or construction describe
+    intentions, not completed facts.
+  </p>
+
+  <h2>Forward-looking statements</h2>
+  <p>
+    Statements about future plans, timelines, capacity, programs, staffing, or budgets are
+    based on present information and prayerful judgment. They may change materially as
+    appraisal, inspection, survey, engineering, zoning, contractor pricing, board
+    approval, funding, and circumstances direct. Nothing here should be relied upon as a
+    promise of a future outcome.
+  </p>
+
+  <h2>Financial figures</h2>
+  <p>
+    Capital figures published on this site are preliminary planning ranges, not contractor
+    bids, appraisals, or guaranteed project costs. They will be revised as real
+    information is received. No representation is made that any project will be completed
+    at a stated cost, on a stated schedule, or at all.
+  </p>
+  <p>
+    Nothing on this site is an offer to sell or a solicitation of an offer to buy any
+    security, partnership interest, or interest in real property.
+  </p>
+
+  <h2>Gifts and tax matters</h2>
+  <p>
+    <strong>[Needs legal review:</strong> confirm the tax status of Firebrand Revivalists
+    and the correct language regarding deductibility of gifts, gift receipting, restricted
+    gift handling, and charitable solicitation registration. Until counsel confirms this
+    section, do not publish statements about tax treatment of gifts.<strong>]</strong>
+  </p>
+  <p>
+    We do not provide tax advice. Please consult your own tax professional regarding the
+    treatment of any gift.
+  </p>
+
+  <h2>No professional advice</h2>
+  <p>
+    Content on this site — including teaching, testimony, and written material — is
+    offered for information and spiritual encouragement. It is not legal, financial, tax,
+    accounting, medical, psychiatric, psychological, or counseling advice. Reading this
+    site or contacting us does not create an attorney-client, therapist-client, pastoral
+    care, or other professional relationship.
+  </p>
+  <p>
+    Members of the leadership team hold professional credentials. Any professional
+    services they may provide in another capacity are separate from this ministry, are
+    governed by their own engagement agreements, and are not offered through this website.
+  </p>
+
+  <h2>Ministry, healing, and prayer</h2>
+  <p>
+    We believe God heals and restores. We also believe He works through physicians,
+    counselors, and other qualified professionals. Nothing on this site should be
+    understood as encouragement to discontinue medical or mental health treatment, to
+    delay professional care, or to substitute prayer for necessary medical attention.
+    Prayer offered by this ministry is not a diagnosis, treatment, or guarantee of any
+    particular outcome.
+  </p>
+
+  <h2>Crisis and emergencies</h2>
+  <p>
+    This website and its contact form are not monitored continuously and are not an
+    emergency service. If you are in immediate danger, please contact local emergency
+    services. In the United States, the 988 Suicide &amp; Crisis Lifeline can be reached
+    by calling or texting <strong>988</strong>.
+  </p>
+  <p>
+    <strong>[Needs review:</strong> confirm crisis-resource references are current before
+    launch.<strong>]</strong>
+  </p>
+
+  <h2>Historical and prophetic references</h2>
+  <p>
+    This site references historical accounts — including the Moravian prayer watch at
+    Herrnhut, testimonies associated with Prayer Mountain and Moravian Falls, the Golden
+    Candlestick fellowship, and a 1997 prophetic word concerning the area — as part of the
+    spiritual testimony of the region. We receive such accounts with gratitude while
+    keeping Scripture, humility, and wise discernment at the center. We do not present
+    them as verified claims about present or future events, and we make no claim that any
+    location produces spiritual results.
+  </p>
+
+  <h2>Third-party content</h2>
+  <p>
+    Links to other organizations are provided for convenience. We do not control and are
+    not responsible for their content, and a link is not an endorsement.
+  </p>
+
+  <h2>Contact</h2>
+  <p>
+    Questions about this disclaimer:
+    <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a>
+  </p>
+</LegalLayout>

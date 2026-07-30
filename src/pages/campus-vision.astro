@@ -1,0 +1,203 @@
+---
+// src/pages/campus-vision.astro — The Campus Vision
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import Section from '../components/Section.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import Prose from '../components/Prose.astro';
+import Card from '../components/Card.astro';
+import Callout from '../components/Callout.astro';
+import ReviewNote from '../components/ReviewNote.astro';
+import Reveal from '../components/Reveal.astro';
+import CTASection from '../components/CTASection.astro';
+
+const elements = [
+  {
+    numeral: '01',
+    title: 'The Great Room',
+    body: 'The heart of shared worship, conversation, and family life. The existing stone fireplace will be preserved and strengthened with a substantial reclaimed-wood mantle. Flexible seating lets the room move naturally between worship, teaching, prayer, and informal fellowship.',
+  },
+  {
+    numeral: '02',
+    title: 'Long-Table Dining & Kitchen',
+    body: 'Shared meals are not secondary to the ministry model. Breaking bread together creates space for stories, truth, laughter, correction, and relationship that cannot be manufactured in formal sessions. The kitchen will be renovated for both daily household use and larger hospitality.',
+  },
+  {
+    numeral: '03',
+    title: 'Guest Rooms & Prayer Rooms',
+    body: 'Bedrooms and bathrooms refreshed for comfort, privacy, durability, and ease of maintenance. Dedicated prayer rooms and quiet spaces within the lodge allow personal intercession to continue alongside communal life.',
+  },
+  {
+    numeral: '04',
+    title: 'The Covered Porch',
+    body: 'A generous covered porch — with portions enclosed or seasonally protected where feasible — extends the usable life of the property through changing mountain weather. Room for reading, meals, counsel, and quiet conversation.',
+  },
+  {
+    numeral: '05',
+    title: 'The Prayer Garden',
+    body: 'Walking paths, contemplative seating, Scripture markers, and intentional plantings. An outdoor extension of the house of prayer, designed for sustained intercession and quiet encounter.',
+  },
+  {
+    numeral: '06',
+    title: 'Prayer Trails & Fire Circle',
+    body: 'Trails allow guests and intercessors to walk the land in worship and reflection. A gathering fire circle creates an informal setting for testimony, conversation, and prayer. Not attractions — extensions of the devotional life of the house.',
+  },
+  {
+    numeral: '07',
+    title: 'The Worship Pavilion',
+    body: 'A covered, open-air structure for worship, prayer, teaching, and regional gatherings. The preliminary concept is approximately 40 by 60 feet, using timber and stone details that harmonize with the lodge, with optional seasonal enclosure panels.',
+  },
+  {
+    numeral: '08',
+    title: 'The Leadership Residence',
+    body: 'One building — not a collection of detached cabins — allowing the family to live on site without consuming guest capacity. Intended for the buildable left side of the property so existing parking and guest circulation are preserved.',
+  },
+];
+---
+
+<BaseLayout
+  title="The Campus Vision"
+  description="The lodge, porch, prayer garden, trails, worship pavilion, and leadership residence. Every renovation and building is evaluated by one question: does it help people minister to the Lord and be restored for faithful service?"
+>
+  <PageHero
+    eyebrow="The Campus Vision"
+    title="A Place Designed to Serve the Mission"
+    lede="Every renovation, building, and outdoor space will be evaluated by one question: does it help people minister to the Lord, live in healthy community, and be restored for faithful service?"
+  />
+
+  <Section labelledby="lodge-heading">
+    <div class="shell">
+      <Reveal>
+        <SectionHeading
+          id="lodge-heading"
+          eyebrow="The Existing Lodge"
+          title="A strong foundation for the vision"
+        />
+      </Reveal>
+      <div class="mt-12">
+        <Prose>
+          <p>
+            The existing lodge, built in 1993, includes approximately ten bedrooms and
+            eleven bathrooms on roughly eleven acres. Its vaulted gathering spaces,
+            stone fireplace, mountain setting, and guest capacity provide a strong
+            foundation for the vision.
+          </p>
+          <p>
+            Before any major work begins, the property will undergo comprehensive due
+            diligence and professional inspection — including structural systems,
+            foundation, roof, HVAC, plumbing, electrical service, water and septic
+            systems as applicable, fire and life safety, accessibility, appliances,
+            drainage, and code requirements.
+          </p>
+          <p>
+            The renovation will preserve the character that makes the lodge welcoming
+            while giving it a cohesive, durable, high-end mountain identity. The current
+            design direction favors lighter natural wood siding and interior wood tones,
+            balanced by a charcoal or dark bronze roof, warm metal finishes, stone,
+            leather, natural textiles, and restrained lighting. The goal is not rustic
+            excess, but a refined cabin environment that feels peaceful, substantial,
+            and timeless.
+          </p>
+        </Prose>
+
+        <ReviewNote label="Needs review">
+          Property details (year built, bedroom and bathroom counts, acreage) are drawn
+          from the Founding Vision document and should be verified against the appraisal,
+          survey, and tax records before publication.
+        </ReviewNote>
+      </div>
+    </div>
+  </Section>
+
+  <Section tone="charcoal" labelledby="elements-heading">
+    <div class="shell">
+      <Reveal>
+        <SectionHeading
+          id="elements-heading"
+          eyebrow="Site Planning"
+          title="Eight elements of one coherent campus"
+          align="center"
+        />
+      </Reveal>
+
+      <div class="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {elements.map((el, i) => (
+          <Reveal delay={(i % 4) * 80}>
+            <Card numeral={el.numeral} title={el.title}>
+              <p>{el.body}</p>
+            </Card>
+          </Reveal>
+        ))}
+      </div>
+
+      <ReviewNote label="Planning concept">
+        Final size, placement, acoustics, utilities, accessibility, and weather
+        protection for all new structures will be determined through survey,
+        geotechnical review, engineering, zoning, and final architectural design.
+        Renderings and dimensions on this page are conceptual.
+      </ReviewNote>
+    </div>
+  </Section>
+
+  <Section labelledby="onsite-heading">
+    <div class="shell grid gap-14 lg:grid-cols-12 lg:gap-16">
+      <div class="lg:col-span-5">
+        <Reveal>
+          <SectionHeading
+            id="onsite-heading"
+            eyebrow="On-Site Living"
+            title="The Acts 2 pattern cannot be sustained by leaders who arrive only for events"
+          />
+        </Reveal>
+      </div>
+      <div class="lg:col-span-7">
+        <Reveal delay="100" class="prose-body">
+          <p>
+            The family must be present to pray, welcome, cook, counsel, maintain,
+            protect, and steward the life of the house. At the same time, separate
+            residences will establish healthy privacy and boundaries so the main lodge
+            remains available to guests and ministry.
+          </p>
+          <p>
+            The residence building is intended to include a two-story residence for
+            Jason and Shannon, an apartment for Anne and her daughter Layla, and a
+            private apartment for Mark Burgett.
+          </p>
+          <p>
+            Mark Burgett will serve as Chief IT Engineer in Training, growing into
+            responsibility for engineering systems, technology infrastructure, security
+            systems, facilities stewardship, maintenance planning, and long-term campus
+            development. His role reflects the broader vision for Ember Ridge: spiritual
+            ministry and practical excellence must remain joined.
+          </p>
+        </Reveal>
+      </div>
+    </div>
+  </Section>
+
+  <Section tone="charcoal" size="sm">
+    <div class="shell">
+      <Callout title="The master plan">
+        <p>
+          The final master plan will coordinate the lodge, residence building, parking,
+          pavilion, prayer garden, trails, utilities, drainage, fire access, security,
+          and future growth as one coherent campus. It will be developed by qualified
+          professionals and refined through actual site conditions rather than forced
+          around a rendering. Beauty matters, but safety, function, stewardship, and
+          long-term durability matter just as much.
+        </p>
+      </Callout>
+      <Reveal class="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-8">
+        <a href="/remodel-and-grounds" class="btn-quiet">View remodel &amp; grounds concepts →</a>
+        <a href="/financial-stewardship" class="btn-quiet">See the financial framework →</a>
+      </Reveal>
+    </div>
+  </Section>
+
+  <CTASection
+    title="Help us build it well"
+    body="Some will bring professional wisdom in architecture, engineering, construction, hospitality, security, technology, or landscaping. Others will help furnish rooms, equip the kitchen, build trails, or provide materials."
+    primary={{ label: 'Offer your expertise', href: '/partner#build' }}
+    secondary={{ label: 'Financial stewardship', href: '/financial-stewardship' }}
+  />
+</BaseLayout>

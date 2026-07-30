@@ -1,0 +1,212 @@
+---
+// src/pages/index.astro — Home
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HomeHero from '../components/HomeHero.astro';
+import Section from '../components/Section.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import Card from '../components/Card.astro';
+import CTASection from '../components/CTASection.astro';
+import Reveal from '../components/Reveal.astro';
+
+const pillars = [
+  {
+    numeral: 'I',
+    title: 'A House of Prayer',
+    body: 'Before Ember Ridge ministers to people, it ministers to God — through worship, intercession, consecration, and attentive obedience.',
+    href: '/house-of-prayer',
+  },
+  {
+    numeral: 'II',
+    title: 'Restoration',
+    body: 'Leaders are received without performance, told the truth in love, and given room for the Holy Spirit to work at a depth scheduled gatherings rarely allow.',
+    href: '/story',
+  },
+  {
+    numeral: 'III',
+    title: 'Shared Life',
+    body: 'An Acts 2 rhythm of Scripture, fellowship, shared meals, prayer, and daily faithfulness — because some healing occurs only through proximity.',
+    href: '/ministry-model',
+  },
+  {
+    numeral: 'IV',
+    title: 'Faithful Sending',
+    body: 'What God restores here is not meant to remain on the mountain. People return to their homes, churches, and assignments carrying renewed fire.',
+    href: '/ministry-model#sending',
+  },
+];
+
+const campus = [
+  'The lodge and great room',
+  'The covered porch',
+  'The prayer garden',
+  'Prayer trails and fire circle',
+  'The worship pavilion',
+  'The leadership residence',
+];
+---
+
+<BaseLayout
+  title="Home"
+  description="Ember Ridge is a house in Moravian Falls, North Carolina that ministers first to the Lord, restores those who carry great responsibility, and sends them back strengthened for the work of the Kingdom. A ministry of Firebrand Revivalists."
+>
+  <HomeHero />
+
+  <!-- Mission statement -->
+  <Section tone="charcoal" size="sm">
+    <div class="shell">
+      <Reveal class="mx-auto max-w-3xl text-center">
+        <p class="eyebrow">The Assignment</p>
+        <p class="pullquote mt-6">
+          “Ember Ridge exists to tend the fire God has entrusted to His people.”
+        </p>
+        <p class="mt-7 text-[1.0625rem] leading-relaxed text-stone-300">
+          God restores people in His presence so they can return faithfully to the
+          assignments He has entrusted to them.
+        </p>
+      </Reveal>
+    </div>
+  </Section>
+
+  <!-- The need -->
+  <Section labelledby="need-heading">
+    <div class="shell grid gap-14 lg:grid-cols-12 lg:gap-16">
+      <div class="lg:col-span-5">
+        <Reveal>
+          <SectionHeading
+            id="need-heading"
+            eyebrow="The Founding Vision"
+            title="The fire that still remains"
+          />
+        </Reveal>
+      </div>
+      <div class="lg:col-span-7">
+        <Reveal delay="100" class="prose-body">
+          <p>
+            Across churches, ministries, schools, businesses, communities, and
+            public life, faithful people are carrying burdens few others ever see.
+            Pastors shepherd while navigating cultural pressure and private warfare.
+            Missionaries pour themselves out far from familiar support. Intercessors
+            stand in the gap for others, often without anyone recognizing the cost of
+            that hidden service. Many continue serving long after joy has been
+            replaced by survival.
+          </p>
+          <p>
+            Too often, the Church celebrates those who pour themselves out without
+            creating places where they can be poured back into. Ember Ridge is an
+            answer to that need — not a conference venue built around constant
+            programming, nor a retreat center measured by volume, but a home devoted
+            first to the Lord.
+          </p>
+          <p>
+            An ember can appear small, buried, or nearly spent, yet it still holds
+            living fire. When protected, nourished, and given breath, it can burn
+            brightly again. Leaders may arrive tired, disappointed, or uncertain
+            without having lost the calling God placed within them.
+          </p>
+          <p class="pt-2">
+            <a href="/vision" class="btn-quiet">Read the founding vision →</a>
+          </p>
+        </Reveal>
+      </div>
+    </div>
+  </Section>
+
+  <!-- Four pillars -->
+  <Section tone="charcoal" labelledby="pillars-heading">
+    <div class="shell">
+      <Reveal>
+        <SectionHeading
+          id="pillars-heading"
+          eyebrow="The Order of Ministry"
+          title="Four convictions that shape the house"
+          align="center"
+        />
+      </Reveal>
+      <div class="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {pillars.map((p, i) => (
+          <Reveal delay={i * 90}>
+            <Card numeral={p.numeral} title={p.title}>
+              <p>{p.body}</p>
+              <p class="mt-5">
+                <a href={p.href} class="btn-quiet !text-[0.6875rem] !tracking-[0.16em]">Learn more →</a>
+              </p>
+            </Card>
+          </Reveal>
+        ))}
+      </div>
+    </div>
+  </Section>
+
+  <!-- The Place -->
+  <Section labelledby="place-heading">
+    <div class="shell grid items-center gap-14 lg:grid-cols-12 lg:gap-16">
+      <div class="lg:col-span-6">
+        <Reveal>
+          <SectionHeading
+            id="place-heading"
+            eyebrow="The Place"
+            title="A land marked by prayer"
+            lede="Ember Ridge will stand within a wider spiritual story — one shaped by the Moravian witness, the history of Prayer Mountain, and generations of people who gave themselves to God."
+          />
+          <p class="mt-8 max-w-xl text-[1.0625rem] leading-relaxed text-stone-300">
+            In 1727 the community at Herrnhut established a continual prayer watch
+            that endured for more than a hundred years and helped fuel one of the
+            most influential missionary movements in Church history. When Moravians
+            later settled in North Carolina, they carried that disciplined life of
+            prayer, work, worship, and stewardship into the region.
+          </p>
+          <p class="mt-6">
+            <a href="/the-place" class="btn-quiet">Moravian Falls &amp; Prayer Mountain →</a>
+          </p>
+        </Reveal>
+      </div>
+
+      <div class="lg:col-span-6">
+        <Reveal delay="120" class="card !border-charcoal-300 !bg-charcoal/60 !p-9 sm:!p-11">
+          <p class="eyebrow">The Campus Vision</p>
+          <h3 class="display-3 mt-4">A place designed to serve the mission</h3>
+          <p class="mt-5 text-[0.9375rem] leading-relaxed text-stone-300">
+            Every renovation, building, and outdoor space is evaluated by one
+            question: does it help people minister to the Lord, live in healthy
+            community, and be restored for faithful service?
+          </p>
+          <ul class="mt-8 grid gap-x-8 gap-y-3 sm:grid-cols-2">
+            {campus.map((item) => (
+              <li class="flex items-start gap-3 text-sm text-stone-100">
+                <span aria-hidden="true" class="mt-2 h-1 w-1 shrink-0 rounded-full bg-gold-500"></span>
+                {item}
+              </li>
+            ))}
+          </ul>
+          <p class="mt-9">
+            <a href="/campus-vision" class="btn-quiet">Explore the campus vision →</a>
+          </p>
+        </Reveal>
+      </div>
+    </div>
+  </Section>
+
+  <!-- Trust -->
+  <Section tone="charcoal" size="sm" labelledby="trust-heading">
+    <div class="shell">
+      <Reveal class="mx-auto max-w-3xl text-center">
+        <p class="eyebrow">Leadership &amp; Stewardship</p>
+        <h2 id="trust-heading" class="display-3 mt-4">
+          Family-lived, professionally governed, and accountable beyond the
+          personalities who first carry the vision.
+        </h2>
+        <p class="mt-7 text-[1.0625rem] leading-relaxed text-stone-300">
+          Faith and financial responsibility are not opposing values. The spiritual
+          nature of this assignment will never be used to avoid practical
+          accountability.
+        </p>
+        <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <a href="/leadership" class="btn-outline w-full sm:w-auto">Meet the leadership</a>
+          <a href="/financial-stewardship" class="btn-outline w-full sm:w-auto">Financial stewardship</a>
+        </div>
+      </Reveal>
+    </div>
+  </Section>
+
+  <CTASection />
+</BaseLayout>

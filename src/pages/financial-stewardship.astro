@@ -1,0 +1,208 @@
+---
+// src/pages/financial-stewardship.astro — Financial Stewardship
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import Section from '../components/Section.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import Prose from '../components/Prose.astro';
+import CapitalTable from '../components/CapitalTable.astro';
+import Callout from '../components/Callout.astro';
+import PullQuote from '../components/PullQuote.astro';
+import ReviewNote from '../components/ReviewNote.astro';
+import Card from '../components/Card.astro';
+import Reveal from '../components/Reveal.astro';
+import CTASection from '../components/CTASection.astro';
+
+const funding = [
+  'Major gifts',
+  'Recurring partners',
+  'Foundation or ministry grants',
+  'Donated professional services',
+  'Building materials and furnishings',
+  'Equipment',
+  'Legacy gifts',
+];
+
+const operating = [
+  'Property insurance and utilities',
+  'Maintenance and preventive care',
+  'Hospitality and guest provision',
+  'Staff and compensated intercessors',
+  'Ministry supplies and technology',
+  'Security and professional services',
+  'Transportation',
+  'An operating reserve',
+];
+---
+
+<BaseLayout
+  title="Financial Stewardship"
+  description="Faith and financial responsibility are not opposing values. Preliminary capital planning ranges, operating principles, and the standards of transparency that govern gifts to Ember Ridge."
+>
+  <PageHero
+    eyebrow="The Financial Framework"
+    title="Stewarding the Vision With Clarity"
+    lede="Faith and financial responsibility are not opposing values. Every gift should be received with gratitude, administered with integrity, and connected to a clear purpose."
+  />
+
+  <Section labelledby="capital-heading">
+    <div class="shell">
+      <Reveal>
+        <SectionHeading
+          id="capital-heading"
+          eyebrow="Capital Planning"
+          title="Preliminary planning ranges — not contractor bids"
+        />
+      </Reveal>
+
+      <div class="mt-12">
+        <Prose>
+          <p>
+            The working capital target carried forward from the prior property vision is
+            approximately <strong class="font-medium text-cream">$3.0 million to $3.5
+            million</strong> for acquisition of the existing lodge and a comprehensive
+            renovation and operational setup.
+          </p>
+          <p>
+            The figures below are preliminary planning ranges rather than contractor
+            bids. They will be replaced or refined after appraisal, inspection, survey,
+            architectural development, engineering review, contractor pricing, and board
+            approval.
+          </p>
+        </Prose>
+      </div>
+
+      <Reveal delay="80">
+        <CapitalTable />
+      </Reveal>
+
+      <ReviewNote label="Not a fixed commitment">
+        The working range above should not be read as a fixed construction promise.
+        Mountain properties can reveal structural, access, drainage, utility, or code
+        conditions only after professional review. No major construction commitment
+        should be made solely on a conceptual rendering. The acquisition and renovation
+        plan will be revised as real information is received, and material changes will
+        be communicated to committed partners.
+      </ReviewNote>
+    </div>
+  </Section>
+
+  <Section tone="charcoal" labelledby="pending-heading">
+    <div class="shell">
+      <Reveal>
+        <SectionHeading
+          id="pending-heading"
+          eyebrow="Still to Be Priced"
+          title="We will not present an invented total"
+        />
+      </Reveal>
+      <div class="mt-12">
+        <Prose>
+          <p>
+            The separate leadership residence building requires its own architectural
+            design, structural and geotechnical engineering, site work, utility plan, and
+            contractor pricing.
+          </p>
+          <p>
+            The worship pavilion, prayer garden, trail system, and substantial site
+            improvements may fit partly within the renovation range or may require
+            separately funded add-alternates, depending on bids and priorities. Until
+            those elements are professionally priced, the ministry will not present an
+            invented total. They remain integral to the master vision even where final
+            costs are still pending.
+          </p>
+        </Prose>
+      </div>
+    </div>
+  </Section>
+
+  <Section labelledby="operating-heading">
+    <div class="shell grid gap-14 lg:grid-cols-2 lg:gap-16">
+      <Reveal>
+        <h2 id="operating-heading" class="display-3">The annual operating budget</h2>
+        <div class="rule-gold mt-6"></div>
+        <p class="mt-7 text-[0.9375rem] leading-relaxed text-stone-300">
+          Developed alongside the capital plan. Compensation and related-party
+          arrangements will be documented and approved through appropriate governance.
+          Any temporary housing, project management, or transitional costs connected to
+          construction will be identified separately rather than hidden inside broad
+          renovation categories.
+        </p>
+        <ul class="mt-8 space-y-3">
+          {operating.map((item) => (
+            <li class="flex items-start gap-3 text-[0.9375rem] text-stone-100">
+              <span aria-hidden="true" class="mt-2.5 h-1 w-1 shrink-0 rounded-full bg-gold-500"></span>
+              {item}
+            </li>
+          ))}
+        </ul>
+      </Reveal>
+
+      <Reveal delay="120">
+        <h2 class="display-3">How the work may be funded</h2>
+        <div class="rule-gold mt-6"></div>
+        <p class="mt-7 text-[0.9375rem] leading-relaxed text-stone-300">
+          Capital funding may include a combination of the following. Ongoing operations
+          may be supported through donations, recurring partnerships, and properly
+          documented support connected to the family’s marketplace work.
+        </p>
+        <ul class="mt-8 space-y-3">
+          {funding.map((item) => (
+            <li class="flex items-start gap-3 text-[0.9375rem] text-stone-100">
+              <span aria-hidden="true" class="mt-2.5 h-1 w-1 shrink-0 rounded-full bg-bronze-light"></span>
+              {item}
+            </li>
+          ))}
+        </ul>
+      </Reveal>
+    </div>
+  </Section>
+
+  <Section tone="charcoal" labelledby="donor-heading">
+    <div class="shell">
+      <Reveal>
+        <SectionHeading
+          id="donor-heading"
+          eyebrow="Donor Trust"
+          title="Restricted gifts tracked for their stated purpose"
+        />
+      </Reveal>
+      <div class="mt-12">
+        <Prose>
+          <p>
+            All gifts designated for Ember Ridge will be received and administered
+            through Firebrand Revivalists in accordance with its governing documents and
+            applicable law. Restricted gifts will be tracked for their stated purpose,
+            and financial reporting will be provided at a level appropriate to the
+            project and the partner relationship.
+          </p>
+        </Prose>
+
+        <ReviewNote label="Needs legal review">
+          Before publishing, confirm the tax status of Firebrand Revivalists and the
+          precise language used to describe deductibility, gift receipting, restricted
+          gift handling, and donor reporting. Do not state or imply tax outcomes without
+          confirmation from counsel and the ministry’s accountant. See our
+          <a href="/legal/disclaimer" class="underline">Disclaimer</a>.
+        </ReviewNote>
+
+        <div class="mt-14 grid gap-6 md:grid-cols-3">
+          <Reveal><Card title="Prayerful dependence">without financial vagueness.</Card></Reveal>
+          <Reveal delay="90"><Card title="Faith">without presumption.</Card></Reveal>
+          <Reveal delay="180"><Card title="Vision">without careless stewardship.</Card></Reveal>
+        </div>
+
+        <PullQuote cite="Psalm 127:1">
+          Unless the Lord builds the house, those who build it labor in vain.
+        </PullQuote>
+      </div>
+    </div>
+  </Section>
+
+  <CTASection
+    title="Give toward the work"
+    body="Some will give sacrificially toward the property, the renovation, the residence building, the pavilion, the prayer garden, the intercession team, or the long-term operating foundation."
+    primary={{ label: 'Partner With Us', href: '/partner#give' }}
+    secondary={{ label: 'Ask a question', href: '/contact' }}
+  />
+</BaseLayout>

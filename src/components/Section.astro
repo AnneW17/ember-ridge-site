@@ -1,0 +1,27 @@
+---
+// src/components/Section.astro — consistent vertical rhythm + surface tone.
+// `charcoal` bands now carry a layered wash and a hairline of gold light along
+// the top edge, so alternating sections read as lit planes rather than flat fills.
+interface Props {
+  id?: string;
+  tone?: 'ink' | 'charcoal' | 'cream';
+  size?: 'default' | 'sm';
+  class?: string;
+  labelledby?: string;
+}
+const { id, tone = 'ink', size = 'default', class: className = '', labelledby } = Astro.props;
+
+const tones = {
+  ink: 'bg-ink',
+  charcoal:
+    'lit-edge border-y border-charcoal-300 bg-[linear-gradient(180deg,#141519_0%,#101113_55%,#0d0e10_100%)]',
+  cream: 'surface-cream',
+};
+---
+<section
+  id={id}
+  aria-labelledby={labelledby}
+  class:list={[size === 'sm' ? 'section-sm' : 'section', tones[tone], 'relative', className]}
+>
+  <slot />
+</section>

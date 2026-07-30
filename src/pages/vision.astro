@@ -1,0 +1,138 @@
+---
+// src/pages/vision.astro — The Vision
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import Section from '../components/Section.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import Prose from '../components/Prose.astro';
+import PullQuote from '../components/PullQuote.astro';
+import Card from '../components/Card.astro';
+import Reveal from '../components/Reveal.astro';
+import CTASection from '../components/CTASection.astro';
+
+const carried = [
+  'Pastors shepherding under cultural pressure and private warfare',
+  'Missionaries pouring themselves out far from familiar support',
+  'Chaplains, educators, and public servants making consequential decisions',
+  'Marketplace leaders trying to remain anchored in truth',
+  'Intercessors standing in the gap without recognition of the cost',
+  'Ministry families absorbing the strain together',
+];
+
+const multiplying = [
+  { title: 'Healthy leaders', body: 'strengthen healthy families.' },
+  { title: 'Healthy families', body: 'strengthen churches, organizations, and communities.' },
+  { title: 'Those communities', body: 'can influence regions and nations.' },
+];
+---
+
+<BaseLayout
+  title="The Vision"
+  description="The founding vision of Ember Ridge: a house prepared for those who carry unusual responsibility — received without performance, restored in the presence of God, and sent back with clarity and endurance."
+>
+  <PageHero
+    eyebrow="The Founding Vision"
+    title="The Fire That Still Remains"
+    lede="God restores people in His presence so they can return faithfully to the assignments He has entrusted to them."
+  />
+
+  <Section>
+    <div class="shell">
+      <Prose>
+        <p>
+          There are places built because an opportunity appears, and there are
+          places prepared because a generation has reached a moment of need. Ember
+          Ridge is being formed from the conviction that the Body of Christ needs a
+          place where those who carry unusual responsibility can be received without
+          performance, restored in the presence of God, strengthened within healthy
+          family life, and sent back into their callings with clarity and endurance.
+        </p>
+        <p>
+          Across churches, ministries, schools, businesses, communities, and public
+          life, faithful people are carrying burdens few others ever see. Many
+          continue serving long after joy has been replaced by survival.
+        </p>
+      </Prose>
+
+      <Reveal delay="80" class="mt-14 grid gap-4 sm:grid-cols-2">
+        {carried.map((item) => (
+          <div class="flex items-start gap-4 border-l border-charcoal-300 pl-5 py-1">
+            <span aria-hidden="true" class="mt-2.5 h-1 w-1 shrink-0 rounded-full bg-gold-500"></span>
+            <p class="text-[0.9375rem] leading-relaxed text-stone-100">{item}</p>
+          </div>
+        ))}
+      </Reveal>
+
+      <div class="mt-16">
+        <Prose>
+          <p>
+            Too often, the Church celebrates those who pour themselves out without
+            creating places where they can be poured back into. Ember Ridge is an
+            answer to that need. It will not be a conference venue built around
+            constant programming, nor a retreat center measured by volume. It will be
+            a home devoted first to the Lord, where worship, prayer, Scripture,
+            shared meals, honest relationships, rest, healing, and wise counsel
+            create room for the Holy Spirit to work at a depth that scheduled
+            gatherings rarely allow.
+          </p>
+        </Prose>
+
+        <PullQuote>
+          The lodge is not a venue. It is the next room in our family home, made
+          larger so that more sons and daughters can come in.
+        </PullQuote>
+
+        <Prose>
+          <p>
+            The name carries the heart of the assignment. An ember can appear small,
+            buried, or nearly spent, yet it still holds living fire. When protected,
+            nourished, and given breath, it can burn brightly again. In the same way,
+            leaders may arrive tired, disappointed, wounded, or uncertain without
+            having lost the calling God placed within them. Ember Ridge exists to
+            tend what He has already ignited — not to create identity, but to help
+            restore strength, purity, joy, and obedience around it.
+          </p>
+        </Prose>
+      </div>
+    </div>
+  </Section>
+
+  <Section tone="charcoal" labelledby="multiplying-heading">
+    <div class="shell">
+      <Reveal>
+        <SectionHeading
+          id="multiplying-heading"
+          eyebrow="A Multiplying Vision"
+          title="What God restores here is not meant to remain on the mountain"
+          lede="This work is rooted in a multiplying vision."
+        />
+      </Reveal>
+
+      <div class="mt-14 grid gap-6 md:grid-cols-3">
+        {multiplying.map((m, i) => (
+          <Reveal delay={i * 100}>
+            <Card title={m.title}>
+              <p>{m.body}</p>
+            </Card>
+          </Reveal>
+        ))}
+      </div>
+
+      <Reveal delay="120" class="mt-14 max-w-2xl">
+        <p class="text-[1.0625rem] leading-relaxed text-stone-300">
+          People will return to their homes and assignments carrying renewed love for
+          Christ, greater spiritual maturity, healthier relationships, clearer
+          discernment, and a deeper capacity to serve.
+        </p>
+        <p class="mt-7">
+          <a href="/ministry-model" class="btn-quiet">How the ministry model works →</a>
+        </p>
+      </Reveal>
+    </div>
+  </Section>
+
+  <CTASection
+    title="Take this vision before the Lord"
+    body="The invitation is not rooted in pressure. It is rooted in discernment. We ask those who encounter this vision to ask whether God is inviting them to pray, counsel, build, give, serve, or connect the ministry with others who carry a corresponding assignment."
+  />
+</BaseLayout>

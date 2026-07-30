@@ -1,0 +1,123 @@
+---
+// src/components/Embers.astro
+// Three independent particle layers for the hero: slow smoke wisps, drifting
+// embers, and occasional sparks — plus the warm amber pool behind the content.
+//
+// Performance notes:
+//   • Every particle animates transform + opacity only, so the work stays on
+//     the compositor and never triggers layout or paint.
+//   • Positions are generated at build time from a seeded generator, so the
+//     static HTML is identical on every build and there is no layout shift.
+//   • Mobile hides the denser layers with `hidden sm:block` — display:none
+//     stops the animation entirely rather than merely hiding it.
+//   • The whole thing is decorative: aria-hidden, pointer-events-none, and
+//     removed outright under prefers-reduced-motion (see global.css).
+
+interface Props {
+  /** Particle density. `full` for the homepage hero, `light` for interior pages. */
+  density?: 'full' | 'light';
+}
+const { density = 'full' } = Astro.props;
+
+// Deterministic pseudo-random so the build output never changes between runs.
+let seed = 20260730;
+const rand = () => {
+  seed = (seed * 1664525 + 1013904223) % 4294967296;
+  return seed / 4294967296;
+};
+const between = (min: number, max: number, dp = 2) =>
+  Number((min + rand() * (max - min)).toFixed(dp));
+
+const counts = density === 'full'
+  ? { smoke: 5, ember: 18, spark: 6, mobileEmber: 6, mobileSmoke: 2 }
+  : { smoke: 3, ember: 9, spark: 3, mobileEmber: 4, mobileSmoke: 1 };
+
+const smoke = Array.from({ length: counts.smoke }, (_, i) => ({
+  i,
+  left: between(4, 92),
+  size: between(200, 400, 0),
+  duration: between(38, 62, 1),
+  delay: between(-40, 0, 1),
+  drift: between(-90, 120, 0),
+}));
+
+const embers = Array.from({ length: counts.ember }, (_, i) => ({
+  i,
+  left: between(2, 97),
+  size: between(1.8, 4.2, 1),
+  duration: between(15, 30, 1),
+  delay: between(-28, 0, 1),
+  drift: between(-70, 90, 0),
+  peak: between(0.45, 0.9),
+}));
+
+const sparks = Array.from({ length: counts.spark }, (_, i) => ({
+  i,
+  left: between(8, 90),
+  bottom: between(12, 68),
+  duration: between(9, 17, 1),
+  delay: between(-14, 0, 1),
+}));
+---
+
+<div
+  aria-hidden="true"
+  class="pointer-events-none absolute inset-0 overflow-hidden [contain:strict]"
+>
+  <!-- Warm amber light radiating from behind the content -->
+  <div
+    data-parallax
+    data-parallax-speed="0.06"
+    class="absolute left-1/2 top-[-18%] h-[62rem] w-[62rem] max-w-[160vw] -translate-x-1/2
+           rounded-full blur-[100px] animate-breathe glow-gold-soft [will-change:transform,opacity]"
+  ></div>
+  <div
+    class="absolute bottom-[-28%] right-[-12%] h-[42rem] w-[42rem] max-w-[130vw] rounded-full blur-[90px]
+           animate-ember-glow bg-[radial-gradient(circle,rgba(110,78,46,0.24),transparent_66%)]"
+  ></div>
+
+  <!-- Layer 1 — smoke wisps. Slowest, furthest back. -->
+  <div data-parallax data-parallax-speed="0.10" class="absolute inset-0">
+    {smoke.map((s) => (
+      <span
+        data-particle
+        class:list={['absolute bottom-[-20%] rounded-full blur-[46px]', s.i >= counts.mobileSmoke && 'hidden sm:block']}
+        style={`left:${s.left}%;width:${s.size}px;height:${s.size * 0.72}px;
+                background:radial-gradient(circle,rgba(214,190,160,0.16),transparent 68%);
+                --smoke-drift:${s.drift}px;
+                animation:smoke-drift ${s.duration}s linear ${s.delay}s infinite;
+                will-change:transform,opacity;`}
+      ></span>
+    ))}
+  </div>
+
+  <!-- Layer 2 — embers. Mid depth, moves independently of the smoke. -->
+  <div data-parallax data-parallax-speed="0.20" class="absolute inset-0">
+    {embers.map((e) => (
+      <span
+        data-particle
+        class:list={['absolute bottom-[-6%] rounded-full', e.i >= counts.mobileEmber && 'hidden sm:block']}
+        style={`left:${e.left}%;width:${e.size}px;height:${e.size}px;
+                background:radial-gradient(circle,#f0d79a,#c8a24a 60%,rgba(168,135,58,0) 100%);
+                box-shadow:0 0 ${e.size * 3}px rgba(200,162,74,0.55);
+                --ember-drift:${e.drift}px;--ember-peak:${e.peak};
+                animation:ember-rise ${e.duration}s linear ${e.delay}s infinite;
+                will-change:transform,opacity;`}
+      ></span>
+    ))}
+  </div>
+
+  <!-- Layer 3 — sparks. Rare, brief, closest to the viewer. -->
+  <div data-parallax data-parallax-speed="0.30" class="absolute inset-0">
+    {sparks.map((s) => (
+      <span
+        data-particle
+        class="absolute hidden h-[2px] w-[2px] rounded-full bg-gold-100 sm:block"
+        style={`left:${s.left}%;bottom:${s.bottom}%;
+                box-shadow:0 0 8px 1px rgba(244,231,196,0.8);
+                animation:spark-flare ${s.duration}s ease-in-out ${s.delay}s infinite;
+                will-change:transform,opacity;`}
+      ></span>
+    ))}
+  </div>
+</div>

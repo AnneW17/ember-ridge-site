@@ -1,0 +1,73 @@
+---
+// src/pages/contact.astro — Contact
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import Section from '../components/Section.astro';
+import ContactForm from '../components/ContactForm.astro';
+import Reveal from '../components/Reveal.astro';
+import { site } from '../data/site';
+---
+
+<BaseLayout
+  title="Contact"
+  description="Reach Ember Ridge with a partnership inquiry, an offer of professional expertise, or a referral for a leader or ministry family."
+>
+  <PageHero
+    eyebrow="Contact"
+    title="Begin a Conversation"
+    lede="Whether you are offering help, asking a question, or simply want to understand this work better — we would be glad to hear from you."
+  />
+
+  <Section>
+    <div class="shell grid gap-14 lg:grid-cols-12 lg:gap-16">
+      <!-- Form -->
+      <div class="lg:col-span-7">
+        <Reveal>
+          <h2 class="display-3">Send a message</h2>
+          <div class="brushed-gold mt-6 h-px w-16"></div>
+          <p class="mt-7 max-w-xl text-[0.9375rem] leading-relaxed text-stone-300">
+            Ember Ridge operates primarily through trusted relationships, referrals, and
+            word of mouth.
+          </p>
+          <div class="mt-10">
+            <ContactForm />
+          </div>
+        </Reveal>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="lg:col-span-5">
+        <Reveal delay={120} class="glass p-8 sm:p-9">
+          <h2 class="font-display text-xl text-cream">Direct contact</h2>
+          <div class="brushed-gold mt-5 h-px w-14"></div>
+          <dl class="mt-7 space-y-6 text-sm">
+            <div>
+              <dt class="font-sans text-[0.625rem] uppercase tracking-[0.18em] text-stone-500">Email</dt>
+              <dd class="mt-1.5">
+                <a href={`mailto:${site.contact.email}`} class="link-gold break-words">{site.contact.email}</a>
+              </dd>
+            </div>
+            <div>
+              <dt class="font-sans text-[0.625rem] uppercase tracking-[0.18em] text-stone-500">Location</dt>
+              <dd class="mt-1.5 text-stone-100">{site.location}</dd>
+            </div>
+            <div>
+              <dt class="font-sans text-[0.625rem] uppercase tracking-[0.18em] text-stone-500">Ministry</dt>
+              <dd class="mt-1.5 text-stone-100">An auxiliary ministry of Firebrand Revivalists</dd>
+            </div>
+          </dl>
+        </Reveal>
+
+        <!-- Quiet safeguard. Deliberately understated, but present. -->
+        <Reveal delay={200}>
+          <p class="mt-8 border-l border-charcoal-300 pl-5 text-xs leading-relaxed text-stone-500">
+            This form is not monitored continuously and is not an emergency service. If
+            you are in immediate danger, please contact local emergency services. In the
+            United States, the 988 Suicide &amp; Crisis Lifeline can be reached by
+            calling or texting <span class="text-stone-300">988</span>.
+          </p>
+        </Reveal>
+      </aside>
+    </div>
+  </Section>
+</BaseLayout>

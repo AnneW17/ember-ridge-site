@@ -1,0 +1,6 @@
+---
+// src/components/Prose.astro — editorial body column.
+interface Props { class?: string; }
+const { class: className = '' } = Astro.props;
+---
+<div class:list={['prose-body max-w-[42rem]', className]}><slot /></div>

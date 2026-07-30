@@ -1,0 +1,25 @@
+---
+// src/pages/404.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/Section.astro';
+import { nav } from '../data/site';
+---
+<BaseLayout title="Page Not Found" description="The page you were looking for could not be found.">
+  <Section class="pt-44">
+    <div class="shell">
+      <div class="mx-auto max-w-xl text-center">
+        <p class="eyebrow">404</p>
+        <h1 class="display-2 mt-5">This page could not be found.</h1>
+        <div class="rule-gold mx-auto mt-7"></div>
+        <p class="mt-8 text-[1.0625rem] leading-relaxed text-stone-300">
+          The page may have moved. Here is the way back.
+        </p>
+        <ul class="mt-10 flex flex-wrap justify-center gap-x-6 gap-y-3">
+          {nav.map((item) => (
+            <li><a href={item.href} class="link-gold text-sm">{item.label}</a></li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </Section>
+</BaseLayout>

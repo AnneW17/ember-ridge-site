@@ -1,0 +1,35 @@
+---
+// src/components/ConceptFigure.astro
+// A concept reference image with its caption. Replacing a placeholder is a
+// one-line change: swap `src` for the real rendering and update `alt`.
+interface Props {
+  src: string;
+  alt: string;
+  caption: string;
+  /** Eager-load the first image on the page; lazy-load the rest. */
+  eager?: boolean;
+}
+const { src, alt, caption, eager = false } = Astro.props;
+---
+<figure class="group">
+  <div class="relative overflow-hidden border border-charcoal-300 bg-charcoal shadow-[var(--shadow-lift)]
+              transition-all duration-700 [transition-timing-function:var(--ease-refined)]
+              group-hover:border-gold-700/60 group-hover:shadow-[var(--shadow-lift-lg),var(--shadow-glow-gold)]">
+    <img
+      src={src}
+      alt={alt}
+      width="1600"
+      height="900"
+      loading={eager ? 'eager' : 'lazy'}
+      decoding="async"
+      class="aspect-[16/9] w-full object-cover transition-transform duration-[1200ms]
+             [transition-timing-function:var(--ease-refined)] group-hover:scale-[1.02]"
+    />
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0
+         bg-[radial-gradient(120%_70%_at_50%_0%,rgba(200,162,74,0.07),transparent_60%)]"></div>
+  </div>
+  <figcaption class="mt-4 flex items-start gap-3 text-sm leading-relaxed text-stone-500">
+    <span aria-hidden="true" class="mt-2 h-1 w-1 shrink-0 rounded-full bg-gold-600"></span>
+    {caption}
+  </figcaption>
+</figure>

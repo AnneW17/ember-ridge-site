@@ -1,0 +1,108 @@
+---
+// src/components/Footer.astro
+import { nav, secondaryNav, legalNav, site } from '../data/site';
+---
+
+<footer class="relative grain border-t border-charcoal-300 bg-ink">
+  <div class="shell py-16 sm:py-20">
+    <div class="grid gap-12 lg:grid-cols-12 lg:gap-8">
+      <!-- Identity -->
+      <div class="lg:col-span-5">
+        <img
+          src="/images/ember-ridge-logo-dark.png"
+          alt="Ember Ridge"
+          width="640"
+          height="640"
+          class="h-20 w-auto opacity-90"
+        />
+        <p class="mt-6 max-w-sm font-display text-lg italic leading-relaxed text-stone-100">
+          {site.tagline}
+        </p>
+        <p class="mt-5 max-w-sm text-sm leading-relaxed text-stone-500">
+          Restoring those who carry great responsibility, and sending them back
+          strengthened for the work of the Kingdom.
+        </p>
+
+        <div class="mt-8 flex items-center gap-4">
+          <img
+            src="/images/firebrand-logo-dark.png"
+            alt="Firebrand Revivalists"
+            width="640"
+            height="640"
+            class="h-16 w-auto opacity-75 transition-opacity duration-300 hover:opacity-100"
+          />
+          <div class="text-xs leading-relaxed text-stone-500">
+            <span class="block font-sans uppercase tracking-[0.18em] text-stone-300">
+              An auxiliary ministry of
+            </span>
+            <span class="block">Firebrand Revivalists</span>
+            <span class="block">{site.location}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Explore -->
+      <nav aria-label="Footer" class="lg:col-span-3">
+        <h2 class="eyebrow">Explore</h2>
+        <ul class="mt-6 space-y-3">
+          {nav.slice(1).map((item) => (
+            <li>
+              <a href={item.href} class="text-sm text-stone-300 transition-colors hover:text-gold-300">
+                {item.label}
+              </a>
+            </li>
+          ))}
+          {secondaryNav.map((item) => (
+            <li>
+              <a href={item.href} class="text-sm text-stone-300 transition-colors hover:text-gold-300">
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <!-- Connect -->
+      <div class="lg:col-span-4">
+        <h2 class="eyebrow">Connect</h2>
+        <ul class="mt-6 space-y-3 text-sm">
+          <li>
+            <span class="block text-stone-500">General inquiries</span>
+            <a href={`mailto:${site.contact.email}`} class="link-gold">{site.contact.email}</a>
+          </li>
+          <li>
+            <span class="block text-stone-500">Mailing</span>
+            <span class="text-stone-300">{site.contact.mailing}</span>
+          </li>
+        </ul>
+        <a href="/partner" class="btn-outline mt-8 w-full sm:w-auto">Tend the fire with us</a>
+      </div>
+    </div>
+
+    <hr class="rule-hair my-12" />
+
+    <div class="flex flex-col gap-6">
+      <p class="font-sans text-[0.625rem] uppercase tracking-[0.28em] text-gold-600">
+        {site.motto}
+      </p>
+
+      <ul class="flex flex-wrap gap-x-6 gap-y-2">
+        {legalNav.map((item) => (
+          <li>
+            <a href={item.href} class="text-xs text-stone-500 transition-colors hover:text-stone-100">
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <div class="flex flex-col gap-2 text-xs text-stone-500 sm:flex-row sm:items-center sm:justify-between">
+        <p>&copy; {new Date().getFullYear()} Firebrand Revivalists. All rights reserved.</p>
+        <p class="max-w-md text-stone-500 sm:text-right">
+          Ember Ridge is in formation. Descriptions of property, buildings, and
+          budgets are planning concepts, not commitments.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,13 @@
+---
+// src/components/PullQuote.astro
+interface Props { cite?: string; }
+const { cite } = Astro.props;
+---
+<figure data-reveal class="my-14 border-l-2 border-gold-600 pl-7 sm:pl-10">
+  <blockquote class="pullquote"><slot /></blockquote>
+  {cite && (
+    <figcaption class="mt-4 font-sans text-xs uppercase tracking-[0.18em] text-gold-600">
+      {cite}
+    </figcaption>
+  )}
+</figure>

@@ -1,0 +1,368 @@
+/* src/styles/global.css
+   EMBER RIDGE — DESIGN SYSTEM
+   Tailwind CSS v4 (CSS-first configuration). All brand tokens live in @theme
+   below and are available as utilities, e.g. bg-ink, text-gold-400, font-display.
+*/
+
+@import "tailwindcss";
+
+@theme {
+  /* ── Foundation: black & charcoal ─────────────────────────────── */
+  --color-ink: #0a0a0b;          /* page background — near black */
+  --color-ink-800: #101113;
+  --color-charcoal: #16171a;     /* raised surfaces, cards */
+  --color-charcoal-400: #1e2024; /* hover surfaces */
+  --color-charcoal-300: #2a2c31; /* hairline borders on dark */
+
+  /* ── Accent: gold (use sparingly) ─────────────────────────────── */
+  --color-gold-100: #f4e7c4;
+  --color-gold-300: #e0c380;
+  --color-gold-400: #cfae63;
+  --color-gold-500: #c8a24a;     /* primary accent */
+  --color-gold-600: #a8873a;
+  --color-gold-700: #7f6529;
+
+  /* ── Support: bronze, stone, warm neutrals, cream ─────────────── */
+  --color-bronze: #6e4e2e;
+  --color-bronze-light: #8a6440;
+  --color-stone-100: #e6e1d7;
+  --color-stone-300: #c3bcaf;
+  --color-stone-500: #8c8577;    /* body copy on dark */
+  --color-stone-700: #55504a;
+  --color-cream: #f6f2e9;        /* light sections, legal pages */
+  --color-cream-dark: #ece5d6;
+  --color-bone: #fbf9f4;
+
+  /* ── Typography ───────────────────────────────────────────────── */
+  --font-display: "Cormorant Garamond", "Iowan Old Style", Georgia, serif;
+  --font-sans: "Inter Variable", "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --text-eyebrow: 0.6875rem;
+  --text-eyebrow--line-height: 1.2;
+  --text-eyebrow--letter-spacing: 0.22em;
+
+  /* ── Depth: layered shadows and gold illumination ─────────────── */
+  --shadow-lift: 0 18px 40px -24px rgb(0 0 0 / 0.85), 0 2px 8px -4px rgb(0 0 0 / 0.6);
+  --shadow-lift-lg: 0 32px 64px -32px rgb(0 0 0 / 0.92), 0 8px 20px -12px rgb(0 0 0 / 0.7);
+  --shadow-glow-gold: 0 0 0 1px rgb(200 162 74 / 0.12), 0 12px 40px -18px rgb(200 162 74 / 0.28);
+  --shadow-glow-gold-lg: 0 0 0 1px rgb(200 162 74 / 0.18), 0 18px 56px -20px rgb(200 162 74 / 0.42);
+
+  /* ── Motion ───────────────────────────────────────────────────── */
+  --ease-refined: cubic-bezier(0.16, 0.8, 0.24, 1);
+
+  --animate-ember-drift: ember-drift 26s ease-in-out infinite alternate;
+  --animate-ember-glow: ember-glow 9s ease-in-out infinite alternate;
+  /* Almost imperceptible breathing on ambient light pools. */
+  --animate-breathe: breathe 14s ease-in-out infinite alternate;
+
+  @keyframes ember-drift {
+    0%   { transform: translate3d(-3%, 2%, 0) scale(1.06); }
+    100% { transform: translate3d(3%, -2%, 0) scale(1.14); }
+  }
+  @keyframes ember-glow {
+    0%   { opacity: 0.30; }
+    100% { opacity: 0.62; }
+  }
+  @keyframes breathe {
+    0%   { opacity: 0.42; transform: scale(1); }
+    100% { opacity: 0.66; transform: scale(1.05); }
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   PARTICLE KEYFRAMES  (hero embers, smoke, sparks)
+   Declared at top level so each particle can carry its own duration
+   and delay inline. Compositor-only properties: transform + opacity.
+   ───────────────────────────────────────────────────────────────── */
+@keyframes ember-rise {
+  0%   { opacity: 0; transform: translate3d(0, 0, 0) scale(0.6); }
+  12%  { opacity: var(--ember-peak, 0.75); }
+  70%  { opacity: var(--ember-peak, 0.75); }
+  100% { opacity: 0; transform: translate3d(var(--ember-drift, 24px), -100vh, 0) scale(1); }
+}
+@keyframes smoke-drift {
+  0%   { opacity: 0; transform: translate3d(0, 0, 0) scale(1); }
+  25%  { opacity: 0.14; }
+  75%  { opacity: 0.10; }
+  100% { opacity: 0; transform: translate3d(var(--smoke-drift, 60px), -60vh, 0) scale(1.9); }
+}
+@keyframes spark-flare {
+  0%, 88%, 100% { opacity: 0; transform: scale(0.4); }
+  92%           { opacity: 1; transform: scale(1); }
+  96%           { opacity: 0; transform: scale(0.6); }
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   BUTTON BASE
+   Declared as a Tailwind v4 @utility so the variants below can @apply it.
+   ───────────────────────────────────────────────────────────────── */
+@utility btn {
+  @apply inline-flex items-center justify-center gap-2 font-sans text-[0.8125rem]
+         font-medium uppercase tracking-[0.14em] transition-all duration-300;
+  transition-timing-function: var(--ease-refined);
+  padding: 1rem 2rem;
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   BASE
+   ───────────────────────────────────────────────────────────────── */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 6rem; /* clears the fixed header on anchor jumps */
+  }
+
+  body {
+    background-color: var(--color-ink);
+    color: var(--color-stone-300);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    color: var(--color-cream);
+    font-weight: 300;
+    letter-spacing: 0.006em; /* airier, more editorial than the default serif fit */
+    text-wrap: balance;
+  }
+
+  p { text-wrap: pretty; }
+
+  /* Visible, on-brand focus ring for keyboard users everywhere. */
+  :where(a, button, summary, input, textarea, select, [tabindex]):focus-visible {
+    outline: 2px solid var(--color-gold-400);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  ::selection {
+    background-color: var(--color-gold-700);
+    color: var(--color-bone);
+  }
+
+  /* Honour the OS "reduce motion" setting: no drift, no reveals, no smooth scroll. */
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+    [data-reveal] { opacity: 1 !important; transform: none !important; }
+    /* Hero particles and parallax layers hold still. */
+    [data-particle] { display: none !important; }
+    [data-parallax] { transform: none !important; }
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   COMPONENTS
+   ───────────────────────────────────────────────────────────────── */
+@layer components {
+
+  /* Layout ------------------------------------------------------- */
+  .shell      { @apply mx-auto w-full max-w-[76rem] px-6 sm:px-8 lg:px-12; }
+  .shell-tight{ @apply mx-auto w-full max-w-[46rem] px-6 sm:px-8; }
+  .section    { @apply py-20 sm:py-28 lg:py-36; }
+  .section-sm { @apply py-14 sm:py-20; }
+
+  /* Rules & dividers -------------------------------------------- */
+  .rule-gold {
+    @apply h-px w-16 border-0;
+    background-image: linear-gradient(to right, var(--color-gold-500), transparent);
+  }
+  .rule-hair { @apply h-px w-full border-0 bg-charcoal-300; }
+
+  /* Type scale --------------------------------------------------- */
+  .eyebrow {
+    @apply font-sans text-eyebrow font-medium uppercase text-gold-500;
+  }
+  .display-1 { @apply font-display text-4xl leading-[1.06] sm:text-5xl lg:text-[4.25rem]; }
+  .display-2 { @apply font-display text-3xl leading-[1.12] sm:text-4xl lg:text-5xl; }
+  .display-3 { @apply font-display text-2xl leading-[1.2] sm:text-3xl; }
+  .lede      { @apply font-display text-xl italic leading-relaxed text-stone-100 sm:text-2xl; }
+  .prose-body{ @apply space-y-6 text-[1.0625rem] leading-[1.8] text-stone-300; }
+
+  /* Buttons ------------------------------------------------------ */
+  .btn-primary {
+    @apply btn border border-gold-600 text-ink;
+    /* Brushed gold rather than flat fill. */
+    background-image: linear-gradient(145deg, var(--color-gold-400), var(--color-gold-500) 55%, var(--color-gold-600));
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.22), 0 2px 10px -6px rgb(0 0 0 / 0.8);
+  }
+  .btn-primary:hover {
+    @apply border-gold-300;
+    background-image: linear-gradient(145deg, var(--color-gold-300), var(--color-gold-400) 55%, var(--color-gold-500));
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.3), var(--shadow-glow-gold-lg);
+    transform: translateY(-2px);
+  }
+  .btn-primary:active { transform: translateY(0); }
+
+  .btn-outline {
+    @apply btn border border-stone-500/45 text-stone-100;
+  }
+  .btn-outline:hover {
+    @apply border-gold-500 text-gold-300;
+    background-color: rgb(200 162 74 / 0.06);
+    box-shadow: var(--shadow-glow-gold);
+    transform: translateY(-2px);
+  }
+  .btn-outline:active { transform: translateY(0); }
+  .btn-quiet {
+    @apply btn border-0 p-0 text-gold-400;
+  }
+  .btn-quiet:hover { @apply text-gold-300; }
+
+  /* Cards -------------------------------------------------------- */
+  .card {
+    @apply relative border border-charcoal-300 p-8 transition-all duration-500;
+    /* Layered charcoal rather than a flat fill — reads as a lit surface. */
+    background-image: linear-gradient(160deg, #1a1b1f 0%, var(--color-charcoal) 48%, #131417 100%);
+    box-shadow: var(--shadow-lift);
+    transition-timing-function: var(--ease-refined);
+  }
+  /* Ambient gold pooling at the top edge, revealed on hover. */
+  .card-lift::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 600ms var(--ease-refined);
+    background: radial-gradient(120% 70% at 50% 0%, rgb(200 162 74 / 0.10), transparent 62%);
+  }
+  .card-lift:hover {
+    @apply border-gold-700/70;
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lift-lg), var(--shadow-glow-gold);
+  }
+  .card-lift:hover::before { opacity: 1; }
+  .card-numeral {
+    @apply font-display text-2xl text-gold-600;
+  }
+
+  /* Callout / quote treatments ---------------------------------- */
+  .callout {
+    @apply border-l-2 border-gold-600 bg-charcoal/70 px-6 py-6 sm:px-8;
+  }
+  .pullquote {
+    @apply font-display text-2xl italic leading-snug text-stone-100 sm:text-3xl;
+  }
+  .review-note {
+    @apply flex gap-3 border border-gold-700/50 bg-gold-700/10 px-5 py-4
+           font-sans text-sm not-italic leading-relaxed text-gold-100;
+  }
+
+  /* Light (cream) surfaces, used for legal pages ---------------- */
+  .surface-cream { @apply bg-cream text-stone-700; }
+  .surface-cream :where(h1, h2, h3, h4) { color: #1b1a17; }
+
+  /* Legal document typography ----------------------------------- */
+  .legal-doc { @apply text-[0.9375rem] leading-[1.85]; }
+  .legal-doc h2 { @apply mt-12 mb-3 font-display text-2xl; }
+  .legal-doc h3 { @apply mt-8 mb-2 font-sans text-sm font-semibold uppercase tracking-[0.12em]; }
+  .legal-doc p  { @apply mb-4; }
+  .legal-doc ul { @apply mb-4 list-disc space-y-2 pl-6; }
+  .legal-doc a  { @apply text-bronze underline underline-offset-2; }
+
+  /* Editorial link ---------------------------------------------- */
+  .link-gold {
+    @apply text-gold-400 underline decoration-gold-700 decoration-1 underline-offset-4
+           transition-colors duration-200;
+  }
+  .link-gold:hover { @apply text-gold-300 decoration-gold-400; }
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   UTILITIES
+   ───────────────────────────────────────────────────────────────── */
+@layer utilities {
+  /* Scroll reveal: set by Reveal.astro, released by the observer. */
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 900ms var(--ease-refined), transform 900ms var(--ease-refined);
+    will-change: opacity, transform;
+  }
+  [data-reveal].is-visible { opacity: 1; transform: none; }
+
+  /* Cards rise a little further and settle, giving grids a gentle cascade.
+     :has() keeps this automatic — no markup changes at the call sites.
+     Browsers without :has() simply get the standard reveal. */
+  [data-reveal]:has(> .card),
+  [data-reveal][data-variant="rise"] {
+    transform: translateY(30px) scale(0.988);
+    transition-duration: 1000ms;
+  }
+  [data-reveal]:has(> .card).is-visible,
+  [data-reveal][data-variant="rise"].is-visible {
+    transform: none;
+  }
+
+  /* Once revealed, drop the compositor hint so long pages stay light. */
+  [data-reveal].is-visible { will-change: auto; }
+
+  /* Very light glassmorphism. Used sparingly — panels over lit backgrounds. */
+  .glass {
+    background-color: rgb(255 255 255 / 0.028);
+    backdrop-filter: blur(14px) saturate(115%);
+    -webkit-backdrop-filter: blur(14px) saturate(115%);
+    border: 1px solid rgb(255 255 255 / 0.06);
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.05), var(--shadow-lift);
+  }
+
+  /* Matte black with a layered charcoal wash — the default premium surface. */
+  .surface-matte {
+    background-image:
+      radial-gradient(120% 80% at 50% -10%, rgb(40 34 24 / 0.45), transparent 55%),
+      linear-gradient(180deg, #0d0e10 0%, var(--color-ink) 45%, #09090a 100%);
+  }
+
+  /* Ambient gold pool. Decorative — always pair with aria-hidden. */
+  .glow-gold-soft {
+    background: radial-gradient(circle, rgb(200 162 74 / 0.16), rgb(110 78 46 / 0.06) 45%, transparent 70%);
+  }
+
+  /* Brushed gold, for rules and small accents that want a little life. */
+  .brushed-gold {
+    background-image: linear-gradient(100deg,
+      var(--color-gold-700) 0%, var(--color-gold-400) 22%, var(--color-gold-600) 44%,
+      var(--color-gold-300) 68%, var(--color-gold-600) 100%);
+  }
+
+  /* Soft top-edge illumination for banded sections. */
+  .lit-edge::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    top: 0;
+    height: 1px;
+    pointer-events: none;
+    background-image: linear-gradient(to right, transparent, rgb(200 162 74 / 0.28), transparent);
+  }
+
+  /* Fine grain overlay that keeps large black fields from banding. */
+  .grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .text-shadow-deep { text-shadow: 0 2px 30px rgb(0 0 0 / 0.6); }
+
+  .sr-only-focusable:not(:focus):not(:focus-within) {
+    position: absolute;
+    width: 1px; height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+}

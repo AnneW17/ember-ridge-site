@@ -1,0 +1,170 @@
+---
+// src/pages/partner.astro — Invitation / Partner With Us
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import Section from '../components/Section.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import Prose from '../components/Prose.astro';
+import PullQuote from '../components/PullQuote.astro';
+import Callout from '../components/Callout.astro';
+import ReviewNote from '../components/ReviewNote.astro';
+import Reveal from '../components/Reveal.astro';
+
+const ways = [
+  {
+    id: 'pray',
+    numeral: 'I',
+    title: 'Pray',
+    body: 'Some will be called to pray before they are called to do anything else. Some will carry this project in intercession through acquisition, construction, transition, and opening.',
+    cta: 'Join the intercession',
+    href: '/contact',
+  },
+  {
+    id: 'advise',
+    numeral: 'II',
+    title: 'Counsel',
+    body: 'Some will bring professional wisdom in architecture, engineering, construction, finance, law, hospitality, security, technology, landscaping, or organizational development.',
+    cta: 'Offer your expertise',
+    href: '/contact',
+  },
+  {
+    id: 'build',
+    numeral: 'III',
+    title: 'Build',
+    body: 'Others will help furnish rooms, equip the kitchen, build trails, provide materials, or create the quiet details that make a house feel like home.',
+    cta: 'Help us build',
+    href: '/contact',
+  },
+  {
+    id: 'give',
+    numeral: 'IV',
+    title: 'Give',
+    body: 'Some will give sacrificially toward the property, the renovation, the residence building, the pavilion, the prayer garden, the intercession team, or the long-term operating foundation.',
+    cta: 'Discuss a gift',
+    href: '/contact',
+  },
+  {
+    id: 'serve',
+    numeral: 'V',
+    title: 'Serve',
+    body: 'A smaller number may be called to serve within the ongoing community — in hospitality, prayer, facilities, administration, or care for guests.',
+    cta: 'Ask about serving',
+    href: '/contact',
+  },
+  {
+    id: 'connect',
+    numeral: 'VI',
+    title: 'Connect',
+    body: 'Some will connect this ministry with others who carry a corresponding assignment — leaders, foundations, builders, and intercessors already looking for a work like this one.',
+    cta: 'Make an introduction',
+    href: '/contact',
+  },
+];
+---
+
+<BaseLayout
+  title="Partner With Us"
+  description="Ember Ridge is not an invitation to admire a property. It is an invitation to pray, counsel, build, give, serve, or connect — helping establish a house where the presence of God strengthens generations."
+>
+  <PageHero
+    eyebrow="The Invitation"
+    title="Tend the Fire With Us"
+    lede="Ember Ridge is not an invitation to admire a property. It is an invitation to help establish a place where the presence of God, healthy family, sustained intercession, and faithful stewardship can strengthen generations."
+  />
+
+  <Section labelledby="ways-heading">
+    <div class="shell">
+      <Reveal>
+        <SectionHeading
+          id="ways-heading"
+          eyebrow="Six Ways to Partner"
+          title="Take it before the Lord and ask what He is inviting you to do"
+          lede="The invitation is not rooted in pressure. It is rooted in discernment."
+        />
+      </Reveal>
+
+      <div class="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {ways.map((way, i) => (
+          <Reveal delay={(i % 3) * 90}>
+            <article id={way.id} class="card card-lift flex h-full scroll-mt-32 flex-col">
+              <p class="card-numeral">{way.numeral}</p>
+              <h3 class="mt-3 font-display text-2xl text-cream">{way.title}</h3>
+              <div class="rule-gold mt-5"></div>
+              <p class="mt-5 flex-1 text-[0.9375rem] leading-relaxed text-stone-300">{way.body}</p>
+              <p class="mt-7">
+                <a href={way.href} class="btn-quiet !text-[0.6875rem] !tracking-[0.16em]">{way.cta} →</a>
+              </p>
+            </article>
+          </Reveal>
+        ))}
+      </div>
+    </div>
+  </Section>
+
+  <Section tone="charcoal">
+    <div class="shell">
+      <Reveal class="mx-auto max-w-3xl">
+        <SectionHeading
+          eyebrow="Our Hope"
+          title="What we are asking God for"
+          align="center"
+        />
+        <div class="mt-12 prose-body mx-auto max-w-[42rem]">
+          <p>
+            Our hope is that one day leaders will arrive at Ember Ridge carrying burdens
+            too heavy to keep carrying alone. They will be welcomed around a table,
+            covered in prayer, restored in God’s presence, strengthened within healthy
+            relationship, and sent home with renewed fire.
+          </p>
+          <p>
+            Intercessors will minister before the Lord with dignity, accountability, and
+            the practical support needed for sustained service. Children will grow up
+            seeing faith lived honestly. Worship will rise from the mountain in seasons of
+            quiet devotion and seasons of day-and-night prayer.
+          </p>
+          <p>
+            Families, churches, businesses, schools, and communities will be strengthened
+            because someone was given room to heal and hear God again.
+          </p>
+        </div>
+
+        <PullQuote>
+          Long after the names of those who first built Ember Ridge have been forgotten,
+          our prayer is that the presence of God will remain.
+        </PullQuote>
+
+        <div class="prose-body mx-auto max-w-[42rem]">
+          <p>
+            If that becomes the legacy of Ember Ridge, every sacrifice made to build it
+            will have been worthwhile.
+          </p>
+        </div>
+      </Reveal>
+    </div>
+  </Section>
+
+  <Section labelledby="next-heading">
+    <div class="shell">
+      <Reveal class="mx-auto max-w-2xl text-center">
+        <p class="eyebrow">Next Step</p>
+        <h2 id="next-heading" class="display-2 mt-4">Begin a conversation</h2>
+        <div class="rule-gold mx-auto mt-6"></div>
+        <p class="mt-7 text-[1.0625rem] leading-relaxed text-stone-300">
+          Tell us how you believe God is inviting you to participate. A member of
+          leadership will respond personally.
+        </p>
+        <div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <a href="/contact" class="btn-primary w-full sm:w-auto">Contact leadership</a>
+          <a href="/financial-stewardship" class="btn-outline w-full sm:w-auto">Review the stewardship framework</a>
+        </div>
+      </Reveal>
+
+      <ReviewNote label="Needs legal review">
+        Online giving is not yet enabled on this site. Before adding a donate button,
+        confirm charitable solicitation registration requirements for North Carolina and
+        any other state where the ministry actively solicits, along with gift receipting
+        and donor-privacy language.
+      </ReviewNote>
+    </div>
+  </Section>
+</BaseLayout>

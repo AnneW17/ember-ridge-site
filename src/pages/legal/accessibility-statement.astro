@@ -1,0 +1,73 @@
+---
+// src/pages/legal/accessibility-statement.astro
+import LegalLayout from '../../layouts/LegalLayout.astro';
+import { site } from '../../data/site';
+---
+<LegalLayout
+  title="Accessibility Statement"
+  description="Our commitment to making the Ember Ridge website usable by as many people as possible, the measures we have taken, and how to report a barrier."
+  updated="[DATE TO BE SET AT LAUNCH]"
+  intro="A house meant to receive weary people should be easy to enter. That applies to its website as well."
+>
+  <h2>Our commitment</h2>
+  <p>
+    We want this website to be usable by as many people as possible, including people who
+    use screen readers, keyboard navigation, magnification, voice control, or reduced-motion
+    settings. Accessibility is treated as part of stewardship, not an afterthought.
+  </p>
+
+  <h2>Standard we are working toward</h2>
+  <p>
+    We aim to meet the Web Content Accessibility Guidelines (WCAG) 2.2 at Level AA. We
+    describe this as an ongoing goal rather than a certification.
+  </p>
+  <p>
+    <strong>[Needs review:</strong> if a formal audit is completed, state the auditor,
+    date, and conformance level here, and replace this note.<strong>]</strong>
+  </p>
+
+  <h2>What we have done</h2>
+  <ul>
+    <li>Semantic HTML structure with landmarks, one main heading per page, and ordered headings</li>
+    <li>A “skip to main content” link as the first focusable element on every page</li>
+    <li>Visible, high-contrast focus indicators for all interactive elements</li>
+    <li>Full keyboard operability, including the navigation menu and expandable biographies</li>
+    <li>Descriptive alternative text for meaningful images; decorative images hidden from assistive technology</li>
+    <li>Form fields with persistent visible labels, required-field indication, and clear error handling</li>
+    <li>Text contrast checked against WCAG AA thresholds on both the dark and cream surfaces</li>
+    <li>Motion limited to gentle fades and slow ambient gradients, all of which are disabled when a visitor’s device requests reduced motion</li>
+    <li>Responsive layouts that reflow without horizontal scrolling and support text resizing to 200%</li>
+    <li>Data tables with proper headers, captions, and keyboard-scrollable containers</li>
+  </ul>
+
+  <h2>Known limitations</h2>
+  <ul>
+    <li>
+      Some third-party services we may add later — such as a giving platform, embedded
+      video, or maps — may not be fully accessible. Where that is true, we will note it
+      here and offer an alternative way to complete the task.
+    </li>
+    <li>
+      <strong>[Needs review:</strong> add any limitations identified during testing, along
+      with target dates for remediation.<strong>]</strong>
+    </li>
+  </ul>
+
+  <h2>Tell us about a barrier</h2>
+  <p>
+    If any part of this site prevents you from finding information or contacting us,
+    please write to <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a>. Tell
+    us the page and what happened, and we will work to resolve it and provide the
+    information you need another way in the meantime.
+  </p>
+  <p>
+    <strong>[Needs review:</strong> set a target response time for accessibility reports —
+    for example, five business days.<strong>]</strong>
+  </p>
+
+  <h2>Alternative formats</h2>
+  <p>
+    We can provide the Founding Vision material and any content on this site in another
+    format on request, including large print or plain text.
+  </p>
+</LegalLayout>

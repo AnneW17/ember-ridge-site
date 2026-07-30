@@ -1,0 +1,193 @@
+---
+// src/pages/remodel-and-grounds.astro — Remodel & Grounds
+// Concept references for the planned renovation and outdoor spaces.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import Section from '../components/Section.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import Prose from '../components/Prose.astro';
+import ConceptFigure from '../components/ConceptFigure.astro';
+import Reveal from '../components/Reveal.astro';
+import CTASection from '../components/CTASection.astro';
+
+const pavilion = [
+  {
+    src: '/images/concepts/pavilion-exterior.svg',
+    alt: 'Concept reference: worship pavilion, exterior view',
+    caption: 'Worship pavilion concept — exterior view (placeholder)',
+  },
+  {
+    src: '/images/concepts/pavilion-interior.svg',
+    alt: 'Concept reference: worship pavilion, interior seating view',
+    caption: 'Worship pavilion concept — interior seating view (placeholder)',
+  },
+  {
+    src: '/images/concepts/pavilion-detail.svg',
+    alt: 'Concept reference: worship pavilion, detail of timber and stone',
+    caption: 'Worship pavilion concept — detail of timber and stone (placeholder)',
+  },
+];
+---
+
+<BaseLayout
+  title="Remodel & Grounds"
+  description="Concept references for the planned renovation of the Ember Ridge lodge and its outdoor spaces — the great room, kitchen, prayer garden, and worship pavilion. Design direction only; none show the property in its current condition."
+>
+  <PageHero
+    eyebrow="Concept References"
+    title="Remodel &amp; Grounds"
+    lede="Design direction for the renovated lodge and the spaces that carry the devotional life of the house outdoors."
+  />
+
+  <!-- Disclaimer — first thing on the page, deliberately unmissable -->
+  <Section size="sm">
+    <div class="shell">
+      <Reveal>
+        <div class="glass relative overflow-hidden p-8 sm:p-10">
+          <div aria-hidden="true" class="brushed-gold absolute inset-x-0 top-0 h-px"></div>
+          <p class="eyebrow">Exterior concept — design direction for the renovated lodge</p>
+          <p class="mt-5 max-w-2xl font-display text-xl italic leading-relaxed text-stone-100 sm:text-2xl">
+            All images on this page are concept references for planned renovation and
+            construction. None show the property in its current condition.
+          </p>
+        </div>
+      </Reveal>
+    </div>
+  </Section>
+
+  <!-- Great Room -->
+  <Section labelledby="great-room-heading">
+    <div class="shell grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-16">
+      <div class="lg:col-span-5">
+        <Reveal>
+          <SectionHeading
+            id="great-room-heading"
+            eyebrow="Interior"
+            title="Great Room Concept"
+            lede="The stone fireplace and vaulted volume retained within a warm, refined cabin interior."
+          />
+        </Reveal>
+      </div>
+      <div class="lg:col-span-7">
+        <Reveal delay={120}>
+          <ConceptFigure
+            eager
+            src="/images/concepts/great-room.svg"
+            alt="Concept reference: great room with stone fireplace and vaulted ceiling"
+            caption="Great room concept — stone fireplace and vaulted volume (placeholder)"
+          />
+        </Reveal>
+      </div>
+    </div>
+  </Section>
+
+  <!-- Kitchen -->
+  <Section tone="charcoal" labelledby="kitchen-heading">
+    <div class="shell grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-16">
+      <div class="lg:col-span-7 lg:order-last">
+        <Reveal>
+          <SectionHeading
+            id="kitchen-heading"
+            eyebrow="Interior"
+            title="Kitchen Concept"
+            lede="Stained cabinetry in warm natural wood, natural stone backsplash, and under-cabinet lighting, coordinated with the floors."
+          />
+        </Reveal>
+      </div>
+      <div class="lg:col-span-5 lg:order-first">
+        <Reveal delay={120}>
+          <ConceptFigure
+            src="/images/concepts/kitchen.svg"
+            alt="Concept reference: kitchen with stained cabinetry and natural stone backsplash"
+            caption="Kitchen concept — stained cabinetry, natural stone backsplash (placeholder)"
+          />
+        </Reveal>
+      </div>
+    </div>
+  </Section>
+
+  <!-- Grounds & Prayer Garden -->
+  <Section labelledby="grounds-heading">
+    <div class="shell">
+      <Reveal>
+        <SectionHeading
+          id="grounds-heading"
+          eyebrow="Outdoors"
+          title="Grounds &amp; Prayer Garden"
+        />
+      </Reveal>
+
+      <div class="mt-12 grid gap-12 lg:grid-cols-12 lg:gap-16">
+        <div class="lg:col-span-5">
+          <Reveal>
+            <Prose>
+              <p>
+                The grounds carry the devotional life of the house outdoors: a prayer
+                garden with walking paths, contemplative seating, Scripture markers,
+                and intentional plantings; prayer trails through the property; and a
+                gathering fire circle for testimony and conversation after dark. These
+                are working spaces rather than attractions.
+              </p>
+            </Prose>
+          </Reveal>
+        </div>
+        <div class="lg:col-span-7">
+          <Reveal delay={120}>
+            <ConceptFigure
+              src="/images/concepts/prayer-garden.svg"
+              alt="Concept reference: prayer garden with walking paths, seating and Scripture markers"
+              caption="Prayer garden concept — walking paths, contemplative seating, Scripture markers (placeholder)"
+            />
+          </Reveal>
+        </div>
+      </div>
+    </div>
+  </Section>
+
+  <!-- Worship Pavilion -->
+  <Section tone="charcoal" labelledby="pavilion-heading">
+    <div class="shell">
+      <Reveal>
+        <SectionHeading
+          id="pavilion-heading"
+          eyebrow="Outdoors"
+          title="Worship Pavilion"
+        />
+      </Reveal>
+
+      <div class="mt-12 max-w-[46rem]">
+        <Reveal>
+          <Prose>
+            <p>
+              A worship pavilion provides covered open-air space for worship, prayer,
+              teaching, and regional gatherings. The preliminary concept is
+              approximately forty by sixty feet in timber and stone harmonized with the
+              lodge, with curved or flexible seating and optional seasonal enclosure
+              panels.
+            </p>
+            <p>
+              Final size, placement, acoustics, utilities, accessibility, and weather
+              protection are determined by survey, design, and engineering rather than
+              by the concept drawing.
+            </p>
+          </Prose>
+        </Reveal>
+      </div>
+
+      <div class="mt-14 grid gap-8 md:grid-cols-3">
+        {pavilion.map((fig, i) => (
+          <Reveal delay={i * 110}>
+            <ConceptFigure src={fig.src} alt={fig.alt} caption={fig.caption} />
+          </Reveal>
+        ))}
+      </div>
+    </div>
+  </Section>
+
+  <CTASection
+    title="Help us build it well"
+    body="Some will bring professional wisdom in architecture, engineering, construction, hospitality, security, technology, or landscaping. Others will help furnish rooms, equip the kitchen, build trails, or provide materials."
+    primary={{ label: 'Offer your expertise', href: '/partner#build' }}
+    secondary={{ label: 'The campus vision', href: '/campus-vision' }}
+  />
+</BaseLayout>

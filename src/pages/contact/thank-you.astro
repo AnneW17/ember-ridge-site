@@ -1,0 +1,27 @@
+---
+// src/pages/contact/thank-you.astro — Netlify form success page
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Section from '../../components/Section.astro';
+---
+<BaseLayout
+  title="Thank You"
+  description="Your message has been received by Ember Ridge."
+>
+  <Section class="pt-44">
+    <div class="shell">
+      <div class="mx-auto max-w-xl text-center">
+        <p class="eyebrow">Received</p>
+        <h1 class="display-2 mt-5">Thank you for reaching out.</h1>
+        <div class="rule-gold mx-auto mt-7"></div>
+        <p class="mt-8 text-[1.0625rem] leading-relaxed text-stone-300">
+          Your message has been received by leadership. If you asked for prayer, it is
+          already being carried before the Lord.
+        </p>
+        <div class="mt-11 flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <a href="/" class="btn-primary w-full sm:w-auto">Return home</a>
+          <a href="/vision" class="btn-outline w-full sm:w-auto">Read the vision</a>
+        </div>
+      </div>
+    </div>
+  </Section>
+</BaseLayout>

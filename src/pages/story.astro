@@ -1,0 +1,160 @@
+---
+// src/pages/story.astro — The Story
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import Section from '../components/Section.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import Prose from '../components/Prose.astro';
+import PullQuote from '../components/PullQuote.astro';
+import Callout from '../components/Callout.astro';
+import Reveal from '../components/Reveal.astro';
+import CTASection from '../components/CTASection.astro';
+---
+
+<BaseLayout
+  title="The Story"
+  description="Ember Ridge is not a theory developed in a boardroom. It is the enlargement of a pattern one family has lived for nearly two decades — restoration, refuge, intercession, and beauty from ashes."
+>
+  <PageHero
+    eyebrow="The Story Behind the Vision"
+    title="Beauty From Ashes"
+    lede="Ember Ridge is not a theory developed in a boardroom. It is the enlargement of a pattern our family has lived for nearly two decades."
+  />
+
+  <Section labelledby="restoration-heading">
+    <div class="shell">
+      <Reveal>
+        <SectionHeading
+          id="restoration-heading"
+          eyebrow="The Foundation"
+          title="Restoration, lived before it was taught"
+        />
+      </Reveal>
+
+      <div class="mt-12">
+        <Prose>
+          <p>
+            The foundation of this vision is restoration. Shannon Suttles knows what
+            it means to be considered beyond repair. Her early life was marked by
+            severe abuse, rejection, addiction, instability, homelessness, and deep
+            emotional wounds. There were seasons when professionals and spiritual
+            leaders alike had little hope for her future.
+          </p>
+          <p>
+            Yet Jesus Christ did not abandon what others had written off. He met her,
+            delivered her, taught her to hear His voice, rebuilt her identity,
+            restored her capacity to love, and transformed the places of greatest pain
+            into a ministry of hope for others.
+          </p>
+          <p>
+            That testimony formed the way Shannon and Jason understand the Gospel. For
+            them, restoration has never been an abstract message. It is the lived
+            reality of a God who enters broken places, tells the truth in love,
+            establishes healthy boundaries, heals what has been wounded, and patiently
+            rebuilds a life until purpose can stand where devastation once ruled.
+          </p>
+        </Prose>
+      </div>
+    </div>
+  </Section>
+
+  <Section tone="charcoal" labelledby="refuge-heading">
+    <div class="shell">
+      <Reveal>
+        <SectionHeading
+          id="refuge-heading"
+          eyebrow="A Home Before a Ministry"
+          title="A table, a bed, and people willing to remain"
+        />
+      </Reveal>
+      <div class="mt-12">
+        <Prose>
+          <p>
+            Long before there was a plan for Ember Ridge, their home became a place of
+            refuge. Over the years they served people experiencing homelessness,
+            addiction, mental illness, domestic violence, family crisis, suicidal
+            despair, self-harm, and the loss of direction. They housed women and
+            children escaping danger, walked beside parents whose children were
+            missing or in crisis, and welcomed young adults and families who needed
+            more than a brief appointment.
+          </p>
+          <p>
+            They needed a table, a bed, consistent prayer, correction without
+            rejection, and people willing to remain present long enough for healing to
+            take root.
+          </p>
+          <p>
+            This same pattern expanded into churches, schools, businesses, and
+            leadership environments. Shannon spent approximately a decade training
+            intercessors and teaching believers to hear the voice of God, pray
+            strategically, discern spiritual roots, minister healing, understand
+            prophetic responsibility, and stand in the gap for families, leaders,
+            communities, and nations. Jason provided spiritual covering, operational
+            strength, practical wisdom, and a steady example of fatherhood and
+            covenant.
+          </p>
+        </Prose>
+
+        <Callout title="Jesus Loves the Little Children">
+          <p>
+            The family’s school chaplaincy was born from prayer rather than
+            institutional ambition. What began as intercession developed into a
+            ministry presence within schools, where children, families, educators, and
+            administrators encountered hope, healing, order, and practical support. The
+            work demonstrated a principle central to Ember Ridge: when prayer,
+            spiritual discernment, relational presence, and professional
+            responsibility operate together, environments can change.
+          </p>
+        </Callout>
+      </div>
+    </div>
+  </Section>
+
+  <Section labelledby="proximity-heading">
+    <div class="shell">
+      <Reveal>
+        <SectionHeading
+          id="proximity-heading"
+          eyebrow="Confirmed Within the Family"
+          title="Some healing occurs only through proximity"
+        />
+      </Reveal>
+      <div class="mt-12">
+        <Prose>
+          <p>
+            The vision has also been confirmed within the family itself. Anne Whaley,
+            J.D., experienced restoration not simply through counsel but through
+            returning to healthy household life after a difficult season. Living under
+            the same roof brought hidden wounds to the surface within an atmosphere of
+            love, truth, prayer, boundaries, and everyday discipleship.
+          </p>
+          <p>
+            Her testimony gave the family language for what they had already witnessed
+            in many others. People often need more than a message; they need to
+            observe covenant, share meals, experience consistency, receive correction
+            safely, and discover what healthy family life feels like from the inside.
+          </p>
+        </Prose>
+
+        <PullQuote>
+          Ember Ridge enlarges that household without turning it into an institution.
+        </PullQuote>
+
+        <Prose>
+          <p>
+            It gives structure, space, and stewardship to a ministry pattern that has
+            already borne fruit. The work will remain personal enough for people to be
+            known, intentional enough for placements to be prayerfully discerned, and
+            professionally governed enough to protect both those who come and those
+            who serve.
+          </p>
+          <p class="pt-2">
+            <a href="/leadership" class="btn-quiet">Meet the family and leadership →</a>
+          </p>
+        </Prose>
+      </div>
+    </div>
+  </Section>
+
+  <CTASection />
+</BaseLayout>

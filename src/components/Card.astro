@@ -1,0 +1,10 @@
+---
+// src/components/Card.astro — feature card with subtle lift on hover.
+interface Props { title: string; numeral?: string; class?: string; }
+const { title, numeral, class: className = '' } = Astro.props;
+---
+<article class:list={['card card-lift h-full', className]}>
+  {numeral && <p class="card-numeral">{numeral}</p>}
+  <h3 class:list={['font-display text-xl text-cream', numeral && 'mt-3']}>{title}</h3>
+  <div class="mt-4 text-[0.9375rem] leading-relaxed text-stone-300"><slot /></div>
+</article>

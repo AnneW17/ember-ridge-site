@@ -1,0 +1,70 @@
+---
+// src/components/HomeHero.astro
+// Full-bleed luxury masthead: matte black, layered charcoal, drifting embers,
+// and warm amber light rising from behind the wordmark.
+import Embers from './Embers.astro';
+import { site } from '../data/site';
+---
+<section class="surface-matte relative flex min-h-[92svh] items-center overflow-hidden pt-32 pb-20">
+  <Embers density="full" />
+
+  <!-- Ridge silhouette and vignette. Decorative. -->
+  <div aria-hidden="true" class="pointer-events-none absolute inset-0 overflow-hidden">
+    <svg
+      data-parallax
+      data-parallax-speed="0.14"
+      class="absolute inset-x-0 bottom-0 h-40 w-full text-charcoal sm:h-56"
+      viewBox="0 0 1440 200"
+      preserveAspectRatio="none"
+    >
+      <path d="M0 200V138l180-52 168 40 150-66 186 74 168-52 192 60 196-44 0 102z" fill="currentColor" fill-opacity="0.55"/>
+      <path d="M0 200v-34l200-38 190 30 170-44 200 52 180-30 200 40 100-16v40z" fill="currentColor" fill-opacity="0.9"/>
+    </svg>
+    <div class="absolute inset-0 bg-[radial-gradient(120%_90%_at_50%_40%,transparent_35%,rgba(8,8,9,0.72)_100%)]"></div>
+    <div class="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-ink to-transparent"></div>
+  </div>
+
+  <!-- Fine grain, kept above the light so large black fields never band. -->
+  <div aria-hidden="true" class="grain pointer-events-none absolute inset-0"></div>
+
+  <div class="shell relative">
+    <div data-parallax data-parallax-speed="-0.05" class="max-w-3xl">
+      <img
+        data-reveal
+        src="/images/ember-ridge-logo-dark.png"
+        alt=""
+        width="640"
+        height="640"
+        fetchpriority="high"
+        class="h-28 w-auto opacity-95 [filter:drop-shadow(0_8px_36px_rgba(200,162,74,0.22))] sm:h-36"
+      />
+
+      <p data-reveal data-reveal-delay="80" class="eyebrow mt-10">
+        A Ministry of Firebrand Revivalists · {site.location}
+      </p>
+
+      <h1 data-reveal data-reveal-delay="150" class="display-1 text-shadow-deep mt-6">
+        Tending the fire God has
+        <span class="italic text-gold-300">entrusted to His people.</span>
+      </h1>
+
+      <div data-reveal data-reveal-delay="220" class="brushed-gold mt-9 h-px w-24"></div>
+
+      <p data-reveal data-reveal-delay="280" class="lede mt-9 max-w-2xl">
+        Some fires blaze for a moment and disappear. Others are carefully tended,
+        generation after generation, until they illuminate nations.
+      </p>
+
+      <p data-reveal data-reveal-delay="340" class="mt-7 max-w-xl text-[1.0625rem] leading-relaxed text-stone-300">
+        Ember Ridge is a house that ministers first to the Lord, restores those who
+        carry great responsibility, and sends them back strengthened for the work
+        of the Kingdom.
+      </p>
+
+      <div data-reveal data-reveal-delay="420" class="mt-11 flex flex-col gap-4 sm:flex-row">
+        <a href="/vision" class="btn-primary w-full sm:w-auto">Read the Vision</a>
+        <a href="/partner" class="btn-outline w-full sm:w-auto">Partner With Us</a>
+      </div>
+    </div>
+  </div>
+</section>

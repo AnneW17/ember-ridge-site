@@ -1,0 +1,149 @@
+---
+// src/pages/the-place.astro — The Place
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import Section from '../components/Section.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import Prose from '../components/Prose.astro';
+import PullQuote from '../components/PullQuote.astro';
+import Callout from '../components/Callout.astro';
+import ReviewNote from '../components/ReviewNote.astro';
+import Reveal from '../components/Reveal.astro';
+import CTASection from '../components/CTASection.astro';
+---
+
+<BaseLayout
+  title="The Place"
+  description="Moravian Falls, Prayer Mountain, and the stewardship of the land. Ember Ridge stands within a wider spiritual story shaped by the Moravian witness and generations of people who gave themselves to God."
+>
+  <PageHero
+    eyebrow="The Place"
+    title="A Land Marked by Prayer"
+    lede="Ember Ridge will stand within a wider spiritual story — one shaped by the Moravian witness, the history of Prayer Mountain, and generations of people who gave themselves to God."
+  />
+
+  <Section labelledby="moravian-heading">
+    <div class="shell">
+      <Reveal>
+        <SectionHeading
+          id="moravian-heading"
+          eyebrow="Herrnhut to North Carolina"
+          title="A historic pattern that resonates with this calling"
+        />
+      </Reveal>
+      <div class="mt-12">
+        <Prose>
+          <p>
+            In 1727, the community at Herrnhut entered a season of spiritual renewal
+            and established a continual prayer watch that endured for more than one
+            hundred years. Their worship and intercession helped fuel one of the most
+            influential missionary movements in modern Church history. When Moravians
+            later established communities in North Carolina, they carried a disciplined
+            life of prayer, work, worship, stewardship, education, and mission into the
+            region.
+          </p>
+          <p>
+            Moravian Falls and Prayer Mountain have since become gathering places for
+            believers drawn to prayer, prophetic ministry, healing, and encounter with
+            God. Many have testified to an unusual clarity in prayer on the mountain.
+          </p>
+        </Prose>
+
+        <Callout title="How we hold these testimonies">
+          <p>
+            Firebrand Revivalists receives those testimonies with gratitude while
+            keeping Scripture, humility, and wise discernment at the center. The
+            purpose is not to romanticize a location, but to steward responsibly a
+            place where generations have sought the Lord.
+          </p>
+        </Callout>
+      </div>
+    </div>
+  </Section>
+
+  <Section tone="charcoal" labelledby="witness-heading">
+    <div class="shell">
+      <Reveal>
+        <SectionHeading
+          id="witness-heading"
+          eyebrow="A Wider Testimony"
+          title="When people make room for God over time, a culture can form"
+        />
+      </Reveal>
+      <div class="mt-12">
+        <Prose>
+          <p>
+            The testimony associated with Frances Metcalfe, the Golden Candlestick
+            fellowship, and the women remembered as the Ladies of Gold offers another
+            meaningful point of reference. Their story centers on extended worship,
+            intercession, consecration, spiritual discernment, and dependence upon the
+            Holy Spirit. They gathered faithfully over many years until the presence of
+            God became the defining reality of their fellowship.
+          </p>
+          <p>
+            Ember Ridge does not seek to reproduce their ministry, but it recognizes a
+            shared principle: when people make room for God over time, a culture can
+            form in which prayer, obedience, supernatural faith, and practical
+            provision become woven together.
+          </p>
+          <p>
+            A 1997 prophetic word concerning Prayer Mountain also emphasized praise,
+            prayer, intercession, truth, healing, restored relationships, and the need
+            to hear and obey God. Firebrand views that word as one strand within the
+            spiritual testimony of the area — to be weighed alongside Scripture, mature
+            counsel, the fruit of prior stewardship, and the confirmations the family
+            has received over many years.
+          </p>
+        </Prose>
+      </div>
+    </div>
+  </Section>
+
+  <Section labelledby="baton-heading">
+    <div class="shell">
+      <Reveal>
+        <SectionHeading
+          id="baton-heading"
+          eyebrow="Stewardship of the Land"
+          title="Received as a baton handed forward"
+        />
+      </Reveal>
+      <div class="mt-12">
+        <Prose>
+          <p>
+            The current lodge has already been used by ministry leaders who welcomed
+            people from around the world. Ember Ridge will honor that history rather
+            than erase it.
+          </p>
+          <p>
+            If the property is entrusted to Firebrand Revivalists, the transition will
+            be received as a baton handed forward. What has been built in prior seasons
+            will be respected, while the property is renewed for the particular
+            assignment now being formed: a house that ministers to the Lord, receives
+            leaders and families, reforms unhealthy patterns, restores strength, and
+            sends people back into the work of the Kingdom.
+          </p>
+        </Prose>
+
+        <ReviewNote label="Needs review">
+          The lodge property has not yet been acquired. All references to the property
+          describe a vision under discernment and due diligence, not a completed
+          purchase. Confirm the current status of negotiations before publishing, and
+          avoid naming the seller or exact address until closing.
+        </ReviewNote>
+
+        <PullQuote cite="Psalm 127:1">
+          Unless the Lord builds the house, those who build it labor in vain.
+        </PullQuote>
+
+        <Prose>
+          <p class="pt-2">
+            <a href="/campus-vision" class="btn-quiet">See how the campus is envisioned →</a>
+          </p>
+        </Prose>
+      </div>
+    </div>
+  </Section>
+
+  <CTASection />
+</BaseLayout>

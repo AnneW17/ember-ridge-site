@@ -1,0 +1,62 @@
+---
+// src/layouts/LegalLayout.astro
+// Cream, plain, high-legibility shell for policy pages.
+// Every legal page carries a visible review banner until counsel signs off.
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Human-readable effective date, e.g. "29 July 2026" */
+  updated: string;
+  intro?: string;
+}
+const { title, description, updated, intro } = Astro.props;
+---
+<BaseLayout title={title} description={description} theme="cream">
+  <header class="border-b border-stone-300/60 bg-cream-dark pt-36 pb-16 sm:pt-44 sm:pb-20">
+    <div class="shell-tight">
+      <p class="font-sans text-[0.6875rem] font-medium uppercase tracking-[0.22em] text-bronze">
+        Ember Ridge · Legal
+      </p>
+      <h1 class="mt-5 font-display text-4xl leading-tight sm:text-5xl">{title}</h1>
+      <div class="mt-7 h-px w-16 bg-gradient-to-r from-bronze to-transparent"></div>
+      <p class="mt-6 font-sans text-sm text-stone-700">
+        Last updated: <time>{updated}</time>
+      </p>
+      {intro && <p class="mt-6 font-display text-xl italic leading-relaxed text-stone-700">{intro}</p>}
+    </div>
+  </header>
+
+  <div class="surface-cream">
+    <div class="shell-tight py-14 sm:py-20">
+      <!-- Review banner: remove only when counsel has approved this page. -->
+      <div
+        role="note"
+        class="mb-12 flex gap-3 border border-bronze/40 bg-bronze/[0.07] px-5 py-4 font-sans text-sm leading-relaxed text-stone-700"
+      >
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="mt-1 shrink-0 text-bronze" aria-hidden="true">
+          <path d="M12 9v4m0 3h.01M10.3 3.9 2.4 17.4A1.8 1.8 0 0 0 4 20h16a1.8 1.8 0 0 0 1.6-2.6L13.7 3.9a1.8 1.8 0 0 0-3.4 0Z"
+            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+        </svg>
+        <p>
+          <strong class="font-semibold uppercase tracking-[0.08em]">Draft — needs legal review.</strong>
+          This document is a plain-language starting point prepared for internal review.
+          It has not been reviewed or approved by legal counsel and should not be relied
+          upon as a final policy. Bracketed items require confirmation before launch.
+        </p>
+      </div>
+
+      <article class="legal-doc">
+        <slot />
+      </article>
+
+      <hr class="my-14 h-px border-0 bg-stone-300/70" />
+
+      <p class="font-sans text-xs leading-relaxed text-stone-700">
+        Questions about this document may be directed to Ember Ridge, a ministry of
+        Firebrand Revivalists, Moravian Falls, North Carolina.
+      </p>
+    </div>
+  </div>
+</BaseLayout>

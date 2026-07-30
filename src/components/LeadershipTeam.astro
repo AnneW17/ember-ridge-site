@@ -1,0 +1,117 @@
+---
+// src/components/LeadershipTeam.astro
+// Editorial leadership cards: a refined portrait thumbnail set beside the name,
+// a highlighted summary line, and an accessible "read full bio" disclosure.
+// Content comes from src/data/leadership.ts.
+import { leadership } from '../data/leadership';
+---
+
+<div class="grid gap-8 lg:grid-cols-2 lg:gap-10">
+  {leadership.map((leader, i) => (
+    <article
+      data-reveal
+      data-reveal-delay={i * 90}
+      class="group card card-lift flex flex-col"
+    >
+      <!-- Identity row: small portrait, name, title -->
+      <div class="flex items-start gap-6">
+        <div class="relative shrink-0">
+          <img
+            src={leader.image}
+            alt={leader.alt}
+            width="900"
+            height="900"
+            loading={i < 2 ? 'eager' : 'lazy'}
+            decoding="async"
+            class="h-24 w-24 rounded-[0.25rem] object-cover object-top grayscale-[22%]
+                   transition-all duration-700 [transition-timing-function:var(--ease-refined)]
+                   group-hover:grayscale-0 sm:h-28 sm:w-28"
+          />
+          <!-- Gold hairline frame, offset slightly for a mounted-print feel -->
+          <div
+            aria-hidden="true"
+            class="pointer-events-none absolute inset-0 rounded-[0.25rem] ring-1 ring-inset ring-gold-700/50
+                   transition-all duration-700 group-hover:ring-gold-500/70"
+          ></div>
+          <div
+            aria-hidden="true"
+            class="pointer-events-none absolute -inset-1.5 rounded-[0.3rem] border border-charcoal-300
+                   opacity-0 transition-opacity duration-700 group-hover:opacity-100"
+          ></div>
+        </div>
+
+        <div class="min-w-0 pt-1">
+          <h3 class="font-display text-2xl leading-tight text-cream">
+            {leader.name}{leader.credential && <span class="text-stone-300">, {leader.credential}</span>}
+          </h3>
+          <p class="mt-2 font-sans text-[0.6875rem] uppercase tracking-[0.18em] text-gold-500">
+            {leader.title}
+          </p>
+          <div class="brushed-gold mt-4 h-px w-12"></div>
+        </div>
+      </div>
+
+      <p class="mt-6 text-[0.9375rem] leading-relaxed text-stone-100">{leader.summary}</p>
+
+      <!-- Disclosure -->
+      <div class="mt-6" data-bio>
+        <button
+          type="button"
+          data-bio-toggle
+          aria-expanded="false"
+          aria-controls={`bio-${i}`}
+          class="inline-flex items-center gap-2 font-sans text-[0.75rem] uppercase tracking-[0.16em]
+                 text-gold-400 transition-colors duration-300 hover:text-gold-300"
+        >
+          <span data-bio-label>Read full bio</span>
+          <svg
+            width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true"
+            class="transition-transform duration-500 [transition-timing-function:var(--ease-refined)]"
+            data-bio-chevron
+          >
+            <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+          </svg>
+        </button>
+
+        <div
+          id={`bio-${i}`}
+          data-bio-panel
+          class="grid grid-rows-[0fr] transition-all duration-[600ms] [transition-timing-function:var(--ease-refined)]"
+        >
+          <div class="overflow-hidden">
+            <div class="space-y-4 pt-6 text-[0.9375rem] leading-[1.75] text-stone-300">
+              <div aria-hidden="true" class="h-px w-full bg-charcoal-300"></div>
+              {leader.bio.map((para) => <p>{para}</p>)}
+              {leader.placeholder && (
+                <p class="border-l border-gold-700/60 pl-4 text-xs uppercase tracking-[0.12em] text-gold-600">
+                  Draft bio — pending Mark’s own approved text and portrait.
+                </p>
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+  ))}
+</div>
+
+<script>
+  // Bio disclosures: animated with grid-template-rows so height is fluid and no
+  // max-height guessing is required. Content stays in the DOM for search + a11y.
+  document.querySelectorAll('[data-bio]').forEach((wrap) => {
+    const btn = wrap.querySelector('[data-bio-toggle]') as HTMLButtonElement | null;
+    const panel = wrap.querySelector('[data-bio-panel]') as HTMLElement | null;
+    const label = wrap.querySelector('[data-bio-label]');
+    const chevron = wrap.querySelector('[data-bio-chevron]');
+    if (!btn || !panel) return;
+
+    btn.addEventListener('click', () => {
+      const open = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!open));
+      panel.classList.toggle('grid-rows-[1fr]', !open);
+      panel.classList.toggle('grid-rows-[0fr]', open);
+      chevron?.classList.toggle('rotate-180', !open);
+      if (label) label.textContent = open ? 'Read full bio' : 'Close bio';
+    });
+  });
+</script>

@@ -1,0 +1,150 @@
+---
+// src/layouts/BaseLayout.astro
+// Shell for every page: metadata, fonts, skip link, header, footer,
+// and the single scroll-reveal observer used site-wide.
+import '@fontsource/cormorant-garamond/300.css';
+import '@fontsource/cormorant-garamond/400.css';
+import '@fontsource/cormorant-garamond/400-italic.css';
+import '@fontsource/cormorant-garamond/500.css';
+import '@fontsource-variable/inter';
+import '../styles/global.css';
+
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { site } from '../data/site';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Optional social-share image path, e.g. /images/og/home.jpg */
+  ogImage?: string;
+  /** Light cream page shell — used by legal pages. */
+  theme?: 'dark' | 'cream';
+}
+
+const { title, description, ogImage = '/images/ember-ridge-mark.png', theme = 'dark' } = Astro.props;
+
+const fullTitle = title === 'Home' ? `${site.name} — ${site.tagline}` : `${title} · ${site.name}`;
+const canonical = new URL(Astro.url.pathname, Astro.site ?? site.url).href;
+const ogUrl = new URL(ogImage, Astro.site ?? site.url).href;
+
+const orgSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: site.name,
+  alternateName: `${site.name}, a ministry of ${site.parentOrg}`,
+  url: site.url,
+  logo: new URL('/images/ember-ridge-logo.png', Astro.site ?? site.url).href,
+  description: site.mission,
+  parentOrganization: { '@type': 'Organization', name: site.parentOrg },
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Moravian Falls',
+    addressRegion: 'NC',
+    addressCountry: 'US',
+  },
+};
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#0A0A0B" />
+
+    <!-- Open Graph / social -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogUrl} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogUrl} />
+
+    <script type="application/ld+json" set:html={JSON.stringify(orgSchema)} />
+  </head>
+
+  <body class:list={[theme === 'cream' ? 'bg-cream text-stone-700' : 'bg-ink text-stone-300']}>
+    <a
+      href="#main"
+      class="sr-only-focusable absolute left-4 top-4 z-[100] bg-gold-500 px-4 py-2 font-sans text-sm font-medium text-ink"
+    >
+      Skip to main content
+    </a>
+
+    <Header theme={theme} />
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <Footer />
+
+    <script is:inline>
+      // Scroll reveal — one observer for the whole page, ~1KB, no dependencies.
+      (() => {
+        const items = document.querySelectorAll('[data-reveal]');
+        if (!items.length) return;
+
+        const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (reduce || !('IntersectionObserver' in window)) {
+          items.forEach((el) => el.classList.add('is-visible'));
+          return;
+        }
+
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              const el = entry.target;
+              const delay = Number(el.dataset.revealDelay || 0);
+              setTimeout(() => el.classList.add('is-visible'), delay);
+              io.unobserve(el);
+            });
+          },
+          { rootMargin: '0px 0px -12% 0px', threshold: 0.08 }
+        );
+
+        items.forEach((el) => io.observe(el));
+      })();
+
+      // Parallax — one rAF-throttled listener for every [data-parallax] layer.
+      // Writes only transform, so it stays on the compositor. Layers live in the
+      // hero, so the loop stops once the hero has scrolled past.
+      (() => {
+        const layers = document.querySelectorAll('[data-parallax]');
+        if (!layers.length) return;
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+        // Gentler on small screens, where travel distance is shorter.
+        const scale = window.matchMedia('(min-width: 640px)').matches ? 1 : 0.5;
+        let ticking = false;
+
+        const apply = () => {
+          const y = window.scrollY;
+          const limit = window.innerHeight * 1.2;
+          if (y < limit) {
+            layers.forEach((el) => {
+              const speed = parseFloat(el.dataset.parallaxSpeed || '0.1') * scale;
+              el.style.transform = 'translate3d(0,' + (y * speed).toFixed(2) + 'px,0)';
+            });
+          }
+          ticking = false;
+        };
+
+        window.addEventListener('scroll', () => {
+          if (!ticking) { ticking = true; requestAnimationFrame(apply); }
+        }, { passive: true });
+        apply();
+      })();
+    </script>
+  </body>
+</html>

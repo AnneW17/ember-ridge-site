@@ -1,0 +1,21 @@
+---
+// src/components/Reveal.astro
+// Gentle fade + slide-up on scroll, released by the single observer in
+// BaseLayout. `variant="rise"` travels further and settles more slowly;
+// cards get that treatment automatically via :has() in global.css.
+interface Props {
+  delay?: number;
+  variant?: 'fade' | 'rise';
+  as?: string;
+  class?: string;
+}
+const { delay = 0, variant = 'fade', as: Tag = 'div', class: className = '' } = Astro.props;
+---
+<Tag
+  data-reveal
+  data-reveal-delay={delay}
+  data-variant={variant === 'rise' ? 'rise' : undefined}
+  class={className}
+>
+  <slot />
+</Tag>

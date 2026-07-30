@@ -1,0 +1,187 @@
+---
+// src/pages/house-of-prayer.astro — The House of Prayer
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import Section from '../components/Section.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import Prose from '../components/Prose.astro';
+import PullQuote from '../components/PullQuote.astro';
+import Card from '../components/Card.astro';
+import Reveal from '../components/Reveal.astro';
+import CTASection from '../components/CTASection.astro';
+
+const prayerFocus = [
+  'Firebrand Revivalists and every ministry entrusted to it, including the school chaplaincy',
+  'The leaders, employees, clients, and decisions connected to the family’s marketplace work',
+  'Churches, pastors, ministries, and businesses that request prayer partnership',
+  'Moravian Falls, the surrounding counties, North Carolina, and the nation',
+  'Every guest and family before, during, and after a stay at Ember Ridge',
+];
+
+---
+
+<BaseLayout
+  title="The House of Prayer"
+  description="Before Ember Ridge ministers to people, it will minister to God. Worship, intercession, day-and-night prayer, and the spiritual foundation of the house."
+>
+  <PageHero
+    eyebrow="The First Ministry"
+    title="A House That Ministers to the Lord"
+    lede="Before Ember Ridge ministers to people, it will minister to God through worship, prayer, consecration, and attentive obedience."
+  />
+
+  <Section labelledby="order-heading">
+    <div class="shell">
+      <Reveal>
+        <SectionHeading
+          id="order-heading"
+          eyebrow="The Order of Ministry"
+          title="Public ministry flows from private communion"
+        />
+      </Reveal>
+      <div class="mt-12">
+        <Prose>
+          <p>
+            The deepest distinctive of Ember Ridge is not the property, the
+            hospitality, or even the restoration work. It is the order of ministry.
+            Scripture repeatedly reveals that lasting outward fruit begins with inward
+            devotion. Isaiah speaks of God’s house as a house of prayer. David
+            appointed singers and Levites to minister continually before the Lord. The
+            church at Antioch was worshiping and fasting when the Holy Spirit spoke and
+            sent Barnabas and Saul. Jesus withdrew from crowds and demands to be alone
+            with the Father.
+          </p>
+          <p>
+            Anna the prophetess offers a particularly important pattern. Luke records
+            that she remained in the temple, worshiping with fasting and prayer night
+            and day. Her ministry was not measured first by visibility. She gave
+            herself to the Lord, and from that hidden place she recognized and
+            proclaimed the Messiah when He appeared.
+          </p>
+          <p>
+            Ember Ridge carries this conviction: there are seasons in which ministering
+            to the Lord day and night is itself the assignment. Extended prayer
+            watches, worship, fasting, and waiting on God will become part of the life
+            of the house, with designated seasons of concentrated day-and-night
+            ministry as the Lord directs and the community is prepared to steward them
+            well.
+          </p>
+        </Prose>
+
+        <PullQuote cite="Ember Ridge Founding Vision">
+          We believe the greatest movements of God have never been sustained by gifted
+          personalities alone, but by hidden men and women who first ministered to the
+          Lord.
+        </PullQuote>
+
+        <Prose>
+          <p>
+            Church history confirms the same pattern. The Moravian prayer watch at
+            Herrnhut continued for more than a century and helped fuel a missionary
+            movement whose influence reached nations. Revival history also records
+            public preachers whose work was preceded and sustained by hidden
+            intercessors. During Charles Finney’s ministry, devoted men labored in
+            prayer away from the platform, helping prepare the spiritual ground for
+            conviction and awakening. The names of intercessors are often less
+            remembered than the names of speakers, yet their service before God has
+            repeatedly shaped history.
+          </p>
+        </Prose>
+      </div>
+    </div>
+  </Section>
+
+  <Section id="intercession" tone="charcoal" labelledby="intercession-heading">
+    <div class="shell">
+      <Reveal>
+        <SectionHeading
+          id="intercession-heading"
+          eyebrow="Intercession"
+          title="Prayer at the foundation"
+          lede="Intercession is not a department at Ember Ridge. It is part of how the house was conceived, and part of how it will stand."
+        />
+      </Reveal>
+
+      <div class="mt-14 grid gap-14 lg:grid-cols-12 lg:gap-16">
+        <div class="lg:col-span-7">
+          <Reveal class="prose-body">
+            <p>
+              A dedicated team gives itself to sustained prayer for this work — for
+              the ministries entrusted to Firebrand Revivalists, for the churches and
+              leaders who ask for prayer partnership, for Moravian Falls and the wider
+              region, and for every guest and family who comes to the mountain, before
+              they arrive and long after they have gone home.
+            </p>
+            <p>
+              These intercessors partner with leadership rather than direct it. They
+              receive prayer focuses and carry them faithfully; what they sense in
+              prayer is offered back with humility, to be weighed in Scripture,
+              counsel, and discernment. Their service is spiritual support — not
+              governance, strategy, or operational authority — and that clarity is what
+              allows them to pray freely.
+            </p>
+            <p>
+              Confidentiality is assumed. Alignment with Scripture and with the vision
+              of the house is expected. Where the ministry provides compensation for
+              those called into sustained service, it honors the hours, discipline, and
+              discretion that such prayer requires — never the outcome of the prayer
+              itself.
+            </p>
+          </Reveal>
+        </div>
+
+        <aside class="lg:col-span-5">
+          <Reveal delay={120} class="glass p-8 sm:p-9">
+            <h3 class="font-sans text-xs font-semibold uppercase tracking-[0.16em] text-gold-500">
+              Carried in prayer
+            </h3>
+            <div class="brushed-gold mt-5 h-px w-14"></div>
+            <ul class="mt-7 space-y-4">
+              {prayerFocus.map((item) => (
+                <li class="flex items-start gap-4">
+                  <span aria-hidden="true" class="mt-2.5 h-1 w-1 shrink-0 rounded-full bg-gold-500"></span>
+                  <span class="text-[0.9375rem] leading-relaxed text-stone-100">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </Reveal>
+        </aside>
+      </div>
+    </div>
+  </Section>
+
+  <Section labelledby="relational-heading">
+    <div class="shell">
+      <div class="grid gap-10 md:grid-cols-3">
+        <Reveal>
+          <Card title="Worship is the offering">
+            <p>Worship will not be used to create atmosphere for a program. Worship is the offering.</p>
+          </Card>
+        </Reveal>
+        <Reveal delay="90">
+          <Card title="Prayer leads the work">
+            <p>Intercession will not replace practical work. It will bring practical work under the leadership of God.</p>
+          </Card>
+        </Reveal>
+        <Reveal delay="180">
+          <Card title="Expertise submitted, not separated">
+            <p>Research, legal counsel, engineering, and budgets remain essential — submitted to prayer rather than separated from it.</p>
+          </Card>
+        </Reveal>
+      </div>
+      <Reveal delay="120" class="mt-14 max-w-2xl">
+        <h2 id="relational-heading" class="display-3">Relational rather than mechanical</h2>
+        <p class="mt-6 text-[1.0625rem] leading-relaxed text-stone-300">
+          Prayer at Ember Ridge will remain relational rather than mechanical. If you
+          believe God is inviting you to pray for this work, we would welcome hearing
+          from you.
+        </p>
+        <p class="mt-7">
+          <a href="/contact" class="btn-primary">Pray with us</a>
+        </p>
+      </Reveal>
+    </div>
+  </Section>
+
+  <CTASection />
+</BaseLayout>

@@ -1,0 +1,110 @@
+---
+// src/pages/legal/terms-of-use.astro
+import LegalLayout from '../../layouts/LegalLayout.astro';
+import { site } from '../../data/site';
+---
+<LegalLayout
+  title="Terms of Use"
+  description="The terms that govern use of the Ember Ridge website, a ministry of Firebrand Revivalists."
+  updated="[DATE TO BE SET AT LAUNCH]"
+  intro="Plain terms for the use of this website. They are not a substitute for the agreements that govern guest stays, gifts, or professional services."
+>
+  <h2>Acceptance</h2>
+  <p>
+    By using this website you agree to these terms. If you do not agree, please do not
+    use the site.
+  </p>
+
+  <h2>About the content on this site</h2>
+  <p>
+    This website describes a ministry in formation. Descriptions of property, buildings,
+    renovations, budgets, timelines, programs, and staffing are plans and intentions
+    based on current information. They are not offers, guarantees, or commitments, and
+    they may change as due diligence, professional review, funding, and the leading of
+    God direct.
+  </p>
+  <p>
+    Nothing on this site is an offer to sell or a solicitation to buy any security or
+    interest in property.
+  </p>
+
+  <h2>No professional relationship</h2>
+  <p>
+    Content on this site is offered for information and spiritual encouragement. It is
+    not legal, financial, tax, medical, psychological, or other professional advice, and
+    using this site or contacting us does not create an attorney-client, counseling,
+    pastoral care, or other professional relationship. See our
+    <a href="/legal/disclaimer">Disclaimer</a>.
+  </p>
+
+  <h2>Your use of the site</h2>
+  <p>You agree not to:</p>
+  <ul>
+    <li>Use the site unlawfully or to harm others</li>
+    <li>Attempt to gain unauthorized access to the site or its systems</li>
+    <li>Interfere with the operation or security of the site</li>
+    <li>Submit false, abusive, threatening, or intentionally misleading information</li>
+    <li>Scrape, harvest, or reuse content or contact information for commercial purposes</li>
+  </ul>
+
+  <h2>Submissions</h2>
+  <p>
+    When you send us a message, prayer request, referral, or other material, you confirm
+    that you have the right to share it. You grant us permission to read, retain, and act
+    on it for ministry purposes as described in our
+    <a href="/legal/privacy-policy">Privacy Policy</a>. If your message concerns another
+    person, please share only what is necessary and appropriate.
+  </p>
+
+  <h2>Intellectual property</h2>
+  <p>
+    The Ember Ridge and Firebrand Revivalists names, logos, marks, written content,
+    photographs, and design of this site are owned by the ministry or used with
+    permission. You may share links and quote short excerpts with attribution. Please ask
+    before reproducing substantial content, and do not use our names or logos in a way
+    that suggests endorsement or affiliation.
+  </p>
+  <p>
+    <strong>[Needs legal review:</strong> confirm trademark status of the Ember Ridge and
+    Firebrand Revivalists marks, and confirm licenses and photo credits for all imagery
+    used on this site.<strong>]</strong>
+  </p>
+
+  <h2>Third-party links</h2>
+  <p>
+    We may link to other websites. We do not control them and are not responsible for
+    their content or practices.
+  </p>
+
+  <h2>Availability</h2>
+  <p>
+    We provide this site “as is.” We do not promise uninterrupted availability or that
+    the site will be free of errors, and we may change or remove content at any time.
+  </p>
+
+  <h2>Limitation of liability</h2>
+  <p>
+    <strong>[Needs legal review:</strong> insert a limitation of liability and indemnity
+    clause appropriate to North Carolina law and the ministry’s insurance coverage. Do
+    not publish this page without counsel completing this section.<strong>]</strong>
+  </p>
+
+  <h2>Governing law</h2>
+  <p>
+    These terms are governed by the laws of the State of North Carolina, without regard
+    to conflict-of-law principles. <strong>[Needs legal review:</strong> confirm venue
+    and dispute-resolution preference.<strong>]</strong>
+  </p>
+
+  <h2>Changes</h2>
+  <p>
+    We may update these terms. Continued use of the site after an update means you accept
+    the revised terms.
+  </p>
+
+  <h2>Contact</h2>
+  <p>
+    Questions about these terms:
+    <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a>
+  </p>
+</LegalLayout>
