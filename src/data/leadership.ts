@@ -83,16 +83,27 @@ export const leadership: Leader[] = [
   },
 ];
 
-// Wider ministry leadership referenced in the Founding Vision document.
-export const widerTeam = [
+// ── Ministry staff ──────────────────────────────────────────────────────
+// Portraits: drop a file into public/images/leadership/ and update `image`.
+export const ministryStaff = [
   {
     name: 'Marco Sanzari',
-    title: 'Systems & Information Technology',
-    note: 'Engineering-management and information-technology background strengthening digital security and systems governance.',
+    title: 'Ordained Chaplain, Lead Intercessor & IT Engineer',
+    image: '/images/leadership/marco-sanzari.jpg',
+    alt: 'Portrait of Marco Sanzari, Ordained Chaplain, Lead Intercessor and IT Engineer',
   },
   {
     name: 'Danielle Sanzari',
-    title: 'Education & Chaplaincy',
-    note: 'Education and chaplaincy experience connecting the vision to schools, children, and families.',
+    title: 'Ordained Chaplain & Lead Intercessor',
+    image: '/images/leadership/danielle-sanzari.jpg',
+    alt: 'Portrait of Danielle Sanzari, Ordained Chaplain and Lead Intercessor',
   },
+];
+
+// ── Board of Directors ──────────────────────────────────────────────────
+export const board = [
+  { name: 'Shannon Suttles', role: 'Board Chair' },
+  { name: 'Jason Suttles', role: 'Treasurer' },
+  { name: 'Marco Sanzari', role: 'Administrator' },
+  { name: 'Danielle Sanzari', role: 'Board Member' },
 ];

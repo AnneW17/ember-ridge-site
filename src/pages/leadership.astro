@@ -6,12 +6,10 @@ import Section from '../components/Section.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import Prose from '../components/Prose.astro';
 import LeadershipTeam from '../components/LeadershipTeam.astro';
-import Card from '../components/Card.astro';
-import Callout from '../components/Callout.astro';
 import ReviewNote from '../components/ReviewNote.astro';
 import Reveal from '../components/Reveal.astro';
 import CTASection from '../components/CTASection.astro';
-import { widerTeam } from '../data/leadership';
+import { ministryStaff, board } from '../data/leadership';
 
 const governance = [
   'Board-approved budgets',
@@ -26,22 +24,16 @@ const governance = [
   'Licensed contractors and specialists where required',
 ];
 
-const endurance = [
-  { title: 'Leadership development', body: 'Raising and releasing those who will carry the work forward.' },
-  { title: 'Written policies', body: 'Clear standards that outlast the people who wrote them.' },
-  { title: 'Succession planning', body: 'Structure capable of remaining faithful after the founding generation.' },
-  { title: 'Financial reserves', body: 'Preventive maintenance and reserves rather than crisis funding.' },
-];
 ---
 
 <BaseLayout
   title="Leadership & Accountability"
-  description="Ember Ridge is family-lived, professionally governed, and accountable beyond the personalities who first carry the vision. Meet the leadership team and review the governance standards of the ministry."
+  description="Ember Ridge is family-lived, professionally governed, and accountable. Meet the leadership team and review the governance standards of the ministry."
 >
   <PageHero
     eyebrow="Leadership & Accountability"
     title="A Family Called to Steward, a Ministry Built to Endure"
-    lede="Ember Ridge will be family-lived, professionally governed, and accountable beyond the personalities who first carry the vision."
+    lede="Ember Ridge will be family-lived, professionally governed, and accountable."
   />
 
   <!-- Leadership Team -->
@@ -68,39 +60,77 @@ const endurance = [
     </div>
   </Section>
 
-  <!-- Wider ministry -->
-  <Section tone="charcoal" labelledby="wider-heading">
+  <!-- Ministry staff -->
+  <Section tone="charcoal" labelledby="staff-heading">
     <div class="shell">
       <Reveal>
         <SectionHeading
-          id="wider-heading"
-          eyebrow="The Wider Ministry"
-          title="Additional discernment and professional expertise"
+          id="staff-heading"
+          eyebrow="Ministry Staff"
+          title="Those who serve alongside"
         />
       </Reveal>
 
-      <div class="mt-14 grid gap-6 sm:grid-cols-2">
-        {widerTeam.map((person, i) => (
+      <div class="mt-14 grid gap-8 sm:grid-cols-2 lg:gap-10">
+        {ministryStaff.map((person, i) => (
           <Reveal delay={i * 90}>
-            <Card title={person.name}>
-              <p class="font-sans text-[0.6875rem] uppercase tracking-[0.16em] text-gold-500">
-                {person.title}
-              </p>
-              <p class="mt-4">{person.note}</p>
-            </Card>
+            <article class="group card card-lift flex h-full items-start gap-6">
+              <div class="relative shrink-0">
+                <img
+                  src={person.image}
+                  alt={person.alt}
+                  width="900"
+                  height="900"
+                  loading="lazy"
+                  decoding="async"
+                  class="h-24 w-24 rounded-[0.25rem] object-cover object-top grayscale-[22%]
+                         transition-all duration-700 [transition-timing-function:var(--ease-refined)]
+                         group-hover:grayscale-0 sm:h-28 sm:w-28"
+                />
+                <div aria-hidden="true"
+                     class="pointer-events-none absolute inset-0 rounded-[0.25rem] ring-1 ring-inset ring-gold-700/50
+                            transition-all duration-700 group-hover:ring-gold-500/70"></div>
+              </div>
+              <div class="min-w-0 pt-1">
+                <h3 class="font-display text-2xl leading-tight text-cream">{person.name}</h3>
+                <p class="mt-2 font-sans text-[0.6875rem] uppercase tracking-[0.18em] text-gold-500">
+                  {person.title}
+                </p>
+                <div class="brushed-gold mt-4 h-px w-12"></div>
+              </div>
+            </article>
           </Reveal>
         ))}
       </div>
+    </div>
+  </Section>
 
-      <div class="mt-14">
-        <Prose>
-          <p>
-            Formal board oversight extends accountability beyond the immediate family
-            and brings additional discernment, professional expertise, and fiduciary
-            responsibility to the work.
-          </p>
-        </Prose>
-      </div>
+  <!-- Board of Directors -->
+  <Section labelledby="board-heading">
+    <div class="shell">
+      <Reveal>
+        <SectionHeading
+          id="board-heading"
+          eyebrow="Governance"
+          title="Board of Directors"
+          lede="Formal board oversight extends accountability beyond the immediate family and brings additional discernment, professional expertise, and fiduciary responsibility to the work."
+        />
+      </Reveal>
+
+      <ul class="mt-14 grid gap-px overflow-hidden border border-charcoal-300 bg-charcoal-300 sm:grid-cols-2">
+        {board.map((member, i) => (
+          <li>
+            <div data-reveal data-reveal-delay={i * 80}
+                 class="flex h-full flex-col justify-center bg-charcoal px-8 py-7
+                        transition-colors duration-500 hover:bg-charcoal-400">
+              <p class="font-display text-xl text-cream">{member.name}</p>
+              <p class="mt-2 font-sans text-[0.6875rem] uppercase tracking-[0.18em] text-gold-500">
+                {member.role}
+              </p>
+            </div>
+          </li>
+        ))}
+      </ul>
     </div>
   </Section>
 
@@ -122,11 +152,10 @@ const endurance = [
             advisory, legal-operations, strategy, media, and consulting services.
           </p>
           <p>
-            Sophion is not a substitute for the nonprofit ministry, and financial
-            relationships between the entities must remain appropriately documented and
-            transparent. Its work may support the larger vision through properly
-            structured contributions, services, or shared initiatives reviewed by legal
-            and financial professionals.
+            Sophion’s work may support the larger vision through properly structured
+            contributions and services. You can visit
+            <a href="https://www.sophiohq.com" target="_blank" rel="noopener noreferrer" class="link-gold">www.sophiohq.com</a>
+            to learn more<span class="sr-only"> (opens in a new tab)</span>.
           </p>
         </Prose>
 
@@ -159,37 +188,6 @@ const endurance = [
           </div>
         ))}
       </Reveal>
-    </div>
-  </Section>
-
-  <!-- Endurance -->
-  <Section labelledby="endurance-heading">
-    <div class="shell">
-      <Reveal>
-        <SectionHeading
-          id="endurance-heading"
-          eyebrow="Built to Endure"
-          title="Not a personality-centered ministry"
-          lede="The long-term goal is to establish a culture and structure capable of remaining faithful after the founding generation."
-        />
-      </Reveal>
-
-      <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        {endurance.map((item, i) => (
-          <Reveal delay={i * 80}>
-            <Card title={item.title}>
-              <p>{item.body}</p>
-            </Card>
-          </Reveal>
-        ))}
-      </div>
-
-      <Callout>
-        <p>
-          Clear theological and operational standards will help protect the vision for
-          those who come after us.
-        </p>
-      </Callout>
     </div>
   </Section>
 
