@@ -50,10 +50,30 @@
   /* ── Motion ───────────────────────────────────────────────────── */
   --ease-refined: cubic-bezier(0.16, 0.8, 0.24, 1);
   --animate-breathe: breathe 16s ease-in-out infinite alternate;
+  --animate-ember-core: ember-core 7s ease-in-out infinite alternate;
+  --animate-ember-halo: ember-halo 11s ease-in-out infinite alternate;
+  --animate-ember-flicker: ember-flicker 9s ease-in-out infinite;
 
   @keyframes breathe {
     0%   { opacity: 0.35; transform: scale(1); }
     100% { opacity: 0.6;  transform: scale(1.04); }
+  }
+  /* Hearth light: a warm core, a wider halo, and an irregular flicker. */
+  @keyframes ember-core {
+    0%   { opacity: 0.55; transform: translate3d(0,0,0) scale(0.96); }
+    100% { opacity: 0.9;  transform: translate3d(0,-2%,0) scale(1.06); }
+  }
+  @keyframes ember-halo {
+    0%   { opacity: 0.30; transform: scale(1); }
+    100% { opacity: 0.55; transform: scale(1.09); }
+  }
+  @keyframes ember-flicker {
+    0%, 100% { opacity: 0.42; }
+    18%      { opacity: 0.62; }
+    34%      { opacity: 0.36; }
+    52%      { opacity: 0.70; }
+    68%      { opacity: 0.44; }
+    84%      { opacity: 0.58; }
   }
 }
 

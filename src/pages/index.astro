@@ -8,6 +8,7 @@ import SectionHeading from '../components/SectionHeading.astro';
 import Card from '../components/Card.astro';
 import CTASection from '../components/CTASection.astro';
 import Reveal from '../components/Reveal.astro';
+import EmberGlow from '../components/EmberGlow.astro';
 
 const pillars = [
   {
@@ -100,15 +101,15 @@ const campus = [
   </Section>
 
   <!-- The need -->
-  <Section tone="linen" labelledby="need-heading">
-    <div class="shell grid gap-14 lg:grid-cols-12 lg:gap-16">
+  <Section tone="linen" labelledby="need-heading" class="overflow-hidden">
+    <EmberGlow variant="hearth" />
+    <div class="shell relative grid gap-14 lg:grid-cols-12 lg:gap-16">
       <div class="lg:col-span-5">
         <Reveal>
           <SectionHeading
             id="need-heading"
             eyebrow="The Founding Vision"
             title="The fire that still remains"
-            lede="A fire tended on this land through generations of prayer has not gone out. Ember Ridge exists to steward it — to keep it burning for the Lord, for His people, and for the region He has given us to cover."
           />
         </Reveal>
       </div>

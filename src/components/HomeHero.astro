@@ -1,49 +1,49 @@
 ---
 // src/components/HomeHero.astro
-// Full-width lodge banner with a slow parallax drift, then the Ember Ridge
-// medallion centred beneath it, overlapping the lower edge of the image.
+// Order, top to bottom: full-width lodge banner → Ember Ridge mark → tagline.
+// Nothing overlaps; each element sits in its own row.
 import { site } from '../data/site';
 ---
-<section class="relative">
-  <!-- Banner -->
-  <div class="relative overflow-hidden bg-ink pt-20 sm:pt-24">
-    <div class="relative h-[46vh] min-h-[280px] w-full sm:h-[58vh] sm:min-h-[420px] lg:h-[66vh] lg:max-h-[680px]">
+<section>
+  <!-- 1. Full-width banner -->
+  <div class="relative w-full overflow-hidden bg-cream-dark pt-[4.5rem] sm:pt-[5rem]">
+    <div class="relative h-[46vh] min-h-[260px] w-full sm:h-[58vh] lg:h-[64vh] lg:max-h-[620px]">
       <img
         data-banner
         src="/images/campus/lodge-banner.jpg"
-        alt="Restoration concept for the Ember Ridge lodge — a timber and stone mountain lodge at dusk with a covered wraparound porch"
-        width="1600"
-        height="742"
+        alt="Restoration concept for the Ember Ridge lodge — timber and stone with a covered wraparound porch at dusk"
+        width="640"
+        height="297"
         fetchpriority="high"
         decoding="async"
-        class="absolute inset-0 h-[118%] w-full object-cover object-center will-change-transform"
+        class="absolute inset-0 h-[110%] w-full object-cover object-center will-change-transform"
       />
-      <!-- Soft warm edges so the photograph sits into the page rather than on it -->
-      <div aria-hidden="true" class="absolute inset-0 bg-[linear-gradient(180deg,rgba(25,21,18,0.35)_0%,transparent_28%,transparent_62%,rgba(25,21,18,0.45)_100%)]"></div>
-      <div aria-hidden="true" class="absolute inset-x-0 bottom-0 h-32 bg-[linear-gradient(to_top,var(--color-ivory),transparent)]"></div>
+      <!-- Warm wash at the base so the photograph settles into the page -->
+      <div aria-hidden="true" class="absolute inset-x-0 bottom-0 h-28 bg-[linear-gradient(to_top,var(--color-ivory),transparent)]"></div>
+      <span aria-hidden="true" class="brushed-gold absolute inset-x-0 bottom-0 h-px"></span>
     </div>
   </div>
 
-  <!-- Medallion + statement -->
-  <div class="relative band-ivory">
+  <!-- 2. Mark  3. Tagline -->
+  <div class="band-ivory relative">
     <div class="shell">
-      <div class="-mt-16 flex flex-col items-center text-center sm:-mt-20">
+      <div class="flex flex-col items-center pt-12 pb-4 text-center sm:pt-16">
         <img
           data-reveal
-          src="/images/ember-ridge-medallion.jpg"
+          src="/images/ember-ridge-logo.png"
           alt="Ember Ridge"
-          width="640"
-          height="640"
-          class="h-32 w-32 rounded-full border border-gold-600/40 object-cover shadow-[var(--shadow-lift-lg)] sm:h-40 sm:w-40"
+          width="1024"
+          height="1024"
+          class="h-24 w-auto [filter:drop-shadow(0_10px_24px_rgba(122,90,52,0.22))] sm:h-32"
         />
 
-        <p data-reveal data-reveal-delay="100" class="eyebrow mt-8">
+        <p data-reveal data-reveal-delay="90" class="eyebrow mt-7">
           A Ministry of Firebrand Revivalists · {site.location}
         </p>
 
-        <h1 data-reveal data-reveal-delay="160" class="display-1 mt-5 max-w-3xl">
+        <h1 data-reveal data-reveal-delay="150" class="display-1 mt-5 max-w-4xl">
           A house prepared for the Lord
-          <span class="text-gold-700">on a ridge marked by prayer.</span>
+          <span class="text-gold-700">on a mountain marked by prayer.</span>
         </h1>
 
         <div data-reveal data-reveal-delay="220" class="brushed-gold mx-auto mt-8 h-px w-24"></div>
@@ -54,7 +54,7 @@ import { site } from '../data/site';
           ministry, and sends them back strengthened.
         </p>
 
-        <div data-reveal data-reveal-delay="380" class="mt-10 flex flex-col gap-4 pb-4 sm:flex-row">
+        <div data-reveal data-reveal-delay="380" class="mt-10 flex flex-col gap-4 pb-2 sm:flex-row">
           <a href="/vision" class="btn-gold w-full sm:w-auto">Read the Vision</a>
           <a href="/house-of-prayer" class="btn-outline w-full sm:w-auto">The First Ministry</a>
         </div>
@@ -64,8 +64,8 @@ import { site } from '../data/site';
 </section>
 
 <script is:inline>
-  // Slow parallax drift on the banner. Transform only, rAF-throttled, and
-  // skipped entirely when the visitor asks for reduced motion.
+  // Slow parallax drift on the banner: transform only, rAF-throttled, skipped
+  // entirely when reduced motion is requested.
   (() => {
     const img = document.querySelector('[data-banner]');
     if (!img) return;
@@ -74,7 +74,7 @@ import { site } from '../data/site';
     const apply = () => {
       const y = window.scrollY;
       if (y < window.innerHeight * 1.3) {
-        img.style.transform = 'translate3d(0,' + (y * 0.12).toFixed(2) + 'px,0)';
+        img.style.transform = 'translate3d(0,' + (y * 0.08).toFixed(2) + 'px,0)';
       }
       ticking = false;
     };

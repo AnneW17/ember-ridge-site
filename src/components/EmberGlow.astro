@@ -1,0 +1,49 @@
+---
+// src/components/EmberGlow.astro
+// Hearth light rendered entirely in CSS — layered radial gradients in amber,
+// gold and deep orange, breathing and flickering on different cycles so the
+// light never repeats visibly. No image, no illustration.
+// Decorative: aria-hidden, pointer-events-none, and it stops moving under
+// prefers-reduced-motion (see global.css).
+interface Props {
+  /** `bloom` fills the section; `hearth` sits low, like light from a fireplace. */
+  variant?: 'bloom' | 'hearth';
+}
+const { variant = 'hearth' } = Astro.props;
+const anchor = variant === 'hearth' ? 'bottom-[-34%]' : 'top-1/2 -translate-y-1/2';
+---
+<div aria-hidden="true" class="pointer-events-none absolute inset-0 overflow-hidden">
+  <!-- Wide amber halo -->
+  <div
+    class:list={[
+      'absolute left-1/2 h-[42rem] w-[68rem] max-w-[170vw] -translate-x-1/2 rounded-full blur-[110px]',
+      'animate-ember-halo [will-change:opacity,transform]',
+      anchor,
+    ]}
+    style="background: radial-gradient(closest-side, rgba(214,138,42,0.34), rgba(200,162,74,0.16) 52%, rgba(200,162,74,0) 78%);"
+  ></div>
+
+  <!-- Warm core -->
+  <div
+    class:list={[
+      'absolute left-1/2 h-[22rem] w-[34rem] max-w-[130vw] -translate-x-1/2 rounded-full blur-[70px]',
+      'animate-ember-core [will-change:opacity,transform]',
+      variant === 'hearth' ? 'bottom-[-16%]' : 'top-1/2 -translate-y-1/2',
+    ]}
+    style="background: radial-gradient(closest-side, rgba(232,124,28,0.40), rgba(214,138,42,0.20) 55%, rgba(214,138,42,0) 80%);"
+  ></div>
+
+  <!-- Innermost ember, flickering on its own irregular cycle -->
+  <div
+    class:list={[
+      'absolute left-1/2 h-[9rem] w-[16rem] max-w-[80vw] -translate-x-1/2 rounded-full blur-[46px]',
+      'animate-ember-flicker [will-change:opacity]',
+      variant === 'hearth' ? 'bottom-[-4%]' : 'top-1/2 -translate-y-1/2',
+    ]}
+    style="background: radial-gradient(closest-side, rgba(255,176,74,0.55), rgba(232,124,28,0.24) 58%, rgba(232,124,28,0) 82%);"
+  ></div>
+
+  <!-- Fade the light back into the page so it reads as glow, not as a shape -->
+  <div class="absolute inset-x-0 top-0 h-24 bg-[linear-gradient(to_bottom,var(--color-ivory),transparent)]"></div>
+  <div class="absolute inset-x-0 bottom-0 h-24 bg-[linear-gradient(to_top,var(--color-cream),transparent)]"></div>
+</div>
