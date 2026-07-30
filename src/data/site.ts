@@ -70,14 +70,14 @@ export const navTree: NavItem[] = [
     label: 'About',
     children: [
       { label: 'The Vision', href: '/vision' },
-      { label: 'The Story', href: '/story' },
-      { label: 'The Land Marked by Prayer', href: '/the-place' },
+      { label: 'The Story Behind the Vision', href: '/story' },
+      { label: 'The History of the Land', href: '/the-place' },
     ],
   },
   {
     label: 'Ministry',
     children: [
-      { label: 'The First Ministry', href: '/house-of-prayer' },
+      { label: 'Prayer, Worship, and Intercession', href: '/house-of-prayer' },
       { label: 'The Ministry Model', href: '/ministry-model' },
       { label: 'Remodel and Grounds', href: '/remodel-and-grounds' },
     ],
@@ -103,9 +103,9 @@ export const navTree: NavItem[] = [
 export const nav = [
   { label: 'Home', href: '/' },
   { label: 'The Vision', href: '/vision' },
-  { label: 'The Story', href: '/story' },
-  { label: 'The Land Marked by Prayer', href: '/the-place' },
-  { label: 'The First Ministry', href: '/house-of-prayer' },
+  { label: 'The Story Behind the Vision', href: '/story' },
+  { label: 'The History of the Land', href: '/the-place' },
+  { label: 'Prayer, Worship, and Intercession', href: '/house-of-prayer' },
   { label: 'The Ministry Model', href: '/ministry-model' },
   { label: 'Remodel and Grounds', href: '/remodel-and-grounds' },
   { label: 'Leadership', href: '/leadership' },

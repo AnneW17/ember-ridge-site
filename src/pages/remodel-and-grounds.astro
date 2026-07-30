@@ -36,6 +36,24 @@ const inside = [
   },
 ];
 
+const pavilion = [
+  {
+    src: '/images/campus/pavilion-elevation.jpg',
+    alt: 'Concept reference: worship pavilion seen from the front, timber trusses over open seating',
+    caption: 'Exterior view (concept)',
+  },
+  {
+    src: '/images/campus/pavilion-concept-drawing.jpg',
+    alt: 'Concept drawing: worship pavilion, approximately forty by sixty feet, with seasonal enclosure panels and curved pews',
+    caption: 'Approximately 40 × 60 ft, seasonal enclosure panels (concept drawing)',
+  },
+  {
+    src: '/images/campus/pavilion-in-landscape.jpg',
+    alt: 'Concept reference: worship pavilion set in open pasture with the lodge beyond',
+    caption: 'Set within the property, lodge beyond (concept)',
+  },
+];
+
 const outside = [
   {
     numeral: '05',
@@ -45,6 +63,8 @@ const outside = [
   {
     numeral: '06',
     title: 'The Prayer Garden',
+    image: '/images/campus/prayer-garden.jpg',
+    alt: 'Concept reference: prayer garden with walking paths, contemplative seating and Scripture markers',
     body: 'Walking paths, contemplative seating, Scripture markers, and intentional plantings — an outdoor extension of the house of prayer.',
   },
   {
@@ -70,7 +90,7 @@ const outside = [
     lede="Every renovation and building is measured against one question: does it help people minister to the Lord, live in healthy community, and be restored for faithful service?"
   />
 
-  <Section tone="ivory" size="sm">
+  <Section tone="ivory" class="!py-14 sm:!py-16 lg:!py-20" size="sm">
     <div class="shell">
       <Reveal>
         <div class="callout">
@@ -86,7 +106,7 @@ const outside = [
   </Section>
 
   <!-- The lodge -->
-  <Section tone="linen" labelledby="lodge-heading">
+  <Section tone="linen" class="!py-14 sm:!py-16 lg:!py-20" labelledby="lodge-heading">
     <div class="shell">
       <Reveal>
         <SectionHeading id="lodge-heading" eyebrow="The Lodge" title="What we are starting with" />
@@ -111,7 +131,7 @@ const outside = [
         </Prose>
       </div>
 
-      <Reveal delay={120} class="mt-14">
+      <Reveal delay={120} class="mt-10">
         <figure>
           <div class="overflow-hidden border border-stone-200 bg-cream shadow-[var(--shadow-lift-lg)]">
             <img
@@ -135,12 +155,12 @@ const outside = [
   </Section>
 
   <!-- Inside -->
-  <Section tone="cream" labelledby="inside-heading">
+  <Section tone="cream" class="!py-14 sm:!py-16 lg:!py-20" labelledby="inside-heading">
     <div class="shell">
       <Reveal>
         <SectionHeading id="inside-heading" eyebrow="Inside the Lodge" title="Rooms shaped around shared life" />
       </Reveal>
-      <div class="mt-14 grid gap-6 sm:grid-cols-2">
+      <div class="mt-12 grid gap-6 sm:grid-cols-2">
         {inside.map((el, i) => (
           <Reveal delay={(i % 2) * 90}>
             <Card numeral={el.numeral} title={el.title}><p>{el.body}</p></Card>
@@ -151,8 +171,8 @@ const outside = [
   </Section>
 
   <!-- Leadership residences -->
-  <Section tone="stone" labelledby="residences-heading">
-    <div class="shell grid gap-12 lg:grid-cols-12 lg:gap-16">
+  <Section tone="stone" class="!py-14 sm:!py-16 lg:!py-20" labelledby="residences-heading">
+    <div class="shell grid gap-10 lg:grid-cols-12 lg:gap-14">
       <div class="lg:col-span-5">
         <Reveal>
           <SectionHeading
@@ -186,7 +206,7 @@ const outside = [
   </Section>
 
   <!-- Three cabins -->
-  <Section tone="ivory" labelledby="cabins-heading">
+  <Section tone="ivory" class="!py-14 sm:!py-16 lg:!py-20" labelledby="cabins-heading">
     <div class="shell">
       <Reveal>
         <SectionHeading
@@ -197,7 +217,7 @@ const outside = [
         />
       </Reveal>
 
-      <div class="mt-12 grid gap-12 lg:grid-cols-12 lg:gap-16">
+      <div class="mt-10 grid gap-10 lg:grid-cols-12 lg:gap-14">
         <div class="lg:col-span-7">
           <Reveal class="prose-body">
             <p>
@@ -241,18 +261,65 @@ const outside = [
   </Section>
 
   <!-- Grounds -->
-  <Section tone="linen" labelledby="outside-heading">
+  <Section tone="linen" class="!py-14 sm:!py-16 lg:!py-20" labelledby="outside-heading">
     <div class="shell">
       <Reveal>
         <SectionHeading id="outside-heading" eyebrow="The Grounds" title="The devotional life of the house, outdoors" />
       </Reveal>
-      <div class="mt-14 grid gap-6 sm:grid-cols-2">
+      <div class="mt-12 grid gap-6 sm:grid-cols-2">
         {outside.map((el, i) => (
           <Reveal delay={(i % 2) * 90}>
-            <Card numeral={el.numeral} title={el.title}><p>{el.body}</p></Card>
+            <article class="group card card-lift flex h-full flex-col !p-0">
+              {el.image && (
+                <div class="overflow-hidden border-b border-stone-200">
+                  <img
+                    src={el.image}
+                    alt={el.alt}
+                    width="640"
+                    height="427"
+                    loading="lazy"
+                    decoding="async"
+                    class="aspect-[3/2] w-full object-cover transition-transform duration-[1200ms]
+                           [transition-timing-function:var(--ease-refined)] group-hover:scale-[1.03]"
+                  />
+                </div>
+              )}
+              <div class="p-8">
+                <p class="card-numeral">{el.numeral}</p>
+                <h3 class="mt-3 font-display text-xl text-ink">{el.title}</h3>
+                <div class="brushed-gold mt-4 h-px w-12"></div>
+                <p class="mt-5 text-[0.9375rem] leading-relaxed text-stone-700">{el.body}</p>
+              </div>
+            </article>
           </Reveal>
         ))}
       </div>
+
+      <Reveal delay={120} class="mt-12">
+        <h3 class="font-sans text-xs font-semibold uppercase tracking-[0.16em] text-gold-700">
+          Worship pavilion concepts
+        </h3>
+        <div class="mt-6 grid gap-6 sm:grid-cols-3">
+          {pavilion.map((fig) => (
+            <figure class="group">
+              <div class="overflow-hidden border border-stone-200 bg-cream shadow-[var(--shadow-lift)]
+                          transition-all duration-500 group-hover:shadow-[var(--shadow-lift-lg)]">
+                <img
+                  src={fig.src}
+                  alt={fig.alt}
+                  width="640"
+                  height="427"
+                  loading="lazy"
+                  decoding="async"
+                  class="aspect-[3/2] w-full object-cover transition-transform duration-[1200ms]
+                         [transition-timing-function:var(--ease-refined)] group-hover:scale-[1.03]"
+                />
+              </div>
+              <figcaption class="mt-3 text-xs leading-relaxed text-stone-600">{fig.caption}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </Reveal>
 
       <ReviewNote label="Planning concept">
         Final size, placement, acoustics, utilities, accessibility, and weather protection
@@ -262,7 +329,7 @@ const outside = [
     </div>
   </Section>
 
-  <Section tone="cream" size="sm">
+  <Section tone="cream" class="!py-14 sm:!py-16 lg:!py-20" size="sm">
     <div class="shell">
       <Callout title="One coherent plan">
         <p>
