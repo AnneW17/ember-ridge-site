@@ -1,49 +1,69 @@
 ---
 // src/components/EmberGlow.astro
-// Hearth light rendered entirely in CSS — layered radial gradients in amber,
-// gold and deep orange, breathing and flickering on different cycles so the
-// light never repeats visibly. No image, no illustration.
-// Decorative: aria-hidden, pointer-events-none, and it stops moving under
+// A flame drawn in CSS: three nested silhouettes cut with clip-path, each filled
+// with its own warm gradient and swaying on a different cycle, over a soft halo
+// so the shape sits in the page rather than on it. No image, no illustration.
+// Decorative — aria-hidden, pointer-events-none, and still under
 // prefers-reduced-motion (see global.css).
 interface Props {
-  /** `bloom` fills the section; `hearth` sits low, like light from a fireplace. */
   variant?: 'bloom' | 'hearth';
 }
-const { variant = 'hearth' } = Astro.props;
-const anchor = variant === 'hearth' ? 'bottom-[-34%]' : 'top-1/2 -translate-y-1/2';
+const { variant = 'bloom' } = Astro.props;
+
+// Tapered flame silhouette: narrow tip, full shoulders, tucked base.
+const OUTER =
+  'polygon(50% 0%, 60% 14%, 66% 27%, 74% 40%, 79% 54%, 78% 68%, 71% 80%, 60% 89%, 50% 100%, 40% 89%, 29% 80%, 22% 68%, 21% 54%, 26% 40%, 34% 27%, 40% 14%)';
+const MIDDLE =
+  'polygon(50% 6%, 58% 22%, 65% 38%, 68% 55%, 63% 72%, 54% 86%, 50% 100%, 46% 86%, 37% 72%, 32% 55%, 35% 38%, 42% 22%)';
+const CORE =
+  'polygon(50% 22%, 57% 42%, 60% 60%, 55% 80%, 50% 100%, 45% 80%, 40% 60%, 43% 42%)';
 ---
 <div aria-hidden="true" class="pointer-events-none absolute inset-0 overflow-hidden">
-  <!-- Wide amber halo -->
+  <!-- Halo: the light the flame throws into the room -->
   <div
     class:list={[
-      'absolute left-1/2 h-[42rem] w-[68rem] max-w-[170vw] -translate-x-1/2 rounded-full blur-[110px]',
+      'absolute left-1/2 h-[40rem] w-[62rem] max-w-[165vw] -translate-x-1/2 rounded-full blur-[110px]',
       'animate-ember-halo [will-change:opacity,transform]',
-      anchor,
+      variant === 'hearth' ? 'bottom-[-30%]' : 'top-1/2 -translate-y-1/2',
     ]}
-    style="background: radial-gradient(closest-side, rgba(214,138,42,0.34), rgba(200,162,74,0.16) 52%, rgba(200,162,74,0) 78%);"
+    style="background: radial-gradient(closest-side, rgba(214,138,42,0.30), rgba(200,162,74,0.14) 54%, rgba(200,162,74,0) 78%);"
   ></div>
 
-  <!-- Warm core -->
+  <!-- Flame -->
   <div
     class:list={[
-      'absolute left-1/2 h-[22rem] w-[34rem] max-w-[130vw] -translate-x-1/2 rounded-full blur-[70px]',
-      'animate-ember-core [will-change:opacity,transform]',
-      variant === 'hearth' ? 'bottom-[-16%]' : 'top-1/2 -translate-y-1/2',
+      'absolute left-1/2 -translate-x-1/2',
+      variant === 'hearth' ? 'bottom-0' : 'top-1/2 -translate-y-1/2',
     ]}
-    style="background: radial-gradient(closest-side, rgba(232,124,28,0.40), rgba(214,138,42,0.20) 55%, rgba(214,138,42,0) 80%);"
-  ></div>
+  >
+    <div class="relative h-[26rem] w-[15rem] sm:h-[32rem] sm:w-[18rem]">
+      <!-- Outer body: deep amber, softest edge -->
+      <div
+        class="absolute inset-0 animate-flame-sway blur-[26px] [will-change:transform]"
+        style={`clip-path:${OUTER}; background:linear-gradient(to top, rgba(122,66,18,0.16) 0%, rgba(214,138,42,0.38) 38%, rgba(240,178,74,0.42) 70%, rgba(255,214,140,0.30) 100%);`}
+      ></div>
 
-  <!-- Innermost ember, flickering on its own irregular cycle -->
-  <div
-    class:list={[
-      'absolute left-1/2 h-[9rem] w-[16rem] max-w-[80vw] -translate-x-1/2 rounded-full blur-[46px]',
-      'animate-ember-flicker [will-change:opacity]',
-      variant === 'hearth' ? 'bottom-[-4%]' : 'top-1/2 -translate-y-1/2',
-    ]}
-    style="background: radial-gradient(closest-side, rgba(255,176,74,0.55), rgba(232,124,28,0.24) 58%, rgba(232,124,28,0) 82%);"
-  ></div>
+      <!-- Middle body: brighter gold -->
+      <div
+        class="absolute inset-x-6 bottom-0 top-8 animate-flame-inner blur-[18px] [will-change:transform,opacity]"
+        style={`clip-path:${MIDDLE}; background:linear-gradient(to top, rgba(150,80,20,0.20) 0%, rgba(232,150,44,0.50) 40%, rgba(255,196,96,0.55) 78%, rgba(255,232,182,0.42) 100%);`}
+      ></div>
 
-  <!-- Fade the light back into the page so it reads as glow, not as a shape -->
-  <div class="absolute inset-x-0 top-0 h-24 bg-[linear-gradient(to_bottom,var(--color-ivory),transparent)]"></div>
-  <div class="absolute inset-x-0 bottom-0 h-24 bg-[linear-gradient(to_top,var(--color-cream),transparent)]"></div>
+      <!-- Core: the hot centre -->
+      <div
+        class="absolute inset-x-16 bottom-2 top-24 animate-ember-flicker blur-[14px] [will-change:opacity]"
+        style={`clip-path:${CORE}; background:linear-gradient(to top, rgba(255,168,60,0.42) 0%, rgba(255,214,128,0.62) 55%, rgba(255,244,214,0.55) 100%);`}
+      ></div>
+
+      <!-- Embers banked at the base -->
+      <div
+        class="absolute inset-x-4 bottom-[-1.5rem] h-24 animate-ember-core blur-[30px] [will-change:opacity,transform]"
+        style="background: radial-gradient(closest-side, rgba(232,124,28,0.42), rgba(150,80,20,0.18) 60%, transparent 82%);"
+      ></div>
+    </div>
+  </div>
+
+  <!-- Fade the whole thing back into the page -->
+  <div class="absolute inset-x-0 top-0 h-28 bg-[linear-gradient(to_bottom,var(--color-linen),transparent)]"></div>
+  <div class="absolute inset-x-0 bottom-0 h-28 bg-[linear-gradient(to_top,var(--color-cream),transparent)]"></div>
 </div>

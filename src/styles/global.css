@@ -53,6 +53,8 @@
   --animate-ember-core: ember-core 7s ease-in-out infinite alternate;
   --animate-ember-halo: ember-halo 11s ease-in-out infinite alternate;
   --animate-ember-flicker: ember-flicker 9s ease-in-out infinite;
+  --animate-flame-sway: flame-sway 13s ease-in-out infinite;
+  --animate-flame-inner: flame-inner 7s ease-in-out infinite;
 
   @keyframes breathe {
     0%   { opacity: 0.35; transform: scale(1); }
@@ -74,6 +76,20 @@
     52%      { opacity: 0.70; }
     68%      { opacity: 0.44; }
     84%      { opacity: 0.58; }
+  }
+  /* Flame body: a slow lean and stretch, never a loop you can count. */
+  @keyframes flame-sway {
+    0%   { transform: translate3d(-1%,0,0) scaleY(0.97) scaleX(1.02); }
+    28%  { transform: translate3d(1%,-1%,0) scaleY(1.04) scaleX(0.98); }
+    55%  { transform: translate3d(-0.5%,0.5%,0) scaleY(0.99) scaleX(1.01); }
+    78%  { transform: translate3d(1.5%,-0.5%,0) scaleY(1.05) scaleX(0.97); }
+    100% { transform: translate3d(-1%,0,0) scaleY(0.97) scaleX(1.02); }
+  }
+  @keyframes flame-inner {
+    0%   { transform: translateY(2%) scaleY(0.94); opacity: 0.75; }
+    40%  { transform: translateY(-2%) scaleY(1.06); opacity: 0.95; }
+    70%  { transform: translateY(1%) scaleY(0.98); opacity: 0.8; }
+    100% { transform: translateY(2%) scaleY(0.94); opacity: 0.75; }
   }
 }
 
