@@ -30,23 +30,6 @@ const { title, description, updated, intro } = Astro.props;
 
   <div class="surface-cream">
     <div class="shell-tight py-14 sm:py-20">
-      <!-- Review banner: remove only when counsel has approved this page. -->
-      <div
-        role="note"
-        class="mb-12 flex gap-3 border border-bronze/40 bg-bronze/[0.07] px-5 py-4 font-sans text-sm leading-relaxed text-stone-700"
-      >
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" class="mt-1 shrink-0 text-bronze" aria-hidden="true">
-          <path d="M12 9v4m0 3h.01M10.3 3.9 2.4 17.4A1.8 1.8 0 0 0 4 20h16a1.8 1.8 0 0 0 1.6-2.6L13.7 3.9a1.8 1.8 0 0 0-3.4 0Z"
-            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-        </svg>
-        <p>
-          <strong class="font-semibold uppercase tracking-[0.08em]">Draft — needs legal review.</strong>
-          This document is a plain-language starting point prepared for internal review.
-          It has not been reviewed or approved by legal counsel and should not be relied
-          upon as a final policy. Bracketed items require confirmation before launch.
-        </p>
-      </div>
-
       <article class="legal-doc">
         <slot />
       </article>
@@ -55,7 +38,9 @@ const { title, description, updated, intro } = Astro.props;
 
       <p class="font-sans text-xs leading-relaxed text-stone-700">
         Questions about this document may be directed to Ember Ridge, a ministry of
-        Firebrand Revivalists, Moravian Falls, North Carolina.
+        Firebrand Revivalists, Moravian Falls, North Carolina —
+        <a href="mailto:info@firebrandrevivalists.com" class="underline">info@firebrandrevivalists.com</a>.
+        This document is provided for information and is not legal advice.
       </p>
     </div>
   </div>

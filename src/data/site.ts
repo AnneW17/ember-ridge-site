@@ -24,6 +24,43 @@ export const site = {
   social: [] as { label: string; href: string }[],
 };
 
+// ── Giving ───────────────────────────────────────────────────────────────
+// Update a link here and it changes everywhere it appears on the site.
+export const giving = {
+  // Firebrand Revivalists is a church under section 508(c)(1)(A) of the
+  // Internal Revenue Code. NEEDS LEGAL SIGN-OFF on exact wording before launch.
+  status:
+    'Ember Ridge is a ministry of Firebrand Revivalists, a church under section 508(c)(1)(A) of the Internal Revenue Code. Gifts are tax-deductible to the extent permitted by law, and giving receipts are provided.',
+  methods: [
+    {
+      label: 'Givelify',
+      handle: 'Firebrand Revivalists',
+      note: 'Card, bank transfer, Apple Pay or Google Pay. One-time or recurring gifts.',
+      href: 'https://www.givelify.com/donate/firebrand-revivalists-randolph-nj-2j7wy5NjE2MjQ=/donation/amount',
+      primary: true,
+    },
+    {
+      label: 'Venmo',
+      handle: '@Firebrand45',
+      note: 'Please add “Ember Ridge” in the note so the gift is tracked to this work.',
+      href: 'https://venmo.com/u/Firebrand45',
+    },
+    {
+      label: 'Cash App',
+      handle: '$firebrand45',
+      note: 'Please add “Ember Ridge” in the note so the gift is tracked to this work.',
+      href: 'https://cash.app/$firebrand45',
+    },
+    {
+      label: 'Zelle',
+      handle: 'Firebrand Revivalists',
+      // TODO: Zelle needs a recipient email or phone number to reach the ministry.
+      note: 'Send through your own bank’s Zelle service.',
+      href: null as string | null,
+    },
+  ],
+};
+
 export const nav = [
   { label: 'Home', href: '/' },
   { label: 'Vision', href: '/vision' },
@@ -45,6 +82,10 @@ export const secondaryNav = [
 
 export const legalNav = [
   { label: 'Privacy Policy', href: '/legal/privacy-policy' },
+  // RCW 19.373 requires this to be a link that is separate and distinct from the
+  // standard privacy policy, prominently displayed on the homepage. The footer
+  // renders on every page, homepage included.
+  { label: 'Consumer Health Data Privacy', href: '/legal/consumer-health-data-privacy' },
   { label: 'Terms of Use', href: '/legal/terms-of-use' },
   { label: 'Cookie Notice', href: '/legal/cookie-notice' },
   { label: 'Disclaimer', href: '/legal/disclaimer' },

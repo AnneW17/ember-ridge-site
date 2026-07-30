@@ -7,8 +7,8 @@ import SectionHeading from '../components/SectionHeading.astro';
 import Prose from '../components/Prose.astro';
 import PullQuote from '../components/PullQuote.astro';
 import Callout from '../components/Callout.astro';
-import ReviewNote from '../components/ReviewNote.astro';
 import Reveal from '../components/Reveal.astro';
+import WaysToGive from '../components/WaysToGive.astro';
 
 const ways = [
   {
@@ -40,8 +40,8 @@ const ways = [
     numeral: 'IV',
     title: 'Give',
     body: 'Some will give sacrificially toward the property, the renovation, the residence building, the pavilion, the prayer garden, the intercession team, or the long-term operating foundation.',
-    cta: 'Discuss a gift',
-    href: '/contact',
+    cta: 'Ways to give',
+    href: '#ways-to-give',
   },
   {
     id: 'serve',
@@ -79,7 +79,6 @@ const ways = [
           id="ways-heading"
           eyebrow="Six Ways to Partner"
           title="Take it before the Lord and ask what He is inviting you to do"
-          lede="The invitation is not rooted in pressure. It is rooted in discernment."
         />
       </Reveal>
 
@@ -143,6 +142,23 @@ const ways = [
     </div>
   </Section>
 
+  <Section id="ways-to-give" tone="charcoal" labelledby="give-heading">
+    <div class="shell">
+      <Reveal>
+        <SectionHeading
+          id="give-heading"
+          eyebrow="Giving"
+          title="Ways to give"
+          lede="Gifts may be given through any of the methods below. Every gift designated for Ember Ridge is received and administered through Firebrand Revivalists and tracked to that purpose."
+        />
+      </Reveal>
+
+      <div class="mt-14">
+        <WaysToGive />
+      </div>
+    </div>
+  </Section>
+
   <Section labelledby="next-heading">
     <div class="shell">
       <Reveal class="mx-auto max-w-2xl text-center">
@@ -158,13 +174,6 @@ const ways = [
           <a href="/financial-stewardship" class="btn-outline w-full sm:w-auto">Review the stewardship framework</a>
         </div>
       </Reveal>
-
-      <ReviewNote label="Needs legal review">
-        Online giving is not yet enabled on this site. Before adding a donate button,
-        confirm charitable solicitation registration requirements for North Carolina and
-        any other state where the ministry actively solicits, along with gift receipting
-        and donor-privacy language.
-      </ReviewNote>
     </div>
   </Section>
 </BaseLayout>

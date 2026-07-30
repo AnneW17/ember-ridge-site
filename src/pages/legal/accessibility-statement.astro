@@ -5,69 +5,84 @@ import { site } from '../../data/site';
 ---
 <LegalLayout
   title="Accessibility Statement"
-  description="Our commitment to making the Ember Ridge website usable by as many people as possible, the measures we have taken, and how to report a barrier."
-  updated="[DATE TO BE SET AT LAUNCH]"
+  description="Our commitment to making the Ember Ridge website usable by as many people as possible, the specific measures taken, known limitations, and how to report a barrier."
+  updated="30 July 2026"
   intro="A house meant to receive weary people should be easy to enter. That applies to its website as well."
 >
   <h2>Our commitment</h2>
   <p>
     We want this website to be usable by as many people as possible, including people who
-    use screen readers, keyboard navigation, magnification, voice control, or reduced-motion
-    settings. Accessibility is treated as part of stewardship, not an afterthought.
+    use screen readers, keyboard navigation, screen magnification, voice control, or
+    reduced-motion settings. Accessibility is treated here as part of stewardship rather
+    than as a compliance exercise.
+  </p>
+  <p>
+    Religious organizations are exempt from Title III of the Americans with Disabilities
+    Act under 42 U.S.C. § 12187. We hold ourselves to the standard below anyway, because we
+    believe it is right.
   </p>
 
-  <h2>Standard we are working toward</h2>
+  <h2>Standard we work to</h2>
   <p>
     We aim to meet the Web Content Accessibility Guidelines (WCAG) 2.2 at Level AA. We
-    describe this as an ongoing goal rather than a certification.
-  </p>
-  <p>
-    <strong>[Needs review:</strong> if a formal audit is completed, state the auditor,
-    date, and conformance level here, and replace this note.<strong>]</strong>
+    describe this as an ongoing commitment rather than a certification. The site has not
+    been audited by an independent third party.
   </p>
 
-  <h2>What we have done</h2>
+  <h2>Measures taken</h2>
   <ul>
-    <li>Semantic HTML structure with landmarks, one main heading per page, and ordered headings</li>
+    <li>Semantic HTML with landmark regions, a single main heading per page, and headings in logical order</li>
     <li>A “skip to main content” link as the first focusable element on every page</li>
-    <li>Visible, high-contrast focus indicators for all interactive elements</li>
-    <li>Full keyboard operability, including the navigation menu and expandable biographies</li>
-    <li>Descriptive alternative text for meaningful images; decorative images hidden from assistive technology</li>
-    <li>Form fields with persistent visible labels, required-field indication, and clear error handling</li>
-    <li>Text contrast checked against WCAG AA thresholds on both the dark and cream surfaces</li>
-    <li>Motion limited to gentle fades and slow ambient gradients, all of which are disabled when a visitor’s device requests reduced motion</li>
+    <li>Visible, high-contrast focus indicators on every interactive element</li>
+    <li>Full keyboard operability, including the navigation menu and expandable biographies; the menu closes on Escape</li>
+    <li>Expandable content marked with <code>aria-expanded</code> and <code>aria-controls</code></li>
+    <li>Descriptive alternative text for meaningful images; decorative images and graphics hidden from assistive technology</li>
+    <li>Form fields with persistent visible labels and clear indication of required fields</li>
+    <li>Links that open in a new tab announced as doing so</li>
+    <li>Text contrast measured against WCAG AA thresholds on both the dark and light surfaces, with body text at approximately 10:1</li>
+    <li>Motion limited to gentle fades and slow ambient gradients, all of which stop when a visitor’s device requests reduced motion</li>
     <li>Responsive layouts that reflow without horizontal scrolling and support text resizing to 200%</li>
-    <li>Data tables with proper headers, captions, and keyboard-scrollable containers</li>
+    <li>Data tables with captions, row and column headers, and keyboard-scrollable containers</li>
+    <li>No time limits, no auto-playing audio or video, no content that flashes</li>
   </ul>
 
   <h2>Known limitations</h2>
   <ul>
     <li>
-      Some third-party services we may add later — such as a giving platform, embedded
-      video, or maps — may not be fully accessible. Where that is true, we will note it
-      here and offer an alternative way to complete the task.
+      Third-party giving platforms linked from our Partner page are outside our control and
+      may not meet the same standard. If you encounter a barrier while giving, contact us
+      and we will arrange another way to complete your gift.
     </li>
     <li>
-      <strong>[Needs review:</strong> add any limitations identified during testing, along
-      with target dates for remediation.<strong>]</strong>
+      Some concept images on the Remodel &amp; Grounds and Campus pages are placeholders
+      awaiting final renderings. Their alternative text will be revised as real images
+      replace them.
+    </li>
+    <li>
+      The site has not yet been tested with every combination of assistive technology and
+      browser.
     </li>
   </ul>
 
   <h2>Tell us about a barrier</h2>
   <p>
-    If any part of this site prevents you from finding information or contacting us,
-    please write to <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a>. Tell
-    us the page and what happened, and we will work to resolve it and provide the
-    information you need another way in the meantime.
-  </p>
-  <p>
-    <strong>[Needs review:</strong> set a target response time for accessibility reports —
-    for example, five business days.<strong>]</strong>
+    If any part of this site prevents you from finding information or contacting us, write
+    to <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a>. Tell us the page
+    and what happened. We aim to acknowledge accessibility reports within five business
+    days, and we will provide the information you need by another means while we work on a
+    fix.
   </p>
 
   <h2>Alternative formats</h2>
   <p>
     We can provide the Founding Vision material and any content on this site in another
-    format on request, including large print or plain text.
+    format on request, including large print, plain text, or by telephone conversation.
+  </p>
+
+  <h2>Contact</h2>
+  <p>
+    Ember Ridge, a ministry of Firebrand Revivalists<br />
+    Moravian Falls, North Carolina<br />
+    <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a>
   </p>
 </LegalLayout>

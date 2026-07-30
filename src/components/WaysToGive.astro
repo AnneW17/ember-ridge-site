@@ -1,0 +1,50 @@
+---
+// src/components/WaysToGive.astro
+// Giving options. Links live in src/data/site.ts — edit there, not here.
+import { giving } from '../data/site';
+---
+<div class="grid gap-6 sm:grid-cols-2">
+  {giving.methods.map((m, i) => (
+    <article
+      data-reveal
+      data-reveal-delay={i * 80}
+      class:list={[
+        'card card-lift flex h-full flex-col',
+        m.primary && 'sm:col-span-2 border-gold-700/60',
+      ]}
+    >
+      <div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
+        <h3 class="font-display text-2xl text-cream">{m.label}</h3>
+        <p class="font-sans text-sm tracking-[0.06em] text-gold-400">{m.handle}</p>
+      </div>
+      <div class="brushed-gold mt-5 h-px w-12"></div>
+      <p class="mt-5 flex-1 text-[0.9375rem] leading-relaxed text-stone-300">{m.note}</p>
+
+      {m.href ? (
+        <p class="mt-7">
+          <a
+            href={m.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class:list={[m.primary ? 'btn-primary' : 'btn-outline', 'w-full sm:w-auto']}
+          >
+            Give with {m.label}
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true" class="ml-1">
+              <path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <span class="sr-only">(opens in a new tab)</span>
+          </a>
+        </p>
+      ) : (
+        <p class="mt-7 font-sans text-[0.75rem] uppercase tracking-[0.16em] text-stone-500">
+          Search “{m.handle}” in your banking app
+        </p>
+      )}
+    </article>
+  ))}
+</div>
+
+<p class="mt-10 max-w-2xl text-sm leading-relaxed text-stone-500">
+  {giving.status}
+</p>

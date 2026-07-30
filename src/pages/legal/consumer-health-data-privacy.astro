@@ -1,0 +1,149 @@
+---
+// src/pages/legal/consumer-health-data-privacy.astro
+//
+// Required by the Washington My Health My Data Act (RCW 19.373). The Act has no
+// nonprofit or small-entity exemption, and it requires this policy to be SEPARATE
+// AND DISTINCT from the general privacy policy, with a prominent link on the
+// homepage. The footer renders on every page, homepage included — do not remove
+// that link without legal advice.
+import LegalLayout from '../../layouts/LegalLayout.astro';
+import { site } from '../../data/site';
+---
+<LegalLayout
+  title="Consumer Health Data Privacy Policy"
+  description="How Ember Ridge handles consumer health data under the Washington My Health My Data Act, including what we collect, why, who sees it, and how to withdraw consent or request deletion."
+  updated="30 July 2026"
+  intro="A separate policy, required by Washington law, covering information about health that someone chooses to share with this ministry."
+>
+  <h2>Why this policy exists</h2>
+  <p>
+    The Washington My Health My Data Act (RCW 19.373) governs “consumer health data” —
+    information that identifies a person’s past, present, or future physical or mental
+    health status. The Act applies to organizations that do business in Washington or
+    direct services to Washington residents. It contains no exemption for churches or
+    nonprofit organizations.
+  </p>
+  <p>
+    This policy is separate from our general
+    <a href="/legal/privacy-policy">Privacy Policy</a>, as the Act requires. It applies to
+    everyone who contacts us, not only Washington residents.
+  </p>
+
+  <h2>What consumer health data we collect</h2>
+  <p>
+    We do not ask for health information, and no field on this website requests it. We
+    collect it only when a person chooses to include it in a message — most often in a
+    request for prayer. That may include:
+  </p>
+  <ul>
+    <li>A physical or mental health condition, diagnosis, symptom, or injury</li>
+    <li>Treatment, medication, surgery, or care being received or sought</li>
+    <li>Mental or behavioral health circumstances</li>
+    <li>Pregnancy, loss of pregnancy, or reproductive circumstances</li>
+    <li>Substance use or recovery</li>
+    <li>Circumstances of a family member, where you have chosen to describe them</li>
+  </ul>
+  <p>
+    We do not collect biometric data, precise location data, or health data from any
+    third-party source. We do not infer health information about you from your browsing.
+  </p>
+
+  <h2>How we collect it</h2>
+  <p>
+    Directly from you, through the contact form on this website or by email. There is no
+    other source.
+  </p>
+
+  <h2>Why we use it</h2>
+  <p>
+    To read and respond to your message, and to pray for what you have asked us to carry.
+    That is the entire purpose. We do not use consumer health data for advertising,
+    marketing, analytics, research, profiling, or any automated decision-making.
+  </p>
+
+  <h2>Who can see it</h2>
+  <ul>
+    <li>Ministry leadership, who read incoming messages.</li>
+    <li>
+      Members of the intercession team, where a request for prayer is passed to them —
+      unless you asked that your message be limited to leadership. Intercessors serving
+      in a sustained capacity are subject to written confidentiality expectations.
+    </li>
+    <li>
+      Our website host and form processor, and our email provider, which store and
+      transmit messages on our behalf and may not use them for their own purposes.
+    </li>
+  </ul>
+  <p>
+    We do not share consumer health data with any other third party. We do not disclose
+    it to affiliates, marketing partners, or data brokers.
+  </p>
+
+  <h2>We do not sell consumer health data</h2>
+  <p>
+    We have never sold consumer health data and we do not intend to. The Act requires a
+    separate, signed authorization before any such sale, and we do not seek one.
+  </p>
+
+  <h2>Your rights</h2>
+  <p>Under the My Health My Data Act you have the right to:</p>
+  <ul>
+    <li>Confirm whether we are collecting, sharing, or selling your consumer health data</li>
+    <li>Access that data, including a list of all third parties with whom we have shared it</li>
+    <li>Withdraw your consent to our collection and sharing of it</li>
+    <li>
+      Have it deleted — including from our archives and backup systems, subject to the
+      timing the Act allows for restoring archived or backup systems
+    </li>
+  </ul>
+
+  <h3>How to exercise a right</h3>
+  <p>
+    Email <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a> with the
+    subject line “Consumer Health Data Request.” Tell us what you would like us to do and
+    give us enough detail to locate your message. We may ask you to confirm your identity
+    before we act.
+  </p>
+  <p>
+    We will respond within forty-five days of receiving your request. If we need more
+    time, we will tell you within that period and may extend by up to forty-five
+    additional days. Exercising these rights is free unless a request is manifestly
+    unfounded or excessive.
+  </p>
+
+  <h3>If we decline</h3>
+  <p>
+    You may appeal by replying to our decision and asking for reconsideration. We will
+    respond to an appeal within forty-five days. If we deny the appeal, we will explain
+    why and provide a method to complain to the Washington State Attorney General’s
+    Office, which may be contacted at
+    <a href="https://www.atg.wa.gov/file-complaint">atg.wa.gov/file-complaint</a>.
+  </p>
+
+  <h2>How long we keep it</h2>
+  <p>
+    No longer than needed to serve the request, and not longer than twenty-four months,
+    unless you ask us to delete it sooner or a longer period is required by law.
+  </p>
+
+  <h2>A request of you</h2>
+  <p>
+    Please share only what you want us to hold. A request for prayer does not need
+    clinical detail to be carried faithfully, and this website is not a secure channel
+    for medical records.
+  </p>
+
+  <h2>Changes to this policy</h2>
+  <p>
+    We may update this policy. Material changes will be posted here, and we will not
+    apply them to previously collected consumer health data without your consent where
+    the Act requires it.
+  </p>
+
+  <h2>Contact</h2>
+  <p>
+    Ember Ridge, a ministry of Firebrand Revivalists<br />
+    Moravian Falls, North Carolina<br />
+    <a href={`mailto:${site.contact.email}`}>{site.contact.email}</a>
+  </p>
+</LegalLayout>

@@ -5,7 +5,6 @@ import PageHero from '../components/PageHero.astro';
 import Section from '../components/Section.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import Prose from '../components/Prose.astro';
-import Card from '../components/Card.astro';
 import Callout from '../components/Callout.astro';
 import ReviewNote from '../components/ReviewNote.astro';
 import Reveal from '../components/Reveal.astro';
@@ -15,11 +14,23 @@ const elements = [
   {
     numeral: '01',
     title: 'The Great Room',
+    images: [
+      {
+        src: '/images/campus/great-room.jpg',
+        alt: 'Concept reference: great room with stone fireplace, vaulted ceiling and layered seating',
+      },
+    ],
     body: 'The heart of shared worship, conversation, and family life. The existing stone fireplace will be preserved and strengthened with a substantial reclaimed-wood mantle. Flexible seating lets the room move naturally between worship, teaching, prayer, and informal fellowship.',
   },
   {
     numeral: '02',
     title: 'Long-Table Dining & Kitchen',
+    images: [
+      {
+        src: '/images/campus/long-table-dining.jpg',
+        alt: 'Concept reference: long dining table set for a large gathering in a timber room',
+      },
+    ],
     body: 'Shared meals are not secondary to the ministry model. Breaking bread together creates space for stories, truth, laughter, correction, and relationship that cannot be manufactured in formal sessions. The kitchen will be renovated for both daily household use and larger hospitality.',
   },
   {
@@ -35,6 +46,12 @@ const elements = [
   {
     numeral: '05',
     title: 'The Prayer Garden',
+    images: [
+      {
+        src: '/images/campus/prayer-garden.jpg',
+        alt: 'Concept reference: prayer garden with paved path, seating, planting beds and a cross',
+      },
+    ],
     body: 'Walking paths, contemplative seating, Scripture markers, and intentional plantings. An outdoor extension of the house of prayer, designed for sustained intercession and quiet encounter.',
   },
   {
@@ -45,11 +62,27 @@ const elements = [
   {
     numeral: '07',
     title: 'The Worship Pavilion',
+    wide: true,
+    images: [
+      {
+        src: '/images/campus/pavilion-elevation.jpg',
+        alt: 'Concept reference: worship pavilion seen from the front, with timber trusses and seating',
+      },
+      {
+        src: '/images/campus/pavilion-concept-drawing.jpg',
+        alt: 'Concept drawing: worship pavilion, approximately forty by sixty feet, with seasonal enclosure panels and curved pews',
+      },
+      {
+        src: '/images/campus/pavilion-in-landscape.jpg',
+        alt: 'Concept reference: worship pavilion set in open pasture with the lodge beyond',
+      },
+    ],
     body: 'A covered, open-air structure for worship, prayer, teaching, and regional gatherings. The preliminary concept is approximately 40 by 60 feet, using timber and stone details that harmonize with the lodge, with optional seasonal enclosure panels.',
   },
   {
     numeral: '08',
     title: 'The Leadership Residence',
+    wide: true,
     body: 'One building — not a collection of detached cabins — allowing the family to live on site without consuming guest capacity. Intended for the buildable left side of the property so existing parking and guest circulation are preserved.',
   },
 ];
@@ -100,11 +133,31 @@ const elements = [
           </p>
         </Prose>
 
-        <ReviewNote label="Needs review">
-          Property details (year built, bedroom and bathroom counts, acreage) are drawn
-          from the Founding Vision document and should be verified against the appraisal,
-          survey, and tax records before publication.
-        </ReviewNote>
+        <Reveal delay={120} class="mt-14">
+          <figure class="group">
+            <div class="relative overflow-hidden border border-charcoal-300 shadow-[var(--shadow-lift)]
+                        transition-all duration-700 [transition-timing-function:var(--ease-refined)]
+                        group-hover:border-gold-700/60 group-hover:shadow-[var(--shadow-lift-lg),var(--shadow-glow-gold)]">
+              <img
+                src="/images/campus/lodge-exterior.jpg"
+                alt="Concept reference: the renovated lodge at dusk, with a wraparound covered porch and stone chimney"
+                width="1280"
+                height="800"
+                loading="lazy"
+                decoding="async"
+                class="aspect-[16/10] w-full object-cover transition-transform duration-[1400ms]
+                       [transition-timing-function:var(--ease-refined)] group-hover:scale-[1.02]"
+              />
+              <div aria-hidden="true" class="pointer-events-none absolute inset-0
+                   bg-[linear-gradient(to_top,rgba(10,10,11,0.5),transparent_45%)]"></div>
+            </div>
+            <figcaption class="mt-4 flex items-start gap-3 text-sm leading-relaxed text-stone-500">
+              <span aria-hidden="true" class="mt-2 h-1 w-1 shrink-0 rounded-full bg-gold-600"></span>
+              Exterior concept — design direction for the renovated lodge. This is a
+              concept reference and does not show the property in its current condition.
+            </figcaption>
+          </figure>
+        </Reveal>
       </div>
     </div>
   </Section>
@@ -120,12 +173,41 @@ const elements = [
         />
       </Reveal>
 
-      <div class="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <div class="mt-16 grid items-start gap-8 lg:grid-cols-2 lg:gap-10">
         {elements.map((el, i) => (
-          <Reveal delay={(i % 4) * 80}>
-            <Card numeral={el.numeral} title={el.title}>
-              <p>{el.body}</p>
-            </Card>
+          <Reveal delay={(i % 2) * 90} class:list={[el.wide && 'lg:col-span-2']}>
+            <article class="group card card-lift h-full !p-0">
+              {el.images && (
+                <div class:list={[
+                  'border-b border-charcoal-300',
+                  el.images.length > 1 && 'grid gap-px bg-charcoal-300 sm:grid-cols-3',
+                ]}>
+                  {el.images.map((img, n) => (
+                    <div class="relative overflow-hidden bg-ink">
+                      <img
+                        src={img.src}
+                        alt={img.alt}
+                        width="1290"
+                        height="720"
+                        loading={i < 2 && n === 0 ? 'eager' : 'lazy'}
+                        decoding="async"
+                        class="aspect-[16/9] w-full object-cover transition-transform duration-[1200ms]
+                               [transition-timing-function:var(--ease-refined)] group-hover:scale-[1.03]"
+                      />
+                      <div aria-hidden="true" class="pointer-events-none absolute inset-0
+                           bg-[linear-gradient(to_top,rgba(16,17,19,0.55),transparent_42%)]"></div>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              <div class="p-8">
+                <p class="card-numeral">{el.numeral}</p>
+                <h3 class="mt-3 font-display text-xl text-cream">{el.title}</h3>
+                <div class="brushed-gold mt-4 h-px w-12"></div>
+                <p class="mt-5 text-[0.9375rem] leading-relaxed text-stone-300">{el.body}</p>
+              </div>
+            </article>
           </Reveal>
         ))}
       </div>
@@ -158,18 +240,6 @@ const elements = [
             residences will establish healthy privacy and boundaries so the main lodge
             remains available to guests and ministry.
           </p>
-          <p>
-            The residence building is intended to include a two-story residence for
-            Jason and Shannon, an apartment for Anne and her daughter Layla, and a
-            private apartment for Mark Burgett.
-          </p>
-          <p>
-            Mark Burgett will serve as Chief IT Engineer in Training, growing into
-            responsibility for engineering systems, technology infrastructure, security
-            systems, facilities stewardship, maintenance planning, and long-term campus
-            development. His role reflects the broader vision for Ember Ridge: spiritual
-            ministry and practical excellence must remain joined.
-          </p>
         </Reveal>
       </div>
     </div>
@@ -196,8 +266,8 @@ const elements = [
 
   <CTASection
     title="Help us build it well"
-    body="Some will bring professional wisdom in architecture, engineering, construction, hospitality, security, technology, or landscaping. Others will help furnish rooms, equip the kitchen, build trails, or provide materials."
-    primary={{ label: 'Offer your expertise', href: '/partner#build' }}
-    secondary={{ label: 'Financial stewardship', href: '/financial-stewardship' }}
+    body="A house like this is built in prayer long before it is built in timber and stone. If this vision stirs something in you, take it to the Lord and ask what part He would have you carry — whether that is standing with us in intercession, or helping provide what it will take to see it established."
+    primary={{ label: 'Partner With Us', href: '/partner' }}
+    secondary={{ label: 'Pray With Us', href: '/house-of-prayer#intercession' }}
   />
 </BaseLayout>
