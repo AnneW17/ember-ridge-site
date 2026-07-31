@@ -8,16 +8,22 @@ import { site } from '../data/site';
   <!-- 1. Banner -->
   <div class="band-ivory relative w-full overflow-hidden pt-[4.5rem] sm:pt-[5rem]">
     <div class="relative h-[40vh] min-h-[230px] w-full sm:h-[50vh] lg:h-[56vh] lg:max-h-[540px]">
-      <img
-        data-banner
-        src="/images/campus/lodge-banner.jpg"
-        alt="Restoration concept for the Ember Ridge lodge — timber and stone with a covered wraparound porch at dusk"
-        width="1836"
-        height="857"
-        fetchpriority="high"
-        decoding="async"
-        class="absolute inset-0 h-[108%] w-full object-cover object-center will-change-transform"
-      />
+      <picture>
+        <!-- Wide screens show the full render. Narrow screens get a crop that
+             excludes the overlaid wording, which would otherwise survive the
+             centre crop at phone and tablet widths. -->
+        <source media="(min-width: 1024px)" srcset="/images/campus/lodge-banner.jpg" />
+        <img
+          data-banner
+          src="/images/campus/lodge-banner-mobile.jpg"
+          alt="Restoration concept for the Ember Ridge lodge — timber and stone with a covered wraparound porch at dusk"
+          width="1836"
+          height="857"
+          fetchpriority="high"
+          decoding="async"
+          class="absolute inset-0 h-[108%] w-full object-cover object-center will-change-transform"
+        />
+      </picture>
     </div>
   </div>
 
