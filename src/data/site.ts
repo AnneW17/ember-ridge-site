@@ -27,10 +27,11 @@ export const site = {
 // ── Giving ───────────────────────────────────────────────────────────────
 // Update a link here and it changes everywhere it appears on the site.
 export const giving = {
-  // Firebrand Revivalists is a church under section 508(c)(1)(A) of the
-  // Internal Revenue Code. NEEDS LEGAL SIGN-OFF on exact wording before launch.
+  // Section 508(c)(1)(A) is the mandatory exception excusing churches from the
+  // Form 1023 notification requirement in 508(a) — it is not a separate exempt
+  // status. Exemption itself runs through 501(c)(3).
   status:
-    'Ember Ridge is a ministry of Firebrand Revivalists, a church under section 508(c)(1)(A) of the Internal Revenue Code. Gifts are tax-deductible to the extent permitted by law, and giving receipts are provided.',
+    'Ember Ridge is an auxiliary ministry of Firebrand Revivalists\u2122, a Washington nonprofit corporation and a church for federal tax purposes, exempt under section 501(c)(3) of the Internal Revenue Code and excepted from the application requirement by section 508(c)(1)(A). Gifts are tax-deductible to the extent permitted by law, and giving receipts are provided.',
   methods: [
     {
       label: 'Givelify',
@@ -79,7 +80,7 @@ export const navTree: NavItem[] = [
     children: [
       { label: 'Prayer, Worship, and Intercession', href: '/house-of-prayer' },
       { label: 'The Ministry Model', href: '/ministry-model' },
-      { label: 'Remodel and Grounds', href: '/remodel-and-grounds' },
+      { label: 'Remodel, Grounds & Financial Stewardship', href: '/remodel-and-grounds' },
     ],
   },
   {
@@ -107,7 +108,7 @@ export const nav = [
   { label: 'The History of the Land', href: '/the-place' },
   { label: 'Prayer, Worship, and Intercession', href: '/house-of-prayer' },
   { label: 'The Ministry Model', href: '/ministry-model' },
-  { label: 'Remodel and Grounds', href: '/remodel-and-grounds' },
+  { label: 'Remodel, Grounds & Financial Stewardship', href: '/remodel-and-grounds' },
   { label: 'Leadership', href: '/leadership' },
   { label: 'Financial Stewardship', href: '/financial-stewardship' },
   { label: 'Partner With Us', href: '/partner' },

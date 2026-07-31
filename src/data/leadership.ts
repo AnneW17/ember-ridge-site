@@ -88,12 +88,21 @@ export const leadership: Leader[] = [
 ];
 
 // ── Ministry staff ──────────────────────────────────────────────────────
-// Portraits: drop a file into public/images/leadership/ and update `image`.
-export const ministryStaff = [
+// Same shape as `leadership` so both can be rendered by LeadershipTeam.
+export const ministryStaff: Leader[] = [
   {
     name: 'Marco Sanzari',
     title: 'Ordained Chaplain, Lead Intercessor & IT Engineer',
     boardRole: 'Administrator – Firebrand Revivalists Board of Directors',
+    summary:
+      'Brings computer science and engineering management to the ministry’s digital infrastructure, bridging IT governance and day-to-day operations.',
+    bio: [
+      'Marco is a devoted husband to Danielle Sanzari and proud father of two children. He holds a Bachelor of Science in Computer Science and a Master of Science in Engineering Management. With a strong foundation in health and wellness, Marco has spent years as a certified CrossFit coach, leading classes and encouraging others to steward their physical health as a reflection of honoring God.',
+      'With an extensive background in technology and leadership, Marco brings a strategic and solutions-oriented approach to his work in IT. He currently serves as an IT Engineer for Firebrand, working closely with the Operations and Legal team to ensure the ministry’s digital infrastructure is secure, compliant, and aligned with organizational goals. His responsibilities include systems integration, network support, multi-factor authentication (MFA) implementation, and strategic planning to enhance digital capabilities across the ministry.',
+      'Marco plays a vital role in helping ensure the ministry adheres to best practices in IT governance, security, and regulatory compliance, strengthening the infrastructure that supports sensitive and mission-critical operations.',
+      'In addition to his ongoing service as a Board Member, Marco also serves as an ordained Chaplain and Lead Intercessor. His multifaceted position reflects both strategic oversight and operational excellence, allowing him to bridge governance and execution with precision.',
+      'Marco’s commitment to excellence is rooted in a desire to serve God through his work, using his gifts in technology.',
+    ],
     image: '/images/leadership/marco-sanzari.jpg',
     alt: 'Portrait of Marco Sanzari, Ordained Chaplain, Lead Intercessor and IT Engineer',
   },
@@ -101,6 +110,14 @@ export const ministryStaff = [
     name: 'Danielle Sanzari',
     title: 'Ordained Chaplain & Lead Intercessor',
     boardRole: 'Board Member – Firebrand Revivalists Board of Directors',
+    summary:
+      'New Jersey School Chaplain with Firebrand Revivalists, serving students, families and staff after six years teaching middle school mathematics.',
+    bio: [
+      'Danielle serves as the New Jersey School Chaplain with Firebrand Revivalists, where she is passionately committed to seeing the next generation transformed by the love and power of Jesus. She is an ordained Chaplain and serves as a Lead Intercessor with Firebrand. She is a devoted wife to Marco Sanzari, and mother of two children. Her journey into ministry has been deeply shaped by her love for both her own family and the children she’s served throughout her career.',
+      'Before stepping into full-time ministry, Danielle spent six years as a middle school math teacher, driven by a deep compassion for young people and a heart for education. She holds a Master of Science in Curriculum and Instruction, a Post-Baccalaureate degree in Elementary Education (K–5), and a specialization certification in Middle School Mathematics (6–8).',
+      'Danielle’s calling into chaplaincy was cultivated through the intentional mentorship and spiritual guidance of Shannon and Jason Suttles. As spiritual parents and leaders, they counseled, trained, and equipped Danielle in both pastoral ministry and the practical application of her educational background, teaching her how to merge her academic training with a pastoral heart. The vision for the chaplaincy ministry was birthed by God and downloaded to Shannon and Jason through the Holy Spirit.',
+      'In a divinely orchestrated move, Danielle returned to the classroom during the 2024–2025 school year — not only to teach fourth grade, but to walk through a dedicated season of training and preparation for chaplaincy ministry. She has since continued in the school as a full time Chaplain, and God has worked mightily through her presence there — transforming the lives of students, strengthening families, and profoundly impacting the staff in ways that can only be attributed to the power and grace of the Holy Spirit.',
+    ],
     image: '/images/leadership/danielle-sanzari.jpg',
     alt: 'Portrait of Danielle Sanzari, Ordained Chaplain and Lead Intercessor',
   },

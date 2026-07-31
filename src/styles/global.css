@@ -50,47 +50,42 @@
   /* ── Motion ───────────────────────────────────────────────────── */
   --ease-refined: cubic-bezier(0.16, 0.8, 0.24, 1);
   --animate-breathe: breathe 16s ease-in-out infinite alternate;
-  --animate-ember-core: ember-core 7s ease-in-out infinite alternate;
-  --animate-ember-halo: ember-halo 11s ease-in-out infinite alternate;
-  --animate-ember-flicker: ember-flicker 9s ease-in-out infinite;
-  --animate-flame-sway: flame-sway 13s ease-in-out infinite;
-  --animate-flame-inner: flame-inner 7s ease-in-out infinite;
 
   @keyframes breathe {
     0%   { opacity: 0.35; transform: scale(1); }
     100% { opacity: 0.6;  transform: scale(1.04); }
   }
-  /* Hearth light: a warm core, a wider halo, and an irregular flicker. */
-  @keyframes ember-core {
-    0%   { opacity: 0.55; transform: translate3d(0,0,0) scale(0.96); }
-    100% { opacity: 0.9;  transform: translate3d(0,-2%,0) scale(1.06); }
-  }
-  @keyframes ember-halo {
-    0%   { opacity: 0.30; transform: scale(1); }
-    100% { opacity: 0.55; transform: scale(1.09); }
-  }
-  @keyframes ember-flicker {
-    0%, 100% { opacity: 0.42; }
-    18%      { opacity: 0.62; }
-    34%      { opacity: 0.36; }
-    52%      { opacity: 0.70; }
-    68%      { opacity: 0.44; }
-    84%      { opacity: 0.58; }
-  }
-  /* Flame body: a slow lean and stretch, never a loop you can count. */
-  @keyframes flame-sway {
-    0%   { transform: translate3d(-1%,0,0) scaleY(0.97) scaleX(1.02); }
-    28%  { transform: translate3d(1%,-1%,0) scaleY(1.04) scaleX(0.98); }
-    55%  { transform: translate3d(-0.5%,0.5%,0) scaleY(0.99) scaleX(1.01); }
-    78%  { transform: translate3d(1.5%,-0.5%,0) scaleY(1.05) scaleX(0.97); }
-    100% { transform: translate3d(-1%,0,0) scaleY(0.97) scaleX(1.02); }
-  }
-  @keyframes flame-inner {
-    0%   { transform: translateY(2%) scaleY(0.94); opacity: 0.75; }
-    40%  { transform: translateY(-2%) scaleY(1.06); opacity: 0.95; }
-    70%  { transform: translateY(1%) scaleY(0.98); opacity: 0.8; }
-    100% { transform: translateY(2%) scaleY(0.94); opacity: 0.75; }
-  }
+
+}
+
+/* ─────────────────────────────────────────────────────────────────
+   PARTICLE KEYFRAMES  (EmberGlow)
+   Declared at top level so each particle can carry its own duration,
+   delay and drift inline. Compositor-only: transform + opacity.
+   ───────────────────────────────────────────────────────────────── */
+@keyframes ember-lift {
+  0%   { opacity: 0; transform: translate3d(0, 0, 0) scale(0.7); }
+  12%  { opacity: var(--peak, 0.6); }
+  72%  { opacity: var(--peak, 0.6); transform: translate3d(calc(var(--drift, 20px) * 0.7), -62vh, 0) scale(1); }
+  100% { opacity: 0; transform: translate3d(var(--drift, 20px), -100vh, 0) scale(0.85); }
+}
+
+@keyframes wisp-rise {
+  0%   { opacity: 0; transform: translate3d(0, 0, 0) scaleY(0.85) scaleX(1); }
+  22%  { opacity: var(--peak, 0.22); }
+  70%  { opacity: calc(var(--peak, 0.22) * 0.7); }
+  100% { opacity: 0; transform: translate3d(var(--drift, 26px), -70vh, 0) scaleY(1.5) scaleX(0.7); }
+}
+
+@keyframes spark-catch {
+  0%, 62%, 100% { opacity: 0; transform: translate3d(0, 0, 0) scale(0.5); }
+  70%           { opacity: var(--peak, 0.85); transform: translate3d(0, -3vh, 0) scale(1); }
+  82%           { opacity: 0; transform: translate3d(var(--drift, 10px), -7vh, 0) scale(0.6); }
+}
+
+/* Particles hold still when the visitor asks for reduced motion. */
+@media (prefers-reduced-motion: reduce) {
+  [data-particle] { display: none !important; }
 }
 
 /* Button base declared as a v4 @utility so the variants below can @apply it. */

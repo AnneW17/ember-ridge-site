@@ -1,7 +1,8 @@
 ---
-// src/pages/remodel-and-grounds.astro — Remodel and Grounds
+// src/pages/remodel-and-grounds.astro — Remodel, Grounds & Financial Stewardship
+// Route deliberately unchanged so existing links keep working.
 // Merged from the former Campus Vision page. Covers the lodge, the renovation,
-// the leadership residences, and the outdoor spaces.
+// the cabins, and the outdoor spaces.
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 import Section from '../components/Section.astro';
@@ -83,11 +84,11 @@ const outside = [
 ---
 
 <BaseLayout
-  title="Remodel and Grounds"
-  description="The plan for the Ember Ridge lodge: what the renovation includes, the additional housing for leadership living on site, and the outdoor spaces that carry the devotional life of the house."
+  title="Remodel, Grounds & Financial Stewardship"
+  description="The plan for the Ember Ridge lodge and land: what the renovation includes, the three cabins for personal retreat, and the grounds that carry the devotional life of the house."
 >
   <PageHero
-    eyebrow="Remodel and Grounds"
+    eyebrow="Remodel, Grounds &amp; Financial Stewardship"
     title="A Place Designed to Serve the Mission"
     lede="Every renovation and building is measured against one question: does it help people minister to the Lord, live in healthy community, and be restored for faithful service?"
   />
@@ -172,43 +173,8 @@ const outside = [
     </div>
   </Section>
 
-  <!-- Leadership residences -->
-  <Section tone="stone" class="!py-14 sm:!py-16 lg:!py-20" labelledby="residences-heading">
-    <div class="shell grid gap-10 lg:grid-cols-12 lg:gap-14">
-      <div class="lg:col-span-5">
-        <Reveal>
-          <SectionHeading
-            id="residences-heading"
-            eyebrow="Leadership Housing"
-            title="Additional houses for leadership to live on site"
-          />
-        </Reveal>
-      </div>
-      <div class="lg:col-span-7">
-        <Reveal delay={100} class="prose-body">
-          <p>
-            After careful consideration and seeking the Lord, we believe ministry
-            leadership has been led by God to live on the property. Living on the land
-            allows us to be fully available — to cultivate the presence of God day and
-            night, to steward the land through worship and prayer, and to be present and
-            accessible to every guest the Lord sends.
-          </p>
-          <p>
-            This is not a decision of convenience. It is a calling. We are here to serve.
-          </p>
-          <p>
-            Separate residences also keep healthy boundaries, so the main lodge remains
-            available to guests rather than absorbed by those who serve them. Placement,
-            size, and design are subject to survey, geotechnical review, engineering,
-            zoning, and final architectural drawings.
-          </p>
-        </Reveal>
-      </div>
-    </div>
-  </Section>
-
   <!-- Three cabins -->
-  <Section tone="ivory" class="!py-14 sm:!py-16 lg:!py-20" labelledby="cabins-heading">
+  <Section tone="stone" class="!py-14 sm:!py-16 lg:!py-20" labelledby="cabins-heading">
     <div class="shell">
       <Reveal>
         <SectionHeading
@@ -240,7 +206,7 @@ const outside = [
   </Section>
 
   <!-- Grounds -->
-  <Section tone="linen" class="!py-14 sm:!py-16 lg:!py-20" labelledby="outside-heading">
+  <Section tone="ivory" class="!py-14 sm:!py-16 lg:!py-20" labelledby="outside-heading">
     <div class="shell">
       <Reveal>
         <SectionHeading id="outside-heading" eyebrow="The Grounds" title="The devotional life of the house, outdoors" />

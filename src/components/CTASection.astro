@@ -1,5 +1,9 @@
 ---
 // src/components/CTASection.astro — closing invitation used at the foot of pages.
+//
+// Every content page now passes its own eyebrow/title/body so the closing block
+// is specific to what the reader just finished. The defaults below are a
+// fallback only — if you see them rendering, a page is missing its props.
 interface Props {
   eyebrow?: string;
   title?: string;
@@ -9,8 +13,8 @@ interface Props {
 }
 const {
   eyebrow = 'The Invitation',
-  title = 'Tend the fire with us',
-  body = 'Ember Ridge is an invitation to help establish a place where the presence of God, healthy family, sustained intercession, and faithful stewardship can strengthen generations.',
+  title = 'Take this before the Lord',
+  body = 'Ask whether God is inviting you to pray for this work, to help build it, or to give toward it.',
   primary = { label: 'Partner With Us', href: '/partner' },
   secondary = { label: 'Pray With Us', href: '/house-of-prayer#intercession' },
 } = Astro.props;

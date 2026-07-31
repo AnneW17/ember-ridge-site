@@ -3,11 +3,22 @@
 // Editorial leadership cards: a refined portrait thumbnail set beside the name,
 // a highlighted summary line, and an accessible "read full bio" disclosure.
 // Content comes from src/data/leadership.ts.
-import { leadership } from '../data/leadership';
+import { leadership, type Leader } from '../data/leadership';
+
+interface Props {
+  /** Which people to render. Defaults to the four principal leaders. */
+  people?: Leader[];
+  /** Heading level for each name — use 4 when the grid sits under a subsection. */
+  headingLevel?: 3 | 4;
+  /** Prefix for the disclosure ids, so two grids on one page never collide. */
+  idPrefix?: string;
+}
+const { people = leadership, headingLevel = 3, idPrefix = 'bio' } = Astro.props;
+const NameTag = `h${headingLevel}`;
 ---
 
 <div class="grid gap-8 lg:grid-cols-2 lg:gap-10">
-  {leadership.map((leader, i) => (
+  {people.map((leader, i) => (
     <article
       data-reveal
       data-reveal-delay={i * 90}
@@ -41,9 +52,9 @@ import { leadership } from '../data/leadership';
         </div>
 
         <div class="min-w-0 pt-1">
-          <h3 class="font-display text-2xl leading-tight text-ink">
+          <NameTag class="font-display text-2xl leading-tight text-ink">
             {leader.name}{leader.credential && <span class="text-stone-700">, {leader.credential}</span>}
-          </h3>
+          </NameTag>
           <p class="mt-2 font-sans text-[0.6875rem] uppercase tracking-[0.18em] text-gold-700">
             {leader.title}
           </p>
@@ -64,7 +75,7 @@ import { leadership } from '../data/leadership';
           type="button"
           data-bio-toggle
           aria-expanded="false"
-          aria-controls={`bio-${i}`}
+          aria-controls={`${idPrefix}-${i}`}
           class="inline-flex items-center gap-2 font-sans text-[0.75rem] uppercase tracking-[0.16em]
                  text-gold-700 transition-colors duration-300 hover:text-gold-700"
         >
@@ -79,7 +90,7 @@ import { leadership } from '../data/leadership';
         </button>
 
         <div
-          id={`bio-${i}`}
+          id={`${idPrefix}-${i}`}
           data-bio-panel
           class="grid grid-rows-[0fr] transition-all duration-[600ms] [transition-timing-function:var(--ease-refined)]"
         >

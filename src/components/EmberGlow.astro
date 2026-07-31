@@ -1,91 +1,131 @@
 ---
 // src/components/EmberGlow.astro
-// A candle flame drawn as an asymmetric SVG silhouette — wide, rounded shoulders
-// tapering to a tip that leans, with a second lick rising beside it. Deliberately
-// off-centre and uneven; symmetry here reads as something else entirely.
-// Decorative: aria-hidden, pointer-events-none, still under prefers-reduced-motion.
+//
+// Rising embers behind the Founding Vision. Three depth layers, each moving at a
+// different rate so the field reads as air rather than a flat pattern:
+//
+//   far    slow flame wisps, heavily blurred, barely there
+//   mid    individual embers lifting and cooling as they climb
+//   near   sparks that catch briefly and go out
+//
+// Notes:
+//   • Positions come from a seeded generator, so the built HTML is identical on
+//     every build and there is no layout shift.
+//   • Every particle animates transform and opacity only — compositor work, no
+//     layout or paint.
+//   • Opacity is held low deliberately. The text is the focal point; this sits
+//     behind it and should never compete.
+//   • Decorative throughout: aria-hidden, pointer-events-none, and removed under
+//     prefers-reduced-motion (see global.css).
+
 interface Props {
+  /** Kept for compatibility with the existing call site. */
   variant?: 'bloom' | 'hearth';
+  /** Particle density. */
+  density?: 'default' | 'light';
 }
-const { variant = 'bloom' } = Astro.props;
-const place = variant === 'hearth' ? 'bottom-[-2rem]' : 'top-1/2 -translate-y-1/2';
+const { density = 'default' } = Astro.props;
+
+// Deterministic pseudo-random — same output every build.
+let seed = 20260731;
+const rand = () => {
+  seed = (seed * 1664525 + 1013904223) % 4294967296;
+  return seed / 4294967296;
+};
+const between = (min: number, max: number, dp = 2) =>
+  Number((min + rand() * (max - min)).toFixed(dp));
+
+const counts = density === 'light'
+  ? { wisps: 3, embers: 10, sparks: 4, mobileWisps: 2, mobileEmbers: 5, mobileSparks: 2 }
+  : { wisps: 5, embers: 18, sparks: 7, mobileWisps: 2, mobileEmbers: 7, mobileSparks: 3 };
+
+const wisps = Array.from({ length: counts.wisps }, (_, i) => ({
+  i,
+  left: between(6, 92),
+  w: between(52, 104, 0),
+  h: between(150, 260, 0),
+  duration: between(26, 42, 1),
+  delay: between(-34, 0, 1),
+  drift: between(-40, 46, 0),
+  peak: between(0.12, 0.24),
+}));
+
+const embers = Array.from({ length: counts.embers }, (_, i) => ({
+  i,
+  left: between(3, 96),
+  size: between(2.4, 5.6, 1),
+  duration: between(16, 30, 1),
+  delay: between(-28, 0, 1),
+  drift: between(-52, 60, 0),
+  peak: between(0.34, 0.68),
+}));
+
+const sparks = Array.from({ length: counts.sparks }, (_, i) => ({
+  i,
+  left: between(8, 92),
+  bottom: between(6, 54),
+  duration: between(11, 19, 1),
+  delay: between(-18, 0, 1),
+  drift: between(-14, 16, 0),
+  peak: between(0.55, 0.9),
+}));
 ---
-<div aria-hidden="true" class="pointer-events-none absolute inset-0 overflow-hidden">
-  <!-- Light thrown into the room -->
+
+<div aria-hidden="true" class="pointer-events-none absolute inset-0 overflow-hidden [contain:strict]">
+  <!-- Warmth banked at the base, so the embers appear to rise from something -->
   <div
-    class:list={[
-      'absolute left-1/2 h-[34rem] w-[58rem] max-w-[160vw] -translate-x-1/2 rounded-full blur-[120px]',
-      'animate-ember-halo [will-change:opacity,transform]',
-      variant === 'hearth' ? 'bottom-[-26%]' : 'top-1/2 -translate-y-1/2',
-    ]}
-    style="background: radial-gradient(closest-side, rgba(214,138,42,0.26), rgba(200,162,74,0.12) 56%, rgba(200,162,74,0) 80%);"
+    class="absolute inset-x-0 bottom-[-14%] h-64 animate-breathe [will-change:opacity,transform]"
+    style="background: radial-gradient(120% 100% at 50% 100%, rgba(200,122,32,0.16), rgba(200,162,74,0.07) 46%, transparent 74%);"
   ></div>
 
-  <svg
-    class:list={['absolute left-1/2 h-[24rem] w-auto -translate-x-1/2 sm:h-[30rem]', place]}
-    viewBox="0 0 240 400"
-    fill="none"
-    role="presentation"
-  >
-    <defs>
-      <linearGradient id="flameBody" x1="120" y1="40" x2="120" y2="380" gradientUnits="userSpaceOnUse">
-        <stop offset="0%"   stop-color="#fff0cf" stop-opacity="0.62" />
-        <stop offset="30%"  stop-color="#ffc266" stop-opacity="0.58" />
-        <stop offset="62%"  stop-color="#e8912c" stop-opacity="0.50" />
-        <stop offset="100%" stop-color="#7a4212" stop-opacity="0.26" />
-      </linearGradient>
-      <linearGradient id="flameCore" x1="118" y1="120" x2="118" y2="360" gradientUnits="userSpaceOnUse">
-        <stop offset="0%"   stop-color="#fffaf0" stop-opacity="0.78" />
-        <stop offset="45%"  stop-color="#ffd98a" stop-opacity="0.62" />
-        <stop offset="100%" stop-color="#f0a03a" stop-opacity="0.28" />
-      </linearGradient>
-      <linearGradient id="flameLick" x1="170" y1="130" x2="170" y2="300" gradientUnits="userSpaceOnUse">
-        <stop offset="0%"   stop-color="#ffd08a" stop-opacity="0.44" />
-        <stop offset="100%" stop-color="#d6772a" stop-opacity="0.14" />
-      </linearGradient>
-      <filter id="soften" x="-60%" y="-40%" width="220%" height="200%">
-        <feGaussianBlur stdDeviation="13" />
-      </filter>
-      <filter id="softenCore" x="-60%" y="-40%" width="220%" height="200%">
-        <feGaussianBlur stdDeviation="8" />
-      </filter>
-      <filter id="softenLick" x="-80%" y="-40%" width="260%" height="200%">
-        <feGaussianBlur stdDeviation="11" />
-      </filter>
-    </defs>
+  <!-- Far: flame wisps -->
+  <div class="absolute inset-0">
+    {wisps.map((w) => (
+      <span
+        data-particle
+        class:list={['absolute bottom-[-18%] rounded-[50%] blur-[34px]', w.i >= counts.mobileWisps && 'hidden sm:block']}
+        style={`left:${w.left}%;width:${w.w}px;height:${w.h}px;
+                background:linear-gradient(to top, rgba(176,92,24,0.42), rgba(214,150,58,0.30) 55%, rgba(232,196,120,0) 100%);
+                --drift:${w.drift}px;--peak:${w.peak};
+                animation:wisp-rise ${w.duration}s linear ${w.delay}s infinite;
+                will-change:transform,opacity;`}
+      ></span>
+    ))}
+  </div>
 
-    <!-- Main body: broad base, shoulders off to the left, tip curling right -->
-    <g class="animate-flame-sway [transform-origin:120px_360px] [will-change:transform]">
-      <path
-        filter="url(#soften)"
-        fill="url(#flameBody)"
-        d="M118 372c-38-6-62-38-60-80 2-38 26-58 34-92 6-26-2-44 4-70 10 26 30 34 44 58 4-20 0-34 8-52 2 30 22 44 30 74 10 36 4 78-16 108-12 18-28 46-44 54z"
-      />
-      <!-- A second lick, shorter and set to the right so the outline never mirrors -->
-      <path
-        filter="url(#softenLick)"
-        fill="url(#flameLick)"
-        d="M166 300c-16-14-20-40-12-64 6-18 20-28 24-48 8 22 22 34 24 58 2 28-12 50-36 54z"
-      />
-      <!-- Hot core, offset left of centre -->
-      <path
-        filter="url(#softenCore)"
-        fill="url(#flameCore)"
-        class="animate-flame-inner [transform-origin:116px_350px] [will-change:transform,opacity]"
-        d="M114 352c-22-8-32-30-28-56 4-24 20-36 24-60 4 22 18 32 24 54 6 26-2 50-20 62z"
-      />
-    </g>
+  <!-- Mid: individual embers -->
+  <div class="absolute inset-0">
+    {embers.map((e) => (
+      <span
+        data-particle
+        class:list={['absolute bottom-[-4%] rounded-full', e.i >= counts.mobileEmbers && 'hidden sm:block']}
+        style={`left:${e.left}%;width:${e.size}px;height:${e.size}px;
+                background:radial-gradient(circle, #f6c366 0%, #d98a24 55%, rgba(176,92,24,0) 100%);
+                box-shadow:0 0 ${(e.size * 3).toFixed(1)}px rgba(214,138,42,0.55);
+                --drift:${e.drift}px;--peak:${e.peak};
+                animation:ember-lift ${e.duration}s linear ${e.delay}s infinite;
+                will-change:transform,opacity;`}
+      ></span>
+    ))}
+  </div>
 
-    <!-- Embers banked at the base -->
-    <ellipse
-      cx="120" cy="374" rx="70" ry="16"
-      fill="#e87c1c" fill-opacity="0.30"
-      filter="url(#soften)"
-      class="animate-ember-flicker"
-    />
-  </svg>
+  <!-- Near: sparks -->
+  <div class="absolute inset-0">
+    {sparks.map((s) => (
+      <span
+        data-particle
+        class:list={['absolute h-[2px] w-[2px] rounded-full', s.i >= counts.mobileSparks && 'hidden sm:block']}
+        style={`left:${s.left}%;bottom:${s.bottom}%;
+                background:#fbe3b0;
+                box-shadow:0 0 7px 1.5px rgba(232,150,44,0.8);
+                --drift:${s.drift}px;--peak:${s.peak};
+                animation:spark-catch ${s.duration}s ease-in-out ${s.delay}s infinite;
+                will-change:transform,opacity;`}
+      ></span>
+    ))}
+  </div>
 
-  <!-- Fade the whole thing back into the page -->
+  <!-- Feather the field into the bands above and below -->
   <div class="absolute inset-x-0 top-0 h-28 bg-[linear-gradient(to_bottom,var(--color-linen),transparent)]"></div>
-  <div class="absolute inset-x-0 bottom-0 h-28 bg-[linear-gradient(to_top,var(--color-cream),transparent)]"></div>
+  <div class="absolute inset-x-0 bottom-0 h-24 bg-[linear-gradient(to_top,var(--color-cream),transparent)]"></div>
 </div>

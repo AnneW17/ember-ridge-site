@@ -44,7 +44,7 @@ const governance = [
           id="team-heading"
           eyebrow="The Leadership Team"
           title="Those entrusted with the house"
-          lede="Ember Ridge operates as a ministry expression of Firebrand Revivalists. Each leader below carries both a spiritual assignment and a defined professional responsibility."
+          lede="Ember Ridge is an auxiliary ministry of Firebrand Revivalists&#8482;. Each leader below carries both a spiritual assignment and a defined professional responsibility."
         />
       </Reveal>
 
@@ -52,61 +52,19 @@ const governance = [
         <LeadershipTeam />
       </div>
 
-    </div>
-  </Section>
-
-  <!-- Ministry staff -->
-  <Section tone="linen" labelledby="staff-heading">
-    <div class="shell">
-      <Reveal>
-        <SectionHeading
-          id="staff-heading"
-          eyebrow="Ministry Staff"
-          title="Those who serve alongside"
-        />
+      <Reveal class="mt-20">
+        <h3 id="ministry-team-heading" class="eyebrow">Ministry Leadership Team</h3>
+        <div class="brushed-gold mt-4 h-px w-14"></div>
       </Reveal>
 
-      <div class="mt-14 grid gap-8 sm:grid-cols-2 lg:gap-10">
-        {ministryStaff.map((person, i) => (
-          <Reveal delay={i * 90}>
-            <article class="group card card-lift flex h-full items-start gap-6">
-              <div class="relative shrink-0">
-                <img
-                  src={person.image}
-                  alt={person.alt}
-                  width="900"
-                  height="900"
-                  loading="lazy"
-                  decoding="async"
-                  class="h-24 w-24 rounded-[0.25rem] object-cover object-top grayscale-[22%]
-                         transition-all duration-700 [transition-timing-function:var(--ease-refined)]
-                         group-hover:grayscale-0 sm:h-28 sm:w-28"
-                />
-                <div aria-hidden="true"
-                     class="pointer-events-none absolute inset-0 rounded-[0.25rem] ring-1 ring-inset ring-gold-600/50
-                            transition-all duration-700 group-hover:ring-gold-600/70"></div>
-              </div>
-              <div class="min-w-0 pt-1">
-                <h3 class="font-display text-2xl leading-tight text-ink">{person.name}</h3>
-                <p class="mt-2 font-sans text-[0.6875rem] uppercase tracking-[0.18em] text-gold-700">
-                  {person.title}
-                </p>
-                {person.boardRole && (
-                  <p class="mt-1.5 font-sans text-[0.6875rem] leading-relaxed text-stone-600">
-                    {person.boardRole}
-                  </p>
-                )}
-                <div class="brushed-gold mt-4 h-px w-12"></div>
-              </div>
-            </article>
-          </Reveal>
-        ))}
+      <div class="mt-10">
+        <LeadershipTeam people={ministryStaff} headingLevel={4} idPrefix="staff-bio" />
       </div>
     </div>
   </Section>
 
   <!-- Marketplace relationship -->
-  <Section tone="cream" labelledby="sophion-heading">
+  <Section tone="linen" labelledby="sophion-heading">
     <div class="shell">
       <Reveal>
         <SectionHeading
@@ -141,7 +99,7 @@ const governance = [
   </Section>
 
   <!-- Governance -->
-  <Section tone="stone" labelledby="governance-heading">
+  <Section tone="cream" labelledby="governance-heading">
     <div class="shell">
       <Reveal>
         <SectionHeading
