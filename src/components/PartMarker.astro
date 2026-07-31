@@ -1,0 +1,22 @@
+---
+// src/components/PartMarker.astro
+// Divides a long page into named movements. Used on Remodel, Grounds &
+// Financial Stewardship so the three parts read as a journey rather than a
+// stack of unrelated sections.
+interface Props {
+  /** e.g. "Part One" */
+  part: string;
+  title: string;
+  id?: string;
+  lede?: string;
+}
+const { part, title, id, lede } = Astro.props;
+---
+<div class="text-center">
+  <p class="font-sans text-[0.625rem] font-semibold uppercase tracking-[0.32em] text-gold-700">
+    {part}
+  </p>
+  <h2 id={id} class="display-2 mt-5">{title}</h2>
+  <div class="brushed-gold mx-auto mt-7 h-px w-20"></div>
+  {lede && <p class="lede mx-auto mt-7 max-w-2xl">{lede}</p>}
+</div>

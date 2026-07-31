@@ -1,39 +1,48 @@
 ---
 // src/pages/remodel-and-grounds.astro — Remodel, Grounds & Financial Stewardship
-// Route deliberately unchanged so existing links keep working.
-// Merged from the former Campus Vision page. Covers the lodge, the renovation,
-// the cabins, and the outdoor spaces.
+//
+// One page in three movements: what is being renovated, what is being made of
+// the land, and what it costs and how it is funded. The financial content was
+// merged here from the retired /financial-stewardship route (301 in netlify.toml).
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 import Section from '../components/Section.astro';
 import SectionHeading from '../components/SectionHeading.astro';
+import PartMarker from '../components/PartMarker.astro';
 import Prose from '../components/Prose.astro';
 import Card from '../components/Card.astro';
+import Callout from '../components/Callout.astro';
+import CapitalTable from '../components/CapitalTable.astro';
+import PullQuote from '../components/PullQuote.astro';
 import ReviewNote from '../components/ReviewNote.astro';
 import Reveal from '../components/Reveal.astro';
 import CTASection from '../components/CTASection.astro';
 
-const inside = [
-  {
-    numeral: '01',
-    title: 'The Great Room',
-    body: 'The stone fireplace and vaulted ceiling stay. Flexible seating lets the room move between worship, teaching, prayer, and ordinary conversation.',
-  },
-  {
-    numeral: '02',
-    title: 'Long-Table Dining & Kitchen',
-    body: 'Long tables, because shared meals are not secondary here. The kitchen is renovated to serve both daily household use and larger hospitality.',
-  },
-  {
-    numeral: '03',
-    title: 'Guest Rooms & Prayer Rooms',
-    body: 'Bedrooms refreshed for comfort, privacy, and durability. Dedicated quiet rooms so personal prayer can continue alongside the life of the house.',
-  },
-  {
-    numeral: '04',
-    title: 'The Lower Level',
-    body: 'Built out after inspection and code review to hold prayer, teaching, operations, and storage without crowding the household spaces above.',
-  },
+const contents = [
+  { label: 'The Remodel', href: '#remodel' },
+  { label: 'The Grounds', href: '#grounds' },
+  { label: 'Financial Stewardship', href: '#financial' },
+];
+
+const funding = [
+  'Major gifts',
+  'Recurring partners',
+  'Foundation or ministry grants',
+  'Donated professional services',
+  'Building materials and furnishings',
+  'Equipment',
+  'Legacy gifts',
+];
+
+const operating = [
+  'Property insurance and utilities',
+  'Maintenance and preventive care',
+  'Hospitality and guest provision',
+  'Staff and compensated intercessors',
+  'Ministry supplies and technology',
+  'Security and professional services',
+  'Transportation',
+  'An operating reserve',
 ];
 
 const concepts = [
@@ -56,6 +65,29 @@ const concepts = [
     src: '/images/campus/pavilion-in-landscape.jpg',
     alt: 'Concept reference: worship pavilion set in open pasture with the lodge beyond',
     caption: 'Worship pavilion — set within the property (concept)',
+  },
+];
+
+const inside = [
+  {
+    numeral: '01',
+    title: 'The Great Room',
+    body: 'The stone fireplace and vaulted ceiling stay. Flexible seating lets the room move between worship, teaching, prayer, and ordinary conversation.',
+  },
+  {
+    numeral: '02',
+    title: 'Long-Table Dining & Kitchen',
+    body: 'Long tables, because shared meals are not secondary here. The kitchen is renovated to serve both daily household use and larger hospitality.',
+  },
+  {
+    numeral: '03',
+    title: 'Guest Rooms & Prayer Rooms',
+    body: 'Bedrooms refreshed for comfort, privacy, and durability. Dedicated quiet rooms so personal prayer can continue alongside the life of the house.',
+  },
+  {
+    numeral: '04',
+    title: 'The Lower Level',
+    body: 'Built out after inspection and code review to hold prayer, teaching, operations, and storage without crowding the household spaces above.',
   },
 ];
 
@@ -85,20 +117,43 @@ const outside = [
 
 <BaseLayout
   title="Remodel, Grounds & Financial Stewardship"
-  description="The plan for the Ember Ridge lodge and land: what the renovation includes, the three cabins for personal retreat, and the grounds that carry the devotional life of the house."
+  description="The plan for the Ember Ridge lodge and land: what the renovation includes, the cabins and grounds, and the capital ranges, operating budget and giving that will fund it."
 >
   <PageHero
     eyebrow="Remodel, Grounds &amp; Financial Stewardship"
     title="A Place Designed to Serve the Mission"
-    lede="Every renovation and building is measured against one question: does it help people minister to the Lord, live in healthy community, and be restored for faithful service?"
+    lede="What is being renovated, what is being made of the land, and what it will take to build it — set out in full."
   />
 
-  <Section tone="ivory" class="!py-14 sm:!py-16 lg:!py-20" size="sm">
+  <!-- Contents -->
+  <Section tone="ivory" size="sm" class="!py-8">
+    <div class="shell">
+      <nav aria-label="On this page">
+        <ul class="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 sm:gap-x-5">
+          {contents.map((c, i) => (
+            <li class="flex items-center gap-3 sm:gap-5">
+              {i > 0 && <span aria-hidden="true" class="h-1 w-1 rounded-full bg-gold-600/60"></span>}
+              <a
+                href={c.href}
+                class="font-sans text-[0.6875rem] uppercase tracking-[0.18em] text-stone-600
+                       transition-colors duration-300 hover:text-gold-700"
+              >
+                {c.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </div>
+  </Section>
+
+  <!-- Concept disclaimer -->
+  <Section tone="ivory" size="sm" class="!py-10">
     <div class="shell">
       <Reveal>
         <div class="callout">
           <p class="text-[1.0625rem] leading-relaxed text-stone-700">
-            <strong class="font-semibold text-ink">Concept only.</strong> The image and
+            <strong class="font-semibold text-ink">Concept only.</strong> The images and
             descriptions on this page show design direction for a planned renovation and
             expansion. They do not show the property in its current condition, and the
             property has not yet been purchased.
@@ -108,8 +163,22 @@ const outside = [
     </div>
   </Section>
 
+  <!-- ══ PART ONE ══ -->
+  <Section tone="linen" size="sm" class="!py-14 sm:!py-16">
+    <div class="shell">
+      <Reveal>
+        <PartMarker
+          part="Part One"
+          id="remodel"
+          title="The Remodel"
+          lede="A lodge built in 1993, renovated for the work it is being given."
+        />
+      </Reveal>
+    </div>
+  </Section>
+
   <!-- The lodge -->
-  <Section tone="linen" class="!py-14 sm:!py-16 lg:!py-20" labelledby="lodge-heading">
+  <Section tone="ivory" class="!py-14 sm:!py-16 lg:!py-20" labelledby="lodge-heading">
     <div class="shell">
       <Reveal>
         <SectionHeading id="lodge-heading" eyebrow="The Lodge" title="What we are starting with" />
@@ -158,7 +227,7 @@ const outside = [
   </Section>
 
   <!-- Inside -->
-  <Section tone="cream" class="!py-14 sm:!py-16 lg:!py-20" labelledby="inside-heading">
+  <Section tone="linen" class="!py-14 sm:!py-16 lg:!py-20" labelledby="inside-heading">
     <div class="shell">
       <Reveal>
         <SectionHeading id="inside-heading" eyebrow="Inside the Lodge" title="Rooms shaped around shared life" />
@@ -174,7 +243,7 @@ const outside = [
   </Section>
 
   <!-- Three cabins -->
-  <Section tone="stone" class="!py-14 sm:!py-16 lg:!py-20" labelledby="cabins-heading">
+  <Section tone="cream" class="!py-14 sm:!py-16 lg:!py-20" labelledby="cabins-heading">
     <div class="shell">
       <Reveal>
         <SectionHeading
@@ -205,8 +274,22 @@ const outside = [
     </div>
   </Section>
 
+  <!-- ══ PART TWO ══ -->
+  <Section tone="cream" size="sm" class="!py-14 sm:!py-16">
+    <div class="shell">
+      <Reveal>
+        <PartMarker
+          part="Part Two"
+          id="grounds"
+          title="The Grounds"
+          lede="The devotional life of the house carried outdoors, and what the land is being prepared to hold."
+        />
+      </Reveal>
+    </div>
+  </Section>
+
   <!-- Grounds -->
-  <Section tone="ivory" class="!py-14 sm:!py-16 lg:!py-20" labelledby="outside-heading">
+  <Section tone="linen" class="!py-14 sm:!py-16 lg:!py-20" labelledby="outside-heading">
     <div class="shell">
       <Reveal>
         <SectionHeading id="outside-heading" eyebrow="The Grounds" title="The devotional life of the house, outdoors" />
@@ -254,10 +337,174 @@ const outside = [
   </Section>
 
 
+  <!-- ══ PART THREE ══ -->
+  <Section tone="stone" size="sm" class="!py-14 sm:!py-16">
+    <div class="shell">
+      <Reveal>
+        <PartMarker
+          part="Part Three"
+          id="financial"
+          title="Financial Stewardship"
+          lede="Faith and financial responsibility are not opposing values. Every gift should be received with gratitude, administered with integrity, and connected to a clear purpose."
+        />
+      </Reveal>
+    </div>
+  </Section>
+
+  <Section tone="ivory" labelledby="capital-heading">
+    <div class="shell">
+      <Reveal>
+        <SectionHeading
+          id="capital-heading"
+          eyebrow="Capital Planning"
+          title="Preliminary planning ranges"
+        />
+      </Reveal>
+
+      <div class="mt-12">
+        <Prose>
+          <p>
+            The working capital target for acquisition of the existing lodge and a
+            comprehensive renovation and operational setup is approximately
+            <strong class="font-medium text-ink">$2.37 million to $2.73 million</strong>.
+          </p>
+          <p>
+            The figures below are preliminary planning ranges rather than contractor
+            bids. They will be replaced or refined after appraisal, inspection, survey,
+            architectural development, engineering review, contractor pricing, and board
+            approval.
+          </p>
+        </Prose>
+      </div>
+
+      <Reveal delay={80}>
+        <CapitalTable />
+      </Reveal>
+
+      <ReviewNote label="Not a fixed commitment">
+        The working range above should not be read as a fixed construction promise.
+        Mountain properties can reveal structural, access, drainage, utility, or code
+        conditions only after professional review. No major construction commitment
+        should be made solely on a conceptual rendering. The acquisition and renovation
+        plan will be revised as real information is received, and material changes will
+        be communicated to committed partners.
+      </ReviewNote>
+    </div>
+  </Section>
+
+  <Section tone="linen" labelledby="pending-heading">
+    <div class="shell">
+      <Reveal>
+        <SectionHeading
+          id="pending-heading"
+          eyebrow="Still to Be Priced"
+          title="We will not present an invented total"
+        />
+      </Reveal>
+      <div class="mt-12">
+        <Prose>
+          <p>
+            The separate leadership residence building requires its own architectural
+            design, structural and geotechnical engineering, site work, utility plan, and
+            contractor pricing.
+          </p>
+          <p>
+            The worship pavilion, prayer garden, trail system, and site improvements may
+            fit partly within the renovation range or may require separately funded
+            add-alternates, depending on bids and priorities. Until those elements are
+            professionally priced, the ministry will not present an invented total. They
+            remain integral to the master vision even where final costs are still pending.
+          </p>
+        </Prose>
+      </div>
+    </div>
+  </Section>
+
+  <Section tone="cream" labelledby="operating-heading">
+    <div class="shell grid gap-14 lg:grid-cols-2 lg:gap-16">
+      <Reveal>
+        <h2 id="operating-heading" class="display-3">The annual operating budget</h2>
+        <div class="rule-gold mt-6"></div>
+        <p class="mt-7 text-[0.9375rem] leading-relaxed text-stone-700">
+          Developed alongside the capital plan. Compensation and related-party
+          arrangements will be documented and approved through appropriate governance.
+          Any temporary housing, project management, or transitional costs connected to
+          construction will be identified separately rather than hidden inside broad
+          renovation categories.
+        </p>
+        <ul class="mt-8 space-y-3">
+          {operating.map((item) => (
+            <li class="flex items-start gap-3 text-[0.9375rem] text-ink">
+              <span aria-hidden="true" class="mt-2.5 h-1 w-1 shrink-0 rounded-full bg-gold-500"></span>
+              {item}
+            </li>
+          ))}
+        </ul>
+      </Reveal>
+
+      <Reveal delay={120}>
+        <h2 class="display-3">How the work may be funded</h2>
+        <div class="rule-gold mt-6"></div>
+        <p class="mt-7 text-[0.9375rem] leading-relaxed text-stone-700">
+          Capital funding may include a combination of the following. Ongoing operations
+          may be supported through donations, recurring partnerships, and properly
+          documented support connected to the family’s marketplace work.
+        </p>
+        <ul class="mt-8 space-y-3">
+          {funding.map((item) => (
+            <li class="flex items-start gap-3 text-[0.9375rem] text-ink">
+              <span aria-hidden="true" class="mt-2.5 h-1 w-1 shrink-0 rounded-full bg-bronze"></span>
+              {item}
+            </li>
+          ))}
+        </ul>
+      </Reveal>
+    </div>
+  </Section>
+
+  <Section tone="stone" labelledby="donor-heading">
+    <div class="shell">
+      <Reveal>
+        <SectionHeading
+          id="donor-heading"
+          eyebrow="Donor Trust"
+          title="Restricted gifts tracked for their stated purpose"
+        />
+      </Reveal>
+      <div class="mt-12">
+        <Prose>
+          <p>
+            All gifts designated for Ember Ridge will be received and administered
+            through Firebrand Revivalists in accordance with its governing documents and
+            applicable law. Restricted gifts will be tracked for their stated purpose,
+            and financial reporting will be provided at a level appropriate to the
+            project and the partner relationship.
+          </p>
+        </Prose>
+
+        <Callout title="Tax status and receipting">
+          <p>
+            Firebrand Revivalists&#8482; is a Washington nonprofit corporation and a
+            church for federal tax purposes, exempt under section 501(c)(3) of the
+            Internal Revenue Code and excepted from the application requirement by
+            section 508(c)(1)(A). Gifts are tax-deductible to the extent permitted by
+            law, and giving receipts are provided. We do not offer tax advice — please
+            consult your own advisor regarding your particular circumstances.
+          </p>
+        </Callout>
+
+        <PullQuote cite="Psalm 127:1">
+          Unless the Lord builds the house, those who build it labor in vain.
+        </PullQuote>
+      </div>
+    </div>
+  </Section>
+
   <CTASection
+    eyebrow="Partner With Us"
     title="Help us build it well"
-    body="A house like this is built in prayer long before it is built in timber and stone. If this stirs something in you, take it to the Lord and ask what part He would have you carry."
-    primary={{ label: 'Partner With Us', href: '/partner' }}
-    secondary={{ label: 'Pray With Us', href: '/house-of-prayer#intercession' }}
+    body="A house like this is built in prayer long before it is built in timber and stone. Every figure above is published so that anyone considering a gift can see the reasoning behind it."
+    primary={{ label: 'Ways to give', href: '/partner#ways-to-give' }}
+    secondary={{ label: 'Ask a question', href: '/contact' }}
   />
 </BaseLayout>

@@ -87,7 +87,7 @@ export const navTree: NavItem[] = [
     label: 'Leadership',
     children: [
       { label: 'Leadership Team', href: '/leadership' },
-      { label: 'Financial Stewardship', href: '/financial-stewardship' },
+      { label: 'Governance & Accountability', href: '/leadership#governance' },
     ],
   },
   {
@@ -110,7 +110,6 @@ export const nav = [
   { label: 'The Ministry Model', href: '/ministry-model' },
   { label: 'Remodel, Grounds & Financial Stewardship', href: '/remodel-and-grounds' },
   { label: 'Leadership', href: '/leadership' },
-  { label: 'Financial Stewardship', href: '/financial-stewardship' },
   { label: 'Partner With Us', href: '/partner' },
   { label: 'Contact', href: '/contact' },
 ];
