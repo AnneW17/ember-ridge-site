@@ -254,6 +254,21 @@
   .legal-doc ul { @apply mb-4 list-disc space-y-2 pl-6; }
   .legal-doc a  { @apply text-bronze underline underline-offset-2; }
 
+  /* Sophion is a separate brand. Its colours are scoped to this block so they
+     never leak into the Ember Ridge palette. */
+  .sophion {
+    --sophion-ink: #070c11;
+    --sophion-teal: #1c7f88;
+    --sophion-teal-light: #7fc9cf;
+    --sophion-gold: #c8a24a;
+    background-image:
+      radial-gradient(90% 120% at 12% 0%, rgb(28 127 136 / 0.28), transparent 62%),
+      linear-gradient(160deg, #0d161a 0%, var(--sophion-ink) 60%, #05080b 100%);
+    border: 1px solid rgb(127 201 207 / 0.20);
+  }
+  .sophion :where(h2, h3) { color: #f2f7f7; }
+  .sophion .eyebrow { color: var(--sophion-teal-light); }
+
   /* On the rare ink band, invert the type colours. */
   .on-ink { @apply text-cream; }
   .on-ink :where(h1, h2, h3, h4) { color: var(--color-ivory); }

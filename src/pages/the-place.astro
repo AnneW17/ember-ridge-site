@@ -1,86 +1,96 @@
 ---
-// src/pages/the-place.astro — The Place
+// src/pages/the-place.astro — The History of the Land
+// Presented as a heritage timeline rather than continuous prose. All historical
+// content is preserved; only the container changed.
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 import Section from '../components/Section.astro';
 import SectionHeading from '../components/SectionHeading.astro';
+import TimelineEntry from '../components/TimelineEntry.astro';
 import Prose from '../components/Prose.astro';
+import Callout from '../components/Callout.astro';
 import Reveal from '../components/Reveal.astro';
 import CTASection from '../components/CTASection.astro';
 ---
 
 <BaseLayout
-  title="The Place"
-  description="Moravian Falls, Prayer Mountain, and the stewardship of the land. Ember Ridge stands within a wider spiritual story shaped by the Moravian witness and generations of people who gave themselves to God."
+  title="The History of the Land"
+  description="Moravian Falls and Prayer Mountain: the Herrnhut prayer watch, the Moravian settlement of North Carolina, the testimony of the Ladies of Gold, and the stewardship Ember Ridge is being formed to continue."
 >
   <PageHero
-    eyebrow="The Place"
+    eyebrow="The History of the Land"
     title="A Land Marked by Prayer"
     lede="Ember Ridge will stand within a wider spiritual story — one shaped by the Moravian witness, the history of Prayer Mountain, and generations of people who gave themselves to God."
   />
 
-  <Section tone="ivory" labelledby="moravian-heading">
+  <!-- Timeline -->
+  <Section tone="ivory" labelledby="timeline-heading">
     <div class="shell">
       <Reveal>
         <SectionHeading
-          id="moravian-heading"
-          eyebrow="Herrnhut to North Carolina"
-          title="A historic pattern that resonates with this calling"
+          id="timeline-heading"
+          eyebrow="Three Centuries"
+          title="What has been prayed over this ground"
         />
       </Reveal>
-      <div class="mt-12">
-        <Prose>
-          <p>
-            In 1727, the community at Herrnhut entered a season of spiritual renewal
-            and established a continual prayer watch that endured for more than one
-            hundred years. Their worship and intercession helped fuel one of the most
-            influential missionary movements in modern Church history. When Moravians
-            later established communities in North Carolina, they carried a disciplined
-            life of prayer, work, worship, stewardship, education, and mission into the
-            region.
-          </p>
-          <p>
-            Moravian Falls and Prayer Mountain have since become gathering places for
-            believers drawn to prayer, prophetic ministry, healing, and encounter with
-            God. Many have testified to an unusual clarity in prayer on the mountain.
-          </p>
-        </Prose>
 
-      </div>
+      <ol class="mt-16 border-l border-gold-600/35 pl-1 sm:pl-2">
+        <TimelineEntry marker="1727" title="The prayer watch at Herrnhut">
+          <p>
+            The community at Herrnhut entered a season of spiritual renewal and
+            established a continual prayer watch that endured for more than one hundred
+            years. Their worship and intercession helped fuel one of the most influential
+            missionary movements in modern Church history.
+          </p>
+        </TimelineEntry>
+
+        <TimelineEntry marker="18th Century" title="The Moravians come to North Carolina">
+          <p>
+            When Moravians later established communities in North Carolina, they carried
+            a disciplined life of prayer, work, worship, stewardship, education, and
+            mission into the region — a pattern that shaped the land long before anyone
+            thought to build here.
+          </p>
+        </TimelineEntry>
+
+        <TimelineEntry marker="Since" title="Moravian Falls and Prayer Mountain">
+          <p>
+            Moravian Falls and Prayer Mountain have become gathering places for believers
+            drawn to prayer, prophetic ministry, healing, and encounter with God. Many
+            have testified to an unusual clarity in prayer on the mountain.
+          </p>
+        </TimelineEntry>
+
+        <TimelineEntry marker="The Ladies of Gold" title="A pattern we have seen firsthand" last>
+          <p>
+            Frances Metcalfe, the Golden Candlestick fellowship, and the women remembered
+            as the Ladies of Gold gave themselves to extended worship, intercession,
+            consecration, and dependence upon the Holy Spirit. They gathered faithfully
+            over many years until the presence of God became the defining reality of
+            their fellowship — and in that place they saw extraordinary financial
+            miracles, supernatural provision, and evidence of God's faithfulness that
+            could not be explained any other way.
+          </p>
+          <p>
+            That pattern is not unfamiliar to us. This family and this leadership team
+            have walked the same road in their own measure — seeking God in prayer and
+            worship, obeying what He said, staying in relationship with Him, and
+            depending on the Holy Spirit rather than on their own capacity. We have
+            watched what grows when His presence is cultivated over years rather than
+            sought in a moment.
+          </p>
+          <p>
+            Ember Ridge is not attempting to reproduce their ministry. What we long for
+            is a place on this mountain where that same posture — prayer, obedience,
+            worship, and faith — can continue.
+          </p>
+        </TimelineEntry>
+      </ol>
     </div>
   </Section>
 
-  <Section tone="linen" labelledby="witness-heading">
-    <div class="shell">
-      <Reveal>
-        <SectionHeading
-          id="witness-heading"
-          eyebrow="A Wider Testimony"
-          title="When people make room for God over time, a culture can form"
-        />
-      </Reveal>
-      <div class="mt-12">
-        <Prose>
-          <p>
-            The testimony associated with Frances Metcalfe, the Golden Candlestick
-            fellowship, and the women remembered as the Ladies of Gold offers another
-            meaningful point of reference. Their story centers on extended worship,
-            intercession, consecration, spiritual discernment, and dependence upon the
-            Holy Spirit. They gathered faithfully over many years until the presence of
-            God became the defining reality of their fellowship.
-          </p>
-          <p>
-            Ember Ridge does not seek to reproduce their ministry, but it recognizes a
-            shared principle: when people make room for God over time, a culture can
-            form in which prayer, obedience, supernatural faith, and practical
-            provision become woven together.
-          </p>
-        </Prose>
-      </div>
-    </div>
-  </Section>
-
-  <Section tone="cream" labelledby="baton-heading">
+  <!-- Stewardship -->
+  <Section tone="linen" labelledby="baton-heading">
     <div class="shell">
       <Reveal>
         <SectionHeading
@@ -89,38 +99,49 @@ import CTASection from '../components/CTASection.astro';
           title="Received as a baton handed forward"
         />
       </Reveal>
-      <div class="mt-12">
-        <Prose>
-          <p>
-            The current lodge has already been used by ministry leaders who welcomed
-            people from around the world. Ember Ridge will honor that history rather
-            than erase it.
-          </p>
-          <p>
-            If the property is entrusted to Firebrand Revivalists, the transition will
-            be received as a baton handed forward. What has been built in prior seasons
-            will be respected, while the property is renewed for the particular
-            assignment now being formed: a house that ministers to the Lord, receives
-            leaders and families, reforms unhealthy patterns, restores strength, and
-            sends people back into the work of the Kingdom.
-          </p>
-        </Prose>
 
+      <div class="mt-12 grid gap-10 lg:grid-cols-12 lg:gap-14">
+        <div class="lg:col-span-7">
+          <Reveal>
+            <Prose>
+              <p>
+                The current lodge has already been used by ministry leaders who welcomed
+                people from around the world. Ember Ridge will honor that history rather
+                than erase it.
+              </p>
+              <p>
+                If the property is entrusted to Firebrand Revivalists, the transition will
+                be received as a baton handed forward. What has been built in prior
+                seasons will be respected, while the property is renewed for the
+                particular assignment now being formed.
+              </p>
+            </Prose>
+          </Reveal>
+        </div>
 
-
-        <Prose>
-          <p class="pt-2">
-            <a href="/remodel-and-grounds" class="btn-quiet">See how the campus is envisioned →</a>
-          </p>
-        </Prose>
+        <div class="lg:col-span-5">
+          <Reveal delay={120}>
+            <Callout title="The assignment now being formed">
+              <p class="text-[0.9375rem] leading-relaxed">
+                A house that ministers to the Lord, receives leaders and families, reforms
+                unhealthy patterns, restores strength, and sends people back into the work
+                of the Kingdom.
+              </p>
+            </Callout>
+          </Reveal>
+        </div>
       </div>
+
+      <Reveal class="mt-10">
+        <a href="/remodel-and-grounds" class="btn-quiet">See how the property is envisioned →</a>
+      </Reveal>
     </div>
   </Section>
 
   <CTASection
     eyebrow="The Land"
     title="Stewarding what was entrusted"
-    body="This mountain has been prayed over for generations. What is being built here is meant to honour that, not to trade on it."
+    body="This mountain has been prayed over for generations. What is being built here is meant to honor that inheritance and continue it."
     primary={{ label: 'See the plan for the property', href: '/remodel-and-grounds' }}
     secondary={{ label: 'Pray with us', href: '/house-of-prayer#intercession' }}
   />

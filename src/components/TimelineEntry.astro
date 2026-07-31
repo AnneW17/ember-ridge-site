@@ -1,0 +1,30 @@
+---
+// src/components/TimelineEntry.astro
+// One era in the heritage timeline. A gold rule runs down the left of the list;
+// each entry hangs a marker on it and sets its date in the margin.
+interface Props {
+  /** Year or era, e.g. "1727" or "Today". */
+  marker: string;
+  title: string;
+  last?: boolean;
+}
+const { marker, title, last = false } = Astro.props;
+---
+<li data-reveal class:list={['relative pl-10 sm:pl-14', !last && 'pb-12 sm:pb-16']}>
+  <!-- Node on the rule -->
+  <span
+    aria-hidden="true"
+    class="absolute left-0 top-2 flex h-3 w-3 -translate-x-1/2 items-center justify-center rounded-full
+           border border-gold-600 bg-ivory sm:left-1"
+  >
+    <span class="h-1 w-1 rounded-full bg-gold-600"></span>
+  </span>
+
+  <p class="font-sans text-[0.6875rem] font-semibold uppercase tracking-[0.22em] text-gold-700">
+    {marker}
+  </p>
+  <h3 class="display-3 mt-3">{title}</h3>
+  <div class="prose-body mt-5 max-w-[42rem]">
+    <slot />
+  </div>
+</li>

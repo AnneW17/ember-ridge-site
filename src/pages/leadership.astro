@@ -4,9 +4,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 import Section from '../components/Section.astro';
 import SectionHeading from '../components/SectionHeading.astro';
-import Prose from '../components/Prose.astro';
 import LeadershipTeam from '../components/LeadershipTeam.astro';
-import ReviewNote from '../components/ReviewNote.astro';
 import Reveal from '../components/Reveal.astro';
 import CTASection from '../components/CTASection.astro';
 import { ministryStaff } from '../data/leadership';
@@ -48,53 +46,87 @@ const governance = [
         />
       </Reveal>
 
-      <div class="mt-16">
-        <LeadershipTeam />
-      </div>
-
-      <Reveal class="mt-20">
+      <Reveal class="mt-14">
         <h3 id="ministry-team-heading" class="eyebrow">Ministry Leadership Team</h3>
         <div class="brushed-gold mt-4 h-px w-14"></div>
       </Reveal>
 
       <div class="mt-10">
+        <LeadershipTeam headingLevel={4} />
+      </div>
+
+
+      <div class="mt-8">
         <LeadershipTeam people={ministryStaff} headingLevel={4} idPrefix="staff-bio" />
       </div>
     </div>
   </Section>
 
-  <!-- Marketplace relationship -->
+  <!-- Serving in the Marketplace -->
   <Section tone="linen" labelledby="sophion-heading">
     <div class="shell">
       <Reveal>
-        <SectionHeading
-          id="sophion-heading"
-          eyebrow="Related Entities"
-          title="Clear lines between ministry and marketplace"
-        />
-      </Reveal>
-      <div class="mt-12">
-        <Prose>
-          <p>
-            The family’s marketplace work through Sophion Media &amp; Consulting Group
-            complements this mission by strengthening leaders and organizations through
-            advisory, legal-operations, strategy, media, and consulting services.
-          </p>
-          <p>
-            Sophion’s work may support the larger vision through properly structured
-            contributions and services. You can visit
-            <a href="https://www.sophionhq.com" target="_blank" rel="noopener noreferrer" class="link-gold">www.sophionhq.com</a>
-            to learn more<span class="sr-only"> (opens in a new tab)</span>.
-          </p>
-        </Prose>
+        <div class="sophion relative overflow-hidden p-10 shadow-[var(--shadow-lift-lg)] sm:p-14">
+          <span aria-hidden="true"
+                class="absolute inset-x-0 top-0 h-px"
+                style="background-image:linear-gradient(to right,transparent,rgb(200 162 74 / 0.7),transparent);"></span>
 
-        <ReviewNote label="Needs legal review">
-          Related-party language, entity names, and any description of intercompany
-          contributions or services should be reviewed by counsel and the ministry’s
-          accountant, and should match the governing documents and conflict-of-interest
-          policy.
-        </ReviewNote>
-      </div>
+          <div class="grid gap-10 lg:grid-cols-12 lg:items-center lg:gap-14">
+            <div class="lg:col-span-7">
+              <p class="eyebrow">Serving in the Marketplace</p>
+              <h2 id="sophion-heading" class="display-3 mt-4">
+                Clear lines between ministry and marketplace
+              </h2>
+              <div class="mt-6 h-px w-16"
+                   style="background-image:linear-gradient(to right,var(--sophion-gold),transparent);"></div>
+
+              <div class="mt-7 space-y-5 text-[1.0625rem] leading-relaxed" style="color:#c9d6d8;">
+                <p>
+                  The family’s marketplace work through Sophion Media &amp; Consulting
+                  Group complements this mission by strengthening leaders and
+                  organizations through advisory, legal-operations, strategy, media, and
+                  consulting services.
+                </p>
+                <p>
+                  Sophion’s work may support the larger vision through properly structured
+                  contributions and services.
+                </p>
+              </div>
+
+              <p class="mt-9">
+                <a
+                  href="https://www.sophionhq.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn border text-[0.75rem]"
+                  style="border-color:var(--sophion-gold);color:var(--sophion-gold);"
+                >
+                  Visit sophionhq.com
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true" class="ml-1">
+                    <path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="2"
+                          stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                  <span class="sr-only">(opens in a new tab)</span>
+                </a>
+              </p>
+            </div>
+
+            <div class="lg:col-span-5">
+              <div class="flex items-center justify-center">
+                <img
+                  src="/images/sophion-logo.png"
+                  alt="Sophion Media &amp; Consulting Group"
+                  width="287"
+                  height="345"
+                  loading="lazy"
+                  decoding="async"
+                  class="h-48 w-auto sm:h-56 lg:h-64"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </Reveal>
     </div>
   </Section>
 
