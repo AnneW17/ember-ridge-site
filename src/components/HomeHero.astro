@@ -12,10 +12,14 @@ import { site } from '../data/site';
         <!-- Wide screens show the full render. Narrow screens get a crop that
              excludes the overlaid wording, which would otherwise survive the
              centre crop at phone and tablet widths. -->
-        <source media="(min-width: 1024px)" srcset="/images/campus/lodge-banner.jpg" />
+        <source media="(min-width: 1024px)"
+                srcset="/images/campus/lodge-banner.jpg 1836w, /images/campus/lodge-banner@2x.jpg 2900w"
+                sizes="100vw" />
         <img
           data-banner
           src="/images/campus/lodge-banner-mobile.jpg"
+          srcset="/images/campus/lodge-banner-mobile.jpg 1176w, /images/campus/lodge-banner-mobile@2x.jpg 1900w"
+          sizes="100vw"
           alt="Restoration concept for the Ember Ridge lodge — timber and stone with a covered wraparound porch at dusk"
           width="1836"
           height="857"
@@ -38,7 +42,7 @@ import { site } from '../data/site';
         alt="Ember Ridge"
         width="640"
         height="640"
-        class="h-48 w-auto sm:h-64 lg:h-80"
+        class="h-56 w-auto sm:h-72 lg:h-[26rem]"
       />
     </div>
   </div>
