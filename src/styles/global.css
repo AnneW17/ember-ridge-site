@@ -225,11 +225,26 @@
     height: 1px;
     background-image: linear-gradient(to right, transparent, rgb(200 162 74 / 0.55), transparent);
   }
+  /* A gold rule draws down the left edge on hover. */
+  .card-lift::after {
+    content: "";
+    position: absolute;
+    left: -1px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 600ms var(--ease-refined);
+    background-image: linear-gradient(to bottom, var(--color-gold-500), var(--color-gold-700));
+  }
   .card-lift:hover {
     @apply border-gold-600/50 bg-linen;
     transform: translateY(-4px);
     box-shadow: var(--shadow-lift-lg);
   }
+  .card-lift:hover::after { transform: scaleY(1); }
+  .card-lift:focus-within::after { transform: scaleY(1); }
   .card-numeral { @apply font-display text-2xl text-gold-700; }
 
   /* Callout / quote --------------------------------------------- */
@@ -239,6 +254,23 @@
     box-shadow: var(--shadow-lift);
   }
   .pullquote  { @apply font-display text-2xl not-italic leading-snug text-ink sm:text-3xl; }
+
+  /* A quote carrying a whole band: larger, centred, with gold marks. */
+  .pullquote-feature {
+    @apply relative mx-auto max-w-4xl px-8 text-center font-display not-italic
+           text-3xl leading-[1.25] text-ink sm:px-14 sm:text-4xl lg:text-[2.75rem];
+  }
+  .pullquote-feature::before,
+  .pullquote-feature::after {
+    position: absolute;
+    font-family: var(--font-display);
+    font-size: 4rem;
+    line-height: 1;
+    color: var(--color-gold-500);
+    opacity: 0.45;
+  }
+  .pullquote-feature::before { content: "\201C"; left: 0; top: -0.75rem; }
+  .pullquote-feature::after  { content: "\201D"; right: 0; bottom: -2rem; }
   .review-note {
     @apply flex gap-3 border border-gold-600/40 bg-gold-500/10 px-5 py-4
            font-sans text-sm not-italic leading-relaxed text-stone-700;
@@ -311,7 +343,13 @@
 
   /* Banded surfaces. Each carries its own vertical gradient so consecutive
      sections flow into one another rather than stacking as flat blocks. */
-  .band-ivory { background-image: linear-gradient(180deg, var(--color-ivory) 0%, var(--color-linen) 100%); }
+  /* The cycle runs ivory → linen → cream → stone, each band ending where the
+     next begins. Only the wrap back to ivory needs feathering. */
+  .band-ivory {
+    background-image:
+      linear-gradient(180deg, rgb(233 224 207 / 0.55) 0%, transparent 7rem),
+      linear-gradient(180deg, var(--color-ivory) 0%, var(--color-linen) 100%);
+  }
   .band-linen { background-image: linear-gradient(180deg, var(--color-linen) 0%, var(--color-cream) 100%); }
   .band-cream { background-image: linear-gradient(180deg, var(--color-cream) 0%, var(--color-cream-dark) 100%); }
   .band-stone { background-image: linear-gradient(180deg, var(--color-cream-dark) 0%, var(--color-sand) 100%); }

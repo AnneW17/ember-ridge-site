@@ -9,11 +9,20 @@ import CTASection from '../components/CTASection.astro';
 import Reveal from '../components/Reveal.astro';
 import EmberGlow from '../components/EmberGlow.astro';
 
+const audience = [
+  'Pastors and ministry leaders',
+  'Prophets and intercessors',
+  'Missionaries and chaplains',
+  'Business and marketplace leaders',
+  'Educators and public servants',
+  'Ministry families',
+];
+
 const pillars = [
   {
     numeral: 'I',
     title: 'A House of Prayer',
-    body: 'Before Ember Ridge ministers to people, it ministers to God — through worship, intercession, consecration, and attentive obedience.',
+    body: 'Worship, intercession and consecration are the first work of the house — not the atmosphere around it.',
     href: '/house-of-prayer',
   },
   {
@@ -33,6 +42,27 @@ const pillars = [
     title: 'Faithful Sending',
     body: 'What God restores here is not meant to remain on the mountain. People return to their homes, churches, and assignments carrying renewed fire.',
     href: '/ministry-model#sending',
+  },
+];
+
+const routes = [
+  {
+    label: 'Pray',
+    body: 'Carry this work in intercession — before anything is built, and long after.',
+    cta: 'Join the intercession',
+    href: '/house-of-prayer',
+  },
+  {
+    label: 'Partner',
+    body: 'Bring professional wisdom, materials, or hands to the building of it.',
+    cta: 'Ways to partner',
+    href: '/partner',
+  },
+  {
+    label: 'Give',
+    body: 'Support the purchase, the renovation, and the long-term operating foundation.',
+    cta: 'Ways to give',
+    href: '/partner#ways-to-give',
   },
 ];
 
@@ -62,33 +92,22 @@ const campus = [
         </h2>
         <div class="prose-body mt-8 max-w-3xl">
           <p>
-            First and foremost, Ember Ridge is a ministry to the Lord — a place where the
-            land is covered in worship and intercession. The lodge will be renovated to
-            receive those God appoints, for refreshing, reformation, and restoration.
-          </p>
-          <p>
-            It will also gather intercessors to cover this region, the nation, families,
-            businesses, and everyone the Lord brings to Ember Ridge.
+            The land will be covered in worship and intercession. The lodge will be
+            renovated to receive those God appoints, for refreshing, reformation, and
+            restoration — and to gather intercessors who will cover this region, the
+            nation, families, businesses, and everyone the Lord brings here.
           </p>
         </div>
       </Reveal>
 
       <Reveal delay={60} class="mt-8 max-w-2xl">
         <p class="text-sm leading-relaxed text-stone-600">
-          Ember Ridge is an auxiliary ministry of Firebrand Revivalists&#8482;, a
-          Washington nonprofit corporation and a church for federal tax purposes, exempt
-          under section 501(c)(3) of the Internal Revenue Code and excepted from the
-          application requirement by section 508(c)(1)(A).
+          An auxiliary ministry of Firebrand Revivalists&#8482;, a Washington nonprofit
+          corporation and a church for federal tax purposes.
+          <a href="/partner#ways-to-give" class="link-gold">Tax status and giving</a>.
         </p>
       </Reveal>
 
-      <Reveal delay={90} class="mt-10 max-w-xl border-l-2 border-gold-600 pl-6">
-        <p class="eyebrow">How to Take Part</p>
-        <p class="mt-3 text-[0.9375rem] leading-relaxed text-stone-700">
-          Pray with us, partner with us, or give toward the purchase and renovation.
-          <a href="/partner" class="link-gold">Start here</a>.
-        </p>
-      </Reveal>
     </div>
   </Section>
 
@@ -108,19 +127,13 @@ const campus = [
       <div class="lg:col-span-7">
         <Reveal delay="100" class="prose-body">
           <p>
-            Across churches, ministries, schools, businesses, communities, and
-            public life, faithful people are carrying burdens few others ever see.
-            Pastors shepherd while navigating cultural pressure and private warfare.
-            Missionaries pour themselves out far from familiar support. Intercessors
-            stand in the gap for others, often without anyone recognizing the cost of
-            that hidden service.
+            Faithful people are carrying burdens few others ever see. Many keep serving
+            long after the joy has gone out of it, and there are few places built to
+            receive them without asking anything in return.
           </p>
           <p>
-            Ember Ridge is first and foremost a home devoted to the Lord. It is a
-            place where leaders and those carrying heavy responsibilities can come to
-            be refreshed, reformed, restored, and renewed in His presence. It is also
-            a place of faithful prayer, where intercessors gather to seek the Lord and
-            stand in the gap for our region, our nation, and the world.
+            An ember can look spent and still hold living fire. Ember Ridge is being
+            formed to tend what God has already lit.
           </p>
           <p class="pt-2">
             <a href="/vision" class="btn-quiet">Read the founding vision →</a>
@@ -156,11 +169,42 @@ const campus = [
     </div>
   </Section>
 
-  <!-- The lodge is not a venue -->
-  <Section tone="stone">
+
+  <!-- Who this is for -->
+  <Section tone="stone" labelledby="audience-heading">
     <div class="shell">
-      <blockquote data-reveal class="mx-auto max-w-3xl text-center">
-        <p class="pullquote">
+      <Reveal>
+        <SectionHeading
+          id="audience-heading"
+          eyebrow="Who This Is For"
+          title="Those carrying the weight of ministry"
+          align="center"
+        />
+      </Reveal>
+
+      <ul class="mx-auto mt-14 flex max-w-4xl flex-wrap items-center justify-center gap-x-6 gap-y-4 sm:gap-x-8">
+        {audience.map((who, i) => (
+          <li data-reveal data-reveal-delay={i * 70} class="flex items-center gap-6 sm:gap-8">
+            {i > 0 && <span aria-hidden="true" class="h-1 w-1 rounded-full bg-gold-600/70"></span>}
+            <span class="font-display text-xl text-ink sm:text-2xl">{who}</span>
+          </li>
+        ))}
+      </ul>
+
+      <Reveal delay={200} class="mt-12 text-center">
+        <p class="mx-auto max-w-2xl text-[0.9375rem] leading-relaxed text-stone-700">
+          Placements are limited and prayerfully discerned rather than publicly marketed.
+          <a href="/ministry-model" class="link-gold">How the ministry works</a>.
+        </p>
+      </Reveal>
+    </div>
+  </Section>
+
+  <!-- The lodge is not a venue -->
+  <Section tone="ivory">
+    <div class="shell">
+      <blockquote data-reveal>
+        <p class="pullquote-feature">
           The lodge is not a venue. It is the next room in our family home, made larger
           so that more sons and daughters can come in.
         </p>
@@ -169,7 +213,7 @@ const campus = [
   </Section>
 
   <!-- The Place -->
-  <Section tone="stone" labelledby="place-heading">
+  <Section tone="linen" labelledby="place-heading">
     <div class="shell grid items-center gap-14 lg:grid-cols-12 lg:gap-16">
       <div class="lg:col-span-6">
         <Reveal>
@@ -186,22 +230,34 @@ const campus = [
       </div>
 
       <div class="lg:col-span-6">
-        <Reveal delay="120" class="card !border-stone-200 !bg-cream !p-9 sm:!p-11">
-          <p class="eyebrow">The Campus Vision</p>
-          <h3 class="display-3 mt-4">What is being built</h3>
-          <p class="mt-5 text-[0.9375rem] leading-relaxed text-stone-700">
-            A lodge renovated for guests, houses for the leaders who serve them, three
-            cabins for personal retreat, and grounds shaped for prayer.
-          </p>
-          <ul class="mt-8 grid gap-x-8 gap-y-3 sm:grid-cols-2">
+        <Reveal delay={120}>
+          <figure>
+            <div class="overflow-hidden border border-stone-200 bg-cream shadow-[var(--shadow-lift-lg)]">
+              <img
+                src="/images/campus/lodge-concept.jpg"
+                alt="Restoration concept for the Ember Ridge lodge — timber and stone with a covered wraparound porch"
+                width="1836"
+                height="857"
+                loading="lazy"
+                decoding="async"
+                class="w-full object-cover"
+              />
+            </div>
+            <figcaption class="mt-4 text-xs leading-relaxed text-stone-600">
+              Restoration concept — not the property in its current condition.
+            </figcaption>
+          </figure>
+
+          <p class="eyebrow mt-10">What Is Being Built</p>
+          <ul class="mt-5 grid gap-x-8 gap-y-2.5 sm:grid-cols-2">
             {campus.map((item) => (
-              <li class="flex items-start gap-3 text-sm text-ink">
+              <li class="flex items-start gap-3 text-[0.9375rem] text-ink">
                 <span aria-hidden="true" class="mt-2 h-1 w-1 shrink-0 rounded-full bg-gold-500"></span>
                 {item}
               </li>
             ))}
           </ul>
-          <p class="mt-9">
+          <p class="mt-8">
             <a href="/remodel-and-grounds" class="btn-quiet">Explore remodel and grounds →</a>
           </p>
         </Reveal>
@@ -209,8 +265,38 @@ const campus = [
     </div>
   </Section>
 
+
+  <!-- How to take part -->
+  <Section tone="cream" labelledby="take-part-heading">
+    <div class="shell">
+      <Reveal>
+        <SectionHeading
+          id="take-part-heading"
+          eyebrow="How to Take Part"
+          title="Three ways in"
+          align="center"
+        />
+      </Reveal>
+
+      <div class="mt-14 grid gap-6 md:grid-cols-3">
+        {routes.map((r, i) => (
+          <Reveal delay={i * 90}>
+            <article class="card card-lift flex h-full flex-col text-center">
+              <h3 class="font-display text-2xl text-ink">{r.label}</h3>
+              <div class="brushed-gold mx-auto mt-4 h-px w-10"></div>
+              <p class="mt-5 flex-1 text-[0.9375rem] leading-relaxed text-stone-700">{r.body}</p>
+              <p class="mt-7">
+                <a href={r.href} class="btn-quiet !text-[0.6875rem] !tracking-[0.16em]">{r.cta} →</a>
+              </p>
+            </article>
+          </Reveal>
+        ))}
+      </div>
+    </div>
+  </Section>
+
   <!-- Trust -->
-  <Section tone="ivory" size="sm" labelledby="trust-heading">
+  <Section tone="stone" size="sm" labelledby="trust-heading">
     <div class="shell">
       <Reveal class="mx-auto max-w-3xl text-center">
         <p class="eyebrow">Leadership &amp; Stewardship</p>
