@@ -255,6 +255,15 @@
   }
   .pullquote  { @apply font-display text-2xl not-italic leading-snug text-ink sm:text-3xl; }
 
+  /* A single sentence given a whole band. Large, thin, generously spaced —
+     the type is the visual, so no ornament is added around it. */
+  .statement {
+    @apply mx-auto max-w-4xl text-center font-display font-light leading-[1.15] text-ink
+           text-[2rem] sm:text-[2.75rem] lg:text-[3.5rem];
+    letter-spacing: -0.005em;
+    text-wrap: balance;
+  }
+
   /* A quote carrying a whole band: larger, centred, with gold marks. */
   .pullquote-feature {
     @apply relative mx-auto max-w-4xl px-8 text-center font-display not-italic

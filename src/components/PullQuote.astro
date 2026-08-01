@@ -1,12 +1,26 @@
 ---
 // src/components/PullQuote.astro
-interface Props { cite?: string; }
-const { cite } = Astro.props;
+interface Props {
+  cite?: string;
+  /** Centred, oversized, with gold marks — for a quote given its own band. */
+  feature?: boolean;
+}
+const { cite, feature = false } = Astro.props;
 ---
-<figure data-reveal class="my-14 border-l-2 border-gold-600 pl-7 sm:pl-10">
-  <blockquote class="pullquote"><slot /></blockquote>
+<figure
+  data-reveal
+  class:list={[
+    feature ? 'my-20 sm:my-24' : 'my-14 border-l-2 border-gold-600 pl-7 sm:pl-10',
+  ]}
+>
+  <blockquote class:list={[feature ? 'pullquote-feature' : 'pullquote']}><slot /></blockquote>
   {cite && (
-    <figcaption class="mt-4 font-sans text-xs uppercase tracking-[0.18em] text-gold-700">
+    <figcaption
+      class:list={[
+        'font-sans text-xs uppercase tracking-[0.18em] text-gold-700',
+        feature ? 'mt-8 text-center' : 'mt-4',
+      ]}
+    >
       {cite}
     </figcaption>
   )}
