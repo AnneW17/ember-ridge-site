@@ -6,7 +6,6 @@ import Section from '../components/Section.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import Prose from '../components/Prose.astro';
 import PullQuote from '../components/PullQuote.astro';
-import Callout from '../components/Callout.astro';
 import Reveal from '../components/Reveal.astro';
 import CTASection from '../components/CTASection.astro';
 ---
@@ -31,7 +30,29 @@ import CTASection from '../components/CTASection.astro';
         />
       </Reveal>
 
-      <div class="mt-12">
+      <div class="mt-12 grid gap-12 lg:grid-cols-12 lg:gap-16">
+        <div class="lg:col-span-5">
+          <Reveal>
+            <figure>
+              <div class="overflow-hidden border border-stone-200 shadow-[var(--shadow-lift-lg)]">
+                <img
+                  src="/images/shannon-and-jason.jpg"
+                  alt="Shannon and Jason Suttles"
+                  width="620"
+                  height="620"
+                  loading="lazy"
+                  decoding="async"
+                  class="aspect-square w-full object-cover"
+                />
+              </div>
+              <figcaption class="mt-4 text-xs leading-relaxed text-stone-600">
+                Shannon and Jason Suttles
+              </figcaption>
+            </figure>
+          </Reveal>
+        </div>
+
+        <div class="lg:col-span-7">
         <Prose>
           <p>
             The foundation of this vision is restoration. Shannon Suttles knows what
@@ -54,6 +75,7 @@ import CTASection from '../components/CTASection.astro';
             rebuilds a life until purpose can stand where devastation once ruled.
           </p>
         </Prose>
+        </div>
       </div>
     </div>
   </Section>
@@ -95,17 +117,38 @@ import CTASection from '../components/CTASection.astro';
           </p>
         </Prose>
 
-        <Callout title="Jesus Loves the Little Children">
-          <p>
-            The family’s school chaplaincy was born from prayer rather than
-            institutional ambition. What began as intercession developed into a
-            ministry presence within schools, where children, families, educators, and
-            administrators encountered hope, healing, order, and practical support. The
-            work demonstrated a principle central to Ember Ridge: when prayer,
-            spiritual discernment, relational presence, and professional
-            responsibility operate together, environments can change.
-          </p>
-        </Callout>
+        <div class="callout my-12 grid items-center gap-8 sm:grid-cols-12 sm:gap-10">
+          <div class="sm:col-span-4 lg:col-span-3">
+            <Reveal>
+              <div class="flex items-center justify-center rounded-sm bg-white p-5 ring-1 ring-stone-200">
+                <img
+                  src="/images/jllc-logo.jpg"
+                  alt="Jesus Loves the Little Children — School Chaplains"
+                  width="640"
+                  height="640"
+                  loading="lazy"
+                  decoding="async"
+                  class="h-auto w-full max-w-[9rem] sm:max-w-none"
+                />
+              </div>
+            </Reveal>
+          </div>
+
+          <div class="sm:col-span-8 lg:col-span-9">
+            <h3 class="font-sans text-xs font-semibold uppercase tracking-[0.16em] text-gold-700">
+              Jesus Loves the Little Children
+            </h3>
+            <p class="mt-3 text-[1.0625rem] leading-relaxed text-stone-700">
+              The family’s school chaplaincy was born from prayer rather than
+              institutional ambition. What began as intercession developed into a
+              ministry presence within schools, where children, families, educators, and
+              administrators encountered hope, healing, order, and practical support. The
+              work demonstrated a principle central to Ember Ridge: when prayer,
+              spiritual discernment, relational presence, and professional
+              responsibility operate together, environments can change.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </Section>
