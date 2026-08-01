@@ -1,7 +1,6 @@
 // src/data/leadership.ts
 // Leadership Team content. Swap the `image` path to update a portrait — no
-// markup changes needed. Bios marked `placeholder: true` still need the
-// leader's own approved text.
+// markup changes needed. Every bio is now the leader's own approved text.
 
 export type Leader = {
   name: string;
@@ -13,7 +12,6 @@ export type Leader = {
   bio: string[];     // paragraphs revealed by the "Read full bio" toggle
   image: string;
   alt: string;
-  placeholder?: boolean;
 };
 
 export const leadership: Leader[] = [
@@ -74,16 +72,18 @@ export const leadership: Leader[] = [
   },
   {
     name: 'Mark Burgett',
-    title: 'Chief IT Engineer in Training',
+    title: 'Chief Cybersecurity and Infrastructure Engineer — In Training',
     summary:
-      'Developing the engineering, technology, and facilities capacity required to steward a complex mountain property over decades.',
+      'United States Navy veteran building the cybersecurity, infrastructure and operational systems that protect what has been entrusted to the ministry.',
     bio: [
-      'Mark Burgett serves as Chief IT Engineer in Training. Having completed engineering-related education and preparing for further training, he will grow into responsibility for engineering systems, technology infrastructure, security systems, facilities stewardship, maintenance planning, and long-term campus development.',
-      'His role reflects the broader vision for Ember Ridge: a house of prayer still needs sound roofs, reliable systems, and careful maintenance. Practical excellence is treated here as an expression of stewardship rather than a separate concern.',
+      'Mark Burgett has been an integral part of the Suttles family ministry journey and has faithfully served alongside Jason and Shannon Suttles. Throughout the years, Mark has been involved in the life and ministry of their family, including participating in the welcoming and care of those God brought into their home and community.',
+      'Mark served in the United States Navy, where he developed a strong foundation of discipline, commitment, and service. He has continued expanding his technical expertise through education in information technology and is pursuing further specialization in cybersecurity to strengthen his ability to serve in technology, security, and infrastructure.',
+      'Mark serves as the Chief Cybersecurity and Infrastructure Engineer — In Training for Ember Ridge, Firebrand Revivalists, and associated ministry operations. In this role, he supports cybersecurity initiatives, technology infrastructure, and operational systems while working alongside Jason and Shannon Suttles to strengthen the digital foundation supporting ministry and business operations.',
+      'With a passion for technology, strategy, and innovation, Mark brings a unique combination of technical ability, creativity, focus, and servant leadership. He has also pursued excellence in competitive gaming, where he has developed discipline, problem-solving skills, and a platform through which he seeks to honor the Lord and steward his gifts.',
+      'Mark’s heart is to use his abilities in technology and leadership to serve God’s purposes, protect what has been entrusted to the ministry, and help build secure infrastructure that supports the continued advancement of the Kingdom.',
     ],
-    image: '/images/leadership/placeholder-portrait.svg',
-    alt: 'Placeholder portrait for Mark Burgett, Chief IT Engineer in Training',
-    placeholder: true,
+    image: '/images/leadership/mark-burgett.jpg',
+    alt: 'Portrait of Mark Burgett, Chief Cybersecurity and Infrastructure Engineer — In Training',
   },
 ];
 
