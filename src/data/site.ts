@@ -93,8 +93,9 @@ export const navTree: NavItem[] = [
   {
     label: 'Partner With Us',
     children: [
-      { label: 'The Invitation', href: '/partner' },
-      { label: 'Give / Support', href: '/partner#ways-to-give' },
+      { label: 'Pray', href: '/partner#pray' },
+      { label: 'Partner', href: '/partner#partner' },
+      { label: 'Give', href: '/partner#give' },
     ],
   },
   { label: 'Contact', href: '/contact' },

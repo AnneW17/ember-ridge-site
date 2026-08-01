@@ -15,49 +15,25 @@ const ways = [
     id: 'pray',
     numeral: 'I',
     title: 'Pray',
-    body: 'Some will be called to pray before they are called to do anything else. Some will carry this project in intercession through acquisition, construction, transition, and opening.',
+    body: 'Some are called to pray before they are called to anything else. Intercessors carry this work through acquisition, construction, transition and opening — and stand with the region, the nation, and everyone the Lord brings here.',
     cta: 'Join the intercession',
-    href: '/contact',
+    href: '/house-of-prayer#intercession',
   },
   {
-    id: 'advise',
+    id: 'partner',
     numeral: 'II',
-    title: 'Counsel',
-    body: 'Some will bring professional wisdom in architecture, engineering, construction, finance, law, hospitality, security, technology, landscaping, or organizational development.',
-    cta: 'Offer your expertise',
-    href: '/contact',
-  },
-  {
-    id: 'build',
-    numeral: 'III',
-    title: 'Build',
-    body: 'Others will help furnish rooms, equip the kitchen, build trails, provide materials, or create the quiet details that make a house feel like home.',
-    cta: 'Help us build',
+    title: 'Partner',
+    body: 'Serving, professional expertise, ministry collaboration, materials and labour, and introductions to others carrying a corresponding assignment. Architecture, engineering, construction, finance, law, hospitality, security, technology and landscaping are all needed.',
+    cta: 'Start a conversation',
     href: '/contact',
   },
   {
     id: 'give',
-    numeral: 'IV',
+    numeral: 'III',
     title: 'Give',
-    body: 'Some will give sacrificially toward the property, the renovation, the residence building, the pavilion, the prayer garden, the intercession team, or the long-term operating foundation.',
+    body: 'Financial support toward the purchase, the renovation, the cabins and grounds, the intercession team, and the long-term operating foundation.',
     cta: 'Ways to give',
-    href: '#ways-to-give',
-  },
-  {
-    id: 'serve',
-    numeral: 'V',
-    title: 'Serve',
-    body: 'A smaller number may be called to serve within the ongoing community — in hospitality, prayer, facilities, administration, or care for guests.',
-    cta: 'Ask about serving',
-    href: '/contact',
-  },
-  {
-    id: 'connect',
-    numeral: 'VI',
-    title: 'Connect',
-    body: 'Some will connect this ministry with others who carry a corresponding assignment — leaders, foundations, builders, and intercessors already looking for a work like this one.',
-    cta: 'Make an introduction',
-    href: '/contact',
+    href: '#give',
   },
 ];
 ---
@@ -77,12 +53,12 @@ const ways = [
       <Reveal>
         <SectionHeading
           id="ways-heading"
-          eyebrow="Six Ways to Partner"
-          title="Take it before the Lord and ask what He is inviting you to do"
+          eyebrow="Three Ways to Engage"
+          title="Three ways to be part of what God is doing"
         />
       </Reveal>
 
-      <div class="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div class="mt-16 grid gap-6 md:grid-cols-3">
         {ways.map((way, i) => (
           <Reveal delay={(i % 3) * 90}>
             <article id={way.id} class="card card-lift flex h-full scroll-mt-32 flex-col">
@@ -142,8 +118,9 @@ const ways = [
     </div>
   </Section>
 
-  <Section tone="cream" id="ways-to-give" labelledby="give-heading">
+  <Section tone="cream" id="give" labelledby="give-heading">
     <div class="shell">
+      <span id="ways-to-give" class="block scroll-mt-32"></span>
       <Reveal>
         <SectionHeading
           id="give-heading"
