@@ -72,18 +72,18 @@ export const leadership: Leader[] = [
   },
   {
     name: 'Mark Burgett',
-    title: 'Chief Cybersecurity and Infrastructure Engineer — In Training',
+    title: 'Chief Cybersecurity & Infrastructure Engineer (In Training)',
     summary:
-      'United States Navy veteran building the cybersecurity, infrastructure and operational systems that protect what has been entrusted to the ministry.',
+      'United States Navy veteran building the cybersecurity, infrastructure and technology systems behind the ministries and operations entrusted to his care.',
     bio: [
-      'Mark Burgett has been an integral part of the Suttles family ministry journey and has faithfully served alongside Jason and Shannon Suttles. Throughout the years, Mark has been involved in the life and ministry of their family, including participating in the welcoming and care of those God brought into their home and community.',
+      'Mark Burgett has been an integral part of the Suttles family ministry journey and has faithfully served alongside Jason and Shannon Suttles. Over the years, Mark has been part of the life and ministry of their family, participating in the culture of prayer, service, and obedience that has shaped their calling. He has also played a role in welcoming and supporting those God has brought into their home and community.',
       'Mark served in the United States Navy, where he developed a strong foundation of discipline, commitment, and service. He has continued expanding his technical expertise through education in information technology and is pursuing further specialization in cybersecurity to strengthen his ability to serve in technology, security, and infrastructure.',
-      'Mark serves as the Chief Cybersecurity and Infrastructure Engineer — In Training for Ember Ridge, Firebrand Revivalists, and associated ministry operations. In this role, he supports cybersecurity initiatives, technology infrastructure, and operational systems while working alongside Jason and Shannon Suttles to strengthen the digital foundation supporting ministry and business operations.',
-      'With a passion for technology, strategy, and innovation, Mark brings a unique combination of technical ability, creativity, focus, and servant leadership. He has also pursued excellence in competitive gaming, where he has developed discipline, problem-solving skills, and a platform through which he seeks to honor the Lord and steward his gifts.',
-      'Mark’s heart is to use his abilities in technology and leadership to serve God’s purposes, protect what has been entrusted to the ministry, and help build secure infrastructure that supports the continued advancement of the Kingdom.',
+      'Mark serves as Chief Cybersecurity & Infrastructure Engineer (In Training), supporting Firebrand Revivalists, Ember Ridge, associated ministries, and the business operations stewarded by Jason and Shannon Suttles. In this role, he supports cybersecurity initiatives, technology infrastructure, systems management, and strategic technology planning to help ensure that the organizations and operations entrusted to him remain secure, efficient, and aligned with their mission.',
+      'With a passion for technology, strategy, and innovation, Mark brings a unique combination of technical ability, creativity, focus, and servant leadership. He has also pursued excellence in competitive gaming, where he has developed discipline, problem-solving skills, and a platform through which he seeks to honor the Lord and steward the gifts God has given him.',
+      'Mark’s heart is to use his abilities in technology and leadership to serve God’s purposes, strengthen the infrastructure behind the work being built, and help protect and advance the ministries, organizations, and operations he has been entrusted to support.',
     ],
     image: '/images/leadership/mark-burgett.jpg',
-    alt: 'Portrait of Mark Burgett, Chief Cybersecurity and Infrastructure Engineer — In Training',
+    alt: 'Portrait of Mark Burgett, Chief Cybersecurity and Infrastructure Engineer',
   },
 ];
 
