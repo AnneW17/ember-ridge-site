@@ -23,8 +23,10 @@ interface Props {
   variant?: 'bloom' | 'hearth';
   /** Particle density. */
   density?: 'default' | 'light';
+  /** Feather the field into the bands above and below. Off inside mastheads. */
+  fade?: boolean;
 }
-const { density = 'default' } = Astro.props;
+const { density = 'default', fade = true } = Astro.props;
 
 // Deterministic pseudo-random — same output every build.
 let seed = 20260731;
@@ -125,7 +127,10 @@ const sparks = Array.from({ length: counts.sparks }, (_, i) => ({
     ))}
   </div>
 
-  <!-- Feather the field into the bands above and below -->
-  <div class="absolute inset-x-0 top-0 h-28 bg-[linear-gradient(to_bottom,var(--color-linen),transparent)]"></div>
-  <div class="absolute inset-x-0 bottom-0 h-24 bg-[linear-gradient(to_top,var(--color-cream),transparent)]"></div>
+  {fade && (
+    <>
+      <div class="absolute inset-x-0 top-0 h-28 bg-[linear-gradient(to_bottom,var(--color-linen),transparent)]"></div>
+      <div class="absolute inset-x-0 bottom-0 h-24 bg-[linear-gradient(to_top,var(--color-cream),transparent)]"></div>
+    </>
+  )}
 </div>

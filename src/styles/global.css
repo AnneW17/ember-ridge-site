@@ -320,10 +320,18 @@
 @layer utilities {
   [data-reveal] {
     opacity: 0;
-    transform: translateY(18px);
-    transition: opacity 900ms var(--ease-refined), transform 900ms var(--ease-refined);
+    transform: translateY(26px);
+    transition: opacity 1000ms var(--ease-refined), transform 1000ms var(--ease-refined);
     will-change: opacity, transform;
   }
+
+  /* Photographs ease out of a slight scale as they arrive — cinematic without
+     moving anything around them. */
+  [data-reveal] :where(img) {
+    transform: scale(1.035);
+    transition: transform 1400ms var(--ease-refined);
+  }
+  [data-reveal].is-visible :where(img) { transform: none; }
   [data-reveal].is-visible { opacity: 1; transform: none; will-change: auto; }
 
   [data-reveal]:has(> .card),
@@ -369,6 +377,16 @@
     top: 0;
     height: 1px;
     background-image: linear-gradient(to right, transparent, rgb(143 110 36 / 0.35), transparent);
+  }
+  /* Warm light spilling down from the seam. */
+  .seam-gold::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    top: 0;
+    height: 10rem;
+    pointer-events: none;
+    background-image: radial-gradient(70% 100% at 50% 0%, rgb(200 162 74 / 0.10), transparent 70%);
   }
 
   .glow-gold-soft {

@@ -1,5 +1,7 @@
 ---
 // src/components/PageHero.astro — interior page masthead, warm and light.
+import EmberGlow from './EmberGlow.astro';
+
 interface Props { eyebrow: string; title: string; lede?: string; }
 const { eyebrow, title, lede } = Astro.props;
 ---
@@ -8,6 +10,7 @@ const { eyebrow, title, lede } = Astro.props;
     <div class="glow-gold-soft animate-breathe absolute left-1/2 top-[-22rem] h-[40rem] w-[40rem]
                 max-w-[140vw] -translate-x-1/2 rounded-full blur-[80px] [will-change:opacity,transform]"></div>
   </div>
+  <EmberGlow density="light" fade={false} />
   <div aria-hidden="true" class="grain pointer-events-none absolute inset-0"></div>
 
   <div class="shell relative">
