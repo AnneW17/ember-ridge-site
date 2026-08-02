@@ -82,7 +82,7 @@ export const leadership: Leader[] = [
       'With a passion for technology, strategy, and innovation, Mark brings a unique combination of technical ability, creativity, focus, and servant leadership. He has also pursued excellence in competitive gaming, where he has developed discipline, problem-solving skills, and a platform through which he seeks to honor the Lord and steward the gifts God has given him.',
       'Mark’s heart is to use his abilities in technology and leadership to serve God’s purposes, strengthen the infrastructure behind the work being built, and help protect and advance the ministries, organizations, and operations he has been entrusted to support.',
     ],
-    image: '/images/leadership/mark-burgett.jpg',
+    image: '/images/leadership/mark-burgett-v2.jpg',
     alt: 'Portrait of Mark Burgett, Chief Cybersecurity and Infrastructure Engineer',
   },
 ];
