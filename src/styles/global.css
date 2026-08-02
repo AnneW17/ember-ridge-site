@@ -77,6 +77,15 @@
   100% { opacity: 0; transform: translate3d(var(--drift, 26px), -70vh, 0) scaleY(1.5) scaleX(0.7); }
 }
 
+/* Flame licks: low, soft, stretching upward as they fade. Layered beneath the
+   embers so the base of the field reads as fire rather than floating points. */
+@keyframes flame-lick {
+  0%   { opacity: 0; transform: translate3d(0, 0, 0) scaleY(0.75) scaleX(1); }
+  22%  { opacity: var(--peak, 0.30); }
+  62%  { opacity: calc(var(--peak, 0.30) * 0.8); transform: translate3d(calc(var(--drift, 12px) * 0.6), -16vh, 0) scaleY(1.25) scaleX(0.94); }
+  100% { opacity: 0; transform: translate3d(var(--drift, 12px), -32vh, 0) scaleY(1.55) scaleX(0.82); }
+}
+
 @keyframes spark-catch {
   0%, 62%, 100% { opacity: 0; transform: translate3d(0, 0, 0) scale(0.5); }
   70%           { opacity: var(--peak, 0.85); transform: translate3d(0, -3vh, 0) scale(1); }

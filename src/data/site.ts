@@ -70,7 +70,7 @@ export const navTree: NavItem[] = [
   {
     label: 'About',
     children: [
-      { label: 'The Vision', href: '/vision' },
+      { label: 'The Vision for Ember Ridge', href: '/vision' },
       { label: 'The Story Behind the Vision', href: '/story' },
       { label: 'The History of the Land', href: '/the-place' },
     ],
@@ -104,7 +104,7 @@ export const navTree: NavItem[] = [
 // Flat list used by the footer.
 export const nav = [
   { label: 'Home', href: '/' },
-  { label: 'The Vision', href: '/vision' },
+  { label: 'The Vision for Ember Ridge', href: '/vision' },
   { label: 'The Story Behind the Vision', href: '/story' },
   { label: 'The History of the Land', href: '/the-place' },
   { label: 'Prayer, Worship, and Intercession', href: '/house-of-prayer' },

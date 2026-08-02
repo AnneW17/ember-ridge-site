@@ -38,8 +38,8 @@ const between = (min: number, max: number, dp = 2) =>
   Number((min + rand() * (max - min)).toFixed(dp));
 
 const counts = density === 'light'
-  ? { wisps: 3, embers: 10, sparks: 4, mobileWisps: 2, mobileEmbers: 5, mobileSparks: 2 }
-  : { wisps: 5, embers: 18, sparks: 7, mobileWisps: 2, mobileEmbers: 7, mobileSparks: 3 };
+  ? { wisps: 4, embers: 15, sparks: 5, licks: 3, mobileWisps: 2, mobileEmbers: 7, mobileSparks: 2, mobileLicks: 2 }
+  : { wisps: 6, embers: 26, sparks: 9, licks: 5, mobileWisps: 3, mobileEmbers: 10, mobileSparks: 4, mobileLicks: 2 };
 
 const wisps = Array.from({ length: counts.wisps }, (_, i) => ({
   i,
@@ -49,17 +49,29 @@ const wisps = Array.from({ length: counts.wisps }, (_, i) => ({
   duration: between(26, 42, 1),
   delay: between(-34, 0, 1),
   drift: between(-40, 46, 0),
-  peak: between(0.12, 0.24),
+  peak: between(0.18, 0.32),
 }));
 
 const embers = Array.from({ length: counts.embers }, (_, i) => ({
   i,
   left: between(3, 96),
-  size: between(2.4, 5.6, 1),
-  duration: between(16, 30, 1),
+  size: between(3, 7, 1),
+  duration: between(14, 27, 1),
   delay: between(-28, 0, 1),
-  drift: between(-52, 60, 0),
-  peak: between(0.34, 0.68),
+  drift: between(-58, 66, 0),
+  peak: between(0.5, 0.85),
+}));
+
+// Flame licks sit lowest — the fire the embers come off.
+const licks = Array.from({ length: counts.licks }, (_, i) => ({
+  i,
+  left: between(10, 88),
+  w: between(34, 74, 0),
+  h: between(90, 170, 0),
+  duration: between(9, 16, 1),
+  delay: between(-14, 0, 1),
+  drift: between(-22, 26, 0),
+  peak: between(0.22, 0.38),
 }));
 
 const sparks = Array.from({ length: counts.sparks }, (_, i) => ({
@@ -77,8 +89,25 @@ const sparks = Array.from({ length: counts.sparks }, (_, i) => ({
   <!-- Warmth banked at the base, so the embers appear to rise from something -->
   <div
     class="absolute inset-x-0 bottom-[-14%] h-64 animate-breathe [will-change:opacity,transform]"
-    style="background: radial-gradient(120% 100% at 50% 100%, rgba(200,122,32,0.16), rgba(200,162,74,0.07) 46%, transparent 74%);"
+    style="background: radial-gradient(120% 100% at 50% 100%, rgba(200,122,32,0.26), rgba(200,162,74,0.11) 46%, transparent 76%);"
   ></div>
+
+  <!-- Lowest: flame licks -->
+  <div class="absolute inset-0">
+    {licks.map((l) => (
+      <span
+        data-particle
+        class:list={['absolute bottom-[-6%] blur-[22px]', l.i >= counts.mobileLicks && 'hidden sm:block']}
+        style={`left:${l.left}%;width:${l.w}px;height:${l.h}px;
+                border-radius:50% 50% 42% 42% / 62% 62% 38% 38%;
+                background:linear-gradient(to top, rgba(196,88,18,0.55), rgba(232,150,44,0.40) 48%, rgba(255,206,128,0) 100%);
+                transform-origin:50% 100%;
+                --drift:${l.drift}px;--peak:${l.peak};
+                animation:flame-lick ${l.duration}s ease-in-out ${l.delay}s infinite;
+                will-change:transform,opacity;`}
+      ></span>
+    ))}
+  </div>
 
   <!-- Far: flame wisps -->
   <div class="absolute inset-0">
@@ -102,8 +131,8 @@ const sparks = Array.from({ length: counts.sparks }, (_, i) => ({
         data-particle
         class:list={['absolute bottom-[-4%] rounded-full', e.i >= counts.mobileEmbers && 'hidden sm:block']}
         style={`left:${e.left}%;width:${e.size}px;height:${e.size}px;
-                background:radial-gradient(circle, #f6c366 0%, #d98a24 55%, rgba(176,92,24,0) 100%);
-                box-shadow:0 0 ${(e.size * 3).toFixed(1)}px rgba(214,138,42,0.55);
+                background:radial-gradient(circle, #ffdb96 0%, #e08f22 52%, rgba(176,92,24,0) 100%);
+                box-shadow:0 0 ${(e.size * 4.5).toFixed(1)}px rgba(224,143,34,0.75);
                 --drift:${e.drift}px;--peak:${e.peak};
                 animation:ember-lift ${e.duration}s linear ${e.delay}s infinite;
                 will-change:transform,opacity;`}
