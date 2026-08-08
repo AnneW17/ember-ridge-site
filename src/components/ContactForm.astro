@@ -28,9 +28,14 @@ const labelBase = 'block font-sans text-[0.6875rem] uppercase tracking-[0.16em] 
   action="/contact/thank-you"
   class="space-y-7"
 >
-  <!-- Netlify honeypot: hidden from people, tempting to bots. -->
-  <p class="hidden">
-    <label>Don’t fill this out if you’re human: <input name="bot-field" tabindex="-1" /></label>
+  <!-- Netlify honeypot: hidden from people, tempting to bots.
+       autocomplete="off" is required — browsers and password managers will
+       otherwise autofill this hidden field, which makes Netlify discard a real
+       person's message as spam. aria-hidden keeps it out of screen readers. -->
+  <p class="hidden" aria-hidden="true">
+    <label>Don’t fill this out if you’re human:
+      <input name="bot-field" type="text" tabindex="-1" autocomplete="off" />
+    </label>
   </p>
 
   <div class="grid gap-7 sm:grid-cols-2">
