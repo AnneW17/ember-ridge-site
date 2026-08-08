@@ -41,6 +41,12 @@ export const giving = {
       primary: true,
     },
     {
+      label: 'PayPal',
+      handle: 'Firebrand Revivalists',
+      note: 'Card, bank account or PayPal balance. Please add “Ember Ridge” in the note so the gift is tracked to this work.',
+      href: 'https://www.paypal.com/ncp/payment/NEVXTH6TL4DML',
+    },
+    {
       label: 'Venmo',
       handle: '@Firebrand45',
       note: 'Please add “Ember Ridge” in the note so the gift is tracked to this work.',
