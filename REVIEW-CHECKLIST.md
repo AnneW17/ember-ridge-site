@@ -6,24 +6,28 @@ Netlify password while this is in progress.
 
 ---
 
-## A. Legal review — required before the site is public
+## A. Legal — drafted 30 July 2026, awaiting your adoption
+
+All six legal pages are now complete drafts with no bracketed placeholders. They are
+written for federal law plus North Carolina and Washington. They are not legal advice
+and have not been reviewed by outside counsel.
 
 | # | Item | File |
 |---|---|---|
-| A1 | Confirm exact legal entity name, state of incorporation, mailing address, privacy contact | `src/pages/legal/privacy-policy.astro` |
-| A2 | Confirm tax status of Firebrand Revivalists and **all** language about deductibility, receipting, restricted gifts, donor reporting | `disclaimer.astro`, `financial-stewardship.astro` |
-| A3 | Determine whether state privacy laws (CA, CO, CT, VA, others) apply; add required disclosures and response timelines | `privacy-policy.astro` |
-| A4 | Write the limitation of liability and indemnity clause for NC law — **currently a placeholder** | `terms-of-use.astro` |
-| A5 | Confirm venue and dispute-resolution preference | `terms-of-use.astro` |
-| A6 | Confirm trademark status of the Ember Ridge and Firebrand Revivalists marks; confirm photo licences and credits | `terms-of-use.astro` |
-| A7 | Review related-party language for Sophion Media & Consulting Group against the governing documents and conflict-of-interest policy | `leadership.astro` |
-| A8 | Confirm charitable solicitation registration for NC and any other state before adding a donate button | `partner.astro` |
-| A9 | List the specific data processors in use (host, form handling, email, any CRM) and confirm their terms | `privacy-policy.astro` |
-| A10 | Set a retention period for form submissions and confidential correspondence | `privacy-policy.astro` |
-| A11 | Confirm which strictly-necessary cookies the host sets; complete the inventory table | `cookie-notice.astro` |
-| A12 | Set the `Last updated` date on all five legal pages, then remove the draft banner from `LegalLayout.astro` | `src/layouts/LegalLayout.astro` |
-
----
+| A1 | Confirm the exact legal entity name and mailing address to publish | all legal pages |
+| A2 | ✅ Tax status stated: church under §508(c)(1)(A), gifts deductible to the extent permitted by law, receipts provided. Confirm wording | `disclaimer.astro`, `financial-stewardship.astro` |
+| A3 | ✅ Privacy Policy complete. WA has no comprehensive privacy statute; NC has none. Rights offered to all visitors as a matter of practice | `privacy-policy.astro` |
+| A4 | ✅ Limitation of liability drafted, capped at $100. **Confirm the cap and the carve-outs** | `terms-of-use.astro` |
+| A5 | ✅ Governing law North Carolina; venue Wilkes County. **Confirm venue** — the ministry's current base of operations may point elsewhere | `terms-of-use.astro` |
+| A6 | Confirm trademark status of the Ember Ridge and Firebrand Revivalists marks; confirm photo licences for all concept imagery | `terms-of-use.astro` |
+| A7 | Review the Sophion related-party language against the governing documents and conflict-of-interest policy | `leadership.astro` |
+| A8 | **NC: religious institutions are exempt from charitable solicitation licensing (N.C.G.S. § 131F-3).** WA: churches and integrated auxiliaries are exempt from RCW 19.09 registration, but "religious organizations" that are not churches are not — confirm which category Firebrand falls into in Washington | — |
+| A9 | ✅ Processors described generically (host and form processor, email provider). Name them specifically if you prefer | `privacy-policy.astro` |
+| A10 | ✅ Retention periods set: 24 months for correspondence, 7 years for giving records, 30 days for server logs. **Confirm these match actual practice** | `privacy-policy.astro` |
+| A11 | ✅ Cookie Notice complete. No consent banner needed while the site sets no non-essential cookies | `cookie-notice.astro` |
+| A12 | ✅ Effective date set to 30 July 2026 on all six pages; draft banners removed | `LegalLayout.astro` |
+| A13 | **Washington My Health My Data Act (RCW 19.373)** — no nonprofit exemption, no revenue threshold. A separate Consumer Health Data Privacy Policy is now published and linked from the homepage footer as the Act requires. Confirm the ministry's Washington nexus and whether the intercession team's handling of prayer requests matches what the policy describes | `consumer-health-data-privacy.astro` |
+| A14 | Confirm the gift variance-power language in Terms §6 matches Firebrand's bylaws | `terms-of-use.astro` |
 
 ## B. Content and facts to confirm
 
@@ -35,7 +39,9 @@ Netlify password while this is in progress.
 | B4 | Verify property facts (1993, ~10 bedrooms, ~11 bathrooms, ~11 acres) against appraisal, survey and tax records | `src/pages/campus-vision.astro` |
 | B5 | Confirm the current status of property negotiations; do not name the seller or exact address before closing | `src/pages/the-place.astro` |
 | B6 | Confirm the capital ranges are still current, or replace with post-bid figures | `src/components/CapitalTable.astro` |
-| B7 | Confirm real email addresses, and whether a phone number or full mailing address should be public | `src/data/site.ts` |
+| B7 | Confirm whether a phone number or full mailing address should be public (email is set to info@firebrandrevivalists.com) | `src/data/site.ts` |
+| B10 | **Zelle needs a recipient email or phone number** — the site currently shows only the name "Firebrand Revivalists," which is not enough for a donor to complete a transfer | `src/data/site.ts` |
+| B11 | Regenerate the prayer garden image — the Scripture text on the stone is garbled | `public/images/campus/prayer-garden.jpg` |
 | B8 | Confirm the crisis-resource wording and that 988 references are current | `contact.astro`, `disclaimer.astro` |
 | B9 | Decide whether to publish board member names once the board is formally seated | `src/pages/leadership.astro` |
 
@@ -62,7 +68,7 @@ Netlify password while this is in progress.
 
 These were left out on purpose. Each needs a decision before it is added.
 
-- **Online giving.** No donate button, no payment processor, no giving page. Gated on A2 and A8.
+- ~~**Online giving.**~~ Added 30 July 2026 — four methods on the Partner page under "Ways to give."
 - **Analytics.** No tracking of any kind, which is what makes the Cookie Notice as short as it is. If analytics are added, update the Cookie Notice and Privacy Policy first.
 - **Newsletter signup.** No mailing-list capture. Would need its own consent language.
 - **Application or booking form for stays.** The document is explicit that placements are prayerfully discerned through relationship and referral, not publicly marketed — so the site invites a conversation instead.

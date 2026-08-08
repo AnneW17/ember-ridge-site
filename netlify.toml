@@ -26,6 +26,12 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "geolocation=(), microphone=(), camera=()"
 
+# Financial Stewardship was merged into Remodel, Grounds & Financial Stewardship.
+[[redirects]]
+  from = "/financial-stewardship"
+  to = "/remodel-and-grounds#financial"
+  status = 301
+
 [[redirects]]
   from = "/privacy"
   to = "/legal/privacy-policy"

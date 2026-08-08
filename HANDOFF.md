@@ -40,8 +40,19 @@ intercession section rewritten as narrative; a new Remodel & Grounds concept
 page; leadership rebuilt with smaller portraits and full approved bios; and the
 contact page simplified onto a single inbox. 19 routes, all verified.
 
-**Still open:** the `REVIEW-CHECKLIST.md` items, minus B1 and B7 which are now
-done for three of the four leaders.
+**Round three (30 July 2026).** Real photography wired into Campus Vision, a set
+of copy edits, live giving links (Givelify, Venmo, Cash App, Zelle) on the Partner
+page, and all six legal pages written out in full — no placeholders, no draft
+banners.
+
+**Legal note for whoever comes next:** there are now SIX legal pages, not five. The
+Washington My Health My Data Act (RCW 19.373) has no nonprofit or church exemption
+and requires a Consumer Health Data Privacy Policy that is separate from the general
+privacy policy, with a prominent link on the homepage. That link is in the footer,
+which renders on every page. Do not remove it without legal advice.
+
+**Still open:** the `REVIEW-CHECKLIST.md` items. Section A is now confirmation
+rather than drafting.
 
 ---
 
