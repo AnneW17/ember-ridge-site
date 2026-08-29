@@ -6,35 +6,11 @@ import Section from '../components/Section.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import Reveal from '../components/Reveal.astro';
 import CTASection from '../components/CTASection.astro';
-
-// Sibling ministries under Firebrand Revivalists. Firebrand itself is rendered
-// separately above, as the parent/anchor entry; Sophion — a separate, related
-// for-profit business rather than a ministry — is rendered separately below.
-const ministryFamily = [
-  {
-    name: 'Jesus Loves the Little Children',
-    role: 'School Chaplaincy',
-    description:
-      'Trained chaplains serving directly in schools — ministering to children, families, and staff through prayer, encouragement, and biblical guidance.',
-    href: 'https://www.firebrandrevivalists.com/jllc',
-    domain: 'firebrandrevivalists.com/jllc',
-    logo: '/images/jllc-logo.jpg',
-  },
-  {
-    name: 'Generational Legacy Foundation',
-    role: 'Philanthropic Ministry',
-    description:
-      'A philanthropic ministry of Firebrand Revivalists, giving practical expression to generosity and stewardship across generations.',
-    href: 'https://thegenerationallegacy.org',
-    domain: 'thegenerationallegacy.org',
-    logo: '/images/generational-legacy-logo.png',
-  },
-];
 ---
 
 <BaseLayout
   title="Ministries & Marketplace"
-  description="Firebrand Revivalists and the family of ministries it carries — Ember Ridge, Jesus Loves the Little Children, and Generational Legacy Foundation — alongside the family's related marketplace work through Sophion Media & Consulting Group."
+  description="Firebrand Revivalists and the family of ministries it carries — Ember Ridge, Jesus Loves the Little Children, and Generational Legacy Foundation — alongside the family's related marketplace enterprise, Sophion Media & Consulting Group."
 >
   <PageHero
     eyebrow="Firebrand Revivalists"
@@ -43,14 +19,14 @@ const ministryFamily = [
   />
 
   <!-- Firebrand Revivalists — the parent ministry -->
-  <Section tone="ink" labelledby="firebrand-heading">
+  <Section tone="ink" size="sm" labelledby="firebrand-heading">
     <div aria-hidden="true" class="pointer-events-none absolute inset-0 overflow-hidden">
-      <div class="glow-gold-soft animate-breathe absolute left-1/2 top-1/2 h-[46rem] w-[46rem]
-                  max-w-[160vw] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[100px] opacity-60
+      <div class="glow-gold-soft animate-breathe absolute left-1/2 top-0 h-[24rem] w-[24rem]
+                  max-w-[110vw] -translate-x-1/2 -translate-y-1/3 rounded-full blur-[90px] opacity-40
                   [will-change:opacity,transform]"></div>
     </div>
     <div class="shell relative">
-      <Reveal class="mx-auto max-w-2xl text-center">
+      <Reveal class="mx-auto flex max-w-2xl flex-col items-center text-center">
         <img
           src="/images/firebrand-logo-dark.png"
           alt="Firebrand Revivalists"
@@ -58,29 +34,29 @@ const ministryFamily = [
           height="640"
           loading="eager"
           decoding="async"
-          class="mx-auto h-56 w-auto sm:h-64 lg:h-72"
+          class="h-20 w-auto sm:h-24"
         />
-        <p class="mt-10 font-sans text-[0.6875rem] uppercase tracking-[0.28em] text-gold-300">
+        <p class="mt-7 font-sans text-[0.6875rem] uppercase tracking-[0.28em] text-gold-300">
           The Parent Ministry
         </p>
-        <h2 id="firebrand-heading" class="display-2 mt-5 text-ivory">
+        <h2 id="firebrand-heading" class="display-3 mt-3 text-ivory">
           Firebrand Revivalists&#8482;
         </h2>
-        <div class="rule-gold mx-auto mt-7"></div>
-        <p class="mt-8 text-[1.125rem] leading-relaxed" style="color:var(--color-cream-dark);">
+        <div class="rule-gold mx-auto mt-5"></div>
+        <p class="mt-6 max-w-xl text-[1.0625rem] leading-relaxed" style="color:var(--color-cream-dark);">
           Igniting hearts, awakening destiny, and reviving glory — Firebrand
           Revivalists is the ministry that oversees this work, and every
           ministry entrusted to it.
         </p>
-        <p class="mt-9">
+        <p class="mt-7">
           <a
             href="https://www.firebrandrevivalists.com/"
             target="_blank"
             rel="noopener noreferrer"
-            class="btn-gold !px-8 !text-[0.75rem]"
+            class="btn-gold !px-7 !py-3.5 !text-[0.6875rem]"
           >
             Visit firebrandrevivalists.com
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true" class="ml-1.5">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" aria-hidden="true" class="ml-1.5">
               <path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="2"
                     stroke-linecap="round" stroke-linejoin="round" />
             </svg>
@@ -91,8 +67,8 @@ const ministryFamily = [
     </div>
   </Section>
 
-  <!-- Sibling ministries -->
-  <Section tone="cream" labelledby="ministries-heading">
+  <!-- Sibling ministries, each in its own brand -->
+  <Section tone="cream" size="sm" labelledby="ministries-heading">
     <div class="shell">
       <Reveal>
         <SectionHeading
@@ -103,58 +79,106 @@ const ministryFamily = [
         />
       </Reveal>
 
-      <div class="mt-16 grid gap-8 sm:grid-cols-2">
-        {ministryFamily.map((m, i) => (
-          <Reveal delay={100 + i * 100}>
-            <div class="card card-lift flex h-full flex-col items-center p-10 text-center sm:p-12">
-              <div class="flex h-28 w-32 shrink-0 items-center justify-center rounded-2xl bg-white p-4
-                          shadow-[var(--shadow-lift)] ring-1 ring-stone-200 sm:h-32 sm:w-36">
-                <img
-                  src={m.logo}
-                  alt={m.name}
-                  width="200"
-                  height="200"
-                  loading="lazy"
-                  decoding="async"
-                  class="h-full w-full object-contain"
-                />
-              </div>
-              <p class="eyebrow mt-8">{m.role}</p>
-              <h3 class="mt-3 font-display text-2xl text-ink">{m.name}</h3>
-              <p class="mt-5 flex-1 text-[0.9375rem] leading-relaxed text-stone-700">
-                {m.description}
-              </p>
-              <p class="mt-8">
-                <a
-                  href={m.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="btn-outline !text-[0.6875rem]"
-                >
-                  Visit {m.domain}
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true" class="ml-1.5">
-                    <path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="2"
-                          stroke-linecap="round" stroke-linejoin="round" />
-                  </svg>
-                  <span class="sr-only">(opens in a new tab)</span>
-                </a>
-              </p>
+      <div class="mt-12 grid gap-8 lg:grid-cols-2">
+        <!-- Jesus Loves the Little Children -->
+        <Reveal delay={100}>
+          <div class="jllc relative flex h-full flex-col items-center overflow-hidden p-10 text-center shadow-[var(--shadow-lift-lg)] sm:p-12">
+            <span aria-hidden="true"
+                  class="absolute inset-x-0 top-0 h-px"
+                  style="background-image:linear-gradient(to right,transparent,rgb(169 189 236 / 0.6),transparent);"></span>
+            <div class="flex h-28 w-32 shrink-0 items-center justify-center bg-white p-4
+                        shadow-[var(--shadow-lift)] sm:h-32 sm:w-36">
+              <img
+                src="/images/jllc-logo.jpg"
+                alt="Jesus Loves the Little Children"
+                width="200"
+                height="200"
+                loading="lazy"
+                decoding="async"
+                class="h-full w-full object-contain"
+              />
             </div>
-          </Reveal>
-        ))}
+            <p class="eyebrow mt-8">Auxiliary Ministry of Firebrand Revivalists</p>
+            <h3 class="mt-3 font-display text-2xl">Jesus Loves the Little Children</h3>
+            <p class="mt-5 flex-1 text-[0.9375rem] leading-relaxed">
+              Trained chaplains serving directly in schools — ministering to
+              children, families, and staff through prayer, encouragement,
+              and biblical guidance.
+            </p>
+            <p class="mt-8">
+              <a
+                href="https://www.firebrandrevivalists.com/jllc"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn border text-[0.6875rem]"
+                style="border-color:#a9bdec;color:#d3ddf7;"
+              >
+                Visit firebrandrevivalists.com/jllc
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true" class="ml-1.5">
+                  <path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                <span class="sr-only">(opens in a new tab)</span>
+              </a>
+            </p>
+          </div>
+        </Reveal>
+
+        <!-- Generational Legacy Foundation -->
+        <Reveal delay={200}>
+          <div class="gen-legacy relative flex h-full flex-col items-center overflow-hidden p-10 text-center shadow-[var(--shadow-lift-lg)] sm:p-12">
+            <span aria-hidden="true"
+                  class="absolute inset-x-0 top-0 h-px"
+                  style="background-image:linear-gradient(to right,transparent,rgb(217 104 63 / 0.55),transparent);"></span>
+            <div class="flex h-28 w-32 shrink-0 items-center justify-center bg-white p-4
+                        shadow-[var(--shadow-lift)] sm:h-32 sm:w-36">
+              <img
+                src="/images/generational-legacy-logo.png"
+                alt="Generational Legacy Foundation"
+                width="200"
+                height="200"
+                loading="lazy"
+                decoding="async"
+                class="h-full w-full object-contain"
+              />
+            </div>
+            <p class="eyebrow mt-8">Auxiliary Ministry of Firebrand Revivalists</p>
+            <h3 class="mt-3 font-display text-2xl">Generational Legacy Foundation</h3>
+            <p class="mt-5 flex-1 text-[0.9375rem] leading-relaxed">
+              A philanthropic ministry of Firebrand Revivalists, giving
+              practical expression to generosity and stewardship across
+              generations.
+            </p>
+            <p class="mt-8">
+              <a
+                href="https://thegenerationallegacy.org"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn border text-[0.6875rem]"
+                style="border-color:#d9683f;color:#b8502c;"
+              >
+                Visit thegenerationallegacy.org
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true" class="ml-1.5">
+                  <path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                <span class="sr-only">(opens in a new tab)</span>
+              </a>
+            </p>
+          </div>
+        </Reveal>
       </div>
     </div>
   </Section>
 
   <!-- Serving in the Marketplace -->
-  <Section tone="linen" labelledby="sophion-heading">
+  <Section tone="linen" size="sm" labelledby="sophion-heading">
     <div class="shell">
       <Reveal>
-        <p class="eyebrow text-center">The Marketplace Connection</p>
+        <p class="eyebrow text-center">A Related Enterprise</p>
         <p class="lede mx-auto mt-4 max-w-2xl text-center">
-          Firebrand Revivalists is also connected to Sophion Media &amp;
-          Consulting Group — the family's separate marketplace work, shown
-          here through a documented and transparent relationship.
+          Sophion Media &amp; Consulting Group is a separate, for-profit
+          company.
         </p>
       </Reveal>
 
