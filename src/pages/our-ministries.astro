@@ -1,0 +1,233 @@
+---
+// src/pages/our-ministries.astro — Firebrand Revivalists & the family of ministries
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import Section from '../components/Section.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import Reveal from '../components/Reveal.astro';
+import CTASection from '../components/CTASection.astro';
+
+// Sibling ministries under Firebrand Revivalists. Firebrand itself is rendered
+// separately above, as the parent/anchor entry; Sophion — a separate, related
+// for-profit business rather than a ministry — is rendered separately below.
+const ministryFamily = [
+  {
+    name: 'Jesus Loves the Little Children',
+    role: 'School Chaplaincy',
+    description:
+      'Trained chaplains serving directly in schools — ministering to children, families, and staff through prayer, encouragement, and biblical guidance.',
+    href: 'https://www.firebrandrevivalists.com/jllc',
+    domain: 'firebrandrevivalists.com/jllc',
+    logo: '/images/jllc-logo.jpg',
+  },
+  {
+    name: 'Generational Legacy Foundation',
+    role: 'Philanthropic Ministry',
+    description:
+      'A philanthropic ministry of Firebrand Revivalists, giving practical expression to generosity and stewardship across generations.',
+    href: 'https://thegenerationallegacy.org',
+    domain: 'thegenerationallegacy.org',
+    logo: '/images/generational-legacy-logo.png',
+  },
+];
+---
+
+<BaseLayout
+  title="Ministries & Marketplace"
+  description="Firebrand Revivalists and the family of ministries it carries — Ember Ridge, Jesus Loves the Little Children, and Generational Legacy Foundation — alongside the family's related marketplace work through Sophion Media & Consulting Group."
+>
+  <PageHero
+    eyebrow="Firebrand Revivalists"
+    title="One Family, Many Assignments"
+    lede="Ember Ridge is one expression of a wider work God is building. Here is the rest of it — each ministry carrying its own calling, under the same covering."
+  />
+
+  <!-- Firebrand Revivalists — the parent ministry -->
+  <Section tone="ink" labelledby="firebrand-heading">
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0 overflow-hidden">
+      <div class="glow-gold-soft animate-breathe absolute left-1/2 top-1/2 h-[46rem] w-[46rem]
+                  max-w-[160vw] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[100px] opacity-60
+                  [will-change:opacity,transform]"></div>
+    </div>
+    <div class="shell relative">
+      <Reveal class="mx-auto max-w-2xl text-center">
+        <img
+          src="/images/firebrand-logo-dark.png"
+          alt="Firebrand Revivalists"
+          width="640"
+          height="640"
+          loading="eager"
+          decoding="async"
+          class="mx-auto h-56 w-auto sm:h-64 lg:h-72"
+        />
+        <p class="mt-10 font-sans text-[0.6875rem] uppercase tracking-[0.28em] text-gold-300">
+          The Parent Ministry
+        </p>
+        <h2 id="firebrand-heading" class="display-2 mt-5 text-ivory">
+          Firebrand Revivalists&#8482;
+        </h2>
+        <div class="rule-gold mx-auto mt-7"></div>
+        <p class="mt-8 text-[1.125rem] leading-relaxed" style="color:var(--color-cream-dark);">
+          Igniting hearts, awakening destiny, and reviving glory — Firebrand
+          Revivalists is the ministry that oversees this work, and every
+          ministry entrusted to it.
+        </p>
+        <p class="mt-9">
+          <a
+            href="https://www.firebrandrevivalists.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-gold !px-8 !text-[0.75rem]"
+          >
+            Visit firebrandrevivalists.com
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true" class="ml-1.5">
+              <path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <span class="sr-only">(opens in a new tab)</span>
+          </a>
+        </p>
+      </Reveal>
+    </div>
+  </Section>
+
+  <!-- Sibling ministries -->
+  <Section tone="cream" labelledby="ministries-heading">
+    <div class="shell">
+      <Reveal>
+        <SectionHeading
+          id="ministries-heading"
+          eyebrow="Ministries Under Firebrand"
+          title="Each carrying its own calling"
+          align="center"
+        />
+      </Reveal>
+
+      <div class="mt-16 grid gap-8 sm:grid-cols-2">
+        {ministryFamily.map((m, i) => (
+          <Reveal delay={100 + i * 100}>
+            <div class="card card-lift flex h-full flex-col items-center p-10 text-center sm:p-12">
+              <div class="flex h-28 w-32 shrink-0 items-center justify-center rounded-2xl bg-white p-4
+                          shadow-[var(--shadow-lift)] ring-1 ring-stone-200 sm:h-32 sm:w-36">
+                <img
+                  src={m.logo}
+                  alt={m.name}
+                  width="200"
+                  height="200"
+                  loading="lazy"
+                  decoding="async"
+                  class="h-full w-full object-contain"
+                />
+              </div>
+              <p class="eyebrow mt-8">{m.role}</p>
+              <h3 class="mt-3 font-display text-2xl text-ink">{m.name}</h3>
+              <p class="mt-5 flex-1 text-[0.9375rem] leading-relaxed text-stone-700">
+                {m.description}
+              </p>
+              <p class="mt-8">
+                <a
+                  href={m.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn-outline !text-[0.6875rem]"
+                >
+                  Visit {m.domain}
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true" class="ml-1.5">
+                    <path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="2"
+                          stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                  <span class="sr-only">(opens in a new tab)</span>
+                </a>
+              </p>
+            </div>
+          </Reveal>
+        ))}
+      </div>
+    </div>
+  </Section>
+
+  <!-- Serving in the Marketplace -->
+  <Section tone="linen" labelledby="sophion-heading">
+    <div class="shell">
+      <Reveal>
+        <p class="eyebrow text-center">The Marketplace Connection</p>
+        <p class="lede mx-auto mt-4 max-w-2xl text-center">
+          Firebrand Revivalists is also connected to Sophion Media &amp;
+          Consulting Group — the family's separate marketplace work, shown
+          here through a documented and transparent relationship.
+        </p>
+      </Reveal>
+
+      <Reveal delay={100} class="mt-14">
+        <div class="sophion relative overflow-hidden p-10 shadow-[var(--shadow-lift-lg)] sm:p-14">
+          <span aria-hidden="true"
+                class="absolute inset-x-0 top-0 h-px"
+                style="background-image:linear-gradient(to right,transparent,rgb(200 162 74 / 0.7),transparent);"></span>
+
+          <div class="grid gap-10 lg:grid-cols-12 lg:items-center lg:gap-14">
+            <div class="lg:col-span-7">
+              <p class="eyebrow">Serving in the Marketplace</p>
+              <h2 id="sophion-heading" class="display-3 mt-4">
+                Sophion Media and Consulting Group
+              </h2>
+              <div class="mt-6 h-px w-16"
+                   style="background-image:linear-gradient(to right,var(--sophion-gold),transparent);"></div>
+
+              <div class="mt-7 space-y-5 text-[1.0625rem] leading-relaxed" style="color:#c9d6d8;">
+                <p>
+                  The family’s marketplace work through Sophion Media &amp; Consulting
+                  Group complements this mission by strengthening leaders and
+                  organizations through advisory, legal-operations, strategy, media, and
+                  consulting services.
+                </p>
+                <p>
+                  Sophion’s work may support the larger vision through properly structured
+                  contributions and services.
+                </p>
+              </div>
+
+              <p class="mt-9">
+                <a
+                  href="https://www.sophionhq.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="btn border text-[0.75rem]"
+                  style="border-color:var(--sophion-gold);color:var(--sophion-gold);"
+                >
+                  Visit sophionhq.com
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" aria-hidden="true" class="ml-1">
+                    <path d="M7 17 17 7M9 7h8v8" stroke="currentColor" stroke-width="2"
+                          stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                  <span class="sr-only">(opens in a new tab)</span>
+                </a>
+              </p>
+            </div>
+
+            <div class="lg:col-span-5">
+              <div class="flex items-center justify-center">
+                <img
+                  src="/images/sophion-logo.png"
+                  alt="Sophion Media &amp; Consulting Group"
+                  width="287"
+                  height="345"
+                  loading="lazy"
+                  decoding="async"
+                  class="h-48 w-auto sm:h-56 lg:h-64"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </Reveal>
+    </div>
+  </Section>
+
+  <CTASection
+    eyebrow="Explore Further"
+    title="See the whole work"
+    body="Firebrand Revivalists and this family of ministries share one calling, carried out in different assignments. Read the vision behind Ember Ridge, or meet the leadership that stewards all of it."
+    primary={{ label: 'Read the Vision', href: '/vision' }}
+    secondary={{ label: 'Meet the Leadership', href: '/leadership' }}
+  />
+</BaseLayout>
