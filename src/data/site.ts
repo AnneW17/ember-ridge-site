@@ -79,6 +79,7 @@ export const navTree: NavItem[] = [
       { label: 'The Vision for Ember Ridge', href: '/vision' },
       { label: 'The Story Behind the Vision', href: '/story' },
       { label: 'The History of the Land', href: '/the-place' },
+      { label: 'Ministries & Marketplace', href: '/our-ministries' },
     ],
   },
   {
@@ -113,6 +114,7 @@ export const nav = [
   { label: 'The Vision for Ember Ridge', href: '/vision' },
   { label: 'The Story Behind the Vision', href: '/story' },
   { label: 'The History of the Land', href: '/the-place' },
+  { label: 'Our Family of Ministries', href: '/our-ministries' },
   { label: 'Prayer, Worship, and Intercession', href: '/house-of-prayer' },
   { label: 'The Ministry Model', href: '/ministry-model' },
   { label: 'Remodel, Grounds & Financial Stewardship', href: '/remodel-and-grounds' },
