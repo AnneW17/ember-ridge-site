@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://emberridge.org/sitemap-index.xml
+Sitemap: https://www.theemberridge.com/sitemap-index.xml

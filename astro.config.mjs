@@ -3,10 +3,9 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 
-// UPDATE `site` once the production domain is confirmed.
-// It powers canonical URLs, sitemap.xml and social share tags.
+// Production domain. Powers canonical URLs, sitemap.xml and social share tags.
 export default defineConfig({
-  site: 'https://emberridge.org',
+  site: 'https://www.theemberridge.com',
   trailingSlash: 'ignore',
   integrations: [sitemap()],
   vite: {

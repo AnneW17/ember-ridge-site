@@ -9,7 +9,7 @@ export const site = {
   tagline: 'A house that ministers first to the Lord.',
   descriptor: 'A ministry of Firebrand Revivalists · Moravian Falls, North Carolina',
   location: 'Moravian Falls, North Carolina',
-  url: 'https://emberridge.org', // TODO confirm production domain
+  url: 'https://www.theemberridge.com',
   mission:
     'Ember Ridge exists to tend the fire God has entrusted to His people — a house that ministers first to the Lord, restores those who carry great responsibility, and sends them back strengthened for the work of the Kingdom.',
   motto: 'Watchmen. Worshipers. Builders. Servants of the Kingdom.',
