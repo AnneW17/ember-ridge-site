@@ -319,6 +319,36 @@
   .sophion :where(h2, h3) { color: #f2f7f7; }
   .sophion .eyebrow { color: var(--sophion-teal-light); }
 
+  /* Jesus Loves the Little Children — an auxiliary ministry with its own navy
+     brand. Scoped so it never leaks into the Ember Ridge palette. */
+  .jllc {
+    --jllc-navy: #0f1a3d;
+    --jllc-sky: #a9bdec;
+    background-image:
+      radial-gradient(85% 120% at 15% 0%, rgb(36 51 107 / 0.55), transparent 62%),
+      linear-gradient(160deg, #0b1330 0%, var(--jllc-navy) 55%, #060a1c 100%);
+    border: 1px solid rgb(169 189 236 / 0.22);
+  }
+  .jllc h3 { color: #f5f7fd; }
+  .jllc p { color: #bfc9e8; }
+  .jllc .eyebrow { color: var(--jllc-sky); }
+
+  /* Generational Legacy Foundation — a warmer, more colourful brand, lighter
+     than Ember Ridge's own cream cards so it reads as distinct. */
+  .gen-legacy {
+    --gl-coral: #d9683f;
+    --gl-gold: #dba53f;
+    --gl-teal: #2f8f7f;
+    background-image:
+      radial-gradient(90% 120% at 88% 0%, rgb(219 165 63 / 0.30), transparent 60%),
+      radial-gradient(75% 100% at 6% 100%, rgb(47 143 127 / 0.20), transparent 62%),
+      linear-gradient(160deg, #fffaf3 0%, #fdf0df 55%, #fbe4c8 100%);
+    border: 1px solid rgb(217 104 63 / 0.30);
+  }
+  .gen-legacy h3 { color: #2c2013; }
+  .gen-legacy p { color: #5a4a37; }
+  .gen-legacy .eyebrow { color: var(--gl-coral); }
+
   /* On the rare ink band, invert the type colours. */
   .on-ink { @apply text-cream; }
   .on-ink :where(h1, h2, h3, h4) { color: var(--color-ivory); }
