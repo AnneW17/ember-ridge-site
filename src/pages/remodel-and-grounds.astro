@@ -205,15 +205,18 @@ const outside = [
       <Reveal delay={120} class="mt-10">
         <figure>
           <div class="overflow-hidden border border-stone-200 bg-cream shadow-[var(--shadow-lift-lg)]">
-            <img
-              src="/images/campus/lodge-concept.jpg"
-              alt="Restoration concept for the Ember Ridge lodge — timber and stone with a covered wraparound porch"
-              width="1836"
-              height="857"
-              loading="lazy"
-              decoding="async"
-              class="w-full object-cover"
-            />
+            <picture>
+              <source type="image/webp" srcset="/images/campus/lodge-concept.webp" />
+              <img
+                src="/images/campus/lodge-concept.jpg"
+                alt="Restoration concept for the Ember Ridge lodge — timber and stone with a covered wraparound porch"
+                width="1836"
+                height="857"
+                loading="lazy"
+                decoding="async"
+                class="w-full object-cover"
+              />
+            </picture>
           </div>
           <figcaption class="mt-4 flex items-start gap-3 text-xs leading-relaxed text-stone-600">
             <span aria-hidden="true" class="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-gold-600"></span>

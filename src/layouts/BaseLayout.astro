@@ -21,7 +21,7 @@ interface Props {
   theme?: 'dark' | 'cream';
 }
 
-const { title, description, ogImage = '/images/ember-ridge-mark.jpg', theme = 'dark' } = Astro.props;
+const { title, description, ogImage = '/images/og-default.jpg', theme = 'dark' } = Astro.props;
 
 const fullTitle = title === 'Home' ? `${site.name} — ${site.tagline}` : `${title} · ${site.name}`;
 const canonical = new URL(Astro.url.pathname, Astro.site ?? site.url).href;
@@ -42,6 +42,24 @@ const orgSchema = {
     addressRegion: 'NC',
     addressCountry: 'US',
   },
+  // No founding date is published here on purpose — the lodge has not been
+  // acquired and Ember Ridge has no formation date to state yet (see HANDOFF.md).
+  // Add `foundingDate: 'YYYY-MM-DD'` once there is one to report.
+  contactPoint: [
+    {
+      '@type': 'ContactPoint',
+      contactType: 'general inquiries',
+      email: site.contact.email,
+    },
+  ],
+  // Related ministries and the marketplace enterprise in the same family —
+  // keep in sync with the links on /our-ministries.
+  sameAs: [
+    'https://www.firebrandrevivalists.com/',
+    'https://www.firebrandrevivalists.com/jllc',
+    'https://thegenerationallegacy.org',
+    'https://www.sophionhq.com',
+  ],
 };
 ---
 
@@ -54,6 +72,9 @@ const orgSchema = {
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta name="theme-color" content="#FBF9F4" />
 
     <!-- Open Graph / social -->

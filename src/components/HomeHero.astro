@@ -11,9 +11,16 @@ import { site } from '../data/site';
       <picture>
         <!-- Wide screens show the full render. Narrow screens get a crop that
              excludes the overlaid wording, which would otherwise survive the
-             centre crop at phone and tablet widths. -->
+             centre crop at phone and tablet widths. WebP first (~48% lighter
+             at the same quality), JPG fallback for browsers that need it. -->
+        <source media="(min-width: 1024px)" type="image/webp"
+                srcset="/images/campus/lodge-banner.webp 1836w, /images/campus/lodge-banner@2x.webp 2900w"
+                sizes="100vw" />
         <source media="(min-width: 1024px)"
                 srcset="/images/campus/lodge-banner.jpg 1836w, /images/campus/lodge-banner@2x.jpg 2900w"
+                sizes="100vw" />
+        <source type="image/webp"
+                srcset="/images/campus/lodge-banner-mobile.webp 1176w, /images/campus/lodge-banner-mobile@2x.webp 1900w"
                 sizes="100vw" />
         <img
           data-banner
@@ -36,14 +43,17 @@ import { site } from '../data/site';
     <div aria-hidden="true" class="pointer-events-none absolute inset-0
          bg-[radial-gradient(60%_100%_at_50%_45%,rgba(200,162,74,0.14),transparent_72%)]"></div>
     <div class="shell relative flex justify-center pt-10 pb-2 sm:pt-12">
-      <img
-        data-reveal
-        src="/images/ember-ridge-logo-black.png"
-        alt="Ember Ridge"
-        width="640"
-        height="640"
-        class="h-56 w-auto sm:h-72 lg:h-[26rem]"
-      />
+      <picture>
+        <source type="image/webp" srcset="/images/ember-ridge-logo-black.webp" />
+        <img
+          data-reveal
+          src="/images/ember-ridge-logo-black.png"
+          alt="Ember Ridge"
+          width="640"
+          height="640"
+          class="h-56 w-auto sm:h-72 lg:h-[26rem]"
+        />
+      </picture>
     </div>
   </div>
 

@@ -2,7 +2,7 @@
 // src/pages/404.astro
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Section from '../components/Section.astro';
-import { nav } from '../data/site';
+import { nav, site } from '../data/site';
 ---
 <BaseLayout title="Page Not Found" description="The page you were looking for could not be found.">
   <Section tone="ivory" class="pt-44">
@@ -19,6 +19,10 @@ import { nav } from '../data/site';
             <li><a href={item.href} class="link-gold text-sm">{item.label}</a></li>
           ))}
         </ul>
+        <p class="mt-10 text-sm text-stone-600">
+          Still can't find it? Write to
+          {' '}<a href={`mailto:${site.contact.email}`} class="link-gold">{site.contact.email}</a>.
+        </p>
       </div>
     </div>
   </Section>
