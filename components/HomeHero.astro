@@ -1,0 +1,125 @@
+---
+// src/components/HomeHero.astro
+// Order: full-width lodge banner → black band carrying the Ember Ridge mark →
+// tagline and calls to action on the warm surface. Nothing overlaps.
+import { site } from '../data/site';
+---
+<section>
+  <!-- 1. Banner -->
+  <div class="band-ivory relative w-full overflow-hidden pt-[4.5rem] sm:pt-[5rem]">
+    <div class="relative h-[40vh] min-h-[230px] w-full sm:h-[50vh] lg:h-[56vh] lg:max-h-[540px]">
+      <picture>
+        <!-- Wide screens show the full render. Narrow screens get a crop that
+             excludes the overlaid wording, which would otherwise survive the
+             centre crop at phone and tablet widths. WebP first (~48% lighter
+             at the same quality), JPG fallback for browsers that need it. -->
+        <source media="(min-width: 1024px)" type="image/webp"
+                srcset="/images/campus/lodge-banner.webp 1836w, /images/campus/lodge-banner@2x.webp 2900w"
+                sizes="100vw" />
+        <source media="(min-width: 1024px)"
+                srcset="/images/campus/lodge-banner.jpg 1836w, /images/campus/lodge-banner@2x.jpg 2900w"
+                sizes="100vw" />
+        <source type="image/webp"
+                srcset="/images/campus/lodge-banner-mobile.webp 1176w, /images/campus/lodge-banner-mobile@2x.webp 1900w"
+                sizes="100vw" />
+        <img
+          data-banner
+          src="/images/campus/lodge-banner-mobile.jpg"
+          srcset="/images/campus/lodge-banner-mobile.jpg 1176w, /images/campus/lodge-banner-mobile@2x.jpg 1900w"
+          sizes="100vw"
+          alt="Restoration concept for the Ember Ridge lodge — timber and stone with a covered wraparound porch at dusk"
+          width="1836"
+          height="857"
+          fetchpriority="high"
+          decoding="async"
+          class="absolute inset-0 h-[108%] w-full object-cover object-center will-change-transform"
+        />
+      </picture>
+    </div>
+  </div>
+
+  <!-- 2. The mark -->
+  <div class="band-ivory relative">
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0
+         bg-[radial-gradient(60%_100%_at_50%_45%,rgba(200,162,74,0.14),transparent_72%)]"></div>
+    <div class="shell relative flex justify-center pt-10 pb-2 sm:pt-12">
+      <picture>
+        <source type="image/webp" srcset="/images/ember-ridge-logo-black.webp" />
+        <img
+          data-reveal
+          src="/images/ember-ridge-logo-black.png"
+          alt="Ember Ridge"
+          width="640"
+          height="640"
+          class="h-56 w-auto sm:h-72 lg:h-[26rem]"
+        />
+      </picture>
+    </div>
+  </div>
+
+  <!-- 3. Tagline -->
+  <div class="band-ivory relative">
+    <div class="shell">
+      <div class="flex flex-col items-center pt-4 pb-4 text-center sm:pt-6">
+        <p data-reveal class="eyebrow">
+          A Ministry of Firebrand Revivalists · {site.location}
+        </p>
+
+        <h1 data-reveal data-reveal-delay="100" class="display-1 mt-5 max-w-4xl">
+          A house prepared for the Lord
+          <span class="text-gold-700">on a mountain marked by prayer.</span>
+        </h1>
+
+        <div data-reveal data-reveal-delay="180" class="brushed-gold mx-auto mt-8 h-px w-24"></div>
+
+        <p data-reveal data-reveal-delay="240" class="lede mt-8 max-w-2xl">
+          Ember Ridge ministers first to the Lord as a house of prayer — and from that
+          devotion receives leaders, prophets, pastors, intercessors, business leaders,
+          and those carrying the weight of ministry, sending them back strengthened.
+        </p>
+
+        <div data-reveal data-reveal-delay="290" class="mt-8 max-w-2xl space-y-5 text-left text-[1.0625rem] leading-relaxed text-stone-700 sm:text-center">
+          <p>
+            An ember may appear small, buried, or nearly spent, but it still carries
+            living fire. Ember Ridge will exist to tend what God has already ignited. It
+            will be a place where weary leaders, ministers, families, and God’s sons and
+            daughters can come to be strengthened, healed, restored, and reminded that
+            the fire within them has not gone out.
+          </p>
+          <p>
+            A ridge represents elevation, strength, perspective, and a place set apart.
+            We believe Ember Ridge will be a house that ministers to the Lord first
+            through prayer, worship, and intercession. From that place, it will receive
+            others, restore strength, reform unhealthy patterns, and send people back out
+            with clarity and renewed fire.
+          </p>
+        </div>
+
+        <div data-reveal data-reveal-delay="380" class="mt-10 flex flex-col gap-4 pb-2 sm:flex-row">
+          <a href="/vision" class="btn-gold w-full sm:w-auto">Read the Vision</a>
+          <a href="/house-of-prayer" class="btn-outline w-full sm:w-auto">Prayer, Worship &amp; Intercession</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  (() => {
+    const img = document.querySelector('[data-banner]');
+    if (!img) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    let ticking = false;
+    const apply = () => {
+      const y = window.scrollY;
+      if (y < window.innerHeight * 1.3) {
+        img.style.transform = 'translate3d(0,' + (y * 0.07).toFixed(2) + 'px,0)';
+      }
+      ticking = false;
+    };
+    window.addEventListener('scroll', () => {
+      if (!ticking) { ticking = true; requestAnimationFrame(apply); }
+    }, { passive: true });
+    apply();
+  })();
+</script>

@@ -1,0 +1,72 @@
+---
+// src/components/EmberMark.astro
+// An engraved flame between two hairlines — an ornamental divider, not an image.
+import EmberGlow from './EmberGlow.astro';
+
+interface Props {
+  size?: 'default' | 'compact';
+  /** Full-height treatment: rising embers behind the mark, larger flame, more air. */
+  immersive?: boolean;
+}
+const { size = 'default', immersive = false } = Astro.props;
+---
+<div
+  class:list={[
+    'relative overflow-hidden',
+    immersive ? 'py-28 sm:py-36 lg:py-44' : size === 'compact' ? 'py-14' : 'py-20 sm:py-24',
+  ]}
+>
+  {immersive && <EmberGlow />}
+
+  <div aria-hidden="true" class="pointer-events-none absolute inset-0 flex items-center justify-center">
+    <div
+      class:list={[
+        'glow-gold-soft animate-breathe rounded-full blur-[70px] [will-change:opacity,transform]',
+        immersive ? 'h-[26rem] w-[44rem] max-w-[130vw]' : 'h-64 w-[32rem] max-w-[110vw]',
+      ]}
+    ></div>
+  </div>
+
+  <div class="shell relative">
+    <div class="flex items-center justify-center gap-6 sm:gap-10">
+      <span aria-hidden="true"
+            class="h-px min-w-8 flex-1 bg-[linear-gradient(to_right,transparent,rgb(143_110_36/0.5))]"></span>
+
+      <svg class:list={['w-auto shrink-0', immersive ? 'h-28 sm:h-36 lg:h-44' : 'h-20 sm:h-24']} viewBox="0 0 120 160" fill="none" role="img" aria-label="An ember flame">
+        <defs>
+          <linearGradient id="emberStroke" x1="60" y1="16" x2="60" y2="148" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#8f6e24" />
+            <stop offset="50%" stop-color="#c8a24a" />
+            <stop offset="100%" stop-color="#7a5a34" stop-opacity="0.5" />
+          </linearGradient>
+          <linearGradient id="emberCore" x1="60" y1="62" x2="60" y2="140" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#d9bc72" stop-opacity="0.5" />
+            <stop offset="100%" stop-color="#c8a24a" stop-opacity="0.1" />
+          </linearGradient>
+        </defs>
+        <path d="M60 14c14 26 30 40 30 62 0 24-13 40-30 40S30 100 30 76c0-22 16-36 30-62Z"
+              stroke="url(#emberStroke)" stroke-width="1.5" stroke-linejoin="round" />
+        <path d="M60 52c8 16 16 24 16 37 0 14-7 23-16 23s-16-9-16-23c0-13 8-21 16-37Z"
+              fill="url(#emberCore)" stroke="url(#emberStroke)" stroke-width="1.1" stroke-linejoin="round" />
+        <circle cx="42" cy="34" r="1.4" fill="#8f6e24" opacity="0.6" />
+        <circle cx="79" cy="44" r="1.1" fill="#8f6e24" opacity="0.5" />
+        <circle cx="60" cy="6" r="1.6" fill="#c8a24a" opacity="0.7" />
+        <path d="M34 130h52" stroke="url(#emberStroke)" stroke-width="1.1" stroke-linecap="round" opacity="0.6" />
+        <path d="M44 138h32" stroke="url(#emberStroke)" stroke-width="1.1" stroke-linecap="round" opacity="0.35" />
+      </svg>
+
+      <span aria-hidden="true"
+            class="h-px min-w-8 flex-1 bg-[linear-gradient(to_left,transparent,rgb(143_110_36/0.5))]"></span>
+    </div>
+
+    <p
+      data-reveal
+      class:list={[
+        'mx-auto mt-10 max-w-2xl text-center font-display text-stone-700',
+        immersive ? 'text-xl sm:text-2xl lg:text-3xl' : 'text-lg sm:text-xl',
+      ]}
+    >
+      <slot />
+    </p>
+  </div>
+</div>

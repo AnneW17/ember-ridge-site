@@ -1,0 +1,277 @@
+---
+// src/components/Header.astro
+// Fixed header with dropdown menus. Each dropdown is a button + panel pair
+// wired with aria-expanded/aria-controls, operable by mouse, keyboard and touch.
+// The mobile menu turns the same tree into expandable accordion sections.
+import { navTree, site } from '../data/site';
+
+interface Props { theme?: 'dark' | 'cream'; }
+const { theme = 'cream' } = Astro.props;
+
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isCurrent = (href?: string) =>
+  !href ? false : href === '/' ? path === '/' : path.startsWith(href.split('#')[0]);
+const groupActive = (item: (typeof navTree)[number]) =>
+  item.children ? item.children.some((c) => isCurrent(c.href)) : isCurrent(item.href);
+---
+
+<header
+  id="site-header"
+  data-theme={theme}
+  class="fixed inset-x-0 top-0 z-50 transition-all duration-500 [transition-timing-function:var(--ease-refined)]"
+>
+  <div class="shell">
+    <div id="header-inner" class="flex items-center justify-between border-b border-transparent py-4 transition-all duration-500">
+      <a href="/" class="group flex items-center gap-3.5" aria-label={`${site.name} — home`}>
+        <img src="/images/ember-ridge-logo.png" alt="" width="288" height="288" class="h-11 w-auto sm:h-12" />
+        <span class="flex flex-col leading-none">
+          <span class="font-display text-lg tracking-[0.2em] text-ink sm:text-xl">EMBER RIDGE</span>
+          <span class="mt-1.5 font-sans text-[0.5625rem] uppercase tracking-[0.18em] text-stone-600">
+            A Ministry of Firebrand Revivalists
+          </span>
+        </span>
+      </a>
+
+      <!-- Desktop navigation -->
+      <nav aria-label="Main" class="hidden items-center gap-1 lg:flex">
+        {navTree.map((item, i) => (
+          item.children ? (
+            <div class="relative" data-dropdown>
+              <button
+                type="button"
+                data-dropdown-toggle
+                aria-expanded="false"
+                aria-controls={`menu-${i}`}
+                class:list={[
+                  'flex items-center gap-1.5 whitespace-nowrap px-3 py-2 font-sans text-[0.75rem] uppercase tracking-[0.12em] transition-colors duration-300 xl:text-[0.8125rem]',
+                  groupActive(item) ? 'text-gold-700' : 'text-stone-700 hover:text-ink',
+                ]}
+              >
+                {item.label}
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" aria-hidden="true"
+                     class="transition-transform duration-300" data-dropdown-chevron>
+                  <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" />
+                </svg>
+              </button>
+
+              <div
+                id={`menu-${i}`}
+                data-dropdown-panel
+                hidden
+                class="absolute left-0 top-full z-10 min-w-60 border border-stone-200 bg-ivory p-2
+                       shadow-[var(--shadow-lift-lg)]"
+              >
+                <span aria-hidden="true" class="brushed-gold absolute inset-x-0 top-0 h-px"></span>
+                <ul>
+                  {item.children.map((child) => (
+                    <li>
+                      <a
+                        href={child.href}
+                        aria-current={isCurrent(child.href) ? 'page' : undefined}
+                        class:list={[
+                          'block px-4 py-3 font-sans text-[0.8125rem] leading-snug transition-colors duration-200',
+                          isCurrent(child.href)
+                            ? 'bg-cream text-gold-700'
+                            : 'text-stone-700 hover:bg-linen hover:text-ink',
+                        ]}
+                      >
+                        {child.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          ) : (
+            <a
+              href={item.href}
+              aria-current={isCurrent(item.href) ? 'page' : undefined}
+              class:list={[
+                'whitespace-nowrap px-3 py-2 font-sans text-[0.75rem] uppercase tracking-[0.12em] transition-colors duration-300 xl:text-[0.8125rem]',
+                isCurrent(item.href) ? 'text-gold-700' : 'text-stone-700 hover:text-ink',
+              ]}
+            >
+              {item.label}
+            </a>
+          )
+        ))}
+        <a href="/partner#give" class="btn-gold ml-3 !px-5 !py-3 !text-[0.7rem]">Give</a>
+      </nav>
+
+      <!-- Mobile trigger -->
+      <button
+        id="menu-toggle"
+        type="button"
+        class="-mr-2 flex h-11 w-11 items-center justify-center text-ink lg:hidden"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <span class="sr-only">Open menu</span>
+        <svg id="icon-open" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="1.4" />
+        </svg>
+        <svg id="icon-close" class="hidden" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="1.4" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" hidden class="max-h-[calc(100svh-5rem)] overflow-y-auto border-t border-stone-200 bg-ivory lg:hidden">
+    <nav aria-label="Mobile" class="shell flex flex-col py-4">
+      {navTree.map((item, i) => (
+        item.children ? (
+          <div class="border-b border-stone-200" data-acc>
+            <button
+              type="button"
+              data-acc-toggle
+              aria-expanded="false"
+              aria-controls={`acc-${i}`}
+              class="flex w-full items-center justify-between py-4 text-left font-display text-xl text-ink"
+            >
+              {item.label}
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"
+                   class="transition-transform duration-300" data-acc-chevron>
+                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              </svg>
+            </button>
+            <div id={`acc-${i}`} data-acc-panel class="grid grid-rows-[0fr] transition-all duration-500 [transition-timing-function:var(--ease-refined)]">
+              <div class="overflow-hidden">
+                <ul class="pb-3">
+                  {item.children.map((child) => (
+                    <li>
+                      <a href={child.href}
+                         aria-current={isCurrent(child.href) ? 'page' : undefined}
+                         class:list={['block py-2.5 pl-4 font-sans text-[0.9375rem]',
+                                      isCurrent(child.href) ? 'text-gold-700' : 'text-stone-700']}>
+                        {child.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        ) : (
+          <a href={item.href}
+             aria-current={isCurrent(item.href) ? 'page' : undefined}
+             class:list={['border-b border-stone-200 py-4 font-display text-xl',
+                          isCurrent(item.href) ? 'text-gold-700' : 'text-ink']}>
+            {item.label}
+          </a>
+        )
+      ))}
+      <a href="/partner#give" class="btn-gold mt-6 mb-2 w-full">Give</a>
+    </nav>
+  </div>
+</header>
+
+<script is:inline>
+  (() => {
+    const header = document.getElementById('site-header');
+    const inner = document.getElementById('header-inner');
+    if (!header || !inner) return;
+
+    // Solid bar once the page scrolls.
+    const onScroll = () => {
+      const past = window.scrollY > 24;
+      header.classList.toggle('bg-ivory/92', past);
+      header.classList.toggle('backdrop-blur-md', past);
+      header.classList.toggle('shadow-[var(--shadow-lift)]', past);
+      inner.classList.toggle('border-stone-200', past);
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    // ── Desktop dropdowns ────────────────────────────────────────────────
+    const dropdowns = Array.from(document.querySelectorAll('[data-dropdown]'));
+    const setOpenDrop = (wrap, open) => {
+      const btn = wrap.querySelector('[data-dropdown-toggle]');
+      const panel = wrap.querySelector('[data-dropdown-panel]');
+      const chev = wrap.querySelector('[data-dropdown-chevron]');
+      if (!btn || !panel) return;
+      panel.hidden = !open;
+      btn.setAttribute('aria-expanded', String(open));
+      chev && chev.classList.toggle('rotate-180', open);
+    };
+    const closeAll = (except) => dropdowns.forEach((d) => { if (d !== except) setOpenDrop(d, false); });
+
+    const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
+    dropdowns.forEach((wrap) => {
+      const btn = wrap.querySelector('[data-dropdown-toggle]');
+      const panel = wrap.querySelector('[data-dropdown-panel]');
+      if (!btn || !panel) return;
+
+      btn.addEventListener('click', () => {
+        const open = btn.getAttribute('aria-expanded') === 'true';
+        closeAll(wrap);
+        setOpenDrop(wrap, !open);
+      });
+
+      if (finePointer.matches) {
+        let leaveTimer;
+        wrap.addEventListener('mouseenter', () => {
+          clearTimeout(leaveTimer);
+          closeAll(wrap);
+          setOpenDrop(wrap, true);
+        });
+        wrap.addEventListener('mouseleave', () => {
+          leaveTimer = setTimeout(() => setOpenDrop(wrap, false), 140);
+        });
+      }
+
+      // Keyboard: tabbing out of the group closes it.
+      wrap.addEventListener('focusout', (e) => {
+        if (!wrap.contains(e.relatedTarget)) setOpenDrop(wrap, false);
+      });
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('[data-dropdown]')) closeAll(null);
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key !== 'Escape') return;
+      const open = dropdowns.find((d) => d.querySelector('[data-dropdown-toggle]')?.getAttribute('aria-expanded') === 'true');
+      if (open) {
+        setOpenDrop(open, false);
+        open.querySelector('[data-dropdown-toggle]')?.focus();
+      }
+    });
+
+    // ── Mobile menu + accordions ─────────────────────────────────────────
+    const toggle = document.getElementById('menu-toggle');
+    const menu = document.getElementById('mobile-menu');
+    const iconOpen = document.getElementById('icon-open');
+    const iconClose = document.getElementById('icon-close');
+
+    const setMenu = (open) => {
+      if (!menu || !toggle) return;
+      menu.hidden = !open;
+      toggle.setAttribute('aria-expanded', String(open));
+      iconOpen && iconOpen.classList.toggle('hidden', open);
+      iconClose && iconClose.classList.toggle('hidden', !open);
+      document.documentElement.style.overflow = open ? 'hidden' : '';
+    };
+
+    toggle && toggle.addEventListener('click', () => setMenu(menu.hidden));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && menu && !menu.hidden) { setMenu(false); toggle.focus(); }
+    });
+    window.addEventListener('resize', () => { if (window.innerWidth >= 1024) setMenu(false); });
+
+    document.querySelectorAll('[data-acc]').forEach((wrap) => {
+      const btn = wrap.querySelector('[data-acc-toggle]');
+      const panel = wrap.querySelector('[data-acc-panel]');
+      const chev = wrap.querySelector('[data-acc-chevron]');
+      if (!btn || !panel) return;
+      btn.addEventListener('click', () => {
+        const open = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!open));
+        panel.classList.toggle('grid-rows-[1fr]', !open);
+        panel.classList.toggle('grid-rows-[0fr]', open);
+        chev && chev.classList.toggle('rotate-180', !open);
+      });
+    });
+  })();
+</script>

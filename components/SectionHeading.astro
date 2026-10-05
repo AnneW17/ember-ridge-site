@@ -1,0 +1,22 @@
+---
+// src/components/SectionHeading.astro
+interface Props {
+  eyebrow?: string;
+  title: string;
+  lede?: string;
+  id?: string;
+  align?: 'left' | 'center';
+  level?: 2 | 3;
+}
+const { eyebrow, title, lede, id, align = 'left', level = 2 } = Astro.props;
+const Tag = `h${level}`;
+---
+<div class:list={['max-w-3xl', align === 'center' && 'mx-auto text-center']}>
+  {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+  <Tag id={id} class:list={[level === 2 ? 'display-2' : 'display-3', eyebrow && 'mt-4']}>
+    {title}
+  </Tag>
+  <div class:list={['rule-gold mt-6', align === 'center' && 'mx-auto']}></div>
+  {lede && <p class="lede mt-7">{lede}</p>}
+  <slot />
+</div>

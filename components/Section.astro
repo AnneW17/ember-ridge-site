@@ -1,0 +1,31 @@
+---
+// src/components/Section.astro — consistent vertical rhythm + surface tone.
+// Tone names are historical; all three are warm light surfaces. `charcoal`
+// renders a soft cream band with a hairline of gold along the top edge.
+interface Props {
+  id?: string;
+  /** Surface band. Alternate these down a page so the colour shifts as you scroll. */
+  tone?: 'ivory' | 'linen' | 'cream' | 'stone' | 'ink' | 'charcoal';
+  size?: 'default' | 'sm';
+  class?: string;
+  labelledby?: string;
+}
+const { id, tone = 'ivory', size = 'default', class: className = '', labelledby } = Astro.props;
+
+const tones = {
+  ivory: 'band-ivory',
+  linen: 'band-linen',
+  cream: 'band-cream seam-gold',
+  stone: 'band-stone seam-gold',
+  ink: 'band-ink on-ink',
+  // legacy alias kept so existing pages keep working
+  charcoal: 'band-cream seam-gold',
+};
+---
+<section
+  id={id}
+  aria-labelledby={labelledby}
+  class:list={[size === 'sm' ? 'section-sm' : 'section', tones[tone], 'relative', className]}
+>
+  <slot />
+</section>
